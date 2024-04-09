@@ -1,7 +1,7 @@
 # 回報安全問題
 
-[English](SECURE.md)
-[简体中文](SECURE_zh_CN.md)
+[English](SECURITY.md)
+[简体中文](SECURITY_zh_CN.md)
 繁體中文
 
 開發團隊認真對待目前專案中的安全漏洞。 我們感謝您負責任地披露您的發現的努力，並將盡一切努力感謝您的貢獻。

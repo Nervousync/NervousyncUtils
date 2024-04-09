@@ -1,8 +1,8 @@
 # 报告安全问题
 
-[English](SECURE.md)
+[English](SECURITY.md)
 简体中文
-[繁體中文](SECURE_zh_TW.md)
+[繁體中文](SECURITY_zh_TW.md)
 
 开发团队认真对待当前项目中的安全漏洞。 我们感谢您负责任地披露您的发现的努力，并将尽一切努力感谢您的贡献。
 

@@ -1,8 +1,8 @@
 # Reporting Security Issues
 
 English
-[简体中文](SECURE_zh_CN.md)
-[繁體中文](SECURE_zh_TW.md)
+[简体中文](SECURITY_zh_CN.md)
+[繁體中文](SECURITY_zh_TW.md)
 
 The development team takes security bugs in the current project seriously. We appreciate your efforts to responsibly disclose your findings, and will make every effort to acknowledge your contributions.
 
