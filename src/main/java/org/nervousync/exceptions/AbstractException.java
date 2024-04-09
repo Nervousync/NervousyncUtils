@@ -33,53 +33,64 @@ public abstract class AbstractException extends Exception {
 	 * <span class="zh-CN">序列化UID</span>
 	 */
 	private static final long serialVersionUID = 3698481050554660066L;
+	/**
+	 * <span class="en-US">Internationalization information agent</span>
+	 * <span class="zh-CN">国际化信息代理</span>
+	 */
 	private final MultilingualUtils.Agent multiAgent = MultilingualUtils.newAgent(this.getClass());
 	/**
 	 * <span class="en-US">Error identified code</span>
 	 * <span class="zh-CN">错误识别代码</span>
 	 */
 	private final long errorCode;
+	/**
+	 * <span class="en-US">Details message of error</span>
+	 * <span class="zh-CN">错误详细信息</span>
+	 */
 	private final String detailMessage;
+
 	/**
 	 * <h3 class="en-US">Constructor method for NetworkInfoException</h3>
 	 * <span class="en-US">Create a new NetworkInfoException with the specified message.</span>
 	 * <h3 class="zh-CN">NetworkInfoException构造方法</h3>
 	 * <span class="zh-CN">使用特定的信息创建NetworkInfoException实例对象。</span>
 	 *
-	 * @param errorCode 	<span class="en-US">Error identified code</span>
-     *                      <span class="zh-CN">错误识别代码</span>
-     * @param collections   <span class="en-US">given parameters of information formatter</span>
-     *                      <span class="zh-CN">用于资源信息格式化的参数</span>
+	 * @param errorCode   <span class="en-US">Error identified code</span>
+	 *                    <span class="zh-CN">错误识别代码</span>
+	 * @param collections <span class="en-US">given parameters of information formatter</span>
+	 *                    <span class="zh-CN">用于资源信息格式化的参数</span>
 	 */
 	protected AbstractException(final long errorCode, final Object... collections) {
 		super(Globals.DEFAULT_VALUE_STRING);
 		this.errorCode = errorCode;
 		this.detailMessage = this.multiAgent.errorMessage(errorCode, collections);
 	}
+
 	/**
 	 * <h3 class="en-US">Constructor method for NetworkInfoException</h3>
 	 * <span class="en-US">Create a new NetworkInfoException with the specified message and root cause.</span>
 	 * <h3 class="zh-CN">NetworkInfoException构造方法</h3>
 	 * <span class="zh-CN">使用特定的信息以及异常信息对象实例创建NetworkInfoException实例对象。</span>
 	 *
-	 * @param errorCode 	<span class="en-US">Error identified code</span>
-     *                      <span class="zh-CN">错误识别代码</span>
-	 * @param cause 		<span class="en-US">The root cause</span>
-	 *              		<span class="zh-CN">异常信息对象实例</span>
-     * @param collections   <span class="en-US">given parameters of information formatter</span>
-     *                      <span class="zh-CN">用于资源信息格式化的参数</span>
+	 * @param errorCode   <span class="en-US">Error identified code</span>
+	 *                    <span class="zh-CN">错误识别代码</span>
+	 * @param cause       <span class="en-US">The root cause</span>
+	 *                    <span class="zh-CN">异常信息对象实例</span>
+	 * @param collections <span class="en-US">given parameters of information formatter</span>
+	 *                    <span class="zh-CN">用于资源信息格式化的参数</span>
 	 */
 	protected AbstractException(final long errorCode, final Throwable cause, final Object... collections) {
 		super(Globals.DEFAULT_VALUE_STRING, cause);
 		this.errorCode = errorCode;
 		this.detailMessage = this.multiAgent.errorMessage(errorCode, collections);
 	}
+
 	/**
 	 * <h3 class="en-US">Getter method for error identified code</h3>
 	 * <h3 class="zh-CN">错误识别代码的Getter方法</h3>
 	 *
-	 * @return 	<span class="en-US">Error identified code</span>
-	 * 			<span class="zh-CN">错误识别代码</span>
+	 * @return <span class="en-US">Error identified code</span>
+	 * <span class="zh-CN">错误识别代码</span>
 	 */
 	public long getErrorCode() {
 		return errorCode;
@@ -87,11 +98,12 @@ public abstract class AbstractException extends Exception {
 
 	@Override
 	public final String getMessage() {
-        return detailMessage;
-    }
+		return detailMessage;
+	}
 
 	/**
 	 * (non-javadoc)
+	 *
 	 * @see Object#equals(Object)
 	 */
 	@Override
@@ -110,8 +122,10 @@ public abstract class AbstractException extends Exception {
 		}
 		return Boolean.FALSE;
 	}
+
 	/**
 	 * (non-javadoc)
+	 *
 	 * @see Object#hashCode()
 	 */
 	@Override

@@ -72,8 +72,8 @@ public final class IDUtils {
      */
     public static final String SNOWFLAKE = "Snowflake";
     /**
-     * <span class="en-US">Logger instance</span>
-     * <span class="zh-CN">日志实例</span>
+     * <span class="en-US">Multilingual supported logger instance</span>
+     * <span class="zh-CN">多语言支持的日志对象</span>
      */
     private static final LoggerUtils.Logger LOGGER = LoggerUtils.getLogger(IDUtils.class);
     /**

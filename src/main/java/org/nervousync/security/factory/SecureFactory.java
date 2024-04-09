@@ -18,7 +18,7 @@ package org.nervousync.security.factory;
 
 import jakarta.annotation.Nonnull;
 import org.nervousync.annotations.configs.Configuration;
-import org.nervousync.configs.AutoConfigLauncher;
+import org.nervousync.configs.AutoConfig;
 import org.nervousync.configs.ConfigureManager;
 import org.nervousync.exceptions.crypto.CryptoException;
 import org.nervousync.security.api.SecureAdapter;
@@ -46,10 +46,10 @@ import java.util.*;
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
  * @version $Revision: 1.0.0 $ $Date: Jan 13, 2012 12:33:56 $
  */
-public final class SecureFactory extends AutoConfigLauncher {
+public final class SecureFactory extends AutoConfig {
 	/**
-	 * <span class="en-US">Logger instance</span>
-	 * <span class="zh-CN">日志对象</span>
+	 * <span class="en-US">Multilingual supported logger instance</span>
+	 * <span class="zh-CN">多语言支持的日志对象</span>
 	 */
 	private static final LoggerUtils.Logger LOGGER = LoggerUtils.getLogger(SecureFactory.class);
 	/**
@@ -67,10 +67,26 @@ public final class SecureFactory extends AutoConfigLauncher {
 	 * <span class="zh-CN">默认证书库密码</span>
 	 */
 	private static final String SECURE_CERTIFICATE_PASSWORD = "ns0528AO";
+	/**
+	 * <span class="en-US">Secure factory singleton instance object</span>
+	 * <span class="zh-CN">安全工厂全局唯一实例对象</span>
+	 */
 	private static SecureFactory INSTANCE = null;
+	/**
+	 * <span class="en-US">Factory secure node</span>
+	 * <span class="zh-CN">工厂安全节点</span>
+	 */
 	private final SecureNode factoryNode;
+	/**
+	 * <span class="en-US">Secure configure information</span>
+	 * <span class="zh-CN">安全配置信息</span>
+	 */
 	@Configuration
 	private SecureSettings secureSettings;
+	/**
+	 * <span class="en-US">Registered secure factory node mapping table</span>
+	 * <span class="zh-CN">已注册的安全节点映射表</span>
+	 */
 	private final Map<String, SecureNode> registeredNodes;
 
 	static {

@@ -57,8 +57,8 @@ public abstract class BeanObject implements Serializable {
      */
     private static final long serialVersionUID = 6900853002518080456L;
     /**
-     * <span class="en-US">Logger instance</span>
-     * <span class="zh-CN">日志对象</span>
+     * <span class="en-US">Multilingual supported logger instance</span>
+     * <span class="zh-CN">多语言支持的日志对象</span>
      */
     protected transient final LoggerUtils.Logger logger = LoggerUtils.getLogger(this.getClass());
 

@@ -1,6 +1,6 @@
 /*
  * Licensed to the Nervousync Studio (NSYC) under one or more
- * contributor license agreements.  See the NOTICE file distributed with
+ * contributor license agreements. See the NOTICE file distributed with
  * this work for additional information regarding copyright ownership.
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
@@ -15,29 +15,39 @@
  * limitations under the License.
  */
 
-package org.nervousync.enumerations.launcher;
+package org.nervousync.annotations.jmx;
+
+import org.nervousync.commons.Globals;
+
+import java.lang.annotation.*;
 
 /**
- * <h2 class="en-US">Enumeration value of startup type</h2>
- * <h2 class="zh-CN">启动类型枚举值</h2>
+ * <h2 class="en-US">JMX monitoring utility collections</h2>
+ * <h2 class="zh-CN">JMX监控工具集</h2>
  *
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
- * @version $Revision: 1.0.0 $Date: Feb 27, 2024 10:49:12 $
+ * @version $Revision: 1.0.0 $ $Date: Feb 27, 2024 15:31:16 $
  */
-public enum StartupType {
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.TYPE})
+public @interface Monitor {
+
 	/**
-	 * <span class="en-US">Automatic</span>
-	 * <span class="zh-CN">自动</span>
+	 * @return <span class="en-US">MBean identification code</span>
+	 * <span class="zh-CN">MBean唯一标识</span>
 	 */
-	AUTO,
+	String identify();
+
 	/**
-	 * <span class="en-US">Manual</span>
-	 * <span class="zh-CN">手动</span>
+	 * @return <span class="en-US">MBean type</span>
+	 * <span class="zh-CN">MBean类型</span>
 	 */
-	MANUAL,
+	String type();
+
 	/**
-	 * <span class="en-US">Disable</span>
-	 * <span class="zh-CN">禁用</span>
+	 * @return <span class="en-US">MBean name</span>
+	 * <span class="zh-CN">MBean名称</span>
 	 */
-	DISABLE
+	String name() default Globals.DEFAULT_VALUE_STRING;
 }

@@ -21,8 +21,8 @@ import org.bouncycastle.crypto.digests.MD5Digest;
 import org.bouncycastle.crypto.macs.HMac;
 import org.bouncycastle.crypto.params.KeyParameter;
 import org.bouncycastle.jcajce.provider.digest.MD5;
-import org.nervousync.security.digest.BaseDigestAdapter;
 import org.nervousync.exceptions.crypto.CryptoException;
+import org.nervousync.security.digest.BaseDigestAdapter;
 
 import java.security.MessageDigest;
 
@@ -36,62 +36,59 @@ import java.security.MessageDigest;
  * @version $Revision: 1.0.0 $ $Date: Jan 13, 2012 13:52:19 $
  */
 public final class MD5DigestAdapterImpl extends BaseDigestAdapter {
-    /**
-     * <h3 class="en-US">Constructor for MD5DigestAdapterImpl</h3>
-     * <h3 class="zh-CN">MD5摘要算法适配器实现类类的构造方法</h3>
-     *
-     * @throws CryptoException
-     * <span class="en-US">If an error occurs when initialize adaptor</span>
-     * <span class="zh-CN">当初始化适配器时出现异常</span>
-     */
-    public MD5DigestAdapterImpl() throws CryptoException {
-        super("MD5", new byte[0]);
-    }
+	/**
+	 * <h3 class="en-US">Constructor for MD5DigestAdapterImpl</h3>
+	 * <h3 class="zh-CN">MD5摘要算法适配器实现类类的构造方法</h3>
+	 *
+	 * @throws CryptoException <span class="en-US">If an error occurs when initialize adaptor</span>
+	 *                         <span class="zh-CN">当初始化适配器时出现异常</span>
+	 */
+	public MD5DigestAdapterImpl() throws CryptoException {
+		super("MD5", new byte[0]);
+	}
 
-    /**
-     * <h3 class="en-US">Constructor for MD5DigestAdapterImpl</h3>
-     * <h3 class="zh-CN">MD5摘要算法适配器实现类类的构造方法</h3>
-     *
-     * @param keyBytes      <span class="en-US">Hmac key data bytes</span>
-     *                      <span class="zh-CN">消息认证码算法密钥数据数组</span>
-     *
-     * @throws CryptoException
-     * <span class="en-US">If an error occurs when initialize adaptor</span>
-     * <span class="zh-CN">当初始化适配器时出现异常</span>
-     */
-    public MD5DigestAdapterImpl(final byte[] keyBytes) throws CryptoException {
-        super("MD5/HMAC", keyBytes);
-    }
-    /**
+	/**
+	 * <h3 class="en-US">Constructor for MD5DigestAdapterImpl</h3>
+	 * <h3 class="zh-CN">MD5摘要算法适配器实现类类的构造方法</h3>
+	 *
+	 * @param keyBytes <span class="en-US">Hmac key data bytes</span>
+	 *                 <span class="zh-CN">消息认证码算法密钥数据数组</span>
+	 * @throws CryptoException <span class="en-US">If an error occurs when initialize adaptor</span>
+	 *                         <span class="zh-CN">当初始化适配器时出现异常</span>
+	 */
+	public MD5DigestAdapterImpl(final byte[] keyBytes) throws CryptoException {
+		super("MD5/HMAC", keyBytes);
+	}
+
+	/**
 	 * <h3 class="en-US">Abstract method for initialize MessageDigest instance</h3>
 	 * <h3 class="zh-CN">抽象方法用于初始化消息摘要算法适配器实例对象</h3>
-     *
-     * @param algorithm     <span class="en-US">Cipher Algorithm</span>
-     *                      <span class="zh-CN">密码算法</span>
-     *
-     * @return  <span class="en-US">Initialized MessageDigest instance</span>
-     *          <span class="zh-CN">初始化的消息摘要算法适配器</span>
-     */
-    @Override
-    protected MessageDigest initDigest(final String algorithm) {
-        return new MD5.Digest();
-    }
-    /**
+	 *
+	 * @param algorithm <span class="en-US">Cipher Algorithm</span>
+	 *                  <span class="zh-CN">密码算法</span>
+	 * @return <span class="en-US">Initialized MessageDigest instance</span>
+	 * <span class="zh-CN">初始化的消息摘要算法适配器</span>
+	 */
+	@Override
+	protected MessageDigest initDigest(final String algorithm) {
+		return new MD5.Digest();
+	}
+
+	/**
 	 * <h3 class="en-US">Abstract method for initialize Hmac instance</h3>
 	 * <h3 class="zh-CN">抽象方法用于初始化消息认证码适配器实例对象</h3>
-     *
-     * @param algorithm     <span class="en-US">Cipher Algorithm</span>
-     *                      <span class="zh-CN">密码算法</span>
-     * @param keyBytes      <span class="en-US">Hmac key data bytes</span>
-     *                      <span class="zh-CN">消息认证码算法密钥数据数组</span>
-     *
-     * @return  <span class="en-US">Initialized Hmac instance</span>
-     *          <span class="zh-CN">初始化的消息认证码算法适配器</span>
-     */
-    @Override
-    protected Mac initHmac(final String algorithm, final byte[] keyBytes) {
-        HMac hmac = new HMac(new MD5Digest());
-        hmac.init(new KeyParameter(keyBytes));
-        return hmac;
-    }
+	 *
+	 * @param algorithm <span class="en-US">Cipher Algorithm</span>
+	 *                  <span class="zh-CN">密码算法</span>
+	 * @param keyBytes  <span class="en-US">Hmac key data bytes</span>
+	 *                  <span class="zh-CN">消息认证码算法密钥数据数组</span>
+	 * @return <span class="en-US">Initialized Hmac instance</span>
+	 * <span class="zh-CN">初始化的消息认证码算法适配器</span>
+	 */
+	@Override
+	protected Mac initHmac(final String algorithm, final byte[] keyBytes) {
+		HMac hmac = new HMac(new MD5Digest());
+		hmac.init(new KeyParameter(keyBytes));
+		return hmac;
+	}
 }

@@ -279,6 +279,14 @@
       "key": "Null_Input_Stream_Zip_Error"
     },
     {
+      "code": "0x0000001D0001",
+      "key": "Code_Size_Invalid"
+    },
+    {
+      "code": "0x0000001D0002",
+      "key": "Mark_File_Not_Found"
+    },
+    {
       "code": "0x000000FF0001",
       "key": "Parameter_Invalid_Error"
     },
@@ -579,6 +587,14 @@
         {
           "key": "Null_Input_Stream_Zip_Error",
           "content": "Input stream instance is null"
+        },
+        {
+          "key": "Code_Size_Invalid",
+          "content": "Barcode/QR code size invalid"
+        },
+        {
+          "key": "Mark_File_Not_Found",
+          "content": "Icon mark file not found"
         },
         {
           "key": "Parameter_Invalid_Error",
@@ -1393,6 +1409,14 @@
         {
           "key": "Null_Input_Stream_Zip_Error",
           "content": "输入流为空"
+        },
+        {
+          "key": "Code_Size_Invalid",
+          "content": "条形码/二维码尺寸错误"
+        },
+        {
+          "key": "Mark_File_Not_Found",
+          "content": "水印文件未找到"
         },
         {
           "key": "Parameter_Invalid_Error",

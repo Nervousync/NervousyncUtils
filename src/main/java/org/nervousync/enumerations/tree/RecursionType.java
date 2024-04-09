@@ -25,5 +25,19 @@ package org.nervousync.enumerations.tree;
  * @version $Revision: 1.0.0 $ $Date: Nov 3, 2017 17:22:19 $
  */
 public enum RecursionType {
-    Normal, Depth, Breadth
+    /**
+	 * <span class="en-US">Normal</span>
+	 * <span class="zh-CN">默认</span>
+     */
+    Normal,
+    /**
+	 * <span class="en-US">Depth first</span>
+	 * <span class="zh-CN">深度优先</span>
+     */
+    Depth,
+    /**
+	 * <span class="en-US">Breadth first</span>
+	 * <span class="zh-CN">广度优先</span>
+     */
+    Breadth
 }

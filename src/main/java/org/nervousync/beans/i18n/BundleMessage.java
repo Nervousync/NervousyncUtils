@@ -26,7 +26,6 @@ import org.nervousync.utils.StringUtils;
 /**
  * <h2 class="en-US">Internationalization Information Data</h2>
  * <h2 class="zh-CN">国际化信息数据</h2>
- * .0
  *
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
  * @version $Revision: 1.0.0 $ $Date: Jul 19, 2023 16:51:46 $

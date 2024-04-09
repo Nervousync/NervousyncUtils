@@ -159,7 +159,7 @@ public final class MultilingualUtils {
      * @return <span class="en-US">The name of provider</span>
      * <span class="zh-CN">适配器名称</span>
      */
-    public static String providerName(final Class<?> clazz) {
+    public static String providerName(@Nonnull final Class<?> clazz) {
         return providerName(clazz, DEFAULT_LANGUAGE_CODE);
     }
 
@@ -174,10 +174,41 @@ public final class MultilingualUtils {
      * @return <span class="en-US">The name of provider</span>
      * <span class="zh-CN">适配器名称</span>
      */
-    public static String providerName(final Class<?> clazz, final String languageCode) {
-        return Optional.ofNullable(clazz)
-                .map(providerClass -> providerClass.getAnnotation(Provider.class))
+    public static String providerName(@Nonnull final Class<?> clazz, final String languageCode) {
+        return Optional.ofNullable(clazz.getAnnotation(Provider.class))
+                .filter(provider -> StringUtils.notBlank(provider.titleKey()))
                 .map(provider -> newAgent(clazz).findMessage(provider.titleKey(), languageCode))
+                .orElse(Globals.DEFAULT_VALUE_STRING);
+    }
+
+    /**
+     * <h3 class="en-US">Get the description of the given adapter implementation class</h3>
+     * <h3 class="zh-CN">获取给定适配器实现类的简介</h3>
+     *
+     * @param clazz <span class="en-US">Provider implements class</span>
+     *              <span class="zh-CN">适配器实现类</span>
+     * @return <span class="en-US">The name of provider</span>
+     * <span class="zh-CN">适配器名称</span>
+     */
+    public static String providerDescription(@Nonnull final Class<?> clazz) {
+        return providerDescription(clazz, DEFAULT_LANGUAGE_CODE);
+    }
+
+    /**
+     * <h3 class="en-US">Get the description of the given adapter implementation class</h3>
+     * <h3 class="zh-CN">获取给定适配器实现类的简介</h3>
+     *
+     * @param clazz        <span class="en-US">Provider implements class</span>
+     *                     <span class="zh-CN">适配器实现类</span>
+     * @param languageCode <span class="en-US">Language code</span>
+     *                     <span class="zh-CN">语言代码</span>
+     * @return <span class="en-US">The name of provider</span>
+     * <span class="zh-CN">适配器名称</span>
+     */
+    public static String providerDescription(@Nonnull final Class<?> clazz, final String languageCode) {
+        return Optional.ofNullable(clazz.getAnnotation(Provider.class))
+                .filter(provider -> StringUtils.notBlank(provider.descriptionKey()))
+                .map(provider -> newAgent(clazz).findMessage(provider.descriptionKey(), languageCode))
                 .orElse(Globals.DEFAULT_VALUE_STRING);
     }
 

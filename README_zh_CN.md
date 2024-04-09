@@ -1,4 +1,4 @@
-# Java開發套件
+# Java开发工具包
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.nervousync/utils-jdk11/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.nervousync/utils-jdk11/)
 [![License](https://img.shields.io/github/license/wmkm0113/utils-jdk11.svg)](https://github.com/wmkm0113/utils-jdk11/blob/mainline/LICENSE)
@@ -9,55 +9,55 @@
 简体中文
 [繁體中文](README_zh_TW.md)
 
-Java開發套件是為了提供介面穩定、集成簡單、可重用的工具包，同時優化了協力廠商類庫的引用。工具包中包含了很多經常用到的工具類和功能模組，涵蓋了廣泛的應用場景， 
-工具包提供了一套簡潔而強大的API，幫助開發人員更高效地編寫Java代碼，無論是處理日期和時間、字串操作、檔操作或網路請求的發送與處理，還是發送電子郵件、使用SNMP進行性能監控、統一的設定檔管理，
-又或者是一次性密碼支援、X.509證書的操作、工作管理員等，該工具包都提供了豐富的模組、功能和方法。
+Java开发工具包是为了提供接口稳定、集成简单、可重用的工具包，同时优化了第三方类库的引用。工具包中包含了很多经常用到的工具类和功能模块，涵盖了广泛的应用场景， 
+工具包提供了一套简洁而强大的API，帮助开发人员更高效地编写Java代码，无论是处理日期和时间、字符串操作、文件操作或网络请求的发送与处理，还是发送电子邮件、使用SNMP进行性能监控、统一的配置文件管理，
+又或者是一次性密码支持、X.509证书的操作、任务管理器等，该工具包都提供了丰富的模块、功能和方法。
 
-## 目錄
+## 目录
 * [JDK版本](#JDK版本)
-* [生命週期](#生命週期)
+* [生命周期](#生命周期)
 * [使用方法](#使用方法)
-* [基礎工具](#基礎工具)
-  + [JavaBean工具類](#javabean工具類)
-  + [X.509證書工具類](#x509證書工具類)
-  + [集合操作工具類](#集合操作工具類)
-  + [資料轉換工具類](#資料轉換工具類)
-  + [Cookie工具類](#cookie工具類)
-  + [隨機ID生成工具類](#隨機ID生成工具類)
-  + [圖片工具類](#圖片工具類)
-  + [IP地址工具類](#ip地址工具類)
-  + [地理座標工具類](#地理座標工具類)
-  + [電子郵件工具類](#電子郵件工具類)
-  + [一次性密碼工具類](#一次性密碼工具類)
-  + [屬性資訊工具類](#屬性資訊工具類)
-  + [二進位資料操作工具類](#二進位資料操作工具類)
-  + [網路請求工具類](#網路請求工具類)
-  + [資料安全工具類](#資料安全工具類)
-  + [WebService工具類](#WebService工具類)
-  + [字串操作工具類](#字串操作工具類)
-  + [資料結構](#資料結構)
-* [JavaBean與 XML/JSON/YAML 字串的互相轉換](#javabean與-xmljsonyaml-字串的互相轉換)
-* [安全工廠](#安全工廠)
-* [設定檔管理員](#設定檔管理員)
-* [程式啟動管理器](#程式啟動管理器)
-* [國際化支持](#國際化支持)
-  + [創建國際化資源檔（必須）](#1-創建國際化資源檔必須)
-  + [在需要的地方添加國際化支援（必須）](#2-在需要的地方添加國際化支援必須)
-  + [向自訂異常添加國際化支持（可選）](#3-向自訂異常添加國際化支持可選操作)
-  + [向日誌中添加國際化支援（可選）](#4-向日誌中添加國際化支援可選操作)
-  + [打包時合併資源檔（可選）](#5-打包時合併資源檔可選操作)
-* [檔操作的擴展](#檔操作的擴展)
-  + [Zip檔操作](#zip檔操作)
-  + [隨機操作檔](#隨機操作檔)
-* [貢獻與回饋](#貢獻與回饋)
-* [贊助與鳴謝](#贊助與鳴謝)
+* [基础工具](#基础工具)
+  + [JavaBean工具类](#javabean工具类)
+  + [X.509证书工具类](#x509证书工具类)
+  + [集合操作工具类](#集合操作工具类)
+  + [数据转换工具类](#数据转换工具类)
+  + [Cookie工具类](#cookie工具类)
+  + [随机ID生成工具类](#随机ID生成工具类)
+  + [图片工具类](#图片工具类)
+  + [IP地址工具类](#ip地址工具类)
+  + [地理坐标工具类](#地理坐标工具类)
+  + [电子邮件工具类](#电子邮件工具类)
+  + [一次性密码工具类](#一次性密码工具类)
+  + [属性信息工具类](#属性信息工具类)
+  + [二进制数据操作工具类](#二进制数据操作工具类)
+  + [网络请求工具类](#网络请求工具类)
+  + [数据安全工具类](#数据安全工具类)
+  + [WebService工具类](#WebService工具类)
+  + [字符串操作工具类](#字符串操作工具类)
+  + [数据结构](#数据结构)
+* [JavaBean与 XML/JSON/YAML 字符串的互相转换](#javabean与-xmljsonyaml-字符串的互相转换)
+* [安全工厂](#安全工厂)
+* [配置文件管理器](#配置文件管理器)
+* [程序启动管理器](#程序启动管理器)
+* [国际化支持](#国际化支持)
+  + [创建国际化资源文件（必须）](#1-创建国际化资源文件必须)
+  + [在需要的地方添加国际化支持（必须）](#2-在需要的地方添加国际化支持必须)
+  + [向自定义异常添加国际化支持（可选）](#3-向自定义异常添加国际化支持可选操作)
+  + [向日志中添加国际化支持（可选）](#4-向日志中添加国际化支持可选操作)
+  + [打包时合并资源文件（可选）](#5-打包时合并资源文件可选操作)
+* [文件操作的扩展](#文件操作的扩展)
+  + [Zip文件操作](#zip文件操作)
+  + [随机操作文件](#随机操作文件)
+* [贡献与反馈](#贡献与反馈)
+* [赞助与鸣谢](#赞助与鸣谢)
 
 ## JDK版本：
-**編譯：** OpenJDK 11   
-**運行：** OpenJDK 11+ 或相容版本
+**编译：** OpenJDK 11   
+**运行：** OpenJDK 11+ 或兼容版本
 
-## 生命週期:
-**功能凍結：** 2026年12月31日   
+## 生命周期:
+**功能冻结：** 2026年12月31日   
 **安全更新：** 2029年12月31日
 
 ## 使用方法
@@ -65,7 +65,7 @@ Java開發套件是為了提供介面穩定、集成簡單、可重用的工具�
 ```
 <dependency>
     <groupId>org.nervousync</groupId>
-    <artifactId>utils-jdk11</artifactId>
+	<artifactId>utils-jdk11</artifactId>
     <version>${version}</version>
 </dependency>
 ```
@@ -83,288 +83,288 @@ libraryDependencies += "org.nervousync" % "utils-jdk11" % "${version}" % "provid
 <dependency org="org.nervousync" name="utils-jdk11" rev="${version}"/>
 ```
 
-## 基礎工具
-### JavaBean工具類
-**類名** org.nervousync.utils.BeanUtils  
-* 根據屬性名稱從來源資料物件複製資料到目標資料物件
-* 根據BeanProperty注解從來源資料物件陣列複製資料到目標資料物件
-* 根據BeanProperty注解從來源資料物件複製資料到目標資料物件陣列
+## 基础工具
+### JavaBean工具类
+**类名** org.nervousync.utils.BeanUtils  
+* 根据属性名称从源数据对象复制数据到目标数据对象
+* 根据BeanProperty注解从源数据对象数组复制数据到目标数据对象
+* 根据BeanProperty注解从源数据对象复制数据到目标数据对象数组
 
-### X.509證書工具類
-**類名** org.nervousync.utils.CertificateUtils  
-* 生成金鑰對
-* 簽發X.509證書
-* 從證書檔、PKCS12檔或二進位資料中讀取X.509證書
-* 驗證 X.509 證書的有效期、數位簽章
-* 從PKCS12檔或二進位資料中讀取公開金鑰和私密金鑰
-* 生成PKCS12檔
+### X.509证书工具类
+**类名** org.nervousync.utils.CertificateUtils  
+* 生成密钥对
+* 签发X.509证书
+* 从证书文件、PKCS12文件或二进制数据中读取X.509证书
+* 验证 X.509 证书的有效期、数字签名
+* 从PKCS12文件或二进制数据中读取公钥和私钥
+* 生成PKCS12文件
 
-### 集合操作工具類
-**類名** org.nervousync.utils.CollectionUtils
-* 檢查集合是否為空
-* 檢查集合是否包含目標物件
-* 檢查兩個集合是否包含同一元素
-* 檢查集合是否有唯一元素
-* 轉換對象為清單
-* 合併陣列到清單中
-* 合併屬性資訊實例到雜湊表中
-* 從集合中尋找第一個符合要求的元素
+### 集合操作工具类
+**类名** org.nervousync.utils.CollectionUtils
+* 检查集合是否为空
+* 检查集合是否包含目标对象
+* 检查两个集合是否包含同一元素
+* 检查集合是否有唯一元素
+* 转换对象为列表
+* 合并数组到列表中
+* 合并属性信息实例到哈希表中
+* 从集合中寻找第一个符合要求的元素
 
-### 資料轉換工具類
-**類名** org.nervousync.utils.ConvertUtils
-* 轉換位元組陣列為十六進位字串
-* 轉換位元組陣列為字串
-* 轉換位元組陣列為實例物件
-* 轉換任意實例物件為位元組陣列
-* 轉換屬性資訊為資料映射表
+### 数据转换工具类
+**类名** org.nervousync.utils.ConvertUtils
+* 转换字节数组为十六进制字符串
+* 转换字节数组为字符串
+* 转换字节数组为实例对象
+* 转换任意实例对象为字节数组
+* 转换属性信息为数据映射表
 
-### Cookie工具類
-**類名** org.nervousync.utils.CookieUtils  
-需要添加依賴：
+### Cookie工具类
+**类名** org.nervousync.utils.CookieUtils  
+需要添加依赖：
 ```
 <dependency>
     <groupId>jakarta.servlet</groupId>
-    <artifactId>jakarta.servlet-api</artifactId>
+	<artifactId>jakarta.servlet-api</artifactId>
     <version>5.0.0 or higher</version>
 </dependency>
 ```
-* 設置Cookie值
-* 讀取Cookie值
-* 刪除Cookie值
+* 设置Cookie值
+* 读取Cookie值
+* 删除Cookie值
 
-### 隨機ID生成工具類
-**類名** org.nervousync.utils.IDUtils  
-* ID生成工具，使用Java SPI註冊生成器實現類。
-* 已集成的生成器：UUID 版本1到版本5, 雪花演算法和NanoID.  
-**自訂生成器：**   
-生成器實現類必須實現介面org.nervousync.generator.IGenerator，
-並在META-INF/services資料夾下創建檔案名為org.nervousync.generator.IGenerator的檔，檔中寫明實現類的完整名稱（包名+類名）
+### 随机ID生成工具类
+**类名** org.nervousync.utils.IDUtils  
+* ID生成工具，使用Java SPI注册生成器实现类。
+* 已集成的生成器：UUID 版本1到版本5, 雪花算法和NanoID.  
+**自定义生成器：**   
+生成器实现类必须实现接口org.nervousync.generator.IGenerator，
+并在META-INF/services文件夹下创建文件名为org.nervousync.generator.IGenerator的文件，文件中写明实现类的完整名称（包名+类名）
 
-### 圖片工具類
-**類名** org.nervousync.utils.ImageUtils  
-* 讀取圖片的寬度、高度、寬高比
-* 圖片操作：剪切、縮放、添加浮水印、計算漢明距離（dHash/pHash）、計算數位簽章（dHash/pHash）
+### 图片工具类
+**类名** org.nervousync.utils.ImageUtils  
+* 读取图片的宽度、高度、宽高比
+* 图片操作：剪切、缩放、添加水印、计算汉明距离（dHash/pHash）、计算数字签名（dHash/pHash）
 
-### IP地址工具類
-**類名** org.nervousync.utils.IPUtils  
-* 根據給定的位址和CIDR，計算IP位址範圍
-* 在子網路遮罩和CIDR之間轉換資料
-* 在IPv4和IPv6之間轉換資料
-* 在IP位址和BigInteger之間轉換資料
-* 將壓縮顯示的IPv6位址展開
+### IP地址工具类
+**类名** org.nervousync.utils.IPUtils  
+* 根据给定的地址和CIDR，计算IP地址范围
+* 在子网掩码和CIDR之间转换数据
+* 在IPv4和IPv6之间转换数据
+* 在IP地址和BigInteger之间转换数据
+* 将压缩显示的IPv6地址展开
 
-### 地理座標工具類
-**類名** org.nervousync.utils.LocationUtils  
-* 在不同坐標系間轉換資料，支援的坐標系：WGS84(GPS)/GCJ02/BD09
-* 計算兩個物理座標之間的距離，單位：公里
+### 地理坐标工具类
+**类名** org.nervousync.utils.LocationUtils  
+* 在不同坐标系间转换数据，支持的坐标系：WGS84(GPS)/GCJ02/BD09
+* 计算两个物理坐标之间的距离，单位：公里
 
-### 電子郵件工具類
-**類名** org.nervousync.utils.MailUtils  
-* 發送接收電子郵件（支援協定：IMAP/POP3/SMTP）
-* 獲取資料夾中的電子郵件數量
-* 列出所有資料夾名稱
-* 自動下載電子郵件中包含的附件
-* 驗證電子郵件簽名
-* 添加電子簽名到郵件
+### 电子邮件工具类
+**类名** org.nervousync.utils.MailUtils  
+* 发送接收电子邮件（支持协议：IMAP/POP3/SMTP）
+* 获取文件夹中的电子邮件数量
+* 列出所有文件夹名称
+* 自动下载电子邮件中包含的附件
+* 验证电子邮件签名
+* 添加电子签名到邮件
 
-### 一次性密碼工具類
-**類名** org.nervousync.utils.OTPUtils  
-* 計算一次性密碼演算法的修正時間值
-* 生成隨機金鑰
-* 生成基於HMAC演算法加密的一次性密碼/基於時間戳記演算法的一次性密碼值
-* 驗證基於HMAC演算法加密的一次性密碼/基於時間戳記演算法的一次性密碼值
+### 一次性密码工具类
+**类名** org.nervousync.utils.OTPUtils  
+* 计算一次性密码算法的修正时间值
+* 生成随机密钥
+* 生成基于HMAC算法加密的一次性密码/基于时间戳算法的一次性密码值
+* 验证基于HMAC算法加密的一次性密码/基于时间戳算法的一次性密码值
 
-### 屬性資訊工具類
-**類名** org.nervousync.utils.PropertiesUtils  
-* 從字串/本地檔/網路檔/輸入流中讀取屬性檔
-* 修改屬性檔
-* 將屬性檔保存到目標位址
+### 属性信息工具类
+**类名** org.nervousync.utils.PropertiesUtils  
+* 从字符串/本地文件/网络文件/输入流中读取属性文件
+* 修改属性文件
+* 将属性文件保存到目标地址
 
-### 二進位資料操作工具類
-**類名** org.nervousync.utils.RawUtils  
-* 從二進位數字組中讀取boolean/short/int/long/String類型的資料
-* 向二進位數字組中寫入boolean/short/int/long/String類型的資料
-* 轉換位元組陣列為二進位數字組
-* 轉換位元陣列為位元組
+### 二进制数据操作工具类
+**类名** org.nervousync.utils.RawUtils  
+* 从二进制数组中读取boolean/short/int/long/String类型的数据
+* 向二进制数组中写入boolean/short/int/long/String类型的数据
+* 转换字节数组为二进制数组
+* 转换位数组为字节
 
-### 網路請求工具類
-**類名** org.nervousync.utils.RequestUtils
-* 解析HTTP方法字串為HttpMethodOption
-* 解析功能變數名稱資訊為IP位址
-* 讀取和驗證伺服器的SSL證書
-* 發送請求並解析回應資料為字串或指定的JavaBean
-* 自由轉換查詢字串和參數映射表
-* 檢查使用者的角色資訊，使用<code>request.isUserInRole</code>實現
-* 支援使用代理伺服器訪問目標位址
-* 支持自訂SSL證書進行驗證
+### 网络请求工具类
+**类名** org.nervousync.utils.RequestUtils
+* 解析HTTP方法字符串为HttpMethodOption
+* 解析域名信息为IP地址
+* 读取和验证服务器的SSL证书
+* 发送请求并解析响应数据为字符串或指定的JavaBean
+* 自由转换查询字符串和参数映射表
+* 检查用户的角色信息，使用<code>request.isUserInRole</code>实现
+* 支持使用代理服务器访问目标地址
+* 支持自定义SSL证书进行验证
 
-### 資料安全工具類
-**類名** org.nervousync.utils.SecurityUtils  
-* CRC多項式:  CRC-16/ISO-IEC-14443-3-A,CRC-32/JAMCRC,CRC-4/INTERLAKEN,CRC-16/TELEDISK,CRC-32/MPEG-2,CRC-16/GSM,CRC-6/GSM,CRC-7/UMTS,CRC-32/BZIP2,CRC-8/I-CODE,CRC-16/IBM-SDLC,CRC-16/LJ1200,CRC-10/ATM,CRC-8/NRSC-5,CRC-5/USB,CRC-7/ROHC,CRC-12/UMTS,CRC-8/BLUETOOTH,CRC-14/GSM,CRC-8/SMBUS,CRC-8/TECH-3250,CRC-5/G-704,CRC-16/MODBUS,CRC-12/DECT,CRC-7/MMC,CRC-16/CMS,CRC-24/FLEXRAY-A,CRC-24/FLEXRAY-B,CRC-32/ISO-HDLC,CRC-21/CAN-FD,CRC-8/LTE,CRC-15/CAN,CRC-24/LTE-A,CRC-30/CDMA,CRC-3/GSM,CRC-24/LTE-B,CRC-24/OPENPGP,CRC-12/CDMA2000,CRC-16/MAXIM-DOW,CRC-16/XMODEM,CRC-6/G-704,CRC-24/OS-9,CRC-16/DNP,CRC-32/AIXM,CRC-10/CDMA2000,CRC-6/CDMA2000-A,CRC-6/CDMA2000-B,CRC-16/TMS37157,CRC-16/UMTS,CRC-32/XFER,CRC-8/ROHC,CRC-16/DECT-R,CRC-8/WCDMA,CRC-8/DVB-S2,CRC-15/MPT1327,CRC-16/DECT-X,CRC-6/DARC,CRC-16/DDS-110,CRC-32/ISCSI,CRC-16/USB,CRC-8/MIFARE-MAD,CRC-8/AUTOSAR,CRC-16/KERMIT,CRC-16/IBM-3740,CRC-4/G-704,CRC-16/RIELLO,CRC-16/EN-13757,CRC-16/NRSC-5,CRC-14/DARC,CRC-31/PHILIPS,CRC-5/EPC-C1G2,CRC-32/BASE91-D,CRC-16/ARC,CRC-16/MCRF4XX,CRC-16/T10-DIF,CRC-24/INTERLAKEN,CRC-3/ROHC,CRC-13/BBC,CRC-11/UMTS,CRC-16/SPI-FUJITSU,CRC-10/GSM,CRC-8/DARC,CRC-8/OPENSAFETY,CRC-12/GSM,CRC-32/CKSUM,CRC-16/PROFIBUS,CRC-8/GSM-B,CRC-8/GSM-A,CRC-8/SAE-J1850,CRC-8/CDMA2000,CRC-8/MAXIM-DOW,CRC-16/GENIBUS,CRC-8/I-432-1,CRC-17/CAN-FD,CRC-16/OPENSAFETY-B,CRC-32/CD-ROM-EDC,CRC-16/OPENSAFETY-A,CRC-32/AUTOSAR,CRC-16/CDMA2000,CRC-11/FLEXRAY,CRC-24/BLE  
-* 摘要演算法: MD5/HmacMD5/SHA1/HmacSHA1/SHA2/HmacSHA2/SHA3/HmacSHA3/SHAKE128/SHAKE256/SM3/HmacSM3  
-* 對稱加密演算法: Blowfish/DES/TripleDES/SM4/AES/RC2/RC4/RC5/RC6  
-* 非對稱加密演算法: RSA/SM2
+### 数据安全工具类
+**类名** org.nervousync.utils.SecurityUtils  
+* CRC多项式:  CRC-16/ISO-IEC-14443-3-A,CRC-32/JAMCRC,CRC-4/INTERLAKEN,CRC-16/TELEDISK,CRC-32/MPEG-2,CRC-16/GSM,CRC-6/GSM,CRC-7/UMTS,CRC-32/BZIP2,CRC-8/I-CODE,CRC-16/IBM-SDLC,CRC-16/LJ1200,CRC-10/ATM,CRC-8/NRSC-5,CRC-5/USB,CRC-7/ROHC,CRC-12/UMTS,CRC-8/BLUETOOTH,CRC-14/GSM,CRC-8/SMBUS,CRC-8/TECH-3250,CRC-5/G-704,CRC-16/MODBUS,CRC-12/DECT,CRC-7/MMC,CRC-16/CMS,CRC-24/FLEXRAY-A,CRC-24/FLEXRAY-B,CRC-32/ISO-HDLC,CRC-21/CAN-FD,CRC-8/LTE,CRC-15/CAN,CRC-24/LTE-A,CRC-30/CDMA,CRC-3/GSM,CRC-24/LTE-B,CRC-24/OPENPGP,CRC-12/CDMA2000,CRC-16/MAXIM-DOW,CRC-16/XMODEM,CRC-6/G-704,CRC-24/OS-9,CRC-16/DNP,CRC-32/AIXM,CRC-10/CDMA2000,CRC-6/CDMA2000-A,CRC-6/CDMA2000-B,CRC-16/TMS37157,CRC-16/UMTS,CRC-32/XFER,CRC-8/ROHC,CRC-16/DECT-R,CRC-8/WCDMA,CRC-8/DVB-S2,CRC-15/MPT1327,CRC-16/DECT-X,CRC-6/DARC,CRC-16/DDS-110,CRC-32/ISCSI,CRC-16/USB,CRC-8/MIFARE-MAD,CRC-8/AUTOSAR,CRC-16/KERMIT,CRC-16/IBM-3740,CRC-4/G-704,CRC-16/RIELLO,CRC-16/EN-13757,CRC-16/NRSC-5,CRC-14/DARC,CRC-31/PHILIPS,CRC-5/EPC-C1G2,CRC-32/BASE91-D,CRC-16/ARC,CRC-16/MCRF4XX,CRC-16/T10-DIF,CRC-24/INTERLAKEN,CRC-3/ROHC,CRC-13/BBC,CRC-11/UMTS,CRC-16/SPI-FUJITSU,CRC-10/GSM,CRC-8/DARC,CRC-8/OPENSAFETY,CRC-12/GSM,CRC-32/CKSUM,CRC-16/PROFIBUS,CRC-8/GSM-B,CRC-8/GSM-A,CRC-8/SAE-J1850,CRC-8/CDMA2000,CRC-8/MAXIM-DOW,CRC-16/GENIBUS,CRC-8/I-432-1,CRC-17/CAN-FD,CRC-16/OPENSAFETY-B,CRC-32/CD-ROM-EDC,CRC-16/OPENSAFETY-A,CRC-32/AUTOSAR,CRC-16/CDMA2000,CRC-11/FLEXRAY,CRC-24/BLE  
+* 摘要算法: MD5/HmacMD5/SHA1/HmacSHA1/SHA2/HmacSHA2/SHA3/HmacSHA3/SHAKE128/SHAKE256/SM3/HmacSM3  
+* 对称加密算法: Blowfish/DES/TripleDES/SM4/AES/RC2/RC4/RC5/RC6  
+* 非对称加密算法: RSA/SM2
 
-### WebService工具類
-**類名** org.nervousync.utils.ServiceUtils  
-* 生成SOAP請求用戶端
-* 生成Restful請求用戶端並處理請求
+### WebService工具类
+**类名** org.nervousync.utils.ServiceUtils  
+* 生成SOAP请求客户端
+* 生成Restful请求客户端并处理请求
 
-### 字串操作工具類
-**類名** org.nervousync.utils.StringUtils  
-* 使用Base32/Base64編碼給定的二進位位元組陣列
-* 將給定的Base32/Base64編碼字串解碼為二進位位元組陣列
-* 將給定的字串編碼為霍夫曼樹結果實例物件
-* 去除字串中的空格
-* 檢查給定的字串是否為MD5值/UUID/電話號碼/電子郵寄地址等
-* 檢查給定的字串是否為空/非空/包含字串等
-* 使用給定的分隔符號分割字串
-* 根據規則截取字串
-* 驗證給定的字串是否符合代碼類型
+### 字符串操作工具类
+**类名** org.nervousync.utils.StringUtils  
+* 使用Base32/Base64编码给定的二进制字节数组
+* 将给定的Base32/Base64编码字符串解码为二进制字节数组
+* 将给定的字符串编码为霍夫曼树结果实例对象
+* 去除字符串中的空格
+* 检查给定的字符串是否为MD5值/UUID/电话号码/电子邮件地址等
+* 检查给定的字符串是否为空/非空/包含字符串等
+* 使用给定的分隔符分割字符串
+* 根据规则截取字符串
+* 验证给定的字符串是否符合代码类型
 
-### 資料結構
-* 霍夫曼樹
-* 多叉樹
+### 数据结构
+* 霍夫曼树
+* 多叉树
 
-## JavaBean與 XML/JSON/YAML 字串的互相轉換
-任何繼承 org.nervousync.bean.core.BeanObject 的 JavaBean 類都可以輕鬆地在物件實例和 XML/JSON/YAML 字串之間進行轉換。
-JavaBean 與 XML 的轉換是通過JAXB實現，與 JSON/YAML 的轉換是通過Jackson實現。   
-**1、添加父類**   
-開發人員修改需要轉換為 XML/JSON/YAML 字串的JavaBean，使JavaBean繼承 org.nervousync.bean.core.BeanObject 抽象類別。   
+## JavaBean与 XML/JSON/YAML 字符串的互相转换
+任何继承 org.nervousync.bean.core.BeanObject 的 JavaBean 类都可以轻松地在对象实例和 XML/JSON/YAML 字符串之间进行转换。
+JavaBean 与 XML 的转换是通过JAXB实现，与 JSON/YAML 的转换是通过Jackson实现。   
+**1、添加父类**   
+开发人员修改需要转换为 XML/JSON/YAML 字符串的JavaBean，使JavaBean继承 org.nervousync.bean.core.BeanObject 抽象类。   
 **2、添加注解**   
-在JavaBean的屬性上添加對應的注解，如果需要轉換為XML，請添加JAXB需要的注解（如：XmlRootElement/XmlElement），或Jackson注解（如JsonProperty）等。   
-**3、轉換為 XML/JSON/YAML**   
-調用 toXML 方法，將JavaBean實例物件轉換為XML字串。   
+在JavaBean的属性上添加对应的注解，如果需要转换为XML，请添加JAXB需要的注解（如：XmlRootElement/XmlElement），或Jackson注解（如JsonProperty）等。   
+**3、转换为 XML/JSON/YAML**   
+调用 toXML 方法，将JavaBean实例对象转换为XML字符串。   
 
-| 參數名             | 資料類型 | 用途                                                    |
-|-----------------|------|-------------------------------------------------------|
-| outputFragment  | 布林值  | 是否輸出XML聲明字串（`<?xml version="1.0" encoding="UTF-8"?>`） |
-| formattedOutput | 布林值  | 是否格式化輸出的XML字串                                         |
-| encoding        | 字串   | 輸出字串的編碼集（預設為UTF-8）                                    |
-調用 toJson 方法，將JavaBean實例物件轉換為JSON字串。或調用 toFormattedJson 方法，將JavaBean實例物件轉換為格式化後的JSON字串。   
-調用 toYaml 方法，將JavaBean實例物件轉換為XML字串。或調用 toFormattedYaml 方法，將JavaBean實例物件轉換為格式化後的YAML字串。   
-**4、轉換為JavaBean**   
-通過調用 org.nervousync.utils.StringUtils 的 stringToObject 靜態方法，可以將字串轉換為JavaBean實例物件。
+| 参数名             | 数据类型 | 用途                                                     |
+|-----------------|------|--------------------------------------------------------|
+| outputFragment  | 布尔值  | 是否输出XML声明字符串（`<?xml version="1.0" encoding="UTF-8"?>`） |
+| formattedOutput | 布尔值  | 是否格式化输出的XML字符串                                         |
+| encoding        | 字符串  | 输出字符串的编码集（默认为UTF-8）                                    |
+调用 toJson 方法，将JavaBean实例对象转换为JSON字符串。或调用 toFormattedJson 方法，将JavaBean实例对象转换为格式化后的JSON字符串。   
+调用 toYaml 方法，将JavaBean实例对象转换为XML字符串。或调用 toFormattedYaml 方法，将JavaBean实例对象转换为格式化后的YAML字符串。   
+**4、转换为JavaBean**   
+通过调用 org.nervousync.utils.StringUtils 的 stringToObject 静态方法，可以将字符串转换为JavaBean实例对象。
 
-| 參數名         | 資料類型  | 用途                 |
-|-------------|-------|--------------------|
-| string      | 字串    | 需要轉換為JavaBean的字串   |
-| encoding    | 字串    | 字串的編碼集（預設為UTF-8）   |
-| beanClass   | Class | JavaBean的類定義       |
-| schemaPaths | 字串陣列  | 用於驗證XML字串的XSD檔路徑陣列 |
+| 参数名         | 数据类型  | 用途                   |
+|-------------|-------|----------------------|
+| string      | 字符串   | 需要转换为JavaBean的字符串    |
+| encoding    | 字符串   | 字符串的编码集（默认为UTF-8）    |
+| beanClass   | Class | JavaBean的类定义         |
+| schemaPaths | 字符串数组 | 用于验证XML字符串的XSD文件路径数组 |
 
-通過調用 org.nervousync.utils.StringUtils 的 fileToObject 靜態方法，可以將磁片檔轉換為JavaBean實例物件，檔中的資料類型根據檔副檔名確定。
+通过调用 org.nervousync.utils.StringUtils 的 fileToObject 静态方法，可以将磁盘文件转换为JavaBean实例对象，文件中的数据类型根据文件扩展名确定。
 
-| 參數名         | 資料類型  | 用途                  |
-|-------------|-------|---------------------|
-| filePath    | 字串    | 需要轉換為JavaBean的檔存儲路徑 |
-| beanClass   | Class | JavaBean的類定義        |
-| schemaPaths | 字串陣列  | 用於驗證XML字串的XSD檔路徑陣列  |   
-**5、XSD文檔**   
-為了驗證XML檔的合法性，最常用的方法是使用XSD文檔來對XML檔進行驗證，程式開發人員可以將XSD文檔存儲到套裝程式中，並通過簡單的配置，讓系統可以找到套裝程式中的XSD文檔。
-+ 添加XSD文檔到套裝程式中，並記錄存儲路徑
-+ 在META-INF資料夾中創建nervousync.schemas文件，檔案格式為：namespace_uri=對應XSD文檔存儲路徑，如果存在多個XSD文檔定義，則每個XSD映射單獨一行
-+ 轉換為JavaBean的方法中，參數 “schemaPaths” 可以為 namespace_uri
+| 参数名         | 数据类型  | 用途                   |
+|-------------|-------|----------------------|
+| filePath    | 字符串   | 需要转换为JavaBean的文件存储路径 |
+| beanClass   | Class | JavaBean的类定义         |
+| schemaPaths | 字符串数组 | 用于验证XML字符串的XSD文件路径数组 |   
+**5、XSD文档**   
+为了验证XML文件的合法性，最常用的方法是使用XSD文档来对XML文件进行验证，程序开发人员可以将XSD文档存储到程序包中，并通过简单的配置，让系统可以找到程序包中的XSD文档。
++ 添加XSD文档到程序包中，并记录存储路径
++ 在META-INF文件夹中创建nervousync.schemas文件，文件格式为：namespace_uri=对应XSD文档存储路径，如果存在多个XSD文档定义，则每个XSD映射单独一行
++ 转换为JavaBean的方法中，参数 “schemaPaths” 可以为 namespace_uri
 
-## 安全工廠
-**類名** org.nervousync.security.factory.SecureFactory   
-工具包提供了一個安全工廠類來幫助開發人員保存不同的加密解密配置資訊，方便開發人員對資料進行便捷的加密解密操作。   
-**安全工廠初始化**   
-安全工廠會自動讀取設定檔，並將安全配置資訊註冊到安全工廠。   
+## 安全工厂
+**类名** org.nervousync.security.factory.SecureFactory   
+工具包提供了一个安全工厂类来帮助开发人员保存不同的加密解密配置信息，方便开发人员对数据进行便捷的加密解密操作。   
+**安全工厂初始化**   
+安全工厂会自动读取配置文件，并将安全配置信息注册到安全工厂。   
 **安全配置的添加**   
-調用 SecureFactory 的 registerConfig 靜態方法添加新的安全配置資訊。
+调用 SecureFactory 的 registerConfig 静态方法添加新的安全配置信息。
 
-| 參數名             | 資料類型               | 用途             |
-|-----------------|--------------------|----------------|
-| secureName      | 字串                 | 安全配置唯一識別代碼     |
-| secureAlgorithm | SecureAlgorithm枚舉值 | 指定加密解密使用的演算法類型 |
-**資料加密**   
-調用 SecureFactory 的 encrypt 靜態方法完成資料的加密操作，返回加密後的資料。
+| 参数名             | 数据类型               | 用途            |
+|-----------------|--------------------|---------------|
+| secureName      | 字符串                | 安全配置唯一识别代码    |
+| secureAlgorithm | SecureAlgorithm枚举值 | 指定加密解密使用的算法类型 |
+**数据加密**   
+调用 SecureFactory 的 encrypt 静态方法完成数据的加密操作，返回加密后的数据。
 
-| 參數名         | 資料類型 | 用途                                 |
+| 参数名         | 数据类型 | 用途                                 |
 |-------------|------|------------------------------------|
-| secureName  | 字串   | 安全配置唯一識別代碼（如果為空或未找到，則使用系統安全唯一識別代碼） |
-| dataContent | 字串   | 需要加密的資料                            |
-**數據解密**   
-調用 SecureFactory 的 decrypt 靜態方法完成資料的加密操作，返回加密後的資料。
+| secureName  | 字符串  | 安全配置唯一识别代码（如果为空或未找到，则使用系统安全唯一识别代码） |
+| dataContent | 字符串  | 需要加密的数据                            |
+**数据解密**   
+调用 SecureFactory 的 decrypt 静态方法完成数据的加密操作，返回加密后的数据。
 
-| 參數名         | 資料類型 | 用途                                 |
+| 参数名         | 数据类型 | 用途                                 |
 |-------------|------|------------------------------------|
-| secureName  | 字串   | 安全配置唯一識別代碼（如果為空或未找到，則使用系統安全唯一識別代碼） |
-| dataContent | 字串   | 需要解密的資料                            |
+| secureName  | 字符串  | 安全配置唯一识别代码（如果为空或未找到，则使用系统安全唯一识别代码） |
+| dataContent | 字符串  | 需要解密的数据                            |
 
-## 設定檔管理員
-**類名** org.nervousync.configs.ConfigureManager  
-在系統開發的過程中，經常會遇到各種不同的設定檔，為了統一對專案中的設定檔進行管理，在開發包中提供了一個設定檔的統一管理器。
-開發人員可以通過調用 ConfigureManager 的 getInstance 靜態方法獲取設定檔管理員的實例物件，來進行設定檔的相關操作。   
+## 配置文件管理器
+**类名** org.nervousync.configs.ConfigureManager  
+在系统开发的过程中，经常会遇到各种不同的配置文件，为了统一对项目中的配置文件进行管理，在开发包中提供了一个配置文件的统一管理器。
+开发人员可以通过调用 ConfigureManager 的 getInstance 静态方法获取配置文件管理器的实例对象，来进行配置文件的相关操作。   
 **管理器的初始化**   
-通過調用 ConfigureManager 的 initialize 靜態方法進行設定檔管理員的初始化，開發人員可以通過傳入參數 "customPath" 來設置設定檔的存儲位置。
-如果參數 "customPath" 為 null 或空字串，設定檔管理員會在當前使用者的工作目錄下創建名為".configs"的資料夾，並將此資料夾作為預設的設定檔存儲路徑。   
-**設定檔的讀取**   
-通過調用 ConfigureManager 的 readConfigure 方法讀取設定檔資訊，傳入的參數為設定檔的JavaBean定義類。如果存在同一類型的多個設定檔，可以傳入一個類型為字串的 suffix 參數，用於標識不同的設定檔。   
-**設定檔的保存**   
-通過調用 ConfigureManager 的 saveConfigure 方法保存設定檔資訊，傳入的參數為設定檔的JavaBean實例物件。如果存在同一類型的多個設定檔，可以傳入一個類型為字串的 suffix 參數，用於標識不同的設定檔。   
-**設定檔的移除**
-通過調用 ConfigureManager 的 removeConfigure 方法移除設定檔資訊，傳入的參數為設定檔的JavaBean定義類，同時需要傳入一個類型為字串的 suffix 參數，用於移除特定的設定檔。
-**注意：** 如果傳入的參數 suffix 為 null 或空字串，則移除指定類型的所有設定檔。
-**設定檔的自動載入**
-讓需要自動載入設定檔的類繼承 org.nervousync.configs.AutoConfigLauncher 抽象類別，在類中添加類型為設定檔類的屬性，並在屬性上添加 org.nervousync.annotations.configs.Configure 注解，
-如果此類型的設定檔存在多個，則可以通過 org.nervousync.annotations.configs.Configure 注解的 value 屬性指定使用哪一個設定檔。   
-**設定檔的密碼保護**   
-在設定檔中總會涉及到各種密碼的保存，為了防止密碼通過設定檔洩露，開發人員可以在設定檔JavaBean定義類的密碼屬性上，添加 org.nervousync.annotations.configs.Password 注解，
-通過 org.nervousync.annotations.configs.Password 注解的 value 屬性來指定需要使用的加密方式（通過安全工廠實現），系統會完成純文字密碼在存儲到磁片時自動加密，還可以在從磁片讀取時自動解密。
+通过调用 ConfigureManager 的 initialize 静态方法进行配置文件管理器的初始化，开发人员可以通过传入参数 "customPath" 来设置配置文件的存储位置。
+如果参数 "customPath" 为 null 或空字符串，配置文件管理器会在当前用户的工作目录下创建名为".configs"的文件夹，并将此文件夹作为默认的配置文件存储路径。   
+**配置文件的读取**   
+通过调用 ConfigureManager 的 readConfigure 方法读取配置文件信息，传入的参数为配置文件的JavaBean定义类。如果存在同一类型的多个配置文件，可以传入一个类型为字符串的 suffix 参数，用于标识不同的配置文件。   
+**配置文件的保存**   
+通过调用 ConfigureManager 的 saveConfigure 方法保存配置文件信息，传入的参数为配置文件的JavaBean实例对象。如果存在同一类型的多个配置文件，可以传入一个类型为字符串的 suffix 参数，用于标识不同的配置文件。   
+**配置文件的移除**
+通过调用 ConfigureManager 的 removeConfigure 方法移除配置文件信息，传入的参数为配置文件的JavaBean定义类，同时需要传入一个类型为字符串的 suffix 参数，用于移除特定的配置文件。
+**注意：** 如果传入的参数 suffix 为 null 或空字符串，则移除指定类型的所有配置文件。
+**配置文件的自动加载**
+让需要自动加载配置文件的类继承 org.nervousync.configs.AutoConfig 抽象类，在类中添加类型为配置文件类的属性，并在属性上添加 org.nervousync.annotations.configs.Configure 注解，
+如果此类型的配置文件存在多个，则可以通过 org.nervousync.annotations.configs.Configure 注解的 value 属性指定使用哪一个配置文件。   
+**配置文件的密码保护**   
+在配置文件中总会涉及到各种密码的保存，为了防止密码通过配置文件泄露，开发人员可以在配置文件JavaBean定义类的密码属性上，添加 org.nervousync.annotations.configs.Password 注解，
+通过 org.nervousync.annotations.configs.Password 注解的 value 属性来指定需要使用的加密方式（通过安全工厂实现），系统会完成明文密码在存储到磁盘时自动加密，还可以在从磁盘读取时自动解密。
 
-## 程式啟動管理器
-**類名** org.nervousync.launcher.StartupManager   
-工具包提供了一個可以自動或手動執行的程式啟動管理器，啟動器使用Java的SPI模式載入所有 org.nervousync.launcher.StartupLauncher 介面的實現類，
-並根據實現類上添加的 org.nervousync.annotations.launcher.Launcher 注解的 value 屬性值，進行啟動器的執行。   
-org.nervousync.annotations.launcher.Launcher 注解的 value 屬性值為啟動類型的枚舉值，允許的值為 AUTO（自動）/MANUAL（手動）/DISABLE（禁用）。
-程式開發人員需要使用程式啟動管理器時，需要顯式調用 org.nervousync.launcher.StartupManager 的 initialize 靜態方法，工具包會自動掃描並載入所有啟動器，並在完成載入後，自動啟動類型為 AUTO（自動）的啟動器。
-程式啟動管理器在初始化時會在系統中註冊鉤副程式，當主程序正常退出時，會自動執行程式啟動管理器的 destroy 方法，關閉所有正在運行的啟動器。   
-**啟動器的開發**   
-當程式師需要增加一個啟動器時，需要完成兩步操作：   
-1、創建啟動器實現類，實現 org.nervousync.launcher.StartupLauncher 介面，並在實現類上添加 org.nervousync.annotations.launcher.Launcher 注解，設置好 Launcher 注解的 value 屬性。   
-2、創建 META-INF/services/org.nervousync.launcher.StartupLauncher 檔，在檔中寫明實現類的完整類名（包名+類名）。   
-**啟動器的管理**
-* 通過調用 StartupManager 的 registeredLaunchers 方法，可以獲取所有已經註冊的啟動器配置資訊。
-* 通過調用 StartupManager 的 config 方法，可以修改已註冊啟動器的啟動類型。
-* 通過調用 StartupManager 的 start/stop/restart 方法，可以啟動/停止/重啟指定的啟動器。
+## 程序启动管理器
+**类名** org.nervousync.launcher.StartupManager   
+工具包提供了一个可以自动或手动执行的程序启动管理器，启动器使用Java的SPI模式加载所有 org.nervousync.launcher.StartupLauncher 接口的实现类，
+并根据实现类上添加的 org.nervousync.annotations.launcher.Launcher 注解的 value 属性值，进行启动器的执行。   
+org.nervousync.annotations.launcher.Launcher 注解的 value 属性值为启动类型的枚举值，允许的值为 AUTO（自动）/MANUAL（手动）/DISABLE（禁用）。
+程序开发人员需要使用程序启动管理器时，需要显式调用 org.nervousync.launcher.StartupManager 的 initialize 静态方法，工具包会自动扫描并加载所有启动器，并在完成加载后，自动启动类型为 AUTO（自动）的启动器。
+程序启动管理器在初始化时会在系统中注册钩子程序，当主程序正常退出时，会自动执行程序启动管理器的 destroy 方法，关闭所有正在运行的启动器。   
+**启动器的开发**   
+当程序员需要增加一个启动器时，需要完成两步操作：   
+1、创建启动器实现类，实现 org.nervousync.launcher.StartupLauncher 接口，并在实现类上添加 org.nervousync.annotations.launcher.Launcher 注解，设置好 Launcher 注解的 value 属性。   
+2、创建 META-INF/services/org.nervousync.launcher.StartupLauncher 文件，在文件中写明实现类的完整类名（包名+类名）。   
+**启动器的管理**
+* 通过调用 StartupManager 的 registeredLaunchers 方法，可以获取所有已经注册的启动器配置信息。
+* 通过调用 StartupManager 的 config 方法，可以修改已注册启动器的启动类型。
+* 通过调用 StartupManager 的 start/stop/restart 方法，可以启动/停止/重启指定的启动器。
 
-## 國際化支持
-程式開發過程中，經常會遇到需要將程式移植到不同的語言及地區，這種程式國際化已經成為一種潮流，開發包提供了一套簡單易用的方法來完成程式的國際化，包括但不限於提示資訊、錯誤資訊、各種介面的文字資訊等。
-完成程式的國際化最少僅需要兩個步驟即可。
-### 1. 創建國際化資源檔（必須）
-在 META-INF 中創建文件 nervous.i18n，格式如下
+## 国际化支持
+程序开发过程中，经常会遇到需要将程序移植到不同的语言及地区，这种程序国际化已经成为一种潮流，开发包提供了一套简单易用的方法来完成程序的国际化，包括但不限于提示信息、错误信息、各种界面的文字信息等。
+完成程序的国际化最少仅需要两个步骤即可。
+### 1. 创建国际化资源文件（必须）
+在 META-INF 中创建文件 nervous.i18n，格式如下
 ```
 {
-    “groupId”: "{您的組織識別代碼}",
-    "bundle": "{您的專案識別代碼}",
+    “groupId”: "{您的组织识别代码}",
+    "bundle": "{您的项目识别代码}",
     "errors": [
         {
-            "code": "{錯誤代碼 二進位請以0d開頭，八進制請以0o開頭，16進制請以0x開頭}",
-            "key": "{錯誤代碼對應的資源資訊鍵值}"
+            "code": "{错误代码 二进制请以0d开头，八进制请以0o开头，16进制请以0x开头}",
+            "key": "{错误代码对应的资源信息键值}"
         },
         ...
     ],
     "languages": [
         {
-            "code": "{語言代碼（例如：en-US）}",
-            "name": "{語言名稱（例如：English）}",
+            "code": "{语言代码（例如：en-US）}",
+            "name": "{语言名称（例如：English）}",
             "messages": [
                 {
-                    "key": "{資源資訊鍵值}",
-                    "content": "{資源資訊英文內容}"
+                    "key": "{资源信息键值}",
+                    "content": "{资源信息英文内容}"
                 },
                 ...
             ]
         }，
         {
-            "code": "{語言代碼（例如：zh-CN）}",
-            "name": "{語言名稱（例如：簡體中文）}",
+            "code": "{语言代码（例如：zh-CN）}",
+            "name": "{语言名称（例如：简体中文）}",
             "messages": [
                 {
-                    "key": "{資源資訊鍵值}",
-                    "content": "{資源資訊中文內容}"
+                    "key": "{资源信息键值}",
+                    "content": "{资源信息中文内容}"
                 },
                 ...
             ]
@@ -373,59 +373,59 @@ org.nervousync.annotations.launcher.Launcher 注解的 value 屬性值為啟動�
 }
 ```
 
-### 2. 在需要的地方添加國際化支援（必須）
-在需要進行國際化的位置，使用 MultilingualUtils.findMessage(messageKey, collections) 讀取國際化資訊並輸出。
+### 2. 在需要的地方添加国际化支持（必须）
+在需要进行国际化的位置，使用 MultilingualUtils.findMessage(messageKey, collections) 读取国际化信息并输出。
 
-| 參數名         | 資料類型 | 用途         |
+| 参数名         | 数据类型 | 用途         |
 |-------------|------|------------|
-| messageKey  | 字串   | 資源資訊鍵值     |
-| collections | 物件陣列 | 內容中的可變資料陣列 |
+| messageKey  | 字符串  | 资源信息键值     |
+| collections | 对象数组 | 内容中的可变数据数组 |
 
-如果需要在網頁中完成國際化資訊的輸出，可以使用工具包中包含的JSTL標籤庫"bean"的 i18n 標籤完成國際化資訊的讀取和輸出。
+如果需要在网页中完成国际化信息的输出，可以使用工具包中包含的JSTL标签库"bean"的 i18n 标签完成国际化信息的读取和输出。
 
-### 3. 向自訂異常添加國際化支持：（可選操作）
-將所有自訂異常均繼承自org.nervousync.exceptions.AbstractException，
-在構造方法中將錯誤代碼傳遞給org.nervousync.exceptions.AbstractException，
-系統會自動讀取資源檔中的錯誤資訊，實現異常提示資訊的國際化。
+### 3. 向自定义异常添加国际化支持：（可选操作）
+将所有自定义异常均继承自org.nervousync.exceptions.AbstractException，
+在构造方法中将错误代码传递给org.nervousync.exceptions.AbstractException，
+系统会自动读取资源文件中的错误信息，实现异常提示信息的国际化。
 
 **Example:** org.nervousync.exceptions.AbstractException
 
-### 4. 向日誌中添加國際化支援（可選操作）
-使用 LoggerUtils.Logger 代替原有的日誌物件，日誌物件相容slf4j的Logger物件，自動替換原有輸出內容為多語言內容。
+### 4. 向日志中添加国际化支持（可选操作）
+使用 LoggerUtils.Logger 代替原有的日志对象，日志对象兼容slf4j的Logger对象，自动替换原有输出内容为多语言内容。
 
-**Example:** BeanUtils, CertificateUtils 等的LoggerUtils.Logger實例
+**Example:** BeanUtils, CertificateUtils 等的LoggerUtils.Logger实例
 
-### 5. 打包時合併資源檔（可選操作）
-在多模組開發過程中，需要打包合併國際化資源檔時，需要使用到maven的shade外掛程式，
+### 5. 打包时合并资源文件（可选操作）
+在多模块开发过程中，需要打包合并国际化资源文件时，需要使用到maven的shade插件，
 添加transformer配置使用org.apache.maven.plugins.shade.resource.I18nResourceTransformer
-並傳入參數”groupId“和”bundle“，資源轉換器會自動合併國際化資源檔，並輸出到合併打包後的檔中
+并传入参数”groupId“和”bundle“，资源转换器会自动合并国际化资源文件，并输出到合并打包后的文件中
 
-## 檔操作的擴展
-### Zip檔操作
+## 文件操作的扩展
+### Zip文件操作
 **所在包**: org.nervousync.zip  
-開發人員可以使用 ZipFile 創建 zip 檔、將檔添加到 zip 或從 zip 中提取文件。
-支援分割存檔檔、中日韓注釋和入口路徑、標準和AES加密/解密資料。
+开发人员可以使用 ZipFile 创建 zip 文件、将文件添加到 zip 或从 zip 中提取文件。
+支持分割存档文件、中日韩注释和入口路径、标准和AES加密/解密数据。
 
-更多使用方法：參見 org.nervousync.test.zip.ZipTest
+更多使用方法：参见 org.nervousync.test.zip.ZipTest
 
-### 隨機操作檔
-**類名：** org.nervousync.commons.io.StandardFile   
-提供了一個可以隨機讀取的檔物件，支援本地檔和Samba協定的NAS檔操作。
+### 随机操作文件
+**类名：** org.nervousync.commons.io.StandardFile   
+提供了一个可以随机读取的文件对象，支持本地文件和Samba协议的NAS文件操作。
 
-## 貢獻與回饋
-歡迎各位朋友將此文檔及專案中的提示資訊、錯誤資訊等翻譯為更多語言，以説明更多的使用者更好地瞭解與使用此工具包。   
-如果在使用過程中發現問題或需要改進、添加相關功能，請提交issue到本專案或發送電子郵件到[wmkm0113\@gmail.com](mailto:wmkm0113@gmail.com?subject=bugs_and_features)   
-為了更好地溝通，請在提交issue或發送電子郵件時，寫明如下資訊：   
-1、目的是：發現Bug/功能改進/添加新功能   
-2、請粘貼以下資訊（如果存在）：傳入資料，預期結果，錯誤堆疊資訊   
-3、您認為可能是哪裡的代碼出現問題（如提供可以幫助我們儘快地找到並解決問題）   
-如果您提交的是添加新功能的相關資訊，請確保需要添加的功能是一般性的通用需求，即添加的新功能可以幫助到大多數使用者。
+## 贡献与反馈
+欢迎各位朋友将此文档及项目中的提示信息、错误信息等翻译为更多语言，以帮助更多的使用者更好地了解与使用此工具包。   
+如果在使用过程中发现问题或需要改进、添加相关功能，请提交issue到本项目或发送电子邮件到[wmkm0113\@gmail.com](mailto:wmkm0113@gmail.com?subject=bugs_and_features)   
+为了更好地沟通，请在提交issue或发送电子邮件时，写明如下信息：   
+1、目的是：发现Bug/功能改进/添加新功能   
+2、请粘贴以下信息（如果存在）：传入数据，预期结果，错误堆栈信息   
+3、您认为可能是哪里的代码出现问题（如提供可以帮助我们尽快地找到并解决问题）   
+如果您提交的是添加新功能的相关信息，请确保需要添加的功能是一般性的通用需求，即添加的新功能可以帮助到大多数使用者。
 
-如果您需要添加的是定制化的特殊需求，我將收取一定的定制開發費用，具體費用金額根據定制化的特殊需求的工作量進行評估。   
-定制化特殊需求請直接發送電子郵件到[wmkm0113\@gmail.com](mailto:wmkm0113@gmail.com?subject=payment_features)，同時請儘量在郵件中寫明您可以負擔的開發費用預算金額。
+如果您需要添加的是定制化的特殊需求，我将收取一定的定制开发费用，具体费用金额根据定制化的特殊需求的工作量进行评估。   
+定制化特殊需求请直接发送电子邮件到[wmkm0113\@gmail.com](mailto:wmkm0113@gmail.com?subject=payment_features)，同时请尽量在邮件中写明您可以负担的开发费用预算金额。
 
-## 贊助與鳴謝
+## 赞助与鸣谢
 <span id="JetBrains">
     <img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.png" width="100px" height="100px" alt="JetBrains Logo (Main) logo.">
-    <span>非常感謝 <a href="https://www.jetbrains.com/">JetBrains</a> 通過許可證贊助我們的開源項目。</span>
+    <span>非常感谢 <a href="https://www.jetbrains.com/">JetBrains</a> 通过许可证赞助我们的开源项目。</span>
 </span>

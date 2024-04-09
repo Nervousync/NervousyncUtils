@@ -29,9 +29,9 @@ import java.util.Optional;
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
  * @version $Revision: 1.0.0 $ $Date: Feb 6, 2024 17:10:21 $
  */
-public abstract class AutoConfigLauncher {
+public abstract class AutoConfig {
 
-	protected AutoConfigLauncher() {
+	protected AutoConfig() {
 		ConfigureManager configureManager = ConfigureManager.getInstance();
 		if (configureManager == null) {
 			return;

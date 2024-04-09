@@ -312,7 +312,7 @@ Remove configuration file information by calling the removeConfigure method of C
 At the same time, a suffix parameter of type string needs to be passed in to remove a specific configuration file.
 **Notice:** If the passed parameter suffix is null or an empty string, all configuration files of the specified type will be removed.
 **Load configure file automatically**
-Let the class that needs to automatically load the configuration file inherit the org.nervousync.configs.AutoConfigLauncher abstract class, add an attribute of type configuration file class to the class, and add the org.nervousync.annotations.configs.Configure annotation to the attribute.
+Let the class that needs to automatically load the configuration file inherit the org.nervousync.configs.AutoConfig abstract class, add an attribute of type configuration file class to the class, and add the org.nervousync.annotations.configs.Configure annotation to the attribute.
 If there are multiple configuration files of this type, you can specify which configuration file to use through the value attribute of the org.nervousync.annotations.configs.Configure annotation.   
 **Password protection of configuration files**   
 The configuration file always involves the saving of various passwords. To prevent passwords from being leaked through the configuration file, developers can add the org.nervousync.annotations.configs.Password annotation to the password attribute of the JavaBean definition class in the configuration file.

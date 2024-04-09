@@ -34,8 +34,8 @@ import java.security.SecureRandom;
 @Provider(name = IDUtils.NANO_ID, titleKey = "nano.id.generator.name")
 public final class NanoGenerator implements IGenerator<String> {
     /**
-     * <span class="en-US">Logger instance</span>
-     * <span class="zh-CN">日志实例</span>
+     * <span class="en-US">Multilingual supported logger instance</span>
+     * <span class="zh-CN">多语言支持的日志对象</span>
      */
     private final LoggerUtils.Logger logger = LoggerUtils.getLogger(this.getClass());
     /**

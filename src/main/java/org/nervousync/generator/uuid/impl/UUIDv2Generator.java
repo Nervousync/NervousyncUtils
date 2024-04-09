@@ -37,11 +37,15 @@ import java.util.concurrent.TimeUnit;
 @Provider(name = IDUtils.UUIDv2, titleKey = "version2.uuid.id.generator.name")
 public final class UUIDv2Generator extends UUIDGenerator {
     /**
-     * <span class="en-US">Logger instance</span>
-     * <span class="zh-CN">日志实例</span>
+     * <span class="en-US">Multilingual supported logger instance</span>
+     * <span class="zh-CN">多语言支持的日志对象</span>
      */
     private static final LoggerUtils.Logger LOGGER = LoggerUtils.getLogger(UUIDv2Generator.class);
 
+	/**
+	 * <span class="en-US">UUID timer instance object</span>
+	 * <span class="zh-CN">UUID时钟实例对象</span>
+	 */
     private final UUIDTimer uuidTimer;
 
     /**

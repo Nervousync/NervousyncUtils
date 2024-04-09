@@ -25,5 +25,14 @@ package org.nervousync.enumerations.web;
  * @version $Revision: 1.0.0 $ $Date: Dec 24, 2023 10:21:02 $
  */
 public enum ServiceType {
-    SOAP, Restful
+	/**
+	 * <span class="en-US">Simple Object Access Protocol</span>
+	 * <span class="zh-CN">简单对象访问协议</span>
+	 */
+    SOAP,
+	/**
+	 * <span class="en-US">Representational State Transfer</span>
+	 * <span class="zh-CN">属性状态传递格式的协议</span>
+	 */
+    Restful
 }
