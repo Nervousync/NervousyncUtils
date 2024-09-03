@@ -16,7 +16,6 @@
  */
 package org.nervousync.beans.transfer.beans;
 
-import org.nervousync.beans.core.BeanObject;
 import org.nervousync.commons.Globals;
 import org.nervousync.utils.StringUtils;
 
@@ -31,28 +30,28 @@ import java.util.Optional;
  */
 public final class BeanObjectAdapter extends AbstractBeanAdapter {
 
-    public BeanObjectAdapter(String className) throws IllegalArgumentException {
-        super(className);
-    }
+	public BeanObjectAdapter(String className) throws IllegalArgumentException {
+		super(className);
+	}
 
-    /**
-     * @see jakarta.xml.bind.annotation.adapters.XmlAdapter#unmarshal(Object)
-     */
-    @Override
-    public String marshal(final BeanObject object) {
-        return Optional.ofNullable(object)
-				.map(BeanObject::toString)
+	/**
+	 * @see jakarta.xml.bind.annotation.adapters.XmlAdapter#unmarshal(Object)
+	 */
+	@Override
+	public String marshal(final Object object) {
+		return Optional.ofNullable(object)
+				.map(Object::toString)
 				.orElse(Globals.DEFAULT_VALUE_STRING);
-    }
+	}
 
-    /**
-     * @see jakarta.xml.bind.annotation.adapters.XmlAdapter#marshal(Object)
-     */
-    @Override
-    public BeanObject unmarshal(final String string) {
-        if (StringUtils.isEmpty(string)) {
-            return null;
-        }
-        return (BeanObject) StringUtils.stringToObject(string, this.beanClass);
-    }
+	/**
+	 * @see jakarta.xml.bind.annotation.adapters.XmlAdapter#marshal(Object)
+	 */
+	@Override
+	public Object unmarshal(final String string) {
+		if (StringUtils.isEmpty(string)) {
+			return null;
+		}
+		return StringUtils.stringToObject(string, this.beanClass);
+	}
 }

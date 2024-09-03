@@ -32,35 +32,35 @@ import org.nervousync.utils.StringUtils;
  */
 public final class LanguageNameTag extends TagSupport {
 
-    /**
-     * <span class="en-US">Serial version UID</span>
-     * <span class="zh-CN">序列化UID</span>
-     */
-    private static final long serialVersionUID = -7898383280969357670L;
+	/**
+	 * <span class="en-US">Serial version UID</span>
+	 * <span class="zh-CN">序列化UID</span>
+	 */
+	private static final long serialVersionUID = -7898383280969357670L;
 
-    /**
-     * <span class="en-US">Language code</span>
-     * <span class="zh-CN">语言代码</span>
-     */
-    private String code;
+	/**
+	 * <span class="en-US">Language code</span>
+	 * <span class="zh-CN">语言代码</span>
+	 */
+	private String code;
 
-    public int doStartTag() throws JspException {
-        if (StringUtils.notBlank(this.code)) {
-            try {
-                JspWriter jspWriter = this.pageContext.getOut();
-                jspWriter.write(MultilingualUtils.languageName(this.code));
-            } catch (Exception e) {
-                throw new JspException(e);
-            }
-        }
-        return SKIP_BODY;
-    }
+	public int doStartTag() throws JspException {
+		if (StringUtils.notBlank(this.code)) {
+			try {
+				JspWriter jspWriter = this.pageContext.getOut();
+				jspWriter.write(MultilingualUtils.languageName(this.code));
+			} catch (Exception e) {
+				throw new JspException(e);
+			}
+		}
+		return SKIP_BODY;
+	}
 
-    public String getCode() {
-        return code;
-    }
+	public String getCode() {
+		return code;
+	}
 
-    public void setCode(String code) {
-        this.code = code;
-    }
+	public void setCode(String code) {
+		this.code = code;
+	}
 }

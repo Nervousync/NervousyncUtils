@@ -33,73 +33,73 @@ import org.nervousync.utils.StringUtils;
 @OutputConfig(type = StringUtils.StringType.JSON)
 public final class BundleError extends BeanObject {
 
-    /**
-     * <span class="en-US">Serial version UID</span>
-     * <span class="zh-CN">序列化UID</span>
-     */
-    private static final long serialVersionUID = -3619612208409411199L;
+	/**
+	 * <span class="en-US">Serial version UID</span>
+	 * <span class="zh-CN">序列化UID</span>
+	 */
+	private static final long serialVersionUID = -3619612208409411199L;
 
-    /**
-     * <span class="en-US">Error code</span>
-     * <span class="zh-CN">错误代码</span>
-     */
-    @JsonProperty("code")
-    private String errorCode = Globals.DEFAULT_VALUE_STRING;
-    /**
-     * <span class="en-US">Message identify key</span>
-     * <span class="zh-CN">信息识别键值</span>
-     */
-    @JsonProperty("key")
-    private String messageKey = Globals.DEFAULT_VALUE_STRING;
+	/**
+	 * <span class="en-US">Error code</span>
+	 * <span class="zh-CN">错误代码</span>
+	 */
+	@JsonProperty("code")
+	private String errorCode = Globals.DEFAULT_VALUE_STRING;
+	/**
+	 * <span class="en-US">Message identify key</span>
+	 * <span class="zh-CN">信息识别键值</span>
+	 */
+	@JsonProperty("key")
+	private String messageKey = Globals.DEFAULT_VALUE_STRING;
 
-    /**
-     * <h3 class="en-US">Constructor for internationalization error data</h3>
-     * <h3 class="zh-CN">国际化错误信息的构造方法</h3>
-     */
-    public BundleError() {
-    }
+	/**
+	 * <h3 class="en-US">Constructor for internationalization error data</h3>
+	 * <h3 class="zh-CN">国际化错误信息的构造方法</h3>
+	 */
+	public BundleError() {
+	}
 
-    /**
-     * <h3 class="en-US">Getter method for error code</h3>
-     * <h3 class="zh-CN">错误代码的Getter方法</h3>
-     *
-     * @return <span class="en-US">Error code</span>
-     * <span class="zh-CN">错误代码</span>
-     */
-    public String getErrorCode() {
-        return errorCode;
-    }
+	/**
+	 * <h3 class="en-US">Getter method for error code</h3>
+	 * <h3 class="zh-CN">错误代码的Getter方法</h3>
+	 *
+	 * @return <span class="en-US">Error code</span>
+	 * <span class="zh-CN">错误代码</span>
+	 */
+	public String getErrorCode() {
+		return errorCode;
+	}
 
-    /**
-     * <h3 class="en-US">Setter method for error code</h3>
-     * <h3 class="zh-CN">错误代码的Setter方法</h3>
-     *
-     * @param errorCode <span class="en-US">Error code</span>
-     *                  <span class="zh-CN">错误代码</span>
-     */
-    public void setErrorCode(String errorCode) {
-        this.errorCode = errorCode;
-    }
+	/**
+	 * <h3 class="en-US">Setter method for error code</h3>
+	 * <h3 class="zh-CN">错误代码的Setter方法</h3>
+	 *
+	 * @param errorCode <span class="en-US">Error code</span>
+	 *                  <span class="zh-CN">错误代码</span>
+	 */
+	public void setErrorCode(String errorCode) {
+		this.errorCode = errorCode;
+	}
 
-    /**
-     * <h3 class="en-US">Getter method for message identify key</h3>
-     * <h3 class="zh-CN">信息识别键值的Getter方法</h3>
-     *
-     * @return <span class="en-US">Message identify key</span>
-     * <span class="zh-CN">信息识别键值</span>
-     */
-    public String getMessageKey() {
-        return messageKey;
-    }
+	/**
+	 * <h3 class="en-US">Getter method for message identify key</h3>
+	 * <h3 class="zh-CN">信息识别键值的Getter方法</h3>
+	 *
+	 * @return <span class="en-US">Message identify key</span>
+	 * <span class="zh-CN">信息识别键值</span>
+	 */
+	public String getMessageKey() {
+		return messageKey;
+	}
 
-    /**
-     * <h3 class="en-US">Setter method for message identify key</h3>
-     * <h3 class="zh-CN">信息识别键值的Setter方法</h3>
-     *
-     * @param messageKey <span class="en-US">Message identify key</span>
-     *                   <span class="zh-CN">信息识别键值</span>
-     */
-    public void setMessageKey(String messageKey) {
-        this.messageKey = messageKey;
-    }
+	/**
+	 * <h3 class="en-US">Setter method for message identify key</h3>
+	 * <h3 class="zh-CN">信息识别键值的Setter方法</h3>
+	 *
+	 * @param messageKey <span class="en-US">Message identify key</span>
+	 *                   <span class="zh-CN">信息识别键值</span>
+	 */
+	public void setMessageKey(String messageKey) {
+		this.messageKey = messageKey;
+	}
 }

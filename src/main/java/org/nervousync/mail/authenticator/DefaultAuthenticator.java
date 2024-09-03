@@ -34,29 +34,31 @@ public final class DefaultAuthenticator extends Authenticator {
 	 * <span class="zh-CN">存储用户名密码的仓库</span>
 	 */
 	private final PasswordAuthentication passwordAuthentication;
+
 	/**
 	 * <h3 class="en-US">Constructor method for DefaultAuthenticator</h3>
 	 * <h3 class="zh-CN">DefaultAuthenticator构造方法</h3>
 	 *
-	 * @param username 	<span class="en-US">Authenticate username</span>
-	 *                  <span class="zh-CN">验证用户名</span>
-	 * @param password 	<span class="en-US">Authenticate password</span>
-	 *                  <span class="zh-CN">验证密码</span>
+	 * @param username <span class="en-US">Authenticate username</span>
+	 *                 <span class="zh-CN">验证用户名</span>
+	 * @param password <span class="en-US">Authenticate password</span>
+	 *                 <span class="zh-CN">验证密码</span>
 	 */
 	public DefaultAuthenticator(String username, String password) {
 		this.passwordAuthentication =
 				new PasswordAuthentication(StringUtils.notBlank(username) ? username : Globals.DEFAULT_VALUE_STRING,
 						StringUtils.notBlank(password) ? password : Globals.DEFAULT_VALUE_STRING);
 	}
+
 	/**
 	 * <h3 class="en-US">Getter method for repository for a user name and a password.</h3>
 	 * <h3 class="zh-CN">存储用户名密码的仓库的Getter方法</h3>
 	 *
-	 * @return 	<span class="en-US">A repository for a user name and a password.</span>
-	 * 			<span class="zh-CN">存储用户名密码的仓库</span>
+	 * @return <span class="en-US">A repository for a user name and a password.</span>
+	 * <span class="zh-CN">存储用户名密码的仓库</span>
 	 */
 	@Override
-	protected PasswordAuthentication getPasswordAuthentication(){
+	protected PasswordAuthentication getPasswordAuthentication() {
 		return this.passwordAuthentication;
 	}
 }

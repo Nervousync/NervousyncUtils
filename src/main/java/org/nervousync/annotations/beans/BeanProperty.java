@@ -24,13 +24,13 @@ import java.lang.annotation.*;
 /**
  * <h2 class="en-US">JavaBean Property Annotation</h2>
  * <span class="en-US">
- *     <p>If annotation fields means copy data from target bean</p>
- *     <p>If using for Annotation Mappings field, means copy data to target bean</p>
+ * <p>If annotation fields means copy data from target bean</p>
+ * <p>If using for Annotation Mappings field, means copy data to target bean</p>
  * </span>
  * <h2 class="zh-CN">JavaBean属性注解</h2>
  * <span class="zh-CN">
- *     <p>如果直接标注在属性上，表示复制数据来自目标对象</p>
- *     <p>如果用于Mappings注解的参数，表示将数据复制到目标对象</p>
+ * <p>如果直接标注在属性上，表示复制数据来自目标对象</p>
+ * <p>如果用于Mappings注解的参数，表示将数据复制到目标对象</p>
  * </span>
  *
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
@@ -47,35 +47,38 @@ public @interface BeanProperty {
 	 * <h3 class="zh-CN">JavaBean属性的优先级</h3>
 	 * <p class="en-US">需要复制的属性值依据优先级值进行降序排列</p>
 	 *
-	 * @return	<span class="en-US">Priority value</span>
-	 * 			<span class="zh-CN">优先级数值</span>
+	 * @return    <span class="en-US">Priority value</span>
+	 * <span class="zh-CN">优先级数值</span>
 	 */
 	int sortCode() default Globals.INITIALIZE_INT_VALUE;
+
 	/**
 	 * <h3 class="en-US">Target bean class</h3>
 	 * <h3 class="zh-CN">目标对象类</h3>
 	 *
-	 * @return	<span class="en-US">Target bean class</span>
-	 * 			<span class="zh-CN">目标对象类</span>
+	 * @return    <span class="en-US">Target bean class</span>
+	 * <span class="zh-CN">目标对象类</span>
 	 */
 	Class<?> targetBean();
+
 	/**
 	 * <h3 class="en-US">Target field name</h3>
 	 * <h3 class="zh-CN">目标属性名</h3>
 	 *
-	 * @return	<span class="en-US">Target field name</span>
-	 * 			<span class="zh-CN">目标属性名</span>
+	 * @return    <span class="en-US">Target field name</span>
+	 * <span class="zh-CN">目标属性名</span>
 	 */
 	String targetField() default Globals.DEFAULT_VALUE_STRING;
+
 	/**
 	 * <h3 class="en-US">Data converter class</h3>
 	 * <p class="en-US">Class must implements org.nervousync.beans.converter.IConverter, T is current field type class, U is target bean field type class</p>
 	 * <h3 class="zh-CN">数据转换类</h3>
 	 * <p class="zh-CN">类必须实现接口org.nervousync.beans.converter.IConverter，T是注解属性的数据类型，U是目标属性的数据类型</p>
 	 *
+	 * @return    <span class="en-US">Data converter class</span>
+	 * <span class="zh-CN">数据转换类</span>
 	 * @see AbstractAdapter
-	 * @return	<span class="en-US">Data converter class</span>
-	 * 			<span class="zh-CN">数据转换类</span>
 	 */
 	DataTransfer transfer() default @DataTransfer;
 }

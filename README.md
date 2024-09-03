@@ -264,7 +264,7 @@ By calling the fileToObject static method of org.nervousync.utils.StringUtils, t
 **5.XSD documents**   
 To verify the legitimacy of XML files, the most common method is to use XSD documents to verify XML files. Program developers can store XSD documents into the program package, and through simple configuration, the system can find the XSD document.
 + Add the XSD document to the package and record the storage path
-+ Create the nerveync.schemas file in the META-INF folder. The file format is: `namespace_uri`=`record the XSD document storage path`. If there are multiple XSD document definitions, each XSD mapping has a separate line.
++ Create the nervousync.schemas file in the META-INF folder. The file format is: `namespace_uri`=`record the XSD document storage path`. If there are multiple XSD document definitions, each XSD mapping has a separate line.
 + In the method converted to JavaBean, the parameter "schemaPaths" can be namespace_uri
 
 ## Secure factory
@@ -297,7 +297,7 @@ Call the decrypt static method of SecureFactory to complete the data decryption 
 ## Configure file manager
 **Class name** org.nervousync.configs.ConfigureManager  
 In the process of system development, we often encounter various configuration files. To uniformly manage the configuration files in the project, a unified manager of configuration files is provided in the development package.
-Developers can obtain the instance object of the configuration file manager by calling the getInstance static method of ConfigureManager to perform configuration file related operations.   
+Developers can get the instance object of the configuration file manager by calling the getInstance static method of ConfigureManager to perform configuration file related operations.   
 **Manager initialize**   
 By calling the initialize static method of ConfigureManager to initialize the configuration file manager, developers can set the storage location of the configuration file by passing in the parameter "customPath".
 If the parameter "customPath" is null or an empty string, the profile manager will create a folder named ".configs" in the current user's working directory and use this folder as the default configuration file storage path.   
@@ -330,7 +330,7 @@ When programmers need to add a launcher, they need to complete two steps:
 1.Create a launcher implementation class, implement the org.nervousync.launcher.StartupLauncher interface, add the org.nervousync.annotations.launcher.Launcher annotation to the implementation class, and set the value attribute of the Launcher annotation.
 2.Create the META-INF/services/org.nervousync.launcher.StartupLauncher file and write the complete class name of the implementation class (package name + class name) in the file.    
 **Manage startup launcher**
-* By calling the registeredLaunchers method of StartupManager, you can obtain the configuration information of all registered launchers.
+* By calling the registeredLaunchers method of StartupManager, you can collect the configuration information of all registered launchers.
 * The startup type of registered launcher can be modified by calling the config method of StartupManager.
 * By calling the start/stop/restart method of StartupManager, you can start/stop/restart the specified starter.
 
@@ -439,6 +439,6 @@ For customized special features, please send an email directly to [wmkm0113\@gma
 
 ## Sponsorship and Thanks To
 <span id="JetBrains">
-    <img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.png" width="100px" height="100px" alt="JetBrains Logo (Main) logo.">
+    <img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jetbrains.svg" height="40px" alt="JetBrains Logo (Main) logo.">
     <span>Many thanks to <a href="https://www.jetbrains.com/">JetBrains</a> for sponsoring our Open Source projects with a license.</span>
 </span>

@@ -73,6 +73,7 @@ public final class ZipOptions implements Cloneable {
 	private String rootFolderInZip = "";
 	/**
 	 * Timezone setting
+	 *
 	 * @see java.util.TimeZone
 	 */
 	private TimeZone timeZone = TimeZone.getDefault();
@@ -92,25 +93,27 @@ public final class ZipOptions implements Cloneable {
 	 * Status of source external stream
 	 */
 	private boolean sourceExternalStream = Boolean.FALSE;
-	
+
 	/**
 	 * Default Constructor
 	 */
 	private ZipOptions() {
 		this(Boolean.FALSE, Globals.DEFAULT_VALUE_STRING, Globals.ENC_NO_ENCRYPTION, Globals.AES_STRENGTH_128);
 	}
-	
+
 	/**
 	 * Constructor by given password
-	 * @param password  password
+	 *
+	 * @param password password
 	 */
 	private ZipOptions(final String password) {
 		this(Boolean.TRUE, password, Globals.ENC_METHOD_STANDARD, Globals.AES_STRENGTH_128);
 	}
-	
+
 	/**
 	 * Constructor by given password and key strength
-	 * @param password encrypt password
+	 *
+	 * @param password       encrypt password
 	 * @param aesKeyStrength AES key strength
 	 */
 	private ZipOptions(final String password, final int aesKeyStrength) {
@@ -452,7 +455,7 @@ public final class ZipOptions implements Cloneable {
 	public void setSourceExternalStream(final boolean isSourceExternalStream) {
 		this.sourceExternalStream = isSourceExternalStream;
 	}
-	
+
 	public Object clone() throws CloneNotSupportedException {
 		return super.clone();
 	}

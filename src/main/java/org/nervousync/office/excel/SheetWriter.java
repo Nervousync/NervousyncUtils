@@ -28,23 +28,23 @@ import java.util.List;
  */
 public interface SheetWriter {
 
-    /**
-     * <h3 class="en-US">Write the given data to the given line number</h3>
-     * <h3 class="zh-CN">写入给定数据到给定行号</h3>
-     *
-     * @param rowNum   <span class="en-US">Row number</span>
-     *                 <span class="zh-CN">写入的行号</span>
-     * @param rowDatas <span class="en-US">Written data information</span>
-     *                 <span class="zh-CN">写入的数据信息</span>
-     */
-    void writeData(final int rowNum, final List<Object> rowDatas);
+	/**
+	 * <h3 class="en-US">Write the given data to the given line number</h3>
+	 * <h3 class="zh-CN">写入给定数据到给定行号</h3>
+	 *
+	 * @param rowNum  <span class="en-US">Row number</span>
+	 *                <span class="zh-CN">写入的行号</span>
+	 * @param rowData <span class="en-US">Written data information</span>
+	 *                <span class="zh-CN">写入的数据信息</span>
+	 */
+	void writeData(final int rowNum, final List<Object> rowData);
 
-    /**
-     * <h3 class="en-US">Write the given data to the end of the current data sheet</h3>
-     * <h3 class="zh-CN">写入给定数据到当前数据表末尾</h3>
-     *
-     * @param rowDatas <span class="en-US">Written data information</span>
-     *                 <span class="zh-CN">写入的数据信息</span>
-     */
-    void appendData(final List<Object> rowDatas);
+	/**
+	 * <h3 class="en-US">Write the given data to the end of the current data sheet</h3>
+	 * <h3 class="zh-CN">写入给定数据到当前数据表末尾</h3>
+	 *
+	 * @param rowData <span class="en-US">Written data information</span>
+	 *                <span class="zh-CN">写入的数据信息</span>
+	 */
+	void appendData(final List<Object> rowData);
 }

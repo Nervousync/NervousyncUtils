@@ -17,7 +17,7 @@
 
 package org.nervousync.annotations.beans;
 
-import jakarta.xml.bind.annotation.adapters.XmlAdapter;
+import org.nervousync.beans.transfer.AbstractAdapter;
 import org.nervousync.commons.Globals;
 
 import java.lang.annotation.*;
@@ -34,15 +34,15 @@ import java.lang.annotation.*;
 @Target({ElementType.FIELD})
 public @interface DataTransfer {
 
-    /**
-     * @return <span class="en-US">Data converter class</span>
-     * <span class="zh-CN">数据转换类</span>
-     */
-    Class<?> adapter() default XmlAdapter.class;
+	/**
+	 * @return <span class="en-US">Data converter class</span>
+	 * <span class="zh-CN">数据转换类</span>
+	 */
+	Class<? extends AbstractAdapter> adapter() default AbstractAdapter.class;
 
-    /**
-     * @return <span class="en-US">Data conversion class constructor parameters, the default empty string is the parameterless constructor</span>
-     * <span class="zh-CN">数据转换类构造方法参数，默认空字符串为无参构造方法</span>
-     */
-    String initParam() default Globals.DEFAULT_VALUE_STRING;
+	/**
+	 * @return <span class="en-US">Data conversion class constructor parameters, the default empty string is the parameterless constructor</span>
+	 * <span class="zh-CN">数据转换类构造方法参数，默认空字符串为无参构造方法</span>
+	 */
+	String initParam() default Globals.DEFAULT_VALUE_STRING;
 }

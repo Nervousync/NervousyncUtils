@@ -21,11 +21,13 @@ import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.Random;
 
+import org.bouncycastle.crypto.BlockCipher;
 import org.nervousync.commons.Globals;
 import org.nervousync.exceptions.crypto.CryptoException;
 import org.nervousync.exceptions.utils.DataInvalidException;
 import org.nervousync.security.api.SecureAdapter;
 import org.nervousync.security.digest.BaseDigestAdapter;
+import org.nervousync.utils.ConvertUtils;
 import org.nervousync.utils.SecurityUtils;
 import org.nervousync.exceptions.zip.ZipException;
 import org.nervousync.utils.RawUtils;
@@ -42,7 +44,7 @@ public class AESCrypto {
 	 * Salt data array
 	 */
 	private byte[] saltBytes;
-	
+
 	/**
 	 * key length
 	 */
@@ -83,10 +85,12 @@ public class AESCrypto {
 	 * AES engine
 	 */
 	AESEngine aesEngine = null;
+	BlockCipher aesCipher = null;
 	/**
 	 * MacBasedPRF instance
 	 */
 	SecureAdapter macBasedPRF = null;
+//	private final boolean forEncryption;
 
 	/**
 	 * Instantiates a new Aes crypto.
@@ -131,7 +135,7 @@ public class AESCrypto {
 	void preInit(int aesStrength) throws ZipException {
 		this.iv = new byte[Globals.AES_BLOCK_SIZE];
 		this.countBlock = new byte[Globals.AES_BLOCK_SIZE];
-		
+
 		switch (aesStrength) {
 			case Globals.AES_STRENGTH_128:
 				this.keyLength = 16;
@@ -201,18 +205,19 @@ public class AESCrypto {
 		RawUtils.writeInt(this.iv, ByteOrder.LITTLE_ENDIAN, this.nonce);
 		this.aesEngine.processBlock(this.iv, this.countBlock);
 
-		for (int j = 0 ; j < this.loopCount ; j++) {
-			buff[index + j] = (byte)(buff[index + j] ^ this.countBlock[j]);
+		for (int j = 0; j < this.loopCount; j++) {
+			buff[index + j] = (byte) (buff[index + j] ^ this.countBlock[j]);
 		}
 		this.nonce++;
 	}
-	
+
 	/**
 	 * Derive key
-	 * @param saltBytes		salt bytes
-	 * @param password		password
-	 * @param dkLen			length
-	 * @return				processed data bytes
+	 *
+	 * @param saltBytes salt bytes
+	 * @param password  password
+	 * @param dkLen     length
+	 * @return processed data bytes
 	 */
 	private byte[] deriveKey(byte[] saltBytes, char[] password, int dkLen)
 			throws CryptoException, DataInvalidException {
@@ -236,7 +241,7 @@ public class AESCrypto {
 		int r = dkLen - (l - 1) * length;
 		byte[] tempBytes = new byte[l * length];
 		int offset = 0;
-		for (int i = 1 ; i <= l ; i++) {
+		for (int i = 1; i <= l; i++) {
 			process(digestProvider, tempBytes, offset, saltBytes, i);
 			offset += length;
 		}
@@ -272,7 +277,7 @@ public class AESCrypto {
 	}
 
 	private static void process(BaseDigestAdapter baseDigestProvider,
-								byte[] dest, int offset, byte[] source, int blockIndex)
+	                            byte[] dest, int offset, byte[] source, int blockIndex)
 			throws CryptoException, DataInvalidException {
 		int length = baseDigestProvider.macLength();
 		byte[] tempBytes = new byte[length];
@@ -281,7 +286,7 @@ public class AESCrypto {
 		System.arraycopy(source, Globals.INITIALIZE_INT_VALUE, intTmpBytes, Globals.INITIALIZE_INT_VALUE, source.length);
 		RawUtils.writeInt(intTmpBytes, source.length, blockIndex);
 
-		for (int i = 0 ; i < 1000 ; i++) {
+		for (int i = 0; i < 1000; i++) {
 			intTmpBytes = baseDigestProvider.finish(intTmpBytes);
 			XOR(tempBytes, intTmpBytes);
 		}
@@ -289,24 +294,25 @@ public class AESCrypto {
 	}
 
 	private static void XOR(byte[] dest, byte[] source) {
-		for (int i = 0 ; i < dest.length ; i++) {
+		for (int i = 0; i < dest.length; i++) {
 			dest[i] ^= source[i];
 		}
 	}
 
 	/**
 	 * Initialize crypto
-	 * @param password	password
+	 *
+	 * @param password password
 	 */
 	private void initCrypto(char[] password) throws CryptoException, ZipException {
 		byte[] keyBytes;
 		try {
 			keyBytes = this.deriveKey(this.saltBytes, password,
-				this.keyLength + this.macLength + Globals.PASSWORD_VERIFIER_LENGTH);
+					this.keyLength + this.macLength + Globals.PASSWORD_VERIFIER_LENGTH);
 		} catch (DataInvalidException e) {
 			throw new ZipException(0x0000001B000AL, "Init_Crypto_Zip_Error", e);
 		}
-		
+
 		if (keyBytes.length != (this.keyLength + this.macLength + Globals.PASSWORD_VERIFIER_LENGTH)) {
 			throw new ZipException(0x0000001B0008L, "Invalid_Derived_Key_Zip_Error");
 		}
@@ -314,18 +320,23 @@ public class AESCrypto {
 		byte[] aesKey = new byte[this.keyLength];
 		byte[] macKey = new byte[this.macLength];
 		this.derivedPasswordVerifier = new byte[Globals.PASSWORD_VERIFIER_LENGTH];
-		
+
 		System.arraycopy(keyBytes, Globals.INITIALIZE_INT_VALUE, aesKey, Globals.INITIALIZE_INT_VALUE, this.keyLength);
 		System.arraycopy(keyBytes, this.keyLength, macKey, Globals.INITIALIZE_INT_VALUE, this.macLength);
-		System.arraycopy(keyBytes, (this.keyLength + this.macLength), 
+		System.arraycopy(keyBytes, (this.keyLength + this.macLength),
 				this.derivedPasswordVerifier, Globals.INITIALIZE_INT_VALUE, Globals.PASSWORD_VERIFIER_LENGTH);
-		
+
+		System.out.println(ConvertUtils.toHex(aesKey));
+		System.out.println(ConvertUtils.toHex(macKey));
 		this.aesEngine = new AESEngine(aesKey);
+		this.aesCipher = org.bouncycastle.crypto.engines.AESEngine.newInstance();
+//		this.aesCipher.init(this.forEncryption, );
 		this.macBasedPRF = SecurityUtils.HmacSHA1(macKey);
 	}
-	
+
 	/**
 	 * Generate salt data
+	 *
 	 * @throws ZipException if salt length was invalid
 	 */
 	private void generateSalt() throws ZipException {
@@ -335,13 +346,13 @@ public class AESCrypto {
 		}
 
 		this.saltBytes = new byte[this.saltLength];
-		for (int i = 0 ; i < rounds ; i++) {
+		for (int i = 0; i < rounds; i++) {
 			Random random = new SecureRandom();
 			int temp = random.nextInt();
-			this.saltBytes[i * 4] = (byte)(temp >> 24);
-			this.saltBytes[1 + i * 4] = (byte)(temp >> 16);
-			this.saltBytes[2 + i * 4] = (byte)(temp >> 8);
-			this.saltBytes[3 + i * 4] = (byte)temp;
+			this.saltBytes[i * 4] = (byte) (temp >> 24);
+			this.saltBytes[1 + i * 4] = (byte) (temp >> 16);
+			this.saltBytes[2 + i * 4] = (byte) (temp >> 8);
+			this.saltBytes[3 + i * 4] = (byte) temp;
 		}
 	}
 }

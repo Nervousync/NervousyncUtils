@@ -29,26 +29,30 @@ import java.util.Date;
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
  * @version $Revision: 1.1.0 $Date: 2018-10-15 14:31
  */
-public final class DateTimeAdapter extends AbstractAdapter<Date> {
+public final class DateTimeAdapter extends AbstractAdapter {
 	private final String pattern;
+
 	public DateTimeAdapter() {
 		this(DateTimeUtils.DEFAULT_DATETIME_PATTERN_ISO8601);
 	}
+
 	public DateTimeAdapter(final String pattern) {
 		this.pattern = pattern;
 	}
-    /**
-     * @see jakarta.xml.bind.annotation.adapters.XmlAdapter#unmarshal(Object)
-     */
+
+	/**
+	 * @see jakarta.xml.bind.annotation.adapters.XmlAdapter#unmarshal(Object)
+	 */
 	@Override
-	public Date unmarshal(final String v) {
+	public Object unmarshal(final String v) {
 		return DateTimeUtils.parseSiteMapDate(v);
 	}
-    /**
-     * @see jakarta.xml.bind.annotation.adapters.XmlAdapter#marshal(Object)
-     */
+
+	/**
+	 * @see jakarta.xml.bind.annotation.adapters.XmlAdapter#marshal(Object)
+	 */
 	@Override
-	public String marshal(final Date v) {
-		return DateTimeUtils.formatDate(v, DateTimeFormatter.ofPattern(this.pattern));
+	public String marshal(final Object v) {
+		return DateTimeUtils.formatDate((Date) v, DateTimeFormatter.ofPattern(this.pattern));
 	}
 }

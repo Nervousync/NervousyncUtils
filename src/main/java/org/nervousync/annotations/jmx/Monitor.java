@@ -37,7 +37,7 @@ public @interface Monitor {
 	 * @return <span class="en-US">MBean identification code</span>
 	 * <span class="zh-CN">MBean唯一标识</span>
 	 */
-	String identify();
+	String domain();
 
 	/**
 	 * @return <span class="en-US">MBean type</span>

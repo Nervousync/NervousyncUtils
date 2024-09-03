@@ -28,11 +28,11 @@ import org.nervousync.beans.snmp.SNMPData;
 public interface SNMPDataOperator {
 
 	/**
-     * <h3 class="en-US">Process given SNMPData instance</h3>
-     * <h3 class="zh-CN">处理给定的SNMPData实例对象</h3>
+	 * <h3 class="en-US">Process given SNMPData instance</h3>
+	 * <h3 class="zh-CN">处理给定的SNMPData实例对象</h3>
 	 *
-	 * @param snmpData 	<span class="en-US">SNMPData instance</span>
-	 *                  <span class="zh-CN">SNMPData实例对象</span>
+	 * @param snmpData <span class="en-US">SNMPData instance</span>
+	 *                 <span class="zh-CN">SNMPData实例对象</span>
 	 */
 	void operateData(SNMPData snmpData);
 }

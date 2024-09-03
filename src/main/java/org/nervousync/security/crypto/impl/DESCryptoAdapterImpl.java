@@ -35,38 +35,38 @@ import javax.crypto.spec.DESKeySpec;
  */
 public final class DESCryptoAdapterImpl extends SymmetricCryptoAdapter {
 
-    /**
-     * <h3 class="en-US">Constructor for DESCryptoAdapterImpl</h3>
-     * <h3 class="zh-CN">DES对称加密解密适配器实现类的构造方法</h3>
-     *
-     * @param cipherConfig  <span class="en-US">Cipher configure</span>
-     *                      <span class="zh-CN">密码设置</span>
-     * @param cryptoMode    <span class="en-US">Crypto mode</span>
-     *                      <span class="zh-CN">加密解密模式</span>
-     * @param keyBytes      <span class="en-US">Key data bytes</span>
-     *                      <span class="zh-CN">密钥字节数组</span>
-     *
-     * @throws CryptoException
-     * <span class="en-US">If an error occurs when initialize cipher</span>
-     * <span class="zh-CN">当初始化加密解密实例对象时出现异常</span>
-     */
-    public DESCryptoAdapterImpl(final CipherConfig cipherConfig, final CryptoMode cryptoMode, final byte[] keyBytes)
-            throws CryptoException {
-        super(cipherConfig, cryptoMode, new CipherKey(keyBytes));
-    }
-    /**
-     * (Non-Javadoc)
-     * @see BaseCryptoAdapter#initCipher()
-     */
-    @Override
-    protected Cipher initCipher() throws CryptoException {
-        try {
-            DESKeySpec desKeySpec = new DESKeySpec(this.cipherKey.getKeyBytes());
-            SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
-            return super.generateCipher(keyFactory.generateSecret(desKeySpec),
-                    this.cipherConfig.getMode().equalsIgnoreCase("ECB") ? 0 : 8);
-        } catch (Exception e) {
-            throw new CryptoException(0x00000015000BL, "Init_Cipher_Crypto_Error", e);
-        }
-    }
+	/**
+	 * <h3 class="en-US">Constructor for DESCryptoAdapterImpl</h3>
+	 * <h3 class="zh-CN">DES对称加密解密适配器实现类的构造方法</h3>
+	 *
+	 * @param cipherConfig <span class="en-US">Cipher configure</span>
+	 *                     <span class="zh-CN">密码设置</span>
+	 * @param cryptoMode   <span class="en-US">Crypto mode</span>
+	 *                     <span class="zh-CN">加密解密模式</span>
+	 * @param keyBytes     <span class="en-US">Key data bytes</span>
+	 *                     <span class="zh-CN">密钥字节数组</span>
+	 * @throws CryptoException <span class="en-US">If an error occurs when initialize cipher</span>
+	 *                         <span class="zh-CN">当初始化加密解密实例对象时出现异常</span>
+	 */
+	public DESCryptoAdapterImpl(final CipherConfig cipherConfig, final CryptoMode cryptoMode, final byte[] keyBytes)
+			throws CryptoException {
+		super(cipherConfig, cryptoMode, new CipherKey(keyBytes));
+	}
+
+	/**
+	 * (Non-Javadoc)
+	 *
+	 * @see BaseCryptoAdapter#initCipher()
+	 */
+	@Override
+	protected Cipher initCipher() throws CryptoException {
+		try {
+			DESKeySpec desKeySpec = new DESKeySpec(this.cipherKey.getKeyBytes());
+			SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
+			return super.generateCipher(keyFactory.generateSecret(desKeySpec),
+					this.cipherConfig.getMode().equalsIgnoreCase("ECB") ? 0 : 8);
+		} catch (Exception e) {
+			throw new CryptoException(0x00000015000BL, "Init_Cipher_Crypto_Error", e);
+		}
+	}
 }

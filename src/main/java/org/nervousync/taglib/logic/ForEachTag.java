@@ -28,51 +28,51 @@ import org.nervousync.commons.Globals;
  */
 public final class ForEachTag extends CollectionTag {
 
-    private Integer begin;
+	private Integer begin;
 
-    private Integer end;
+	private Integer end;
 
-    private Integer step;
+	private Integer step;
 
-    @Override
-    protected int startIndex() {
-        return (this.begin == null || this.begin < Globals.INITIALIZE_INT_VALUE)
-                ? Globals.INITIALIZE_INT_VALUE : this.begin;
-    }
+	@Override
+	protected int startIndex() {
+		return (this.begin == null || this.begin < Globals.INITIALIZE_INT_VALUE)
+				? Globals.INITIALIZE_INT_VALUE : this.begin;
+	}
 
-    @Override
-    protected int endIndex() {
-        return (this.end == null || this.end <= Globals.INITIALIZE_INT_VALUE)
-                ? Globals.DEFAULT_VALUE_INT : this.end;
-    }
+	@Override
+	protected int endIndex() {
+		return (this.end == null || this.end <= Globals.INITIALIZE_INT_VALUE)
+				? Globals.DEFAULT_VALUE_INT : this.end;
+	}
 
-    @Override
-    protected int step() {
-        return (this.step == null || this.step <= Globals.INITIALIZE_INT_VALUE)
-                ? Globals.DEFAULT_STEP_VALUE : this.step;
-    }
+	@Override
+	protected int step() {
+		return (this.step == null || this.step <= Globals.INITIALIZE_INT_VALUE)
+				? Globals.DEFAULT_STEP_VALUE : this.step;
+	}
 
-    public Integer getBegin() {
-        return begin;
-    }
+	public Integer getBegin() {
+		return begin;
+	}
 
-    public void setBegin(Integer begin) {
-        this.begin = begin;
-    }
+	public void setBegin(Integer begin) {
+		this.begin = begin;
+	}
 
-    public Integer getEnd() {
-        return end;
-    }
+	public Integer getEnd() {
+		return end;
+	}
 
-    public void setEnd(Integer end) {
-        this.end = end;
-    }
+	public void setEnd(Integer end) {
+		this.end = end;
+	}
 
-    public Integer getStep() {
-        return step;
-    }
+	public Integer getStep() {
+		return step;
+	}
 
-    public void setStep(Integer step) {
-        this.step = step;
-    }
+	public void setStep(Integer step) {
+		this.step = step;
+	}
 }

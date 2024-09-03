@@ -2,7 +2,6 @@
 <xsd:schema xmlns="https://nervousync.org/schemas/mail" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:proxy="https://nervousync.org/schemas/proxy"
             targetNamespace="https://nervousync.org/schemas/mail" elementFormDefault="qualified" version="1.0">
-    <xsd:import namespace="https://nervousync.org/schemas/secure" schemaLocation="https://nervousync.org/schemas/secure_config_1.0.xsd" />
     <xsd:import namespace="https://nervousync.org/schemas/proxy" schemaLocation="https://nervousync.org/schemas/proxy_config_1.0.xsd" />
     <xsd:complexType name="mail_config">
         <xsd:all>

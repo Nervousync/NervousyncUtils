@@ -37,11 +37,11 @@ public final class IfTag extends SimpleTagSupport {
 		}
 	}
 
-    public Boolean getCondition() {
-        return condition;
-    }
+	public Boolean getCondition() {
+		return condition;
+	}
 
-    public void setCondition(Boolean condition) {
-        this.condition = condition;
-    }
+	public void setCondition(Boolean condition) {
+		this.condition = condition;
+	}
 }

@@ -20,6 +20,7 @@ import org.nervousync.exceptions.zip.ZipException;
 
 /**
  * Zip encryptor
+ *
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
  * @version $Revision: 1.0.0 $ $Date: Nov 29, 2017 2:45:30 PM $
  */
@@ -27,18 +28,20 @@ public interface Encryptor {
 
 	/**
 	 * Encrypt given data array
-	 * @param buff	data array
+	 *
+	 * @param buff data array
 	 * @throws ZipException if encrypt engine was not initialized or data index out of size
 	 */
 	void encryptData(byte[] buff) throws ZipException;
-	
+
 	/**
 	 * Encrypt given data array which index from start and process data length was given
-	 * @param buff		data buffer
-	 * @param start		start index
-	 * @param len		process length
+	 *
+	 * @param buff  data buffer
+	 * @param start start index
+	 * @param len   process length
 	 * @throws ZipException if encrypt engine was not initialized or data index out of size
 	 */
 	void encryptData(byte[] buff, int start, int len) throws ZipException;
-	
+
 }

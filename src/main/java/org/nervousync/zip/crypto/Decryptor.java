@@ -20,6 +20,7 @@ import org.nervousync.exceptions.zip.ZipException;
 
 /**
  * Zip file decryptor
+ *
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
  * @version $Revision: 1.0.0 $ $Date: Dec 2, 2017 10:34:24 AM $
  */
@@ -27,7 +28,8 @@ public interface Decryptor {
 
 	/**
 	 * Decrypt given data array
-	 * @param buff	data array
+	 *
+	 * @param buff data array
 	 * @return processed data length
 	 * @throws ZipException if decrypt engine was not initialized or data index out of size
 	 */
@@ -35,9 +37,10 @@ public interface Decryptor {
 
 	/**
 	 * Decrypt given data array which index from start and process data length was given
-	 * @param buff		data buffer
-	 * @param start		start index
-	 * @param len		process length
+	 *
+	 * @param buff  data buffer
+	 * @param start start index
+	 * @param len   process length
 	 * @return processed data length
 	 * @throws ZipException if decrypt engine was not initialized or data index out of size
 	 */

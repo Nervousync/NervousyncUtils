@@ -33,36 +33,36 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE})
 public @interface Provider {
 
-    /**
-     * <span class="en-US">Provider identification code</span>
-     * <span class="zh-CN">适配器识别代码</span>
-     *
-     * @return  <span class="en-US">Identification code</span>
-     *          <span class="zh-CN">识别代码</span>
-     */
-    String name();
+	/**
+	 * <span class="en-US">Provider identification code</span>
+	 * <span class="zh-CN">适配器识别代码</span>
+	 *
+	 * @return <span class="en-US">Identification code</span>
+	 * <span class="zh-CN">识别代码</span>
+	 */
+	String name();
 
 	/**
 	 * @return <span class="en">Sort code</span>
 	 * <span class="zh-CN">排序代码</span>
 	 */
-    int sortCode() default Globals.DEFAULT_VALUE_INT;
+	int sortCode() default Globals.DEFAULT_VALUE_INT;
 
-    /**
-     * <span class="en-US">Multilingual key value for provider name</span>
-     * <span class="zh-CN">适配器名称的多语言键值</span>
-     *
-     * @return  <span class="en-US">Multilingual key value</span>
-     *          <span class="zh-CN">多语言键值</span>
-     */
-    String titleKey();
+	/**
+	 * <span class="en-US">Multilingual key value for provider name</span>
+	 * <span class="zh-CN">适配器名称的多语言键值</span>
+	 *
+	 * @return <span class="en-US">Multilingual key value</span>
+	 * <span class="zh-CN">多语言键值</span>
+	 */
+	String titleKey();
 
-    /**
-     * <span class="en-US">Multilingual key value for provider description</span>
-     * <span class="zh-CN">适配器简介的多语言键值</span>
-     *
-     * @return  <span class="en-US">Multilingual key value</span>
-     *          <span class="zh-CN">多语言键值</span>
-     */
-    String descriptionKey() default Globals.DEFAULT_VALUE_STRING;
+	/**
+	 * <span class="en-US">Multilingual key value for provider description</span>
+	 * <span class="zh-CN">适配器简介的多语言键值</span>
+	 *
+	 * @return <span class="en-US">Multilingual key value</span>
+	 * <span class="zh-CN">多语言键值</span>
+	 */
+	String descriptionKey() default Globals.DEFAULT_VALUE_STRING;
 }

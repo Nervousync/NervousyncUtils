@@ -26,24 +26,24 @@ import org.nervousync.utils.StringUtils;
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
  * @version $Revision: 1.1.0 $Date: Jun 15, 2020 14:09:27 $
  */
-public final class CDataAdapter extends AbstractAdapter<String> {
+public final class CDataAdapter extends AbstractAdapter {
 
 	/**
-     * <span class="en-US">Begin string of CDATA</span>
-     * <span class="zh-CN">CDATA起始字符串</span>
+	 * <span class="en-US">Begin string of CDATA</span>
+	 * <span class="zh-CN">CDATA起始字符串</span>
 	 */
 	public static final String CDATA_BEGIN = "<![CDATA[";
 	/**
-     * <span class="en-US">End string of CDATA</span>
-     * <span class="zh-CN">CDATA终止字符串</span>
+	 * <span class="en-US">End string of CDATA</span>
+	 * <span class="zh-CN">CDATA终止字符串</span>
 	 */
 	public static final String CDATA_END = "]]>";
 
-    /**
-     * @see jakarta.xml.bind.annotation.adapters.XmlAdapter#unmarshal(Object)
-     */
+	/**
+	 * @see jakarta.xml.bind.annotation.adapters.XmlAdapter#unmarshal(Object)
+	 */
 	@Override
-	public String unmarshal(final String v) {
+	public Object unmarshal(final String v) {
 		if (StringUtils.isEmpty(v)) {
 			return "";
 		}
@@ -57,15 +57,14 @@ public final class CDataAdapter extends AbstractAdapter<String> {
 		return dataValue;
 	}
 
-    /**
-     * @see jakarta.xml.bind.annotation.adapters.XmlAdapter#marshal(Object)
-     */
+	/**
+	 * @see jakarta.xml.bind.annotation.adapters.XmlAdapter#marshal(Object)
+	 */
 	@Override
-	public String marshal(final String v) {
-		if (StringUtils.isEmpty(v)) {
-			return CDATA_BEGIN + CDATA_END;
-		} else {
+	public String marshal(final Object v) {
+		if (v instanceof String && StringUtils.notBlank((String) v)) {
 			return CDATA_BEGIN + v + CDATA_END;
 		}
+		return CDATA_BEGIN + CDATA_END;
 	}
 }

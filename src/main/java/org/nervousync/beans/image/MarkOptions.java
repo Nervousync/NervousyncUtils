@@ -119,7 +119,7 @@ public final class MarkOptions {
 	 *                     <span class="zh-CN">水印图片地址，仅当markType值为MarkType.ICON时有效</span>
 	 * @param transparency <span class="en-US">Transparent value of mark image. default is 1, valid value is between 0 and 1</span>
 	 *                     <span class="zh-CN">水印图片的透明度，默认值为1，有效值在0到1之间</span>
-	 * @return    <span class="en-US">Initialized MarkOptions instance</span>
+	 * @return <span class="en-US">Initialized MarkOptions instance</span>
 	 * <span class="en-US">初始化的MarkOptions实例对象</span>
 	 */
 	public static MarkOptions markIcon(final MarkLocation markLocation, final String markPath,
@@ -143,7 +143,7 @@ public final class MarkOptions {
 	 *                     <span class="zh-CN">水印文字的字体名</span>
 	 * @param fontSize     <span class="en-US">Mark text font size settings.</span>
 	 *                     <span class="zh-CN">水印文字的字号</span>
-	 * @return    <span class="en-US">Initialized MarkOptions instance</span>
+	 * @return <span class="en-US">Initialized MarkOptions instance</span>
 	 * <span class="en-US">初始化的MarkOptions实例对象</span>
 	 */
 	public static MarkOptions markText(final MarkLocation markLocation, final String markText,
@@ -248,7 +248,7 @@ public final class MarkOptions {
 	 *               <span class="zh-CN">图片的宽度</span>
 	 * @param height <span class="en-US">Image height value</span>
 	 *               <span class="zh-CN">图片的高度</span>
-	 * @return    <span class="en-US">Initialized MarkPosition instance</span>
+	 * @return <span class="en-US">Initialized MarkPosition instance</span>
 	 * <span class="en-US">初始化的MarkPosition实例对象</span>
 	 */
 	public MarkPosition retrievePosition(int width, int height) {

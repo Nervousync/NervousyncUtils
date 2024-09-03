@@ -24,24 +24,24 @@ package org.nervousync.enumerations.crypto;
  * @version $Revision: 1.0.0 $ $Date: Jun 28, 2019 14:32:16 $
  */
 public enum CryptoMode {
-    /**
-     * <span class="en-US">Encrypt Mode</span>
-     * <span class="zh-CN">加密模式</span>
-     */
-    ENCRYPT,
-    /**
-     * <span class="en-US">Decrypt Mode</span>
-     * <span class="zh-CN">解密模式</span>
-     */
-    DECRYPT,
-    /**
-     * <span class="en-US">Signature Mode</span>
-     * <span class="zh-CN">签名模式</span>
-     */
-    SIGNATURE,
-    /**
-     * <span class="en-US">Verify Signature Mode</span>
-     * <span class="zh-CN">验证签名模式</span>
-     */
-    VERIFY
+	/**
+	 * <span class="en-US">Encrypt Mode</span>
+	 * <span class="zh-CN">加密模式</span>
+	 */
+	ENCRYPT,
+	/**
+	 * <span class="en-US">Decrypt Mode</span>
+	 * <span class="zh-CN">解密模式</span>
+	 */
+	DECRYPT,
+	/**
+	 * <span class="en-US">Signature Mode</span>
+	 * <span class="zh-CN">签名模式</span>
+	 */
+	SIGNATURE,
+	/**
+	 * <span class="en-US">Verify Signature Mode</span>
+	 * <span class="zh-CN">验证签名模式</span>
+	 */
+	VERIFY
 }

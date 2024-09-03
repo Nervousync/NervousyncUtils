@@ -26,16 +26,17 @@ import org.nervousync.mail.config.MailConfig;
  * @version $Revision: 1.0.0 $ $Date: Jul 31, 2022 16:52:27 $
  */
 public final class MailConfigBuilder extends AbstractMailConfigBuilder<MailConfig> {
-    /**
-     * <h3 class="en-US">Private constructor for MailConfigBuilder</h3>
-     * <h3 class="zh-CN">MailConfigBuilder的私有构造函数</h3>
-     *
-     * @param mailConfig        <span class="en-US">Mail configure information</span>
-     *                          <span class="zh-CN">邮件配置信息</span>
-     */
+	/**
+	 * <h3 class="en-US">Private constructor for MailConfigBuilder</h3>
+	 * <h3 class="zh-CN">MailConfigBuilder的私有构造函数</h3>
+	 *
+	 * @param mailConfig <span class="en-US">Mail configure information</span>
+	 *                   <span class="zh-CN">邮件配置信息</span>
+	 */
 	private MailConfigBuilder(final MailConfig mailConfig) {
 		super(mailConfig, mailConfig);
 	}
+
 	/**
 	 * <h2 class="en-US">Confirm current configure information</h2>
 	 * <h2 class="zh-CN">确认当前配置信息</h2>
@@ -44,25 +45,26 @@ public final class MailConfigBuilder extends AbstractMailConfigBuilder<MailConfi
 	protected void build() {
 		super.parentBuilder.copyProperties(this.mailConfig);
 	}
+
 	/**
-     * <h3 class="en-US">Static method for create MailConfigBuilder instance by new mail configure</h3>
-     * <h3 class="zh-CN">私有方法用于使用新的邮件配置信息创建邮件配置构造器实例对象</h3>
+	 * <h3 class="en-US">Static method for create MailConfigBuilder instance by new mail configure</h3>
+	 * <h3 class="zh-CN">私有方法用于使用新的邮件配置信息创建邮件配置构造器实例对象</h3>
 	 *
-	 * @return	<span class="en-US">Generated MailConfigBuilder instance</span>
-	 * 			<span class="zh-CN">生成的邮件配置构造器实例对象</span>
+	 * @return    <span class="en-US">Generated MailConfigBuilder instance</span>
+	 * <span class="zh-CN">生成的邮件配置构造器实例对象</span>
 	 */
 	public static MailConfigBuilder newBuilder() {
 		return newBuilder(new MailConfig());
 	}
+
 	/**
-     * <h3 class="en-US">Static method for create MailConfigBuilder instance by given mail configure</h3>
-     * <h3 class="zh-CN">私有方法用于使用给定的邮件配置信息创建邮件配置构造器实例对象</h3>
+	 * <h3 class="en-US">Static method for create MailConfigBuilder instance by given mail configure</h3>
+	 * <h3 class="zh-CN">私有方法用于使用给定的邮件配置信息创建邮件配置构造器实例对象</h3>
 	 *
-     * @param mailConfig        <span class="en-US">Mail configure information</span>
-     *                          <span class="zh-CN">邮件配置信息</span>
-	 *
-	 * @return	<span class="en-US">Generated MailConfigBuilder instance</span>
-	 * 			<span class="zh-CN">生成的邮件配置构造器实例对象</span>
+	 * @param mailConfig <span class="en-US">Mail configure information</span>
+	 *                   <span class="zh-CN">邮件配置信息</span>
+	 * @return    <span class="en-US">Generated MailConfigBuilder instance</span>
+	 * <span class="zh-CN">生成的邮件配置构造器实例对象</span>
 	 */
 	public static MailConfigBuilder newBuilder(final MailConfig mailConfig) {
 		return new MailConfigBuilder(mailConfig);

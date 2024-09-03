@@ -33,65 +33,65 @@ import org.nervousync.security.factory.SecureFactory;
 @XmlAccessorType(XmlAccessType.NONE)
 public abstract class AbstractConfig extends BeanObject {
 
-    /**
-     * <span class="en-US">Serial version UID</span>
-     * <span class="zh-CN">序列化UID</span>
-     */
-    private static final long serialVersionUID = 2626987266160131570L;
-    /**
-     * <span class="en-US">Secure algorithm</span>
-     * <span class="zh-CN">安全算法</span>
-     */
-    @XmlElement(name = "secure_algorithm")
-    private SecureFactory.SecureAlgorithm secureAlgorithm = null;
-    /**
-     * <span class="en-US">Secure key</span>
-     * <span class="zh-CN">安全密钥</span>
-     */
-    @XmlElement(name = "secure_key")
-    private String secureKey = null;
+	/**
+	 * <span class="en-US">Serial version UID</span>
+	 * <span class="zh-CN">序列化UID</span>
+	 */
+	private static final long serialVersionUID = 2626987266160131570L;
+	/**
+	 * <span class="en-US">Secure algorithm</span>
+	 * <span class="zh-CN">安全算法</span>
+	 */
+	@XmlElement(name = "secure_algorithm")
+	private SecureFactory.SecureAlgorithm secureAlgorithm = null;
+	/**
+	 * <span class="en-US">Secure key</span>
+	 * <span class="zh-CN">安全密钥</span>
+	 */
+	@XmlElement(name = "secure_key")
+	private String secureKey = null;
 
-    /**
-     * <h3 class="en-US">Getter method for secure algorithm</h3>
-     * <h3 class="zh-CN">安全算法的Getter方法</h3>
-     *
-     * @return <span class="en-US">Secure algorithm</span>
-     * <span class="zh-CN">安全算法</span>
-     */
-    public SecureFactory.SecureAlgorithm getSecureAlgorithm() {
-        return secureAlgorithm;
-    }
+	/**
+	 * <h3 class="en-US">Getter method for secure algorithm</h3>
+	 * <h3 class="zh-CN">安全算法的Getter方法</h3>
+	 *
+	 * @return <span class="en-US">Secure algorithm</span>
+	 * <span class="zh-CN">安全算法</span>
+	 */
+	public SecureFactory.SecureAlgorithm getSecureAlgorithm() {
+		return secureAlgorithm;
+	}
 
-    /**
-     * <h3 class="en-US">Setter method for secure algorithm</h3>
-     * <h3 class="zh-CN">安全算法的Setter方法</h3>
-     *
-     * @param secureAlgorithm <span class="en-US">Secure algorithm</span>
-     *                        <span class="zh-CN">安全算法</span>
-     */
-    public void setSecureAlgorithm(SecureFactory.SecureAlgorithm secureAlgorithm) {
-        this.secureAlgorithm = secureAlgorithm;
-    }
+	/**
+	 * <h3 class="en-US">Setter method for secure algorithm</h3>
+	 * <h3 class="zh-CN">安全算法的Setter方法</h3>
+	 *
+	 * @param secureAlgorithm <span class="en-US">Secure algorithm</span>
+	 *                        <span class="zh-CN">安全算法</span>
+	 */
+	public void setSecureAlgorithm(SecureFactory.SecureAlgorithm secureAlgorithm) {
+		this.secureAlgorithm = secureAlgorithm;
+	}
 
-    /**
-     * <h3 class="en-US">Getter method for secure key</h3>
-     * <h3 class="zh-CN">安全密钥的Getter方法</h3>
-     *
-     * @return <span class="en-US">Secure key</span>
-     * <span class="zh-CN">安全密钥</span>
-     */
-    public String getSecureKey() {
-        return secureKey;
-    }
+	/**
+	 * <h3 class="en-US">Getter method for secure key</h3>
+	 * <h3 class="zh-CN">安全密钥的Getter方法</h3>
+	 *
+	 * @return <span class="en-US">Secure key</span>
+	 * <span class="zh-CN">安全密钥</span>
+	 */
+	public String getSecureKey() {
+		return secureKey;
+	}
 
-    /**
-     * <h3 class="en-US">Setter method for secure key</h3>
-     * <h3 class="zh-CN">安全密钥的Setter方法</h3>
-     *
-     * @param secureKey <span class="en-US">Secure key</span>
-     *                  <span class="zh-CN">安全密钥</span>
-     */
-    public void setSecureKey(String secureKey) {
-        this.secureKey = secureKey;
-    }
+	/**
+	 * <h3 class="en-US">Setter method for secure key</h3>
+	 * <h3 class="zh-CN">安全密钥的Setter方法</h3>
+	 *
+	 * @param secureKey <span class="en-US">Secure key</span>
+	 *                  <span class="zh-CN">安全密钥</span>
+	 */
+	public void setSecureKey(String secureKey) {
+		this.secureKey = secureKey;
+	}
 }

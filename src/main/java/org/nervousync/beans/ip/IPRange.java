@@ -37,6 +37,7 @@ public final class IPRange implements Serializable {
 	/**
 	 * <span class="en-US">Enumeration value of IPType</span>
 	 * <span class="zh-CN">地址类型枚举值</span>
+	 *
 	 * @see org.nervousync.enumerations.ip.IPType
 	 */
 	private IPType ipType;
@@ -50,70 +51,77 @@ public final class IPRange implements Serializable {
 	 * <span class="zh-CN">IP范围终止地址</span>
 	 */
 	private String endAddress = Globals.DEFAULT_VALUE_STRING;
+
 	/**
 	 * <h3 class="en-US">Constructor for IPRange</h3>
 	 * <h3 class="zh-CN">IPRange默认构造方法</h3>
 	 */
 	public IPRange() {
 	}
+
 	/**
 	 * <h3 class="en-US">Getter method for IP type</h3>
 	 * <h3 class="zh-CN">地址类型的Getter方法</h3>
 	 *
-	 * @return    <span class="en-US">Value of IPType</span>
-	 *            <span class="zh-CN">地址类型枚举值</span>
+	 * @return <span class="en-US">Value of IPType</span>
+	 * <span class="zh-CN">地址类型枚举值</span>
 	 * @see org.nervousync.enumerations.ip.IPType
 	 */
 	public IPType getIpType() {
 		return ipType;
 	}
+
 	/**
 	 * <h3 class="en-US">Setter method for IP type</h3>
 	 * <h3 class="zh-CN">地址类型的Setter方法</h3>
 	 *
-	 * @param ipType 	<span class="en-US">Value of IPType</span>
-	 *            		<span class="zh-CN">地址类型枚举值</span>
+	 * @param ipType <span class="en-US">Value of IPType</span>
+	 *               <span class="zh-CN">地址类型枚举值</span>
 	 * @see org.nervousync.enumerations.ip.IPType
 	 */
 	public void setIpType(IPType ipType) {
 		this.ipType = ipType;
 	}
+
 	/**
 	 * <h3 class="en-US">Getter method for IP range begin address</h3>
 	 * <h3 class="zh-CN">IP范围起始地址的Getter方法</h3>
 	 *
-	 * @return    <span class="en-US">Value of IP range begin address</span>
-	 *            <span class="zh-CN">IP范围起始地址</span>
+	 * @return <span class="en-US">Value of IP range begin address</span>
+	 * <span class="zh-CN">IP范围起始地址</span>
 	 */
 	public String getBeginAddress() {
 		return beginAddress;
 	}
+
 	/**
 	 * <h3 class="en-US">Setter method for IP range begin address</h3>
 	 * <h3 class="zh-CN">IP范围起始地址的Setter方法</h3>
 	 *
-	 * @param beginAddress 	<span class="en-US">Value of IP range begin address</span>
-	 *            			<span class="zh-CN">IP范围起始地址</span>
+	 * @param beginAddress <span class="en-US">Value of IP range begin address</span>
+	 *                     <span class="zh-CN">IP范围起始地址</span>
 	 */
 	public void setBeginAddress(String beginAddress) {
 		this.beginAddress = beginAddress;
 	}
+
 	/**
 	 * <h3 class="en-US">Getter method for IP range end address</h3>
 	 * <h3 class="zh-CN">IP范围终止地址的Getter方法</h3>
 	 *
-	 * @return    <span class="en-US">Value of IP range end address</span>
-	 *            <span class="zh-CN">IP范围终止地址</span>
+	 * @return <span class="en-US">Value of IP range end address</span>
+	 * <span class="zh-CN">IP范围终止地址</span>
 	 */
 	public String getEndAddress() {
 		return endAddress;
 	}
+
 	/**
 	 * <h3 class="en-US">Setter method for IP range end address</h3>
 	 * <h3 class="zh-CN">IP范围终止地址的Setter方法</h3>
 	 *
-	 * @param endAddress 	<span class="en-US">Value of IP range end address</span>
-	 *            			<span class="zh-CN">IP范围终止地址</span>
+	 * @param endAddress <span class="en-US">Value of IP range end address</span>
+	 *                   <span class="zh-CN">IP范围终止地址</span>
 	 */
 	public void setEndAddress(String endAddress) {
 		this.endAddress = endAddress;

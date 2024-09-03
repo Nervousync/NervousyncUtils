@@ -34,35 +34,35 @@ import org.nervousync.utils.StringUtils;
  */
 public final class ProviderNameTag extends TagSupport {
 
-    /**
-     * <span class="en-US">Serial version UID</span>
-     * <span class="zh-CN">序列化UID</span>
-     */
-    private static final long serialVersionUID = 2391901343255802868L;
-    /**
-     * <span class="en-US">Provider implements class name</span>
-     * <span class="zh-CN">适配器实现类名</span>
-     */
-    private String className = Globals.DEFAULT_VALUE_STRING;
+	/**
+	 * <span class="en-US">Serial version UID</span>
+	 * <span class="zh-CN">序列化UID</span>
+	 */
+	private static final long serialVersionUID = 2391901343255802868L;
+	/**
+	 * <span class="en-US">Provider implements class name</span>
+	 * <span class="zh-CN">适配器实现类名</span>
+	 */
+	private String className = Globals.DEFAULT_VALUE_STRING;
 
-    public int doStartTag() throws JspException {
-        if (StringUtils.notBlank(this.className)) {
-            try {
-                JspWriter jspWriter = this.pageContext.getOut();
-                jspWriter.write(MultilingualUtils.providerName(ClassUtils.forName(this.className),
-                        MultilingualUtils.toLanguageCode(this.pageContext.getRequest().getLocale())));
-            } catch (Exception e) {
-                throw new JspException(e);
-            }
-        }
-        return SKIP_BODY;
-    }
+	public int doStartTag() throws JspException {
+		if (StringUtils.notBlank(this.className)) {
+			try {
+				JspWriter jspWriter = this.pageContext.getOut();
+				jspWriter.write(MultilingualUtils.providerName(ClassUtils.forName(this.className),
+						MultilingualUtils.toLanguageCode(this.pageContext.getRequest().getLocale())));
+			} catch (Exception e) {
+				throw new JspException(e);
+			}
+		}
+		return SKIP_BODY;
+	}
 
-    public String getClassName() {
-        return className;
-    }
+	public String getClassName() {
+		return className;
+	}
 
-    public void setClassName(String className) {
-        this.className = className;
-    }
+	public void setClassName(String className) {
+		this.className = className;
+	}
 }

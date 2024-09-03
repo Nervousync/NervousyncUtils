@@ -33,62 +33,62 @@ import org.nervousync.utils.StringUtils;
  */
 public final class InternationalizationTag extends TagSupport {
 
-    /**
-     * <span class="en-US">Serial version UID</span>
-     * <span class="zh-CN">序列化UID</span>
-     */
-    private static final long serialVersionUID = 5675850269122084655L;
+	/**
+	 * <span class="en-US">Serial version UID</span>
+	 * <span class="zh-CN">序列化UID</span>
+	 */
+	private static final long serialVersionUID = 5675850269122084655L;
 
-    /**
-     * <span class="en-US">Resource group id</span>
-     * <span class="zh-CN">资源的组ID</span>
-     */
-    private String groupId = Globals.DEFAULT_VALUE_STRING;
-    /**
-     * <span class="en-US">Resource bundle</span>
-     * <span class="zh-CN">资源的标识</span>
-     */
-    private String bundle = Globals.DEFAULT_VALUE_STRING;
-    /**
-     * <span class="en-US">Message identify key</span>
-     * <span class="zh-CN">信息识别键值</span>
-     */
-    private String key = Globals.DEFAULT_VALUE_STRING;
+	/**
+	 * <span class="en-US">Resource group id</span>
+	 * <span class="zh-CN">资源的组ID</span>
+	 */
+	private String groupId = Globals.DEFAULT_VALUE_STRING;
+	/**
+	 * <span class="en-US">Resource bundle</span>
+	 * <span class="zh-CN">资源的标识</span>
+	 */
+	private String bundle = Globals.DEFAULT_VALUE_STRING;
+	/**
+	 * <span class="en-US">Message identify key</span>
+	 * <span class="zh-CN">信息识别键值</span>
+	 */
+	private String key = Globals.DEFAULT_VALUE_STRING;
 
-    public int doStartTag() throws JspException {
-        if (StringUtils.notBlank(this.groupId) && StringUtils.notBlank(this.bundle) || StringUtils.notBlank(this.key)) {
-            try {
-                JspWriter jspWriter = this.pageContext.getOut();
-                jspWriter.write(MultilingualUtils.newAgent(this.groupId, this.bundle)
-                        .findMessage(this.key, this.pageContext.getRequest().getLocale()));
-            } catch (Exception e) {
-                throw new JspException(e);
-            }
-        }
-        return SKIP_BODY;
-    }
+	public int doStartTag() throws JspException {
+		if (StringUtils.notBlank(this.groupId) && StringUtils.notBlank(this.bundle) || StringUtils.notBlank(this.key)) {
+			try {
+				JspWriter jspWriter = this.pageContext.getOut();
+				jspWriter.write(MultilingualUtils.newAgent(this.groupId, this.bundle)
+						.findMessage(this.key, this.pageContext.getRequest().getLocale()));
+			} catch (Exception e) {
+				throw new JspException(e);
+			}
+		}
+		return SKIP_BODY;
+	}
 
-    public String getGroupId() {
-        return groupId;
-    }
+	public String getGroupId() {
+		return groupId;
+	}
 
-    public void setGroupId(String groupId) {
-        this.groupId = groupId;
-    }
+	public void setGroupId(String groupId) {
+		this.groupId = groupId;
+	}
 
-    public String getBundle() {
-        return bundle;
-    }
+	public String getBundle() {
+		return bundle;
+	}
 
-    public void setBundle(String bundle) {
-        this.bundle = bundle;
-    }
+	public void setBundle(String bundle) {
+		this.bundle = bundle;
+	}
 
-    public String getKey() {
-        return key;
-    }
+	public String getKey() {
+		return key;
+	}
 
-    public void setKey(String key) {
-        this.key = key;
-    }
+	public void setKey(String key) {
+		this.key = key;
+	}
 }

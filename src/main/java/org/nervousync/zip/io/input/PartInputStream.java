@@ -69,13 +69,13 @@ public class PartInputStream extends InputStream {
 		this.decryptor = decryptor;
 		this.isAESEncryptedFile = isAESEncryptedFile;
 	}
-	
+
 	@Override
 	public int read() throws IOException {
 		if (this.readBytes >= this.length) {
 			return Globals.DEFAULT_VALUE_INT;
 		}
-		
+
 		if (this.isAESEncryptedFile) {
 			if (this.aesBytesReturned == 0 || this.aesBytesReturned == 16) {
 				if (this.read(this.aesBlockBuffer) == Globals.DEFAULT_VALUE_INT) {
@@ -85,7 +85,7 @@ public class PartInputStream extends InputStream {
 			}
 			return (this.aesBlockBuffer[this.aesBytesReturned++] & 0xFF);
 		} else {
-			return this.read(this.oneByteBuffer, 0, 1) == Globals.DEFAULT_VALUE_INT ? 
+			return this.read(this.oneByteBuffer, 0, 1) == Globals.DEFAULT_VALUE_INT ?
 					Globals.DEFAULT_VALUE_INT : (this.oneByteBuffer[0] & 0xFF);
 		}
 	}
@@ -94,7 +94,7 @@ public class PartInputStream extends InputStream {
 	public synchronized int read(@Nonnull byte[] b, int off, int len) throws IOException {
 		try {
 			if (len > (this.length - this.readBytes)) {
-				len = (int)(this.length - this.readBytes);
+				len = (int) (this.length - this.readBytes);
 
 				if (len == 0) {
 					this.checkAndReadAESMacBytes();
@@ -146,24 +146,24 @@ public class PartInputStream extends InputStream {
 			throw new IOException(e);
 		}
 	}
-	
+
 	public int available() {
 		long amount = this.length - this.readBytes;
 		if (amount > Integer.MAX_VALUE) {
 			return Integer.MAX_VALUE;
 		}
-		return (int)amount;
+		return (int) amount;
 	}
-	
+
 	public long skip(long length) throws IOException {
 		if (length < 0L) {
 			throw new IllegalArgumentException();
 		}
-		
+
 		if (length > (this.length - this.readBytes)) {
 			length = this.length - this.readBytes;
 		}
-		
+
 		this.readBytes += length;
 		return length;
 	}
@@ -177,7 +177,7 @@ public class PartInputStream extends InputStream {
 	public void seek(long pos) throws IOException {
 		this.input.seek(pos);
 	}
-	
+
 	public void close() throws IOException {
 		this.input.close();
 	}
@@ -199,22 +199,22 @@ public class PartInputStream extends InputStream {
 	protected void checkAndReadAESMacBytes() throws IOException, ZipException {
 		if (this.isAESEncryptedFile
 				&& (this.decryptor instanceof AESDecryptor)) {
-			if (((AESDecryptor)this.decryptor).getStoredMac() != null) {
+			if (((AESDecryptor) this.decryptor).getStoredMac() != null) {
 				//	Store mac already set
 				return;
 			}
-			
+
 			byte[] storedMac = new byte[Globals.AES_AUTH_LENGTH];
 			int readLength = this.input.read(storedMac);
-			
+
 			if (readLength != Globals.AES_AUTH_LENGTH) {
 				if (this.zipFile.isSplitArchive()) {
 					this.input.close();
 					this.currentIndex++;
 					this.input = this.zipFile.openSplitFile(this.currentIndex);
-					int newReadLength = this.input.read(storedMac, 
+					int newReadLength = this.input.read(storedMac,
 							readLength, Globals.AES_AUTH_LENGTH - readLength);
-					
+
 					readLength += newReadLength;
 				} else {
 					throw new ZipException("Error occurred while reading stored AES authentication bytes");
@@ -224,8 +224,8 @@ public class PartInputStream extends InputStream {
 			if (readLength != Globals.AES_AUTH_LENGTH) {
 				throw new ZipException("Error occurred while reading stored AES authentication bytes");
 			}
-			
-			((AESDecryptor)this.decryptor).setStoredMac(storedMac);
+
+			((AESDecryptor) this.decryptor).setStoredMac(storedMac);
 		}
 	}
 }

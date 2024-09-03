@@ -44,12 +44,12 @@ public final class StandardEncryptor implements Encryptor {
 		if (password == null || password.length == 0) {
 			throw new ZipException(0x0000001B0006L, "Invalid_Password_Zip_Error");
 		}
-		
+
 		this.standardCryptoEngine = new StandardCryptoEngine();
 		this.headerBytes = new byte[Globals.STD_DEC_HDR_SIZE];
 		this.init(password, crc);
 	}
-	
+
 	@Override
 	public void encryptData(byte[] buff) throws ZipException {
 		if (buff == null) {
@@ -63,9 +63,9 @@ public final class StandardEncryptor implements Encryptor {
 		if (len < 0) {
 			throw new ZipException(0x000000FF0001L, "Parameter_Invalid_Error");
 		}
-		
+
 		try {
-			for (int i = start; i <  start + len; i++) {
+			for (int i = start; i < start + len; i++) {
 				buff[i] = encryptByte(buff[i]);
 			}
 		} catch (Exception e) {
@@ -86,32 +86,32 @@ public final class StandardEncryptor implements Encryptor {
 		if (password == null || password.length == 0) {
 			throw new ZipException(0x0000001B0006L, "Invalid_Password_Zip_Error");
 		}
-		
+
 		this.standardCryptoEngine.initKeys(password);
 		this.headerBytes = this.generateRandomBytes();
-		
+
 		this.standardCryptoEngine.initKeys(password);
-		
-		this.headerBytes[Globals.STD_DEC_HDR_SIZE - 1] = (byte)(crc >>> 24);
-		this.headerBytes[Globals.STD_DEC_HDR_SIZE - 2] = (byte)(crc >>> 16);
+
+		this.headerBytes[Globals.STD_DEC_HDR_SIZE - 1] = (byte) (crc >>> 24);
+		this.headerBytes[Globals.STD_DEC_HDR_SIZE - 2] = (byte) (crc >>> 16);
 
 		this.encryptData(this.headerBytes);
 	}
-	
+
 	private byte[] generateRandomBytes() {
 		byte[] buffer = new byte[Globals.STD_DEC_HDR_SIZE];
-		
+
 		Random rand = new Random();
-		
-		for (int i = 0 ; i < Globals.STD_DEC_HDR_SIZE ; i++) {
-			buffer[i] = this.encryptByte((byte)rand.nextInt(256));
+
+		for (int i = 0; i < Globals.STD_DEC_HDR_SIZE; i++) {
+			buffer[i] = this.encryptByte((byte) rand.nextInt(256));
 		}
-		
+
 		return buffer;
 	}
-	
+
 	private byte encryptByte(byte b) {
-		byte temp = (byte)(b ^ this.standardCryptoEngine.processByte() & 0xFF);
+		byte temp = (byte) (b ^ this.standardCryptoEngine.processByte() & 0xFF);
 		this.standardCryptoEngine.updateKeys(b);
 		return temp;
 	}

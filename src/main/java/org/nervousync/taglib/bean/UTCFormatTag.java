@@ -36,55 +36,55 @@ import java.time.format.DateTimeFormatter;
  */
 public final class UTCFormatTag extends TagSupport {
 
-    /**
-     * <span class="en-US">Serial version UID</span>
-     * <span class="zh-CN">序列化UID</span>
-     */
-    private static final long serialVersionUID = 3894229344528675001L;
+	/**
+	 * <span class="en-US">Serial version UID</span>
+	 * <span class="zh-CN">序列化UID</span>
+	 */
+	private static final long serialVersionUID = 3894229344528675001L;
 
-    /**
-     * <span class="en-US">UTC timestamp (unit: milliseconds)</span>
-     * <span class="zh-CN">UTC时间戳（单位：毫秒）</span>
-     */
-    private Long utc = Globals.DEFAULT_VALUE_LONG;
-    /**
-     * <span class="en-US">Pattern string</span>
-     * <span class="zh-CN">格式字符串</span>
-     */
-    private String pattern = Globals.DEFAULT_VALUE_STRING;
+	/**
+	 * <span class="en-US">UTC timestamp (unit: milliseconds)</span>
+	 * <span class="zh-CN">UTC时间戳（单位：毫秒）</span>
+	 */
+	private Long utc = Globals.DEFAULT_VALUE_LONG;
+	/**
+	 * <span class="en-US">Pattern string</span>
+	 * <span class="zh-CN">格式字符串</span>
+	 */
+	private String pattern = Globals.DEFAULT_VALUE_STRING;
 
-    public int doStartTag() throws JspException {
-        if (this.utc != null && this.utc > 0L) {
-            try {
-                JspWriter jspWriter = this.pageContext.getOut();
-                LocalDateTime localDateTime = DateTimeUtils.utcToLocal(this.utc);
-                if (localDateTime != null) {
-                    if (StringUtils.isEmpty(this.pattern)) {
-                        jspWriter.write(localDateTime.toString());
-                    } else {
-                        jspWriter.write(localDateTime.format(DateTimeFormatter.ofPattern(this.pattern)));
-                    }
-                }
-            } catch (Exception e) {
-                throw new JspException(e);
-            }
-        }
-        return SKIP_BODY;
-    }
+	public int doStartTag() throws JspException {
+		if (this.utc != null && this.utc > 0L) {
+			try {
+				JspWriter jspWriter = this.pageContext.getOut();
+				LocalDateTime localDateTime = DateTimeUtils.utcToLocal(this.utc);
+				if (localDateTime != null) {
+					if (StringUtils.isEmpty(this.pattern)) {
+						jspWriter.write(localDateTime.toString());
+					} else {
+						jspWriter.write(localDateTime.format(DateTimeFormatter.ofPattern(this.pattern)));
+					}
+				}
+			} catch (Exception e) {
+				throw new JspException(e);
+			}
+		}
+		return SKIP_BODY;
+	}
 
-    public Long getUtc() {
-        return utc;
-    }
+	public Long getUtc() {
+		return utc;
+	}
 
-    public void setUtc(Long utc) {
-        this.utc = utc;
-    }
+	public void setUtc(Long utc) {
+		this.utc = utc;
+	}
 
-    public String getPattern() {
-        return pattern;
-    }
+	public String getPattern() {
+		return pattern;
+	}
 
-    public void setPattern(String pattern) {
-        this.pattern = pattern;
-    }
+	public void setPattern(String pattern) {
+		this.pattern = pattern;
+	}
 }

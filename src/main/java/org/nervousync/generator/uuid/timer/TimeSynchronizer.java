@@ -24,28 +24,30 @@ package org.nervousync.generator.uuid.timer;
  * @version $Revision: 1.0.0 $ $Date: Jul 06, 2022 12:54:12 $
  */
 public interface TimeSynchronizer {
-    /**
+	/**
 	 * <h3 class="en-US">Initialize current time synchronizer</h3>
 	 * <h3 class="zh-CN">初始化当前时间同步器</h3>
-     *
-     * @return  <span class="en-US">Initialize timestamp value</span>
-     *          <span class="zh-CN">初始时间戳</span>
-     */
-    long initialize();
-    /**
+	 *
+	 * @return <span class="en-US">Initialize timestamp value</span>
+	 * <span class="zh-CN">初始时间戳</span>
+	 */
+	long initialize();
+
+	/**
 	 * <h3 class="en-US">Deactivate current time synchronizer</h3>
 	 * <h3 class="zh-CN">反激活当前时间同步器</h3>
-     */
-    void deactivate();
-    /**
+	 */
+	void deactivate();
+
+	/**
 	 * <h3 class="en-US">Update timestamp of current time synchronizer</h3>
 	 * <h3 class="zh-CN">更新当前时间同步器的时间戳</h3>
-     *
-     * @param currentTimeMillis     <span class="en-US">Update timestamp value</span>
-     *                              <span class="zh-CN">更新时间戳</span>
-     * @return  <span class="en-US">Updated timestamp value</span>
-     *          <span class="zh-CN">更新的时间戳</span>
-     */
-    long update(long currentTimeMillis);
+	 *
+	 * @param currentTimeMillis <span class="en-US">Update timestamp value</span>
+	 *                          <span class="zh-CN">更新时间戳</span>
+	 * @return <span class="en-US">Updated timestamp value</span>
+	 * <span class="zh-CN">更新的时间戳</span>
+	 */
+	long update(long currentTimeMillis);
 
 }

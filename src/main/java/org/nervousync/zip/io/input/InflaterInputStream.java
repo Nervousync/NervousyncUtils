@@ -62,17 +62,17 @@ public class InflaterInputStream extends PartInputStream {
 		this.writeBytes = 0L;
 		this.originalSize = originalSize;
 	}
-	
+
 	public int read() throws IOException {
-		return this.read(this.oneByteBuffer, 0, 1) == Globals.DEFAULT_VALUE_INT ? 
+		return this.read(this.oneByteBuffer, 0, 1) == Globals.DEFAULT_VALUE_INT ?
 				Globals.DEFAULT_VALUE_INT : this.oneByteBuffer[0] & 0xFF;
 	}
-	
+
 	@Override
 	public int read(@Nonnull byte[] b) throws IOException {
 		return this.read(b, 0, b.length);
 	}
-	
+
 	@Override
 	public int read(@Nonnull byte[] b, int off, int len) throws IOException {
 		if (off < 0 || len < 0 || off + len > b.length) {
@@ -80,13 +80,13 @@ public class InflaterInputStream extends PartInputStream {
 		} else if (b.length == 0) {
 			return 0;
 		}
-		
+
 		try {
 			if (this.writeBytes >= this.originalSize) {
 				this.finishInflating();
 				return Globals.DEFAULT_VALUE_INT;
 			}
-			
+
 			int readLength;
 			while ((readLength = this.inflater.inflate(b, off, len)) == 0) {
 				if (this.inflater.finished() || this.inflater.needsDictionary()) {
@@ -98,7 +98,7 @@ public class InflaterInputStream extends PartInputStream {
 					this.fill();
 				}
 			}
-			
+
 			this.writeBytes += readLength;
 			return readLength;
 		} catch (DataFormatException | ZipException e) {
@@ -111,8 +111,8 @@ public class InflaterInputStream extends PartInputStream {
 		if (length < 0L) {
 			throw new IllegalArgumentException("Negative skip length");
 		}
-		
-		int limit = (int)Math.min(length, Integer.MAX_VALUE);
+
+		int limit = (int) Math.min(length, Integer.MAX_VALUE);
 		int total = 0;
 		byte[] b = new byte[512];
 		while (total < limit) {
@@ -133,18 +133,18 @@ public class InflaterInputStream extends PartInputStream {
 	public int available() {
 		return this.inflater.finished() ? 0 : 1;
 	}
-	
+
 	@Override
 	public void close() throws IOException {
 		this.inflater.end();
 		super.close();
 	}
-	
+
 	private void finishInflating() throws IOException, ZipException {
 		super.seekToEnd();
 		this.checkAndReadAESMacBytes();
 	}
-	
+
 	private void fill() throws IOException {
 		int length = super.read(this.buffer, 0, this.buffer.length);
 		if (length == Globals.DEFAULT_VALUE_INT) {

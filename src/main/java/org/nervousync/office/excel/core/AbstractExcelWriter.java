@@ -34,48 +34,48 @@ import java.io.OutputStream;
  */
 public abstract class AbstractExcelWriter implements ExcelWriter {
 
-    /**
-     * <span class="en-US">Multilingual supported logger instance</span>
-     * <span class="zh-CN">多语言支持的日志对象</span>
-     */
-    protected transient final LoggerUtils.Logger logger = LoggerUtils.getLogger(this.getClass());
-    /**
-     * <span class="en-US">Excel workbook instance object</span>
-     * <span class="zh-CN">Excel工作簿实例对象</span>
-     */
-    protected final Workbook workbook;
+	/**
+	 * <span class="en-US">Multilingual supported logger instance</span>
+	 * <span class="zh-CN">多语言支持的日志对象</span>
+	 */
+	protected transient final LoggerUtils.Logger logger = LoggerUtils.getLogger(this.getClass());
+	/**
+	 * <span class="en-US">Excel workbook instance object</span>
+	 * <span class="zh-CN">Excel工作簿实例对象</span>
+	 */
+	protected final Workbook workbook;
 
-    /**
-     * <h3 class="en-US">Constructor method for excel writer</h3>
-     * <h3 class="zh-CN">写入器构造方法</h3>
-     *
-     * @param workbook <span class="en-US">Excel workbook instance object</span>
-     *                 <span class="zh-CN">Excel工作簿实例对象</span>
-     */
-    protected AbstractExcelWriter(final Workbook workbook) {
-        this.workbook = workbook;
-    }
+	/**
+	 * <h3 class="en-US">Constructor method for excel writer</h3>
+	 * <h3 class="zh-CN">写入器构造方法</h3>
+	 *
+	 * @param workbook <span class="en-US">Excel workbook instance object</span>
+	 *                 <span class="zh-CN">Excel工作簿实例对象</span>
+	 */
+	protected AbstractExcelWriter(final Workbook workbook) {
+		this.workbook = workbook;
+	}
 
-    /**
-     * <h3 class="en-US">Write data to the given output stream</h3>
-     * <h3 class="zh-CN">将数据写入到给定的输出流中</h3>
-     *
-     * @param outputStream <span class="en-US">Data output stream instance object</span>
-     *                     <span class="zh-CN">数据输出流实例对象</span>
-     * @throws IOException <span class="en-US">An error occurred while writing data to the output stream</span>
-     *                     <span class="zh-CN">写入数据到输出流时出错</span>
-     */
-    @Override
-    public void write(final OutputStream outputStream) throws IOException {
-        this.workbook.write(outputStream);
-    }
+	/**
+	 * <h3 class="en-US">Write data to the given output stream</h3>
+	 * <h3 class="zh-CN">将数据写入到给定的输出流中</h3>
+	 *
+	 * @param outputStream <span class="en-US">Data output stream instance object</span>
+	 *                     <span class="zh-CN">数据输出流实例对象</span>
+	 * @throws IOException <span class="en-US">An error occurred while writing data to the output stream</span>
+	 *                     <span class="zh-CN">写入数据到输出流时出错</span>
+	 */
+	@Override
+	public void write(final OutputStream outputStream) throws IOException {
+		this.workbook.write(outputStream);
+	}
 
-    /**
-     * <h3 class="en-US">Close current data writer</h3>
-     * <h3 class="zh-CN">关闭当前数据写入器</h3>
-     */
-    @Override
-    public final void close() {
-        IOUtils.closeStream(this.workbook);
-    }
+	/**
+	 * <h3 class="en-US">Close current data writer</h3>
+	 * <h3 class="zh-CN">关闭当前数据写入器</h3>
+	 */
+	@Override
+	public final void close() {
+		IOUtils.closeStream(this.workbook);
+	}
 }

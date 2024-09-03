@@ -29,7 +29,7 @@ import org.nervousync.zip.crypto.Encryptor;
  * @version $Revision: 1.0.0 $ $Date: Nov 30, 2017 3:42:11 PM $
  */
 public final class AESEncryptor extends AESCrypto implements Encryptor {
-	
+
 	private boolean finished = Boolean.FALSE;
 
 	/**
@@ -57,13 +57,13 @@ public final class AESEncryptor extends AESCrypto implements Encryptor {
 		if (this.finished) {
 			throw new ZipException(0x0000001B0012L, "Finished_Encryptor_AES_Zip_Error");
 		}
-		
+
 		if (len % 16 != 0) {
 			this.finished = Boolean.TRUE;
 		}
 
 		try {
-			for (int i = start ; i < (start + len) ; i += Globals.AES_BLOCK_SIZE) {
+			for (int i = start; i < (start + len); i += Globals.AES_BLOCK_SIZE) {
 				this.loopCount =
 						(i + Globals.AES_BLOCK_SIZE <= (start + len))
 								? Globals.AES_BLOCK_SIZE

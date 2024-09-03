@@ -75,7 +75,7 @@ public final class CutOptions {
 	 *                  <span class="zh-CN">剪切后的宽度</span>
 	 * @param cutHeight <span class="en-US">Cut height value</span>
 	 *                  <span class="zh-CN">剪切后的高度</span>
-	 * @return    <span class="en-US">Initialized CutOptions instance</span>
+	 * @return <span class="en-US">Initialized CutOptions instance</span>
 	 * <span class="en-US">初始化的CutOptions实例对象</span>
 	 */
 	public static CutOptions newInstance(final int cutWidth, final int cutHeight) {
@@ -94,7 +94,7 @@ public final class CutOptions {
 	 *                  <span class="zh-CN">剪切后的宽度</span>
 	 * @param cutHeight <span class="en-US">Cut height value</span>
 	 *                  <span class="zh-CN">剪切后的高度</span>
-	 * @return    <span class="en-US">Initialized CutOptions instance</span>
+	 * @return <span class="en-US">Initialized CutOptions instance</span>
 	 * <span class="en-US">初始化的CutOptions实例对象</span>
 	 */
 	public static CutOptions newInstance(final int positionX, final int positionY,

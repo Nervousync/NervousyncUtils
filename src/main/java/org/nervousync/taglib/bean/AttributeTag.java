@@ -31,47 +31,47 @@ import org.nervousync.utils.StringUtils;
  */
 public final class AttributeTag extends TagSupport {
 
-    /**
-     * <span class="en-US">Serial version UID</span>
-     * <span class="zh-CN">序列化UID</span>
-     */
-    private static final long serialVersionUID = 8562690095965761722L;
-    /**
-     * <span class="en-US">Property name, if this value is null or empty string, the value of id is used</span>
-     * <span class="zh-CN">属性名称，如果此值为null或空字符串，则使用id的值</span>
-     */
-    private String name = Globals.DEFAULT_VALUE_STRING;
-    /**
-     * <span class="en-US">set attribute value</span>
-     * <span class="zh-CN">设置的属性值</span>
-     */
-    private Object value = null;
+	/**
+	 * <span class="en-US">Serial version UID</span>
+	 * <span class="zh-CN">序列化UID</span>
+	 */
+	private static final long serialVersionUID = 8562690095965761722L;
+	/**
+	 * <span class="en-US">Property name, if this value is null or empty string, the value of id is used</span>
+	 * <span class="zh-CN">属性名称，如果此值为null或空字符串，则使用id的值</span>
+	 */
+	private String name = Globals.DEFAULT_VALUE_STRING;
+	/**
+	 * <span class="en-US">set attribute value</span>
+	 * <span class="zh-CN">设置的属性值</span>
+	 */
+	private Object value = null;
 
-    @Override
-    public int doStartTag() {
-        if (this.value != null) {
-            HttpServletRequest request = (HttpServletRequest) this.pageContext.getRequest();
-            String attributeName = StringUtils.isEmpty(this.name) ? this.id : this.name;
-            if (StringUtils.notBlank(attributeName)) {
-                request.setAttribute(attributeName, this.value);
-            }
-        }
-        return SKIP_BODY;
-    }
+	@Override
+	public int doStartTag() {
+		if (this.value != null) {
+			HttpServletRequest request = (HttpServletRequest) this.pageContext.getRequest();
+			String attributeName = StringUtils.isEmpty(this.name) ? this.id : this.name;
+			if (StringUtils.notBlank(attributeName)) {
+				request.setAttribute(attributeName, this.value);
+			}
+		}
+		return SKIP_BODY;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public Object getValue() {
-        return value;
-    }
+	public Object getValue() {
+		return value;
+	}
 
-    public void setValue(Object value) {
-        this.value = value;
-    }
+	public void setValue(Object value) {
+		this.value = value;
+	}
 }

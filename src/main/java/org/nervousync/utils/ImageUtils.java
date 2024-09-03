@@ -38,8 +38,8 @@ import java.util.Optional;
  */
 public final class ImageUtils {
 	/**
-     * <span class="en-US">Multilingual supported logger instance</span>
-     * <span class="zh-CN">多语言支持的日志对象</span>
+	 * <span class="en-US">Multilingual supported logger instance</span>
+	 * <span class="zh-CN">多语言支持的日志对象</span>
 	 */
 	private static final LoggerUtils.Logger LOGGER = LoggerUtils.getLogger(ImageUtils.class);
 

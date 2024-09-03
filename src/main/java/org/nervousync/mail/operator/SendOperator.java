@@ -28,18 +28,17 @@ import java.util.Properties;
  * @version $Revision: 1.0.0 $ $Date: Dec 10, 2019 15:49:52 $
  */
 public interface SendOperator {
-    /**
-     * <h3 class="en-US">Convert given e-mail server configure instance to Properties instance</h3>
-     * <p class="en-US">Generated Properties instance is using for connect to E-mail server </p>
-     * <h3 class="zh-CN">转换给定的电子邮件配置实例对象为Properties实例对象</h3>
-     * <p class="zh-CN">生成的Properties实例对象用于连接到电子邮件服务器</p>
-     *
-     * @param serverConfig      <span class="en-US">Server configure information</span>
-     *                          <span class="zh-CN">服务器配置</span>
-     *
-     * @return  <span class="en-US">Generated Properties instance</span>
-     *          <span class="zh-CN">生成的Properties实例对象</span>
-     */
-    Properties readConfig(final MailConfig.ServerConfig serverConfig);
+	/**
+	 * <h3 class="en-US">Convert given e-mail server configure instance to Properties instance</h3>
+	 * <p class="en-US">Generated Properties instance is using for connect to E-mail server </p>
+	 * <h3 class="zh-CN">转换给定的电子邮件配置实例对象为Properties实例对象</h3>
+	 * <p class="zh-CN">生成的Properties实例对象用于连接到电子邮件服务器</p>
+	 *
+	 * @param serverConfig <span class="en-US">Server configure information</span>
+	 *                     <span class="zh-CN">服务器配置</span>
+	 * @return <span class="en-US">Generated Properties instance</span>
+	 * <span class="zh-CN">生成的Properties实例对象</span>
+	 */
+	Properties readConfig(final MailConfig.ServerConfig serverConfig);
 
 }

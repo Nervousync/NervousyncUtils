@@ -19,21 +19,22 @@ package org.nervousync.launcher;
 /**
  * <h2 class="en-US">Interface class for startup launcher</h2>
  * <span class="en-US">
- *     Launcher class must implement current interface and add annotation
- *     org.nervousync.annotations.launcher.Launcher at launcher class.
- *     StartupManager will load launcher instance by Java SPI, and invoke startup method at system start,
- *     invoke destroy method at system shutdown.
- *     Users can add parameter value (type: int) at annotation org.nervousync.annotations.launcher.Launcher
- *     to move the sort of launcher execute, sort type: DESC
+ * Launcher class must implement current interface and add annotation
+ * org.nervousync.annotations.launcher.Launcher at launcher class.
+ * StartupManager will load launcher instance by Java SPI, and invoke startup method at system start,
+ * invoke destroy method at system shutdown.
+ * Users can add parameter value (type: int) at annotation org.nervousync.annotations.launcher.Launcher
+ * to move the sort of launcher execute, sort type: DESC
  * </span>
  * <h2 class="zh-CN">启动器接口</h2>
  * <span class="zh-CN">
- *     启动器实现类必须实现当前接口并添加注解org.nervousync.annotations.launcher.Launcher到启动器实现类上。
- *     启动管理器会使用Java的SPI机制自动加载所有启动器实例，启动管理器会在系统启动时调用startup方法，在系统退出时调用destroy方法。
- *     用户可以通过设置一个int类型的参数值在注解org.nervousync.annotations.launcher.Launcher上，
- *     用于调整启动器的执行顺序，排序方式为：倒叙
+ * 启动器实现类必须实现当前接口并添加注解org.nervousync.annotations.launcher.Launcher到启动器实现类上。
+ * 启动管理器会使用Java的SPI机制自动加载所有启动器实例，启动管理器会在系统启动时调用startup方法，在系统退出时调用destroy方法。
+ * 用户可以通过设置一个int类型的参数值在注解org.nervousync.annotations.launcher.Launcher上，
+ * 用于调整启动器的执行顺序，排序方式为：倒叙
  * </span>
- *.0
+ * .0
+ *
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
  * @version $Revision: 1.0.0 $ $Date: Nov 3, 2017 16:39:41 $
  */

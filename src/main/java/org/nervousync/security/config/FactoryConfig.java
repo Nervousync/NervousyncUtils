@@ -33,12 +33,12 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "secure_factory", namespace = "https://nervousync.org/schemas/secure")
 @XmlAccessorType(XmlAccessType.NONE)
 public final class FactoryConfig extends AbstractConfig {
-    /**
-     * <span class="en-US">Serial version UID</span>
-     * <span class="zh-CN">序列化UID</span>
-     */
-    private static final long serialVersionUID = 5989686893171586402L;
+	/**
+	 * <span class="en-US">Serial version UID</span>
+	 * <span class="zh-CN">序列化UID</span>
+	 */
+	private static final long serialVersionUID = 5989686893171586402L;
 
-    public FactoryConfig() {
-    }
+	public FactoryConfig() {
+	}
 }

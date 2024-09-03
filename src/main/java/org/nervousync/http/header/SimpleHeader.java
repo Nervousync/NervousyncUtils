@@ -25,44 +25,47 @@ package org.nervousync.http.header;
  */
 public final class SimpleHeader {
 	/**
-     * <span class="en-US">Header name</span>
-     * <span class="zh-CN">Header名</span>
+	 * <span class="en-US">Header name</span>
+	 * <span class="zh-CN">Header名</span>
 	 */
 	private final String headerName;
 	/**
-     * <span class="en-US">Header value</span>
-     * <span class="zh-CN">Header值</span>
+	 * <span class="en-US">Header value</span>
+	 * <span class="zh-CN">Header值</span>
 	 */
 	private final String headerValue;
+
 	/**
 	 * <h3 class="en-US">Constructor method for SimpleHeader</h3>
 	 * <h3 class="zh-CN">SimpleHeader构造方法</h3>
 	 *
-	 * @param headerName 	<span class="en-US">Header name</span>
-     * 						<span class="zh-CN">Header名</span>
-	 * @param headerValue 	<span class="en-US">Header value</span>
-     * 						<span class="zh-CN">Header值</span>
+	 * @param headerName  <span class="en-US">Header name</span>
+	 *                    <span class="zh-CN">Header名</span>
+	 * @param headerValue <span class="en-US">Header value</span>
+	 *                    <span class="zh-CN">Header值</span>
 	 */
 	public SimpleHeader(String headerName, String headerValue) {
 		this.headerName = headerName;
 		this.headerValue = headerValue;
 	}
+
 	/**
 	 * <h3 class="en-US">Getter method for header name</h3>
 	 * <h3 class="zh-CN">Header名的Getter方法</h3>
 	 *
-	 * @return 	<span class="en-US">Header name</span>
-     * 			<span class="zh-CN">Header名</span>
+	 * @return <span class="en-US">Header name</span>
+	 * <span class="zh-CN">Header名</span>
 	 */
 	public String getHeaderName() {
 		return headerName;
 	}
+
 	/**
 	 * <h3 class="en-US">Getter method for header value</h3>
 	 * <h3 class="zh-CN">Header值的Getter方法</h3>
 	 *
-     * @return 	<span class="en-US">Header value</span>
-     * 			<span class="zh-CN">Header值</span>
+	 * @return <span class="en-US">Header value</span>
+	 * <span class="zh-CN">Header值</span>
 	 */
 	public String getHeaderValue() {
 		return headerValue;

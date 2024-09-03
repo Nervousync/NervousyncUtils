@@ -32,14 +32,14 @@ import java.lang.annotation.*;
 @Target({ElementType.FIELD})
 public @interface BeanProperties {
 
-    /**
+	/**
 	 * <h3 class="en-US">BeanProperty annotation array</h3>
 	 * <h3 class="zh-CN">BeanProperty注解数组</h3>
-     *
-     * @see org.nervousync.annotations.beans.BeanProperty
-     * @return  <span class="en-US">BeanProperty annotation arrays</span>
-     *          <span class="zh-CN">BeanProperty注解数组</span>
-     */
-    BeanProperty[] value();
+	 *
+	 * @return <span class="en-US">BeanProperty annotation arrays</span>
+	 * <span class="zh-CN">BeanProperty注解数组</span>
+	 * @see org.nervousync.annotations.beans.BeanProperty
+	 */
+	BeanProperty[] value();
 
 }

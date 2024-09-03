@@ -50,12 +50,12 @@ public class StandardDecryptor implements Decryptor {
 				|| localFileHeader.getPassword().length == 0) {
 			throw new ZipException(0x0000001B000DL, "Wrong_Password_Zip_Error");
 		}
-		
+
 		this.standardCryptoEngine.initKeys(localFileHeader.getPassword());
 
 		int result = decryptorHeader[0];
-		for (int i = 0; i < Globals.STD_DEC_HDR_SIZE ; i++) {
-			this.standardCryptoEngine.updateKeys((byte)(result ^ this.standardCryptoEngine.processByte()));
+		for (int i = 0; i < Globals.STD_DEC_HDR_SIZE; i++) {
+			this.standardCryptoEngine.updateKeys((byte) (result ^ this.standardCryptoEngine.processByte()));
 			if ((i + 1) != Globals.STD_DEC_HDR_SIZE) {
 				result = decryptorHeader[i + 1];
 			}
@@ -66,18 +66,18 @@ public class StandardDecryptor implements Decryptor {
 	public int decryptData(byte[] buff) throws ZipException {
 		return this.decryptData(buff, 0, buff.length);
 	}
-	
+
 	@Override
 	public int decryptData(byte[] buff, int start, int len) throws ZipException {
 		if (start < 0 || len < 0) {
 			throw new ZipException(0x000000FF0001L, "Parameter_Invalid_Error");
 		}
 		try {
-			for (int i = start ; i < start + len ; i++) {
+			for (int i = start; i < start + len; i++) {
 				int value = buff[i] & 0xFF;
 				value = (value ^ this.standardCryptoEngine.processByte()) & 0xFF;
-				this.standardCryptoEngine.updateKeys((byte)value);
-				buff[i] = (byte)value;
+				this.standardCryptoEngine.updateKeys((byte) value);
+				buff[i] = (byte) value;
 			}
 			return len;
 		} catch (Exception e) {

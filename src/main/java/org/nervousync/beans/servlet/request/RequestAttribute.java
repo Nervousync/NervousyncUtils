@@ -45,14 +45,14 @@ public final class RequestAttribute {
 	/**
 	 * <h3 class="en-US">Constructor for RequestAttribute</h3>
 	 * <p class="en-US">
-	 *     Parse given HttpServletRequest instance, read session id,
-	 *     all exists attributes and put attributes key-value map into field attributeMap
+	 * Parse given HttpServletRequest instance, read session id,
+	 * all exists attributes and put attributes key-value map into field attributeMap
 	 * </p>
 	 * <h3 class="zh-CN">RequestAttribute的构造方法</h3>
 	 * <p class="zh-CN">解析给定的HttpServletRequest实例对象，读取会话ID，将所有存在的属性键值对放入attributeMap</p>
 	 *
-	 * @param request	<span class="en-US">HttpServletRequest instance, must not be null</span>
-	 *                  <span class="en-US">HttpServletRequest实例对象，不允许为null</span>
+	 * @param request <span class="en-US">HttpServletRequest instance, must not be null</span>
+	 *                <span class="en-US">HttpServletRequest实例对象，不允许为null</span>
 	 */
 	public RequestAttribute(@Nonnull final HttpServletRequest request) {
 		this.sessionId = request.getSession().getId();
@@ -65,6 +65,7 @@ public final class RequestAttribute {
 			this.attributeMap.put(name, request.getAttribute(name));
 		}
 	}
+
 	/**
 	 * <h3 class="en-US">Getter method for Session ID</h3>
 	 * <h3 class="zh-CN">会话ID的Getter方法</h3>
@@ -72,6 +73,7 @@ public final class RequestAttribute {
 	public String getSessionId() {
 		return sessionId;
 	}
+
 	/**
 	 * <h3 class="en-US">Getter method for attribute map</h3>
 	 * <h3 class="zh-CN">属性键值映射表的Getter方法</h3>

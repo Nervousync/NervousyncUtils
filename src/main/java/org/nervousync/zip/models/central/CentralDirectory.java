@@ -125,8 +125,8 @@ public final class CentralDirectory {
 	 */
 	public int retrieveIndexOfGeneralFileHeader(GeneralFileHeader generalFileHeader) {
 		if (this.fileHeaders != null && !this.fileHeaders.isEmpty()) {
-			for (int index = 0 ; index < this.fileHeaders.size() ; index++) {
-				if (FileUtils.matchFilePath(generalFileHeader.getEntryPath(), 
+			for (int index = 0; index < this.fileHeaders.size(); index++) {
+				if (FileUtils.matchFilePath(generalFileHeader.getEntryPath(),
 						this.fileHeaders.get(index).getEntryPath(), true)) {
 					return index;
 				}

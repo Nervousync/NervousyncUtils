@@ -415,8 +415,8 @@ public final class BeanTest extends BaseTest {
         @BeanProperties(@BeanProperty(targetBean = BeanTwo.class, targetField = "beanInner"))
         private InnerBean innerBean;
         @BeanProperty(targetBean = BeanThree.class, targetField = "base64Data", transfer = @DataTransfer(adapter = Base64Adapter.class))
-        @BeanProperty(targetBean = BeanFour.class, targetField = "base32Data", transfer = @DataTransfer(adapter = Base32Adapter.class))
         private byte[] beanOneBytes;
+        @BeanProperty(targetBean = BeanFour.class, targetField = "base32Data", transfer = @DataTransfer(adapter = Base32Adapter.class))
         private byte[] base32Bytes;
         @BeanProperty(targetBean = BeanThree.class, targetField = "booleanString", transfer = @DataTransfer(adapter = BooleanAdapter.class))
         @BeanProperty(targetBean = BeanFour.class, targetField = "beanFourBoolean")
@@ -426,9 +426,9 @@ public final class BeanTest extends BaseTest {
                 transfer = @DataTransfer(adapter = JsonBeanAdapter.class, initParam = "org.nervousync.test.utils.BeanTest$DataBean"))
         @BeanProperty(targetBean = BeanFour.class, targetField = "xmlString",
                 transfer = @DataTransfer(adapter = XmlBeanAdapter.class, initParam = "org.nervousync.test.utils.BeanTest$DataBean"))
+        private DataBean dataBean;
         @BeanProperty(targetBean = BeanFive.class, targetField = "yamlString",
                 transfer = @DataTransfer(adapter = YamlBeanAdapter.class, initParam = "org.nervousync.test.utils.BeanTest$DataBean"))
-        private DataBean dataBean;
         private DataBean fromBean;
 
         public BigInteger getBigDecimal() {

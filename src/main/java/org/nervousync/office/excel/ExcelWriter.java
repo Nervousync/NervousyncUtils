@@ -30,35 +30,35 @@ import java.io.OutputStream;
  */
 public interface ExcelWriter extends Closeable {
 
-    /**
-     * <h3 class="en-US">Write data to disk</h3>
-     * <h3 class="zh-CN">将数据写入到磁盘</h3>
-     *
-     * @throws IOException <span class="en-US">An error occurred while writing data to disk</span>
-     *                     <span class="zh-CN">写入数据到磁盘时出错</span>
-     */
-    void write() throws IOException;
+	/**
+	 * <h3 class="en-US">Write data to disk</h3>
+	 * <h3 class="zh-CN">将数据写入到磁盘</h3>
+	 *
+	 * @throws IOException <span class="en-US">An error occurred while writing data to disk</span>
+	 *                     <span class="zh-CN">写入数据到磁盘时出错</span>
+	 */
+	void write() throws IOException;
 
-    /**
-     * <h3 class="en-US">Write data to the given output stream</h3>
-     * <h3 class="zh-CN">将数据写入到给定的输出流中</h3>
-     *
-     * @param outputStream <span class="en-US">Data output stream instance object</span>
-     *                     <span class="zh-CN">数据输出流实例对象</span>
-     * @throws IOException <span class="en-US">An error occurred while writing data to the output stream</span>
-     *                     <span class="zh-CN">写入数据到输出流时出错</span>
-     */
-    void write(final OutputStream outputStream) throws IOException;
+	/**
+	 * <h3 class="en-US">Write data to the given output stream</h3>
+	 * <h3 class="zh-CN">将数据写入到给定的输出流中</h3>
+	 *
+	 * @param outputStream <span class="en-US">Data output stream instance object</span>
+	 *                     <span class="zh-CN">数据输出流实例对象</span>
+	 * @throws IOException <span class="en-US">An error occurred while writing data to the output stream</span>
+	 *                     <span class="zh-CN">写入数据到输出流时出错</span>
+	 */
+	void write(final OutputStream outputStream) throws IOException;
 
-    /**
-     * <h3 class="en-US">Get the sheet writer instance object of the given data table name</h3>
-     * <h3 class="zh-CN">获取给定数据表名的数据写入器实例对象</h3>
-     *
-     * @param sheetName <span class="en-US">Data sheet name</span>
-     *                  <span class="zh-CN">数据表名称</span>
-     * @return <span class="en-US">Sheet writer instance object</span>
-     * <span class="zh-CN">数据写入器实例对象</span>
-     */
-    SheetWriter sheetWriter(final String sheetName);
+	/**
+	 * <h3 class="en-US">Get the sheet writer instance object of the given data table name</h3>
+	 * <h3 class="zh-CN">获取给定数据表名的数据写入器实例对象</h3>
+	 *
+	 * @param sheetName <span class="en-US">Data sheet name</span>
+	 *                  <span class="zh-CN">数据表名称</span>
+	 * @return <span class="en-US">Sheet writer instance object</span>
+	 * <span class="zh-CN">数据写入器实例对象</span>
+	 */
+	SheetWriter sheetWriter(final String sheetName);
 
 }

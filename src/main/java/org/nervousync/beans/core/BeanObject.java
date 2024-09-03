@@ -51,195 +51,195 @@ import java.util.Optional;
 @XmlAccessorType(XmlAccessType.NONE)
 @OutputConfig(type = StringUtils.StringType.XML, formatted = true)
 public abstract class BeanObject implements Serializable {
-    /**
-     * <span class="en-US">Serial version UID</span>
-     * <span class="zh-CN">序列化UID</span>
-     */
-    private static final long serialVersionUID = 6900853002518080456L;
-    /**
-     * <span class="en-US">Multilingual supported logger instance</span>
-     * <span class="zh-CN">多语言支持的日志对象</span>
-     */
-    protected transient final LoggerUtils.Logger logger = LoggerUtils.getLogger(this.getClass());
+	/**
+	 * <span class="en-US">Serial version UID</span>
+	 * <span class="zh-CN">序列化UID</span>
+	 */
+	private static final long serialVersionUID = 6900853002518080456L;
+	/**
+	 * <span class="en-US">Multilingual supported logger instance</span>
+	 * <span class="zh-CN">多语言支持的日志对象</span>
+	 */
+	protected transient final LoggerUtils.Logger logger = LoggerUtils.getLogger(this.getClass());
 
-    /**
-     * <h3 class="en-US">Convert current object to not formatted JSON string</h3>
-     * <h3 class="zh-CN">转换当前实例对象为未经格式化的JSON字符串</h3>
-     *
-     * @return <span class="en-US">Converted JSON string</span>
-     * <span class="zh-CN">转换后的JSON字符串</span>
-     */
-    public final String toJson() {
-        return StringUtils.objectToString(this, StringUtils.StringType.JSON, Boolean.FALSE);
-    }
+	/**
+	 * <h3 class="en-US">Convert current object to not formatted JSON string</h3>
+	 * <h3 class="zh-CN">转换当前实例对象为未经格式化的JSON字符串</h3>
+	 *
+	 * @return <span class="en-US">Converted JSON string</span>
+	 * <span class="zh-CN">转换后的JSON字符串</span>
+	 */
+	public final String toJson() {
+		return StringUtils.objectToString(this, StringUtils.StringType.JSON, Boolean.FALSE);
+	}
 
-    /**
-     * <h3 class="en-US">Convert current object to formatted JSON string</h3>
-     * <h3 class="zh-CN">转换当前实例对象为格式化的JSON字符串</h3>
-     *
-     * @return <span class="en-US">Converted JSON string</span>
-     * <span class="zh-CN">转换后的JSON字符串</span>
-     */
-    public final String toFormattedJson() {
-        return StringUtils.objectToString(this, StringUtils.StringType.JSON, Boolean.TRUE);
-    }
+	/**
+	 * <h3 class="en-US">Convert current object to formatted JSON string</h3>
+	 * <h3 class="zh-CN">转换当前实例对象为格式化的JSON字符串</h3>
+	 *
+	 * @return <span class="en-US">Converted JSON string</span>
+	 * <span class="zh-CN">转换后的JSON字符串</span>
+	 */
+	public final String toFormattedJson() {
+		return StringUtils.objectToString(this, StringUtils.StringType.JSON, Boolean.TRUE);
+	}
 
-    /**
-     * <h3 class="en-US">Convert current object to not formatted YAML string</h3>
-     * <h3 class="zh-CN">转换当前实例对象为未经格式化的YAML字符串</h3>
-     *
-     * @return <span class="en-US">Converted YAML string</span>
-     * <span class="zh-CN">转换后的YAML字符串</span>
-     */
-    public final String toYaml() {
-        return StringUtils.objectToString(this, StringUtils.StringType.YAML, Boolean.FALSE);
-    }
+	/**
+	 * <h3 class="en-US">Convert current object to not formatted YAML string</h3>
+	 * <h3 class="zh-CN">转换当前实例对象为未经格式化的YAML字符串</h3>
+	 *
+	 * @return <span class="en-US">Converted YAML string</span>
+	 * <span class="zh-CN">转换后的YAML字符串</span>
+	 */
+	public final String toYaml() {
+		return StringUtils.objectToString(this, StringUtils.StringType.YAML, Boolean.FALSE);
+	}
 
-    /**
-     * <h3 class="en-US">Convert current object to formatted YAML string</h3>
-     * <h3 class="zh-CN">转换当前实例对象为格式化的YAML字符串</h3>
-     *
-     * @return <span class="en-US">Converted JSON string</span>
-     * <span class="zh-CN">转换后的JSON字符串</span>
-     */
-    public final String toFormattedYaml() {
-        return StringUtils.objectToString(this, StringUtils.StringType.YAML, Boolean.TRUE);
-    }
+	/**
+	 * <h3 class="en-US">Convert current object to formatted YAML string</h3>
+	 * <h3 class="zh-CN">转换当前实例对象为格式化的YAML字符串</h3>
+	 *
+	 * @return <span class="en-US">Converted JSON string</span>
+	 * <span class="zh-CN">转换后的JSON字符串</span>
+	 */
+	public final String toFormattedYaml() {
+		return StringUtils.objectToString(this, StringUtils.StringType.YAML, Boolean.TRUE);
+	}
 
-    /**
-     * <h3 class="en-US">Convert current object to not formatted XML string</h3>
-     * <h3 class="zh-CN">转换当前实例对象为未经格式化的XML字符串</h3>
-     *
-     * @return <span class="en-US">Converted XML string, or empty string "" if an error occurs</span>
-     * <span class="zh-CN">转换后的XML字符串，如果转换过程中出现异常则返回空字符串</span>
-     */
-    public final String toXML() {
-        return this.toXML(Boolean.FALSE);
-    }
+	/**
+	 * <h3 class="en-US">Convert current object to not formatted XML string</h3>
+	 * <h3 class="zh-CN">转换当前实例对象为未经格式化的XML字符串</h3>
+	 *
+	 * @return <span class="en-US">Converted XML string, or empty string "" if an error occurs</span>
+	 * <span class="zh-CN">转换后的XML字符串，如果转换过程中出现异常则返回空字符串</span>
+	 */
+	public final String toXML() {
+		return this.toXML(Boolean.FALSE);
+	}
 
-    /**
-     * <h3 class="en-US">Convert current object to XML string</h3>
-     * <h3 class="zh-CN">转换当前实例对象为XML字符串</h3>
-     *
-     * @param formattedOutput <span class="en-US">Output formatted XML string status. <code>TRUE</code> or <code>FALSE</code></span>
-     *                        <span class="zh-CN">输出格式化的XML字符串状态。<code>TRUE</code>或<code>FALSE</code></span>
-     * @return <span class="en-US">Converted XML string, or empty string "" if an error occurs</span>
-     * <span class="zh-CN">转换后的XML字符串，如果转换过程中出现异常则返回空字符串</span>
-     */
-    public final String toXML(final boolean formattedOutput) {
-        return this.toXML(Boolean.TRUE, formattedOutput);
-    }
+	/**
+	 * <h3 class="en-US">Convert current object to XML string</h3>
+	 * <h3 class="zh-CN">转换当前实例对象为XML字符串</h3>
+	 *
+	 * @param formattedOutput <span class="en-US">Output formatted XML string status. <code>TRUE</code> or <code>FALSE</code></span>
+	 *                        <span class="zh-CN">输出格式化的XML字符串状态。<code>TRUE</code>或<code>FALSE</code></span>
+	 * @return <span class="en-US">Converted XML string, or empty string "" if an error occurs</span>
+	 * <span class="zh-CN">转换后的XML字符串，如果转换过程中出现异常则返回空字符串</span>
+	 */
+	public final String toXML(final boolean formattedOutput) {
+		return this.toXML(Boolean.TRUE, formattedOutput);
+	}
 
-    /**
-     * <h3 class="en-US">Convert current object to XML string</h3>
-     * <h3 class="zh-CN">转换当前实例对象为XML字符串</h3>
-     *
-     * @param formattedOutput <span class="en-US">Output formatted XML string status. <code>TRUE</code> or <code>FALSE</code></span>
-     *                        <span class="zh-CN">输出格式化的XML字符串状态。<code>TRUE</code>或<code>FALSE</code></span>
-     * @param encoding        <span class="en-US">Output string encoding</span>
-     *                        <span class="zh-CN">输出字符串使用的字符集</span>
-     * @return <span class="en-US">Converted XML string, or empty string "" if an error occurs</span>
-     * <span class="zh-CN">转换后的XML字符串，如果转换过程中出现异常则返回空字符串</span>
-     */
-    public final String toXML(final boolean formattedOutput, final String encoding) {
-        return this.toXML(Boolean.TRUE, formattedOutput, encoding);
-    }
+	/**
+	 * <h3 class="en-US">Convert current object to XML string</h3>
+	 * <h3 class="zh-CN">转换当前实例对象为XML字符串</h3>
+	 *
+	 * @param formattedOutput <span class="en-US">Output formatted XML string status. <code>TRUE</code> or <code>FALSE</code></span>
+	 *                        <span class="zh-CN">输出格式化的XML字符串状态。<code>TRUE</code>或<code>FALSE</code></span>
+	 * @param encoding        <span class="en-US">Output string encoding</span>
+	 *                        <span class="zh-CN">输出字符串使用的字符集</span>
+	 * @return <span class="en-US">Converted XML string, or empty string "" if an error occurs</span>
+	 * <span class="zh-CN">转换后的XML字符串，如果转换过程中出现异常则返回空字符串</span>
+	 */
+	public final String toXML(final boolean formattedOutput, final String encoding) {
+		return this.toXML(Boolean.TRUE, formattedOutput, encoding);
+	}
 
-    /**
-     * <h3 class="en-US">Convert current object to XML string</h3>
-     * <h3 class="zh-CN">转换当前实例对象为XML字符串</h3>
-     *
-     * @param outputFragment  <span class="en-US">Output XML fragment status. <code>TRUE</code> or <code>FALSE</code></span>
-     *                        <span class="zh-CN">输出的XML声明字符串状态。<code>TRUE</code>或<code>FALSE</code></span>
-     * @param formattedOutput <span class="en-US">Output formatted XML string status. <code>TRUE</code> or <code>FALSE</code></span>
-     *                        <span class="zh-CN">输出格式化的XML字符串状态。<code>TRUE</code>或<code>FALSE</code></span>
-     * @return <span class="en-US">Converted XML string, or empty string "" if an error occurs</span>
-     * <span class="zh-CN">转换后的XML字符串，如果转换过程中出现异常则返回空字符串</span>
-     */
-    public final String toXML(final boolean outputFragment, final boolean formattedOutput) {
-        return this.toXML(outputFragment, formattedOutput, Globals.DEFAULT_ENCODING);
-    }
+	/**
+	 * <h3 class="en-US">Convert current object to XML string</h3>
+	 * <h3 class="zh-CN">转换当前实例对象为XML字符串</h3>
+	 *
+	 * @param outputFragment  <span class="en-US">Output XML fragment status. <code>TRUE</code> or <code>FALSE</code></span>
+	 *                        <span class="zh-CN">输出的XML声明字符串状态。<code>TRUE</code>或<code>FALSE</code></span>
+	 * @param formattedOutput <span class="en-US">Output formatted XML string status. <code>TRUE</code> or <code>FALSE</code></span>
+	 *                        <span class="zh-CN">输出格式化的XML字符串状态。<code>TRUE</code>或<code>FALSE</code></span>
+	 * @return <span class="en-US">Converted XML string, or empty string "" if an error occurs</span>
+	 * <span class="zh-CN">转换后的XML字符串，如果转换过程中出现异常则返回空字符串</span>
+	 */
+	public final String toXML(final boolean outputFragment, final boolean formattedOutput) {
+		return this.toXML(outputFragment, formattedOutput, Globals.DEFAULT_ENCODING);
+	}
 
-    /**
-     * <h3 class="en-US">Convert current object to XML string</h3>
-     * <h3 class="zh-CN">转换当前实例对象为XML字符串</h3>
-     *
-     * @param outputFragment  <span class="en-US">Output XML fragment status. <code>TRUE</code> or <code>FALSE</code></span>
-     *                        <span class="zh-CN">输出的XML声明字符串状态。<code>TRUE</code>或<code>FALSE</code></span>
-     * @param formattedOutput <span class="en-US">Output formatted XML string status. <code>TRUE</code> or <code>FALSE</code></span>
-     *                        <span class="zh-CN">输出格式化的XML字符串状态。<code>TRUE</code>或<code>FALSE</code></span>
-     * @param encoding        <span class="en-US">Output string encoding</span>
-     *                        <span class="zh-CN">输出字符串使用的字符集</span>
-     * @return <span class="en-US">Converted XML string, or empty string "" if an error occurs</span>
-     * <span class="zh-CN">转换后的XML字符串，如果转换过程中出现异常则返回空字符串</span>
-     */
-    public final String toXML(final boolean outputFragment, final boolean formattedOutput, final String encoding) {
-        return StringUtils.objectToString(this, StringUtils.StringType.XML, formattedOutput, outputFragment, encoding);
-    }
+	/**
+	 * <h3 class="en-US">Convert current object to XML string</h3>
+	 * <h3 class="zh-CN">转换当前实例对象为XML字符串</h3>
+	 *
+	 * @param outputFragment  <span class="en-US">Output XML fragment status. <code>TRUE</code> or <code>FALSE</code></span>
+	 *                        <span class="zh-CN">输出的XML声明字符串状态。<code>TRUE</code>或<code>FALSE</code></span>
+	 * @param formattedOutput <span class="en-US">Output formatted XML string status. <code>TRUE</code> or <code>FALSE</code></span>
+	 *                        <span class="zh-CN">输出格式化的XML字符串状态。<code>TRUE</code>或<code>FALSE</code></span>
+	 * @param encoding        <span class="en-US">Output string encoding</span>
+	 *                        <span class="zh-CN">输出字符串使用的字符集</span>
+	 * @return <span class="en-US">Converted XML string, or empty string "" if an error occurs</span>
+	 * <span class="zh-CN">转换后的XML字符串，如果转换过程中出现异常则返回空字符串</span>
+	 */
+	public final String toXML(final boolean outputFragment, final boolean formattedOutput, final String encoding) {
+		return StringUtils.objectToString(this, StringUtils.StringType.XML, formattedOutput, outputFragment, encoding);
+	}
 
-    /**
-     * (non-javadoc)
-     *
-     * @see Object#equals(Object)
-     */
-    @Override
-    public final boolean equals(final Object o) {
-        if (o == null || !o.getClass().equals(this.getClass())) {
-            return Boolean.FALSE;
-        }
-        if (this == o) {
-            return Boolean.TRUE;
-        }
-        return Arrays.stream(this.getClass().getDeclaredFields())
-                .filter(field -> !ReflectionUtils.staticMember(field))
-                .allMatch(field ->
-                        Objects.equals(ReflectionUtils.getFieldValue(field, this),
-                                ReflectionUtils.getFieldValue(field, o)));
-    }
+	/**
+	 * (non-javadoc)
+	 *
+	 * @see Object#equals(Object)
+	 */
+	@Override
+	public final boolean equals(final Object o) {
+		if (o == null || !o.getClass().equals(this.getClass())) {
+			return Boolean.FALSE;
+		}
+		if (this == o) {
+			return Boolean.TRUE;
+		}
+		return Arrays.stream(this.getClass().getDeclaredFields())
+				.filter(field -> !ReflectionUtils.staticMember(field))
+				.allMatch(field ->
+						Objects.equals(ReflectionUtils.getFieldValue(field, this),
+								ReflectionUtils.getFieldValue(field, o)));
+	}
 
-    /**
-     * (non-javadoc)
-     *
-     * @see Object#hashCode()
-     */
-    @Override
-    public final int hashCode() {
-        int result = Globals.INITIALIZE_INT_VALUE;
-        try {
-            for (Field field : this.getClass().getDeclaredFields()) {
-                Object origValue = ReflectionUtils.getFieldValue(field, this);
-                result = Globals.MULTIPLIER * result + (origValue != null ? origValue.hashCode() : 0);
-            }
-        } catch (Exception e) {
-            result = Globals.DEFAULT_VALUE_INT;
-        }
-        return result;
-    }
+	/**
+	 * (non-javadoc)
+	 *
+	 * @see Object#hashCode()
+	 */
+	@Override
+	public final int hashCode() {
+		int result = Globals.INITIALIZE_INT_VALUE;
+		try {
+			for (Field field : this.getClass().getDeclaredFields()) {
+				Object origValue = ReflectionUtils.getFieldValue(field, this);
+				result = Globals.MULTIPLIER * result + (origValue != null ? origValue.hashCode() : 0);
+			}
+		} catch (Exception e) {
+			result = Globals.DEFAULT_VALUE_INT;
+		}
+		return result;
+	}
 
-    /**
-     * (non-javadoc)
-     *
-     * @see Object#toString()
-     */
-    @Override
-    public final String toString() {
-        return Optional.ofNullable(this.getClass().getAnnotation(OutputConfig.class))
-                .map(outputConfig -> this.toString(outputConfig.type(), outputConfig.formatted()))
-                .orElse(this.toString(StringUtils.StringType.SIMPLE, Boolean.FALSE));
-    }
+	/**
+	 * (non-javadoc)
+	 *
+	 * @see Object#toString()
+	 */
+	@Override
+	public final String toString() {
+		return Optional.ofNullable(this.getClass().getAnnotation(OutputConfig.class))
+				.map(outputConfig -> this.toString(outputConfig.type(), outputConfig.formatted()))
+				.orElse(this.toString(StringUtils.StringType.SIMPLE, Boolean.FALSE));
+	}
 
-    public final String toString(final StringUtils.StringType stringType, final boolean formatOutput) {
-        switch (stringType) {
-            case XML:
-                return this.toXML(formatOutput);
-            case JSON:
-                return formatOutput ? this.toFormattedJson() : this.toJson();
-            case YAML:
-                return formatOutput ? this.toFormattedYaml() : this.toYaml();
-            case SERIALIZABLE:
-                return StringUtils.objectToString(this, StringUtils.StringType.SERIALIZABLE, formatOutput);
-            default:
-                return super.toString();
-        }
-    }
+	public final String toString(final StringUtils.StringType stringType, final boolean formatOutput) {
+		switch (stringType) {
+			case XML:
+				return this.toXML(formatOutput);
+			case JSON:
+				return formatOutput ? this.toFormattedJson() : this.toJson();
+			case YAML:
+				return formatOutput ? this.toFormattedYaml() : this.toYaml();
+			case SERIALIZABLE:
+				return StringUtils.objectToString(this, StringUtils.StringType.SERIALIZABLE, formatOutput);
+			default:
+				return super.toString();
+		}
+	}
 }

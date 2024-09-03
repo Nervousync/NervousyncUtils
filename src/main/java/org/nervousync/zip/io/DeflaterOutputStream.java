@@ -29,6 +29,7 @@ import org.nervousync.zip.ZipFile;
 
 /**
  * Deflater output stream
+ *
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
  * @version $Revision: 1.0.0 $ $Date: Dec 1, 2017 12:19:07 PM $
  */
@@ -37,7 +38,7 @@ public class DeflaterOutputStream extends CipherOutputStream {
 	private final Deflater deflater;
 	private final byte[] buffer = new byte[Globals.BUFFER_SIZE];
 	private boolean firstBytesRead = Boolean.FALSE;
-	
+
 	DeflaterOutputStream(OutputStream outputStream, ZipFile zipFile) {
 		super(outputStream, zipFile);
 		this.deflater = new Deflater();
@@ -46,7 +47,7 @@ public class DeflaterOutputStream extends CipherOutputStream {
 	@Override
 	public void write(int value) throws IOException {
 		byte[] b = new byte[1];
-		b[0] = (byte)value;
+		b[0] = (byte) value;
 		this.write(b, 0, 1);
 	}
 
@@ -54,7 +55,7 @@ public class DeflaterOutputStream extends CipherOutputStream {
 	public void write(@Nonnull byte[] b) throws IOException {
 		this.write(b, 0, b.length);
 	}
-	
+
 	@Override
 	public void write(@Nonnull byte[] b, int off, int len) throws IOException {
 		if (this.zipOptions.getCompressionMethod() != Globals.COMP_DEFLATE) {
@@ -66,20 +67,20 @@ public class DeflaterOutputStream extends CipherOutputStream {
 			}
 		}
 	}
-	
+
 	public void putNextEntry(File file, ZipOptions zipOptions) throws ZipException {
 		super.putNextEntry(file, zipOptions);
-		
+
 		if (zipOptions.getCompressionMethod() == Globals.COMP_DEFLATE) {
 			this.deflater.reset();
-			if ((zipOptions.getCompressionLevel() < 0 || zipOptions.getCompressionLevel() > 9) 
+			if ((zipOptions.getCompressionLevel() < 0 || zipOptions.getCompressionLevel() > 9)
 					&& zipOptions.getCompressionLevel() != Globals.DEFAULT_VALUE_INT) {
 				throw new ZipException("invalid compression level for deflater. compression level should be in the range of 0-9");
 			}
 			this.deflater.setLevel(zipOptions.getCompressionLevel());
 		}
 	}
-	
+
 	public void closeEntry() throws IOException, ZipException {
 		if (this.zipOptions.getCompressionMethod() == Globals.COMP_DEFLATE) {
 			if (!this.deflater.finished()) {
@@ -92,7 +93,7 @@ public class DeflaterOutputStream extends CipherOutputStream {
 		}
 		super.closeEntry();
 	}
-	
+
 	private void deflate() throws IOException {
 		int length = this.deflater.deflate(this.buffer, 0, this.buffer.length);
 		if (length > 0) {
@@ -100,14 +101,14 @@ public class DeflaterOutputStream extends CipherOutputStream {
 				if (length == 4) {
 					return;
 				}
-				
+
 				if (length < 4) {
 					this.decrementCompressedFileSize(4 - length);
 					return;
 				}
 				length -= 4;
 			}
-			
+
 			if (!this.firstBytesRead) {
 				super.write(this.buffer, 2, length - 2);
 				this.firstBytesRead = true;
@@ -116,7 +117,7 @@ public class DeflaterOutputStream extends CipherOutputStream {
 			}
 		}
 	}
-	
+
 	private void decrementCompressedFileSize(int value) {
 		if (value > 0 && value <= this.bytesWrittenForThisFile) {
 			this.bytesWrittenForThisFile -= value;

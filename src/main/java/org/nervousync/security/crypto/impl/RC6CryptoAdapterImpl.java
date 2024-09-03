@@ -34,31 +34,32 @@ import javax.crypto.spec.SecretKeySpec;
  * @version $Revision: 1.0.0 $ $Date: Oct 17, 2023 16:19:07 $
  */
 public final class RC6CryptoAdapterImpl extends SymmetricCryptoAdapter {
-    /**
-     * <h3 class="en-US">Constructor for RC2CryptoAdapterImpl</h3>
-     * <h3 class="zh-CN">RC2对称加密解密适配器的实现类的构造方法</h3>
-     *
-     * @param cipherConfig  <span class="en-US">Cipher configure</span>
-     *                      <span class="zh-CN">密码设置</span>
-     * @param cryptoMode    <span class="en-US">Crypto mode</span>
-     *                      <span class="zh-CN">加密解密模式</span>
-     * @param keyBytes      <span class="en-US">Key data bytes</span>
-     *                      <span class="zh-CN">密钥字节数组</span>
-     *
-     * @throws CryptoException <span class="en-US">If an error occurs when initialize cipher</span>
-     *                         <span class="zh-CN">当初始化加密解密实例对象时出现异常</span>
-     */
-    public RC6CryptoAdapterImpl(final CipherConfig cipherConfig, final CryptoMode cryptoMode, final byte[] keyBytes)
-            throws CryptoException {
-        super(cipherConfig, cryptoMode, new CipherKey(keyBytes));
-    }
-    /**
-     * (Non-Javadoc)
-     * @see BaseCryptoAdapter#initCipher()
-     */
-    @Override
-    protected Cipher initCipher() throws CryptoException {
-        return super.generateCipher(new SecretKeySpec(this.cipherKey.getKeyBytes(), "RC6"),
-                this.cipherConfig.getMode().equalsIgnoreCase("ECB") ? 0 : 16);
-    }
+	/**
+	 * <h3 class="en-US">Constructor for RC2CryptoAdapterImpl</h3>
+	 * <h3 class="zh-CN">RC2对称加密解密适配器的实现类的构造方法</h3>
+	 *
+	 * @param cipherConfig <span class="en-US">Cipher configure</span>
+	 *                     <span class="zh-CN">密码设置</span>
+	 * @param cryptoMode   <span class="en-US">Crypto mode</span>
+	 *                     <span class="zh-CN">加密解密模式</span>
+	 * @param keyBytes     <span class="en-US">Key data bytes</span>
+	 *                     <span class="zh-CN">密钥字节数组</span>
+	 * @throws CryptoException <span class="en-US">If an error occurs when initialize cipher</span>
+	 *                         <span class="zh-CN">当初始化加密解密实例对象时出现异常</span>
+	 */
+	public RC6CryptoAdapterImpl(final CipherConfig cipherConfig, final CryptoMode cryptoMode, final byte[] keyBytes)
+			throws CryptoException {
+		super(cipherConfig, cryptoMode, new CipherKey(keyBytes));
+	}
+
+	/**
+	 * (Non-Javadoc)
+	 *
+	 * @see BaseCryptoAdapter#initCipher()
+	 */
+	@Override
+	protected Cipher initCipher() throws CryptoException {
+		return super.generateCipher(new SecretKeySpec(this.cipherKey.getKeyBytes(), "RC6"),
+				this.cipherConfig.getMode().equalsIgnoreCase("ECB") ? 0 : 16);
+	}
 }

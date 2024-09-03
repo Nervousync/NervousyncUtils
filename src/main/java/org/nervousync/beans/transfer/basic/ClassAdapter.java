@@ -28,14 +28,17 @@ import org.nervousync.utils.StringUtils;
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
  * @version $Revision: 1.0.0 $ $Date: Jul 29, 2023 17:19:28 $
  */
-public final class ClassAdapter extends AbstractAdapter<Class<?>> {
-    @Override
-    public Class<?> unmarshal(final String className) {
-        return StringUtils.isEmpty(className) ? null : ClassUtils.forName(className);
-    }
+public final class ClassAdapter extends AbstractAdapter {
+	@Override
+	public Object unmarshal(final String className) {
+		return StringUtils.isEmpty(className) ? null : ClassUtils.forName(className);
+	}
 
-    @Override
-    public String marshal(final Class<?> clazz) {
-        return (clazz == null) ? Globals.DEFAULT_VALUE_STRING : clazz.getName();
-    }
+	@Override
+	public String marshal(final Object clazz) {
+		if (clazz instanceof Class<?>) {
+			return ((Class<?>) clazz).getName();
+		}
+		return Globals.DEFAULT_VALUE_STRING;
+	}
 }

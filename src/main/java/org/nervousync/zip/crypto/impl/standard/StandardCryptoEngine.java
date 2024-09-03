@@ -26,11 +26,11 @@ public class StandardCryptoEngine {
 
 	private final int[] keys = new int[3];
 	private static final int[] CRC_TABLE = new int[256];
-	
+
 	static {
-		for (int i = 0 ; i < 256 ; i++) {
+		for (int i = 0; i < 256; i++) {
 			int r = i;
-			for (int j = 0 ; j < 8 ; j++) {
+			for (int j = 0; j < 8; j++) {
 				if ((r & 1) == 1) {
 					r = (r >>> 1) ^ 0xedb88320;
 				} else {
@@ -56,9 +56,9 @@ public class StandardCryptoEngine {
 		this.keys[0] = 305419896;
 		this.keys[1] = 591751049;
 		this.keys[2] = 878082192;
-		
+
 		for (char ch : password) {
-			this.updateKeys((byte)(ch & 0xFF));
+			this.updateKeys((byte) (ch & 0xFF));
 		}
 	}
 
@@ -71,7 +71,7 @@ public class StandardCryptoEngine {
 		this.keys[0] = crc32(this.keys[0], b);
 		this.keys[1] += this.keys[0] & 0xff;
 		this.keys[1] = this.keys[1] * 134775813 + 1;
-		this.keys[2] = crc32(this.keys[2], (byte)(this.keys[1] >> 24));
+		this.keys[2] = crc32(this.keys[2], (byte) (this.keys[1] >> 24));
 	}
 
 	/**
@@ -81,9 +81,9 @@ public class StandardCryptoEngine {
 	 */
 	public byte processByte() {
 		int temp = this.keys[2] | 2;
-		return (byte)((temp * (temp ^ 1)) >>> 8);
+		return (byte) ((temp * (temp ^ 1)) >>> 8);
 	}
-	
+
 	private static int crc32(int currentCrc, byte b) {
 		return ((currentCrc >>> 8) ^ CRC_TABLE[(currentCrc ^ b) & 0xFF]);
 	}

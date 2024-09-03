@@ -114,11 +114,11 @@ public class CipherOutputStream extends OutputStream {
 		if (!zipOptions.isSourceExternalStream() && file == null) {
 			throw new ZipException(0x0000001B0013L, "Null_Input_File_Zip_Error");
 		}
-		
+
 		if (!zipOptions.isSourceExternalStream() && !FileUtils.isExists(file.getAbsolutePath())) {
 			throw new ZipException(0x0000001B0013L, "Null_Input_File_Zip_Error");
 		}
-		
+
 		try {
 			this.sourceFile = file;
 			this.zipOptions = (ZipOptions) zipOptions.clone();
@@ -139,10 +139,10 @@ public class CipherOutputStream extends OutputStream {
 					this.zipOptions.setCompressionMethod(Globals.COMP_STORE);
 				}
 			}
-			
+
 			this.createGeneralFileHeaders();
 			this.createLocalFileHeaders();
-			
+
 			if (this.zipFile.isSplitArchive()) {
 				if (this.zipFile.getCentralDirectory() == null
 						|| this.zipFile.getCentralDirectory().getFileHeaders() == null
@@ -168,9 +168,9 @@ public class CipherOutputStream extends OutputStream {
 					this.generalFileHeader.setOffsetLocalHeader(this.totalWriteBytes);
 				}
 			}
-			
+
 			this.totalWriteBytes += this.writeLocalFileHeader(this.localFileHeader, this.outputStream);
-			
+
 			if (this.zipOptions.isEncryptFiles()) {
 				this.initEncryptor();
 				if (this.encryptor != null) {
@@ -389,7 +389,7 @@ public class CipherOutputStream extends OutputStream {
 		}
 
 		if (this.zipOptions.isEncryptFiles()) {
-			this.generalFileHeader.setEncrypted(true);
+			this.generalFileHeader.setEncrypted(Boolean.TRUE);
 			this.generalFileHeader.setEncryptionMethod(this.zipOptions.getEncryptionMethod());
 		}
 
@@ -433,9 +433,9 @@ public class CipherOutputStream extends OutputStream {
 			fileAttrs = this.getFileAttributes(this.sourceFile);
 		}
 
-		byte[] externalFileAttrs = { (byte) fileAttrs, 0, 0, 0 };
+		byte[] externalFileAttrs = {(byte) fileAttrs, 0, 0, 0};
 		this.generalFileHeader.setExternalFileAttr(externalFileAttrs);
-		
+
 		boolean isDirectory;
 		if (this.zipOptions.isSourceExternalStream()) {
 			isDirectory = entryPath.endsWith(Globals.DEFAULT_ZIP_PAGE_SEPARATOR)
@@ -457,14 +457,14 @@ public class CipherOutputStream extends OutputStream {
 					} else if (this.zipOptions.getEncryptionMethod() == Globals.ENC_METHOD_AES) {
 						int saltLength;
 						switch (this.zipOptions.getAesKeyStrength()) {
-						case Globals.AES_STRENGTH_128:
-							saltLength = 8;
-							break;
-						case Globals.AES_STRENGTH_256:
-							saltLength = 16;
-							break;
-						default:
-							throw new ZipException(0x0000001B0005L, "Invalid_Key_Strength_AES_Zip_Error");
+							case Globals.AES_STRENGTH_128:
+								saltLength = 8;
+								break;
+							case Globals.AES_STRENGTH_256:
+								saltLength = 16;
+								break;
+							default:
+								throw new ZipException(0x0000001B0005L, "Invalid_Key_Strength_AES_Zip_Error");
 						}
 						this.generalFileHeader
 								.setCompressedSize(fileSize + saltLength + Globals.AES_AUTH_LENGTH + 2);
@@ -492,7 +492,7 @@ public class CipherOutputStream extends OutputStream {
 
 		if ((isFileNameCharset && this.zipFile.getCharsetEncoding().equalsIgnoreCase(Globals.DEFAULT_ENCODING))
 				|| (!isFileNameCharset && StringUtils.detectCharset(this.generalFileHeader.getEntryPath())
-						.equalsIgnoreCase(Globals.DEFAULT_ENCODING))) {
+				.equalsIgnoreCase(Globals.DEFAULT_ENCODING))) {
 			generalPurposeFlag[1] = 8;
 		}
 
@@ -588,23 +588,23 @@ public class CipherOutputStream extends OutputStream {
 	private void initEncryptor() throws ZipException {
 		if (this.zipOptions.isEncryptFiles()) {
 			switch (this.zipOptions.getEncryptionMethod()) {
-			case Globals.ENC_METHOD_STANDARD:
-				this.encryptor = new StandardEncryptor(this.zipOptions.getPassword(),
-						(this.localFileHeader.getLastModFileTime() & 0x0000FFFF) << 16);
-				break;
-			case Globals.ENC_METHOD_AES:
-				this.encryptor = new AESEncryptor(this.zipOptions.getPassword(), this.zipOptions.getAesKeyStrength());
-				break;
-			default:
-				throw new ZipException(0x0000001B0001L, "Not_Supported_Encryption_Mode_Zip_Error");
+				case Globals.ENC_METHOD_STANDARD:
+					this.encryptor = new StandardEncryptor(this.zipOptions.getPassword(),
+							(this.localFileHeader.getLastModFileTime() & 0x0000FFFF) << 16);
+					break;
+				case Globals.ENC_METHOD_AES:
+					this.encryptor = new AESEncryptor(this.zipOptions.getPassword(), this.zipOptions.getAesKeyStrength());
+					break;
+				default:
+					throw new ZipException(0x0000001B0001L, "Not_Supported_Encryption_Mode_Zip_Error");
 			}
 		} else {
 			this.encryptor = null;
 		}
 	}
-	
+
 	private int writeLocalFileHeader(LocalFileHeader localFileHeader,
-			OutputStream outputStream) throws ZipException {
+	                                 OutputStream outputStream) throws ZipException {
 		if (localFileHeader == null) {
 			throw new ZipException(0x0000001B000EL, "Null_Local_File_Header_Zip_Error");
 		}
@@ -614,7 +614,7 @@ public class CipherOutputStream extends OutputStream {
 			byte[] shortBuffer = new byte[2];
 			byte[] intBuffer = new byte[4];
 			byte[] longBuffer = new byte[8];
-			byte[] emptyLongBuffer = { 0, 0, 0, 0, 0, 0, 0, 0 };
+			byte[] emptyLongBuffer = {0, 0, 0, 0, 0, 0, 0, 0};
 
 			RawUtils.writeInt(intBuffer, ByteOrder.LITTLE_ENDIAN, localFileHeader.getSignature());
 			HeaderOperator.copyByteArrayToList(intBuffer, headerBytesList);

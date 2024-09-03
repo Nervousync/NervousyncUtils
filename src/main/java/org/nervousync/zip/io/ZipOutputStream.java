@@ -39,10 +39,10 @@ public class ZipOutputStream extends DeflaterOutputStream {
 	public ZipOutputStream(OutputStream outputStream, ZipFile zipFile) {
 		super(outputStream, zipFile);
 	}
-	
+
 	public void write(int value) throws IOException {
 		byte[] b = new byte[1];
-		b[0] = (byte)value;
+		b[0] = (byte) value;
 		this.write(b, 0, 1);
 	}
 
@@ -50,7 +50,7 @@ public class ZipOutputStream extends DeflaterOutputStream {
 	public void write(@Nonnull byte[] b) throws IOException {
 		this.write(b, 0, b.length);
 	}
-	
+
 	@Override
 	public void write(@Nonnull byte[] b, int off, int len) throws IOException {
 		this.crc.update(b, off, len);

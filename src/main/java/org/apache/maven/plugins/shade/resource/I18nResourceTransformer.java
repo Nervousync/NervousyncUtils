@@ -40,135 +40,135 @@ import java.util.jar.JarOutputStream;
  * @version $Revision: 1.0.0 $ $Date: Oct 21, 2023 09:05:28 $
  */
 public final class I18nResourceTransformer extends AbstractCompatibilityTransformer {
-    private final BundleResource bundleResource = new BundleResource();
+	private final BundleResource bundleResource = new BundleResource();
 
-    private void mergeErrors(@Nonnull final List<BundleError> existsErrors, final List<BundleError> mergeErrors) {
-        if (mergeErrors == null || mergeErrors.isEmpty()) {
-            return;
-        }
-        if (existsErrors.isEmpty()) {
-            existsErrors.addAll(mergeErrors);
-            return;
-        }
+	private void mergeErrors(@Nonnull final List<BundleError> existsErrors, final List<BundleError> mergeErrors) {
+		if (mergeErrors == null || mergeErrors.isEmpty()) {
+			return;
+		}
+		if (existsErrors.isEmpty()) {
+			existsErrors.addAll(mergeErrors);
+			return;
+		}
 
-        mergeErrors.forEach(bundleError -> {
-            if (existsErrors.stream().noneMatch(existError ->
-                    ObjectUtils.nullSafeEquals(existError.getErrorCode(), bundleError.getErrorCode()))) {
-                existsErrors.add(bundleError);
-            } else {
-                existsErrors.replaceAll(existError -> {
-                    if (ObjectUtils.nullSafeEquals(existError.getErrorCode(), bundleError.getErrorCode())) {
-                        return bundleError;
-                    }
-                    return existError;
-                });
-            }
-        });
-    }
+		mergeErrors.forEach(bundleError -> {
+			if (existsErrors.stream().noneMatch(existError ->
+					ObjectUtils.nullSafeEquals(existError.getErrorCode(), bundleError.getErrorCode()))) {
+				existsErrors.add(bundleError);
+			} else {
+				existsErrors.replaceAll(existError -> {
+					if (ObjectUtils.nullSafeEquals(existError.getErrorCode(), bundleError.getErrorCode())) {
+						return bundleError;
+					}
+					return existError;
+				});
+			}
+		});
+	}
 
-    private void mergeLanguage(@Nonnull final List<BundleLanguage> existLanguages,
-                               final List<BundleLanguage> mergeLanguages) {
-        if (mergeLanguages == null || mergeLanguages.isEmpty()) {
-            return;
-        }
+	private void mergeLanguage(@Nonnull final List<BundleLanguage> existLanguages,
+	                           final List<BundleLanguage> mergeLanguages) {
+		if (mergeLanguages == null || mergeLanguages.isEmpty()) {
+			return;
+		}
 
-        if (existLanguages.isEmpty()) {
-            existLanguages.addAll(mergeLanguages);
-            return;
-        }
+		if (existLanguages.isEmpty()) {
+			existLanguages.addAll(mergeLanguages);
+			return;
+		}
 
-        mergeLanguages.forEach(bundleLanguage -> {
-            if (existLanguages.stream().noneMatch(existLanguage ->
-                    ObjectUtils.nullSafeEquals(existLanguage.getLanguageCode(), bundleLanguage.getLanguageCode()))) {
-                existLanguages.add(bundleLanguage);
-            } else {
-                existLanguages.replaceAll(existLanguage -> {
-                    if (ObjectUtils.nullSafeEquals(existLanguage.getLanguageCode(), bundleLanguage.getLanguageCode())) {
-                        List<BundleMessage> existsMessages = existLanguage.getBundleMessages();
-                        this.mergeMessage(existsMessages, bundleLanguage.getBundleMessages());
-                        existLanguage.setBundleMessages(existsMessages);
-                    }
-                    return existLanguage;
-                });
-            }
-        });
-    }
+		mergeLanguages.forEach(bundleLanguage -> {
+			if (existLanguages.stream().noneMatch(existLanguage ->
+					ObjectUtils.nullSafeEquals(existLanguage.getLanguageCode(), bundleLanguage.getLanguageCode()))) {
+				existLanguages.add(bundleLanguage);
+			} else {
+				existLanguages.replaceAll(existLanguage -> {
+					if (ObjectUtils.nullSafeEquals(existLanguage.getLanguageCode(), bundleLanguage.getLanguageCode())) {
+						List<BundleMessage> existsMessages = existLanguage.getBundleMessages();
+						this.mergeMessage(existsMessages, bundleLanguage.getBundleMessages());
+						existLanguage.setBundleMessages(existsMessages);
+					}
+					return existLanguage;
+				});
+			}
+		});
+	}
 
-    private void mergeMessage(@Nonnull final List<BundleMessage> existsMessages,
-                              final List<BundleMessage> mergeMessages) {
-        if (mergeMessages == null || mergeMessages.isEmpty()) {
-            return;
-        }
-        if (existsMessages.isEmpty()) {
-            existsMessages.addAll(mergeMessages);
-            return;
-        }
+	private void mergeMessage(@Nonnull final List<BundleMessage> existsMessages,
+	                          final List<BundleMessage> mergeMessages) {
+		if (mergeMessages == null || mergeMessages.isEmpty()) {
+			return;
+		}
+		if (existsMessages.isEmpty()) {
+			existsMessages.addAll(mergeMessages);
+			return;
+		}
 
-        mergeMessages.forEach(bundleMessage -> {
-            if (existsMessages.stream().noneMatch(existMessage ->
-                    ObjectUtils.nullSafeEquals(existMessage.getMessageKey(), bundleMessage.getMessageKey()))) {
-                existsMessages.add(bundleMessage);
-            } else {
-                existsMessages.replaceAll(existMessage -> {
-                    if (ObjectUtils.nullSafeEquals(existMessage.getMessageKey(), bundleMessage.getMessageKey())) {
-                        return bundleMessage;
-                    }
-                    return existMessage;
-                });
-            }
-        });
-    }
+		mergeMessages.forEach(bundleMessage -> {
+			if (existsMessages.stream().noneMatch(existMessage ->
+					ObjectUtils.nullSafeEquals(existMessage.getMessageKey(), bundleMessage.getMessageKey()))) {
+				existsMessages.add(bundleMessage);
+			} else {
+				existsMessages.replaceAll(existMessage -> {
+					if (ObjectUtils.nullSafeEquals(existMessage.getMessageKey(), bundleMessage.getMessageKey())) {
+						return bundleMessage;
+					}
+					return existMessage;
+				});
+			}
+		});
+	}
 
-    @Override
-    public void processResource(final String resource, final InputStream inputStream,
-                                final List<Relocator> relocatorList, final long time) {
-        if (StringUtils.isEmpty(resource)) {
-            return;
-        }
-        if (ObjectUtils.nullSafeEquals(resource, MultilingualUtils.BUNDLE_RESOURCE_PATH)) {
-            try {
-                Optional.ofNullable(StringUtils.streamToObject(inputStream, StringUtils.StringType.JSON, BundleResource.class))
-                        .filter(readResource ->
-                                ObjectUtils.nullSafeEquals(readResource.getGroupId(), this.bundleResource.getGroupId())
-                                        && ObjectUtils.nullSafeEquals(readResource.getBundle(), this.bundleResource.getBundle()))
-                        .ifPresent(readResource -> {
-                            List<BundleError> bundleErrors = this.bundleResource.getBundleErrors();
-                            this.mergeErrors(bundleErrors, readResource.getBundleErrors());
-                            this.bundleResource.setBundleErrors(bundleErrors);
+	@Override
+	public void processResource(final String resource, final InputStream inputStream,
+	                            final List<Relocator> relocatorList, final long time) {
+		if (StringUtils.isEmpty(resource)) {
+			return;
+		}
+		if (ObjectUtils.nullSafeEquals(resource, MultilingualUtils.BUNDLE_RESOURCE_PATH)) {
+			try {
+				Optional.ofNullable(StringUtils.streamToObject(inputStream, StringUtils.StringType.JSON, BundleResource.class))
+						.filter(readResource ->
+								ObjectUtils.nullSafeEquals(readResource.getGroupId(), this.bundleResource.getGroupId())
+										&& ObjectUtils.nullSafeEquals(readResource.getBundle(), this.bundleResource.getBundle()))
+						.ifPresent(readResource -> {
+							List<BundleError> bundleErrors = this.bundleResource.getBundleErrors();
+							this.mergeErrors(bundleErrors, readResource.getBundleErrors());
+							this.bundleResource.setBundleErrors(bundleErrors);
 
-                            List<BundleLanguage> bundleLanguages = this.bundleResource.getBundleLanguages();
-                            this.mergeLanguage(bundleLanguages, readResource.getBundleLanguages());
-                            this.bundleResource.setBundleLanguages(bundleLanguages);
-                        });
-            } catch (IOException ignore) {
-            }
-        }
-    }
+							List<BundleLanguage> bundleLanguages = this.bundleResource.getBundleLanguages();
+							this.mergeLanguage(bundleLanguages, readResource.getBundleLanguages());
+							this.bundleResource.setBundleLanguages(bundleLanguages);
+						});
+			} catch (IOException ignore) {
+			}
+		}
+	}
 
-    @Override
-    public boolean canTransformResource(final String resource) {
-        return ObjectUtils.nullSafeEquals(resource, MultilingualUtils.BUNDLE_RESOURCE_PATH);
-    }
+	@Override
+	public boolean canTransformResource(final String resource) {
+		return ObjectUtils.nullSafeEquals(resource, MultilingualUtils.BUNDLE_RESOURCE_PATH);
+	}
 
-    @Override
-    public boolean hasTransformedResource() {
-        return Boolean.TRUE;
-    }
+	@Override
+	public boolean hasTransformedResource() {
+		return Boolean.TRUE;
+	}
 
-    @Override
-    public void modifyOutputStream(final JarOutputStream jarOutputStream) throws IOException {
-        long currentTime = DateTimeUtils.currentTimeMillis() / 1000 * 1000;
-        JarEntry jarEntry = new JarEntry(MultilingualUtils.BUNDLE_RESOURCE_PATH);
-        jarEntry.setTime(currentTime);
-        jarOutputStream.putNextEntry(jarEntry);
-        IOUtils.writeContent(this.bundleResource.toString(), FileUtils.CRLF, jarOutputStream, Globals.DEFAULT_ENCODING);
-    }
+	@Override
+	public void modifyOutputStream(final JarOutputStream jarOutputStream) throws IOException {
+		long currentTime = DateTimeUtils.currentTimeMillis() / 1000 * 1000;
+		JarEntry jarEntry = new JarEntry(MultilingualUtils.BUNDLE_RESOURCE_PATH);
+		jarEntry.setTime(currentTime);
+		jarOutputStream.putNextEntry(jarEntry);
+		IOUtils.writeContent(this.bundleResource.toString(), FileUtils.CRLF, jarOutputStream, Globals.DEFAULT_ENCODING);
+	}
 
-    public void setGroupId(String groupId) {
-        this.bundleResource.setGroupId(groupId);
-    }
+	public void setGroupId(String groupId) {
+		this.bundleResource.setGroupId(groupId);
+	}
 
-    public void setBundle(String bundle) {
-        this.bundleResource.setBundle(bundle);
-    }
+	public void setBundle(String bundle) {
+		this.bundleResource.setBundle(bundle);
+	}
 }

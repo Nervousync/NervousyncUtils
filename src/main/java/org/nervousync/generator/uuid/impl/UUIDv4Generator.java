@@ -32,40 +32,41 @@ import java.util.UUID;
  */
 @Provider(name = IDUtils.UUIDv4, titleKey = "version4.uuid.id.generator.name")
 public final class UUIDv4Generator extends UUIDGenerator {
-    /**
-     * <span class="en-US">Secure Random instance</span>
-     * <span class="zh-CN">安全随机数对象</span>
-     */
-    private final SecureRandom secureRandom = new SecureRandom();
-    /**
+	/**
+	 * <span class="en-US">Secure Random instance</span>
+	 * <span class="zh-CN">安全随机数对象</span>
+	 */
+	private final SecureRandom secureRandom = new SecureRandom();
+
+	/**
 	 * <h3 class="en-US">Generate ID value</h3>
 	 * <h3 class="zh-CN">生成ID值</h3>
-     *
-     * @return  <span class="en-US">Generated value</span>
-     *          <span class="zh-CN">生成的ID值</span>
-     */
-    @Override
-    public String generate() {
-        byte[] randomBytes = new byte[16];
-        this.secureRandom.nextBytes(randomBytes);
-        randomBytes[6] &= 0x0F;     /* clear version        */
-        randomBytes[6] |= 0x40;     /* set to version 4     */
-        randomBytes[8] &= 0x3F;     /* clear variant        */
-        randomBytes[8] |= (byte) 0x80;     /* set to IETF variant  */
-        return new UUID(super.highBits(randomBytes), super.lowBits(randomBytes)).toString();
-    }
-    /**
+	 *
+	 * @return <span class="en-US">Generated value</span>
+	 * <span class="zh-CN">生成的ID值</span>
+	 */
+	@Override
+	public String generate() {
+		byte[] randomBytes = new byte[16];
+		this.secureRandom.nextBytes(randomBytes);
+		randomBytes[6] &= 0x0F;     /* clear version        */
+		randomBytes[6] |= 0x40;     /* set to version 4     */
+		randomBytes[8] &= 0x3F;     /* clear variant        */
+		randomBytes[8] |= (byte) 0x80;     /* set to IETF variant  */
+		return new UUID(super.highBits(randomBytes), super.lowBits(randomBytes)).toString();
+	}
+
+	/**
 	 * <h3 class="en-US">Generate ID value using given parameter</h3>
 	 * <h3 class="zh-CN">使用给定的参数生成ID值</h3>
-     *
-     * @param dataBytes     <span class="en-US">Given parameter</span>
-     *                      <span class="zh-CN">给定的参数</span>
-     *
-     * @return  <span class="en-US">Generated value</span>
-     *          <span class="zh-CN">生成的ID值</span>
-     */
-    @Override
-    public String generate(byte[] dataBytes) {
-        return this.generate();
-    }
+	 *
+	 * @param dataBytes <span class="en-US">Given parameter</span>
+	 *                  <span class="zh-CN">给定的参数</span>
+	 * @return <span class="en-US">Generated value</span>
+	 * <span class="zh-CN">生成的ID值</span>
+	 */
+	@Override
+	public String generate(byte[] dataBytes) {
+		return this.generate();
+	}
 }

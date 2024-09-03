@@ -23,23 +23,22 @@ import org.nervousync.exceptions.builder.BuilderException;
  * <h2 class="en-US">Builder interface</h2>
  * <h2 class="zh-CN">构造器接口</h2>
  *
- * @param <T>   <span class="en-US">Generics Type Class</span>
- *              <span class="zh-CN">泛型类</span>
- *
+ * @param <T> <span class="en-US">Generics Type Class</span>
+ *            <span class="zh-CN">泛型类</span>
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
  * @version $Revision: 1.0.0 $ $Date: Jan 4, 2018 16:28:42 $
  */
 public interface Builder<T> {
 
-    /**
-     * <h3 class="en-US">Confirm current configure and return Generics Type instance</h3>
-     * <h3 class="zh-CN">确认当前设置，并返回泛型类实例对象</h3>
-     *
-     * @return  <span class="en-US">Generics Type Class</span>
-     *          <span class="zh-CN">泛型类</span>
-     * @throws BuilderException <span class="en-US">If an occurs when confirm current configure</span>
-     * <span class="zh-CN">当确认当前配置时时捕获异常</span>
-     */
-    T confirm() throws BuilderException;
+	/**
+	 * <h3 class="en-US">Confirm current configure and return Generics Type instance</h3>
+	 * <h3 class="zh-CN">确认当前设置，并返回泛型类实例对象</h3>
+	 *
+	 * @return <span class="en-US">Generics Type Class</span>
+	 * <span class="zh-CN">泛型类</span>
+	 * @throws BuilderException <span class="en-US">If an occurs when confirm current configure</span>
+	 *                          <span class="zh-CN">当确认当前配置时时捕获异常</span>
+	 */
+	T confirm() throws BuilderException;
 
 }

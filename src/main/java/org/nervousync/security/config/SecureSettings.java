@@ -33,67 +33,67 @@ import java.util.List;
 @XmlRootElement(name = "secure_settings", namespace = "https://nervousync.org/schemas/secure")
 @XmlAccessorType(XmlAccessType.NONE)
 public final class SecureSettings extends BeanObject {
-    /**
-     * <span class="en-US">Serial version UID</span>
-     * <span class="zh-CN">序列化UID</span>
-     */
-    private static final long serialVersionUID = -5036977038474319966L;
+	/**
+	 * <span class="en-US">Serial version UID</span>
+	 * <span class="zh-CN">序列化UID</span>
+	 */
+	private static final long serialVersionUID = -5036977038474319966L;
 
-    /**
-     * <span class="en-US">System default security configuration information</span>
-     * <span class="zh-CN">系统默认安全配置信息</span>
-     */
-    @XmlElement(name = "system_secure")
-    private SecureConfig systemSecure;
-    /**
-     * <span class="en-US">Customized security configuration information list</span>
-     * <span class="zh-CN">自定义安全配置信息列表</span>
-     */
-    @XmlElement(name = "secure_config")
-    @XmlElementWrapper(name = "custom_secure_list")
-    private List<SecureConfig> customSecures = new ArrayList<>();
+	/**
+	 * <span class="en-US">System default security configuration information</span>
+	 * <span class="zh-CN">系统默认安全配置信息</span>
+	 */
+	@XmlElement(name = "system_secure")
+	private SecureConfig systemSecure;
+	/**
+	 * <span class="en-US">Customized security configuration information list</span>
+	 * <span class="zh-CN">自定义安全配置信息列表</span>
+	 */
+	@XmlElement(name = "secure_config")
+	@XmlElementWrapper(name = "custom_secure_list")
+	private List<SecureConfig> customSecures = new ArrayList<>();
 
-    /**
-     * <h3 class="en-US">Getter method for system default security configuration information</h3>
-     * <h3 class="zh-CN">系统默认安全配置信息的Getter方法</h3>
-     *
-     * @return <span class="en-US">System default security configuration information</span>
-     * <span class="zh-CN">系统默认安全配置信息</span>
-     */
-    public SecureConfig getSystemSecure() {
-        return systemSecure;
-    }
+	/**
+	 * <h3 class="en-US">Getter method for system default security configuration information</h3>
+	 * <h3 class="zh-CN">系统默认安全配置信息的Getter方法</h3>
+	 *
+	 * @return <span class="en-US">System default security configuration information</span>
+	 * <span class="zh-CN">系统默认安全配置信息</span>
+	 */
+	public SecureConfig getSystemSecure() {
+		return systemSecure;
+	}
 
-    /**
-     * <h3 class="en-US">Setter method for system default security configuration information</h3>
-     * <h3 class="zh-CN">系统默认安全配置信息的Setter方法</h3>
-     *
-     * @param systemSecure <span class="en-US">System default security configuration information</span>
-     *                     <span class="zh-CN">系统默认安全配置信息</span>
-     */
-    public void setSystemSecure(SecureConfig systemSecure) {
-        this.systemSecure = systemSecure;
-    }
+	/**
+	 * <h3 class="en-US">Setter method for system default security configuration information</h3>
+	 * <h3 class="zh-CN">系统默认安全配置信息的Setter方法</h3>
+	 *
+	 * @param systemSecure <span class="en-US">System default security configuration information</span>
+	 *                     <span class="zh-CN">系统默认安全配置信息</span>
+	 */
+	public void setSystemSecure(SecureConfig systemSecure) {
+		this.systemSecure = systemSecure;
+	}
 
-    /**
-     * <h3 class="en-US">Getter method for customized security configuration information list</h3>
-     * <h3 class="zh-CN">自定义安全配置信息列表的Getter方法</h3>
-     *
-     * @return <span class="en-US">Customized security configuration information list</span>
-     * <span class="zh-CN">自定义安全配置信息列表</span>
-     */
-    public List<SecureConfig> getCustomSecures() {
-        return customSecures;
-    }
+	/**
+	 * <h3 class="en-US">Getter method for customized security configuration information list</h3>
+	 * <h3 class="zh-CN">自定义安全配置信息列表的Getter方法</h3>
+	 *
+	 * @return <span class="en-US">Customized security configuration information list</span>
+	 * <span class="zh-CN">自定义安全配置信息列表</span>
+	 */
+	public List<SecureConfig> getCustomSecures() {
+		return customSecures;
+	}
 
-    /**
-     * <h3 class="en-US">Setter method for customized security configuration information list</h3>
-     * <h3 class="zh-CN">自定义安全配置信息列表的Setter方法</h3>
-     *
-     * @param customSecures <span class="en-US">Customized security configuration information list</span>
-     * <span class="zh-CN">自定义安全配置信息列表</span>
-     */
-    public void setCustomSecures(List<SecureConfig> customSecures) {
-        this.customSecures = customSecures;
-    }
+	/**
+	 * <h3 class="en-US">Setter method for customized security configuration information list</h3>
+	 * <h3 class="zh-CN">自定义安全配置信息列表的Setter方法</h3>
+	 *
+	 * @param customSecures <span class="en-US">Customized security configuration information list</span>
+	 *                      <span class="zh-CN">自定义安全配置信息列表</span>
+	 */
+	public void setCustomSecures(List<SecureConfig> customSecures) {
+		this.customSecures = customSecures;
+	}
 }

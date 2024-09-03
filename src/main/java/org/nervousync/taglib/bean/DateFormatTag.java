@@ -36,52 +36,52 @@ import java.util.Date;
  */
 public final class DateFormatTag extends TagSupport {
 
-    /**
-     * <span class="en-US">Serial version UID</span>
-     * <span class="zh-CN">序列化UID</span>
-     */
-    private static final long serialVersionUID = 3894229344528675001L;
+	/**
+	 * <span class="en-US">Serial version UID</span>
+	 * <span class="zh-CN">序列化UID</span>
+	 */
+	private static final long serialVersionUID = 3894229344528675001L;
 
-    /**
-     * <span class="en-US">Date instance object</span>
-     * <span class="zh-CN">日期实例对象</span>
-     */
-    private Date date = null;
-    /**
-     * <span class="en-US">Pattern string</span>
-     * <span class="zh-CN">格式字符串</span>
-     */
-    private String pattern = Globals.DEFAULT_VALUE_STRING;
+	/**
+	 * <span class="en-US">Date instance object</span>
+	 * <span class="zh-CN">日期实例对象</span>
+	 */
+	private Date date = null;
+	/**
+	 * <span class="en-US">Pattern string</span>
+	 * <span class="zh-CN">格式字符串</span>
+	 */
+	private String pattern = Globals.DEFAULT_VALUE_STRING;
 
-    public int doStartTag() throws JspException {
-        if (this.date != null) {
-            try {
-                JspWriter jspWriter = this.pageContext.getOut();
-                if (StringUtils.isEmpty(this.pattern)) {
-                    jspWriter.write(DateTimeUtils.formatDate(this.date, this.pageContext.getRequest().getLocale()));
-                } else {
-                    jspWriter.write(DateTimeUtils.formatDate(this.date, DateTimeFormatter.ofPattern(this.pattern)));
-                }
-            } catch (Exception e) {
-                throw new JspException(e);
-            }
-        }
-        return SKIP_BODY;
-    }
+	public int doStartTag() throws JspException {
+		if (this.date != null) {
+			try {
+				JspWriter jspWriter = this.pageContext.getOut();
+				if (StringUtils.isEmpty(this.pattern)) {
+					jspWriter.write(DateTimeUtils.formatDate(this.date, this.pageContext.getRequest().getLocale()));
+				} else {
+					jspWriter.write(DateTimeUtils.formatDate(this.date, DateTimeFormatter.ofPattern(this.pattern)));
+				}
+			} catch (Exception e) {
+				throw new JspException(e);
+			}
+		}
+		return SKIP_BODY;
+	}
 
-    public Date getDate() {
-        return date;
-    }
+	public Date getDate() {
+		return date;
+	}
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
+	public void setDate(Date date) {
+		this.date = date;
+	}
 
-    public String getPattern() {
-        return pattern;
-    }
+	public String getPattern() {
+		return pattern;
+	}
 
-    public void setPattern(String pattern) {
-        this.pattern = pattern;
-    }
+	public void setPattern(String pattern) {
+		this.pattern = pattern;
+	}
 }

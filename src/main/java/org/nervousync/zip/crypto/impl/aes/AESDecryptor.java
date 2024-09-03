@@ -45,19 +45,19 @@ public final class AESDecryptor extends AESCrypto implements Decryptor {
 		if (localFileHeader == null) {
 			throw new ZipException(0x0000001B000EL, "Null_Local_File_Header_Zip_Error");
 		}
-		
+
 		if (localFileHeader.getAesExtraDataRecord() == null) {
 			throw new ZipException(0x0000001B0010L, "Invalid_AES_Extra_Data_Zip_Error");
 		}
 
 		super.preInit(localFileHeader.getAesExtraDataRecord().getAesStrength());
 		this.init(salt, localFileHeader.getPassword());
-		
+
 		if (!this.verifyPassword(passwordBytes)) {
 			throw new ZipException(0x0000001B000DL, "Wrong_Password_Zip_Error");
 		}
 	}
-	
+
 	@Override
 	public int decryptData(byte[] buff) throws ZipException {
 		return this.decryptData(buff, 0, buff.length);

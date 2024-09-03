@@ -25,7 +25,7 @@ public final class ArchiveExtraDataRecord {
 	private int signature;
 	private int extraFieldLength;
 	private String extraFieldData;
-	
+
 	/**
 	 * @return the signature
 	 */

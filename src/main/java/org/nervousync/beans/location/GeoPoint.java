@@ -75,7 +75,7 @@ public final class GeoPoint implements Serializable {
 	 *                  <span class="zh-CN">地理坐标经度值</span>
 	 * @param latitude  <span class="en-US">Latitude value of GeoPoint</span>
 	 *                  <span class="zh-CN">地理坐标纬度值</span>
-	 * @return    <span class="en-US">Initialized GeoPoint instance</span>
+	 * @return <span class="en-US">Initialized GeoPoint instance</span>
 	 * <span class="en-US">初始化的GeoPoint实例对象</span>
 	 */
 	public static GeoPoint gpsPoint(final double longitude, final double latitude) {
@@ -90,7 +90,7 @@ public final class GeoPoint implements Serializable {
 	 *                  <span class="zh-CN">地理坐标经度值</span>
 	 * @param latitude  <span class="en-US">Latitude value of GeoPoint</span>
 	 *                  <span class="zh-CN">地理坐标纬度值</span>
-	 * @return    <span class="en-US">Initialized GeoPoint instance</span>
+	 * @return <span class="en-US">Initialized GeoPoint instance</span>
 	 * <span class="en-US">初始化的GeoPoint实例对象</span>
 	 */
 	public static GeoPoint gcj02Point(final double longitude, final double latitude) {
@@ -105,7 +105,7 @@ public final class GeoPoint implements Serializable {
 	 *                  <span class="zh-CN">地理坐标经度值</span>
 	 * @param latitude  <span class="en-US">Latitude value of GeoPoint</span>
 	 *                  <span class="zh-CN">地理坐标纬度值</span>
-	 * @return    <span class="en-US">Initialized GeoPoint instance</span>
+	 * @return <span class="en-US">Initialized GeoPoint instance</span>
 	 * <span class="en-US">初始化的GeoPoint实例对象</span>
 	 */
 	public static GeoPoint bd09Point(final double longitude, final double latitude) {
@@ -120,7 +120,7 @@ public final class GeoPoint implements Serializable {
 	 *                  <span class="zh-CN">地理坐标经度值</span>
 	 * @param latitude  <span class="en-US">Latitude value of GeoPoint</span>
 	 *                  <span class="zh-CN">地理坐标纬度值</span>
-	 * @return    <span class="en-US">Initialized GeoPoint instance</span>
+	 * @return <span class="en-US">Initialized GeoPoint instance</span>
 	 * <span class="en-US">初始化的GeoPoint实例对象</span>
 	 */
 	public static GeoPoint deltaPoint(final double longitude, final double latitude) {

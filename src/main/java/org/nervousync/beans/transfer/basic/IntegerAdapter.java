@@ -28,22 +28,22 @@ import java.util.Optional;
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
  * @version $Revision: 1.1.0 $ $Date: Jun 21, 2023 11:31:46 $
  */
-public final class IntegerAdapter extends AbstractAdapter<Integer> {
-    /**
-     * @see jakarta.xml.bind.annotation.adapters.XmlAdapter#unmarshal(Object)
-     */
-    @Override
-    public String marshal(final Integer object) {
-        return Optional.ofNullable(object)
+public final class IntegerAdapter extends AbstractAdapter {
+	/**
+	 * @see jakarta.xml.bind.annotation.adapters.XmlAdapter#unmarshal(Object)
+	 */
+	@Override
+	public String marshal(final Object object) {
+		return Optional.ofNullable(object)
 				.map(Object::toString)
 				.orElse(Globals.DEFAULT_VALUE_STRING);
-    }
+	}
 
-    /**
-     * @see jakarta.xml.bind.annotation.adapters.XmlAdapter#marshal(Object)
-     */
-    @Override
-    public Integer unmarshal(final String object) {
-        return Optional.ofNullable(object).map(Integer::valueOf).orElse(null);
-    }
+	/**
+	 * @see jakarta.xml.bind.annotation.adapters.XmlAdapter#marshal(Object)
+	 */
+	@Override
+	public Object unmarshal(final String object) {
+		return Optional.ofNullable(object).map(Integer::valueOf).orElse(null);
+	}
 }

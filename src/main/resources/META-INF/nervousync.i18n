@@ -1127,6 +1127,14 @@
         {
           "key": "Office_Excel_File_Not_Exists",
           "content": "Excel file not found, file location path: {0}"
+        },
+        {
+          "key": "MBean_Object_Name_Generate_Error",
+          "content": "Generate MBean object name failed!"
+        },
+        {
+          "key": "MBean_Object_Register_Error",
+          "content": "Register MBean object to JMX manager failed!"
         }
       ]
     },
@@ -1949,6 +1957,14 @@
         {
           "key": "Office_Excel_File_Not_Exists",
           "content": "Excel文件未找到，文件位置：{0}"
+        },
+        {
+          "key": "MBean_Object_Name_Generate_Error",
+          "content": "生成MBean的名称出错！"
+        },
+        {
+          "key": "MBean_Object_Register_Error",
+          "content": "注册MBean对象到JMX管理器出错！"
         }
       ]
     }

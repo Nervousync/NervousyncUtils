@@ -34,101 +34,101 @@ import java.util.List;
 @OutputConfig(type = StringUtils.StringType.JSON)
 public final class BundleLanguage extends BeanObject {
 
-    /**
-     * <span class="en-US">Serial version UID</span>
-     * <span class="zh-CN">序列化UID</span>
-     */
-    private static final long serialVersionUID = 8485728786782228020L;
+	/**
+	 * <span class="en-US">Serial version UID</span>
+	 * <span class="zh-CN">序列化UID</span>
+	 */
+	private static final long serialVersionUID = 8485728786782228020L;
 
-    /**
-     * <span class="en-US">Language code</span>
-     * <span class="zh-CN">语言代码</span>
-     */
-    @JsonProperty("code")
-    private String languageCode;
-    /**
-     * <span class="en-US">Language name</span>
-     * <span class="zh-CN">语言名称</span>
-     */
-    @JsonProperty("name")
-    private String languageName;
-    /**
-     * <span class="en-US">Internationalization Information Data List</span>
-     * <span class="zh-CN">国际化信息数据列表</span>
-     */
-    @JsonProperty("messages")
-    private List<BundleMessage> bundleMessages;
+	/**
+	 * <span class="en-US">Language code</span>
+	 * <span class="zh-CN">语言代码</span>
+	 */
+	@JsonProperty("code")
+	private String languageCode;
+	/**
+	 * <span class="en-US">Language name</span>
+	 * <span class="zh-CN">语言名称</span>
+	 */
+	@JsonProperty("name")
+	private String languageName;
+	/**
+	 * <span class="en-US">Internationalization Information Data List</span>
+	 * <span class="zh-CN">国际化信息数据列表</span>
+	 */
+	@JsonProperty("messages")
+	private List<BundleMessage> bundleMessages;
 
-    /**
-     * <h3 class="en-US">Constructor for internationalization language data</h3>
-     * <h3 class="zh-CN">国际化语言数据的构造方法</h3>
-     */
-    public BundleLanguage() {
-    }
+	/**
+	 * <h3 class="en-US">Constructor for internationalization language data</h3>
+	 * <h3 class="zh-CN">国际化语言数据的构造方法</h3>
+	 */
+	public BundleLanguage() {
+	}
 
-    /**
-     * <h3 class="en-US">Getter method for language code</h3>
-     * <h3 class="zh-CN">语言代码的Getter方法</h3>
-     *
-     * @return <span class="en-US">Language code</span>
-     * <span class="zh-CN">语言代码</span>
-     */
-    public String getLanguageCode() {
-        return languageCode;
-    }
+	/**
+	 * <h3 class="en-US">Getter method for language code</h3>
+	 * <h3 class="zh-CN">语言代码的Getter方法</h3>
+	 *
+	 * @return <span class="en-US">Language code</span>
+	 * <span class="zh-CN">语言代码</span>
+	 */
+	public String getLanguageCode() {
+		return languageCode;
+	}
 
-    /**
-     * <h3 class="en-US">Setter method for language code</h3>
-     * <h3 class="zh-CN">语言代码的Setter方法</h3>
-     *
-     * @param languageCode <span class="en-US">Language code</span>
-     *                     <span class="zh-CN">语言代码</span>
-     */
-    public void setLanguageCode(String languageCode) {
-        this.languageCode = languageCode;
-    }
+	/**
+	 * <h3 class="en-US">Setter method for language code</h3>
+	 * <h3 class="zh-CN">语言代码的Setter方法</h3>
+	 *
+	 * @param languageCode <span class="en-US">Language code</span>
+	 *                     <span class="zh-CN">语言代码</span>
+	 */
+	public void setLanguageCode(String languageCode) {
+		this.languageCode = languageCode;
+	}
 
-    /**
-     * <h3 class="en-US">Getter method for language name</h3>
-     * <h3 class="zh-CN">语言名称的Getter方法</h3>
-     *
-     * @return <span class="en-US">Language name</span>
-     * <span class="zh-CN">语言名称</span>
-     */
-    public String getLanguageName() {
-        return languageName;
-    }
+	/**
+	 * <h3 class="en-US">Getter method for language name</h3>
+	 * <h3 class="zh-CN">语言名称的Getter方法</h3>
+	 *
+	 * @return <span class="en-US">Language name</span>
+	 * <span class="zh-CN">语言名称</span>
+	 */
+	public String getLanguageName() {
+		return languageName;
+	}
 
-    /**
-     * <h3 class="en-US">Setter method for language name</h3>
-     * <h3 class="zh-CN">语言名称的Setter方法</h3>
-     *
-     * @param languageName <span class="en-US">Language name</span>
-     *                     <span class="zh-CN">语言名称</span>
-     */
-    public void setLanguageName(String languageName) {
-        this.languageName = languageName;
-    }
+	/**
+	 * <h3 class="en-US">Setter method for language name</h3>
+	 * <h3 class="zh-CN">语言名称的Setter方法</h3>
+	 *
+	 * @param languageName <span class="en-US">Language name</span>
+	 *                     <span class="zh-CN">语言名称</span>
+	 */
+	public void setLanguageName(String languageName) {
+		this.languageName = languageName;
+	}
 
-    /**
-     * <h3 class="en-US">Getter method for internationalization information data list</h3>
-     * <h3 class="zh-CN">国际化信息数据列表的Getter方法</h3>
-     *
-     * @return <span class="en-US">Internationalization Information Data List</span>
-     * <span class="zh-CN">国际化信息数据列表</span>
-     */
-    public List<BundleMessage> getBundleMessages() {
-        return bundleMessages;
-    }
+	/**
+	 * <h3 class="en-US">Getter method for internationalization information data list</h3>
+	 * <h3 class="zh-CN">国际化信息数据列表的Getter方法</h3>
+	 *
+	 * @return <span class="en-US">Internationalization Information Data List</span>
+	 * <span class="zh-CN">国际化信息数据列表</span>
+	 */
+	public List<BundleMessage> getBundleMessages() {
+		return bundleMessages;
+	}
 
-    /**
-     * <h3 class="en-US">Setter method for internationalization information data list</h3>
-     * <h3 class="zh-CN">国际化信息数据列表的Setter方法</h3>
-     *
-     * @param bundleMessages <span class="en-US">Internationalization Information Data List</span>
-     *                       <span class="zh-CN">国际化信息数据列表</span>
-     */
-    public void setBundleMessages(List<BundleMessage> bundleMessages) {
-        this.bundleMessages = bundleMessages;
-    }
+	/**
+	 * <h3 class="en-US">Setter method for internationalization information data list</h3>
+	 * <h3 class="zh-CN">国际化信息数据列表的Setter方法</h3>
+	 *
+	 * @param bundleMessages <span class="en-US">Internationalization Information Data List</span>
+	 *                       <span class="zh-CN">国际化信息数据列表</span>
+	 */
+	public void setBundleMessages(List<BundleMessage> bundleMessages) {
+		this.bundleMessages = bundleMessages;
+	}
 }

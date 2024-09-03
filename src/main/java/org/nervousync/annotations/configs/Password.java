@@ -24,8 +24,8 @@ import java.lang.annotation.*;
 /**
  * <h2 class="en-US">Annotation for password data</h2>
  * <span class="en-US">
- *     The system will automatically enhance the configuration information object.
- *     For attributes with this annotation, the system will automatically encrypt and decrypt the data.
+ * The system will automatically enhance the configuration information object.
+ * For attributes with this annotation, the system will automatically encrypt and decrypt the data.
  * </span>
  * <h2 class="zh-CN">密码数据的注解</h2>
  * <span class="en-US">系统会自动增强配置信息对象，对于拥有此标注的属性，系统会自动进行数据的加密解密</span>
@@ -38,12 +38,12 @@ import java.lang.annotation.*;
 @Target({ElementType.FIELD})
 public @interface Password {
 
-    /**
-     * <span class="en-US">Security configuration name to use when encrypting/decrypting data</span>
-     * <span class="zh-CN">加密/解密数据时使用的安全配置名称</span>
-     *
-     * @return  <span class="en-US">Secure config name</span>
-     *          <span class="zh-CN">安全配置名称</span>
-     */
-    String value() default SecureFactory.SYSTEM_SECURE_NAME;
+	/**
+	 * <span class="en-US">Security configuration name to use when encrypting/decrypting data</span>
+	 * <span class="zh-CN">加密/解密数据时使用的安全配置名称</span>
+	 *
+	 * @return <span class="en-US">Secure config name</span>
+	 * <span class="zh-CN">安全配置名称</span>
+	 */
+	String value() default SecureFactory.SYSTEM_SECURE_NAME;
 }

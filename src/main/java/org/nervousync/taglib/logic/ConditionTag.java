@@ -28,11 +28,11 @@ import jakarta.servlet.jsp.tagext.TagSupport;
  */
 public abstract class ConditionTag extends TagSupport {
 
-    /**
-     * <span class="en-US">Serial version UID</span>
-     * <span class="zh-CN">序列化UID</span>
-     */
-    private static final long serialVersionUID = 3644280239591305855L;
+	/**
+	 * <span class="en-US">Serial version UID</span>
+	 * <span class="zh-CN">序列化UID</span>
+	 */
+	private static final long serialVersionUID = 3644280239591305855L;
 
 	@Override
 	public final int doStartTag() {
@@ -48,12 +48,12 @@ public abstract class ConditionTag extends TagSupport {
 		return EVAL_PAGE;
 	}
 
-    /**
-     * <h3 class="en-US">Abstract method, used to perform judgment</h3>
-     * <h3 class="zh-CN">抽象方法，用于执行判断</h3>
-     *
-     * @return <span class="en-US">Condition result</span>
-     * <span class="zh-CN">判断结果</span>
-     */
+	/**
+	 * <h3 class="en-US">Abstract method, used to perform judgment</h3>
+	 * <h3 class="zh-CN">抽象方法，用于执行判断</h3>
+	 *
+	 * @return <span class="en-US">Condition result</span>
+	 * <span class="zh-CN">判断结果</span>
+	 */
 	protected abstract boolean condition();
 }

@@ -30,44 +30,44 @@ import jakarta.xml.bind.annotation.*;
 @XmlRootElement(name = "secure_config", namespace = "https://nervousync.org/schemas/secure")
 @XmlAccessorType(XmlAccessType.NONE)
 public final class SecureConfig extends AbstractConfig {
-    /**
-     * <span class="en-US">Serial version UID</span>
-     * <span class="zh-CN">序列化UID</span>
-     */
-    private static final long serialVersionUID = -4333190425770207630L;
-    /**
-     * <span class="en-US">Secure config name</span>
-     * <span class="zh-CN">安全配置名称</span>
-     */
-    @XmlElement(name = "secure_name")
-    private String secureName;
+	/**
+	 * <span class="en-US">Serial version UID</span>
+	 * <span class="zh-CN">序列化UID</span>
+	 */
+	private static final long serialVersionUID = -4333190425770207630L;
+	/**
+	 * <span class="en-US">Secure config name</span>
+	 * <span class="zh-CN">安全配置名称</span>
+	 */
+	@XmlElement(name = "secure_name")
+	private String secureName;
 
-    /**
-     * <h3 class="en-US">Constructor method for SecureConfig</h3>
-     * <h3 class="zh-CN">安全配置信息构造方法</h3>
-     */
-    public SecureConfig() {
-    }
+	/**
+	 * <h3 class="en-US">Constructor method for SecureConfig</h3>
+	 * <h3 class="zh-CN">安全配置信息构造方法</h3>
+	 */
+	public SecureConfig() {
+	}
 
-    /**
-     * <h3 class="en-US">Getter method for secure config name</h3>
-     * <h3 class="zh-CN">安全配置名称的Getter方法</h3>
-     *
-     * @return <span class="en-US">Secure config name</span>
-     * <span class="zh-CN">安全配置名称</span>
-     */
-    public String getSecureName() {
-        return secureName;
-    }
+	/**
+	 * <h3 class="en-US">Getter method for secure config name</h3>
+	 * <h3 class="zh-CN">安全配置名称的Getter方法</h3>
+	 *
+	 * @return <span class="en-US">Secure config name</span>
+	 * <span class="zh-CN">安全配置名称</span>
+	 */
+	public String getSecureName() {
+		return secureName;
+	}
 
-    /**
-     * <h3 class="en-US">Setter method for secure config name</h3>
-     * <h3 class="zh-CN">安全配置名称的Setter方法</h3>
-     *
-     * @param secureName <span class="en-US">Secure config name</span>
-     *                   <span class="zh-CN">安全配置名称</span>
-     */
-    public void setSecureName(String secureName) {
-        this.secureName = secureName;
-    }
+	/**
+	 * <h3 class="en-US">Setter method for secure config name</h3>
+	 * <h3 class="zh-CN">安全配置名称的Setter方法</h3>
+	 *
+	 * @param secureName <span class="en-US">Secure config name</span>
+	 *                   <span class="zh-CN">安全配置名称</span>
+	 */
+	public void setSecureName(String secureName) {
+		this.secureName = secureName;
+	}
 }

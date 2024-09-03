@@ -21,18 +21,18 @@ import org.nervousync.commons.Globals;
 
 public final class IteratorTag extends CollectionTag {
 
-    @Override
-    protected int startIndex() {
-        return Globals.INITIALIZE_INT_VALUE;
-    }
+	@Override
+	protected int startIndex() {
+		return Globals.INITIALIZE_INT_VALUE;
+	}
 
-    @Override
-    protected int endIndex() {
-        return Globals.DEFAULT_VALUE_INT;
-    }
+	@Override
+	protected int endIndex() {
+		return Globals.DEFAULT_VALUE_INT;
+	}
 
-    @Override
-    protected int step() {
-        return Globals.DEFAULT_STEP_VALUE;
-    }
+	@Override
+	protected int step() {
+		return Globals.DEFAULT_STEP_VALUE;
+	}
 }

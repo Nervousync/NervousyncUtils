@@ -26,24 +26,24 @@ import java.util.Map;
 public final class TagUtils {
 
 	/**
-     * <span class="en-US">Multilingual supported logger instance</span>
-     * <span class="zh-CN">多语言支持的日志对象</span>
+	 * <span class="en-US">Multilingual supported logger instance</span>
+	 * <span class="zh-CN">多语言支持的日志对象</span>
 	 */
-    private static final LoggerUtils.Logger LOGGER = LoggerUtils.getLogger(TagUtils.class);
+	private static final LoggerUtils.Logger LOGGER = LoggerUtils.getLogger(TagUtils.class);
 
 	private static final Map<String, Integer> SCOPE_MAPS = new HashMap<>();
 
-    static {
+	static {
 		TagUtils.SCOPE_MAPS.put("page", PageContext.PAGE_SCOPE);
 		TagUtils.SCOPE_MAPS.put("request", PageContext.REQUEST_SCOPE);
 		TagUtils.SCOPE_MAPS.put("session", PageContext.SESSION_SCOPE);
 		TagUtils.SCOPE_MAPS.put("application", PageContext.APPLICATION_SCOPE);
-    }
+	}
 
 	public static int getScope(final String scopeName) throws JspException {
-        if (StringUtils.isEmpty(scopeName)) {
-            return PageContext.PAGE_SCOPE;
-        }
+		if (StringUtils.isEmpty(scopeName)) {
+			return PageContext.PAGE_SCOPE;
+		}
 		if (LOGGER.isDebugEnabled()) {
 			LOGGER.debug("Scope Name: " + scopeName);
 		}

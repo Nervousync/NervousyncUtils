@@ -43,7 +43,7 @@ public class ZipInputStream extends InputStream {
 		this.inputStream = inputStream;
 		this.crc = new CRC32();
 	}
-	
+
 	@Override
 	public int read() throws IOException {
 		int readByte = this.inputStream.read();
@@ -52,12 +52,12 @@ public class ZipInputStream extends InputStream {
 		}
 		return readByte;
 	}
-	
+
 	@Override
 	public int read(@Nonnull byte[] b) throws IOException {
 		return this.read(b, 0, b.length);
 	}
-	
+
 	@Override
 	public int read(@Nonnull byte[] b, int off, int len) throws IOException {
 		int readLength = this.inputStream.read(b, off, len);
@@ -66,7 +66,7 @@ public class ZipInputStream extends InputStream {
 		}
 		return readLength;
 	}
-	
+
 	@Override
 	public void close() throws IOException {
 		this.inputStream.close();

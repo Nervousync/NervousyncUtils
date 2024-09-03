@@ -77,17 +77,19 @@ public final class SegmentationBlock extends BeanObject {
 	@XmlElement(name = "current_time")
 	@XmlJavaTypeAdapter(DateTimeAdapter.class)
 	private Date currentTime;
+
 	/**
-     * <h3 class="en-US">Default constructor for SegmentationBlock</h3>
-     * <h3 class="zh-CN">SegmentationBlock的默认构造函数</h3>
+	 * <h3 class="en-US">Default constructor for SegmentationBlock</h3>
+	 * <h3 class="zh-CN">SegmentationBlock的默认构造函数</h3>
 	 */
 	public SegmentationBlock() {
 	}
+
 	/**
-     * <h3 class="en-US">Constructor for SegmentationBlock</h3>
-     * <span class="en-US">Using given block begin position and binary array of data content</span>
-     * <h3 class="zh-CN">SegmentationBlock的构造函数</h3>
-     * <span class="zh-CN">使用给定的数据块起始地址和数据的字节数组</span>
+	 * <h3 class="en-US">Constructor for SegmentationBlock</h3>
+	 * <span class="en-US">Using given block begin position and binary array of data content</span>
+	 * <h3 class="zh-CN">SegmentationBlock的构造函数</h3>
+	 * <span class="zh-CN">使用给定的数据块起始地址和数据的字节数组</span>
 	 *
 	 * @param position    <span class="en-US">Block begin position</span>
 	 *                    <span class="zh-CN">数据块起始地址</span>
@@ -101,63 +103,68 @@ public final class SegmentationBlock extends BeanObject {
 		this.dataInfo = StringUtils.base64Encode(dataContent);
 		this.currentTime = new Date();
 	}
-    /**
+
+	/**
 	 * <h3 class="en-US">Getter method for block begin position</h3>
 	 * <h3 class="zh-CN">数据块起始地址的Getter方法</h3>
 	 *
-	 * @return 	<span class="en-US">Block begin position</span>
-	 * 			<span class="zh-CN">数据块起始地址</span>
+	 * @return <span class="en-US">Block begin position</span>
+	 * <span class="zh-CN">数据块起始地址</span>
 	 */
 	public long getPosition() {
 		return position;
 	}
-    /**
+
+	/**
 	 * <h3 class="en-US">Getter method for block size</h3>
 	 * <h3 class="zh-CN">数据块长度的Getter方法</h3>
 	 *
-	 * @return 	<span class="en-US">Block data size</span>
-	 * 			<span class="zh-CN">数据块大小</span>
+	 * @return <span class="en-US">Block data size</span>
+	 * <span class="zh-CN">数据块大小</span>
 	 */
 	public long getBlockSize() {
 		return blockSize;
 	}
-    /**
+
+	/**
 	 * <h3 class="en-US">Getter method for identified value</h3>
 	 * <h3 class="zh-CN">数据块验证值的Getter方法</h3>
 	 *
-	 * @return 	<span class="en-US">Block data identified value of SHA256</span>
-	 * 			<span class="zh-CN">数据块验证值，使用SHA256</span>
+	 * @return <span class="en-US">Block data identified value of SHA256</span>
+	 * <span class="zh-CN">数据块验证值，使用SHA256</span>
 	 */
 	public String getSha() {
 		return sha;
 	}
-    /**
+
+	/**
 	 * <h3 class="en-US">Getter method for block data information</h3>
 	 * <h3 class="zh-CN">数据块信息的Getter方法</h3>
 	 *
-	 * @return 	<span class="en-US">Block data information, base64 encoded data bytes</span>
-	 * 			<span class="zh-CN">数据块信息，使用Base64编码</span>
+	 * @return <span class="en-US">Block data information, base64 encoded data bytes</span>
+	 * <span class="zh-CN">数据块信息，使用Base64编码</span>
 	 */
 	public String getDataInfo() {
 		return dataInfo;
 	}
-    /**
+
+	/**
 	 * <h3 class="en-US">Getter method for block generate time</h3>
 	 * <h3 class="zh-CN">数据块生成时间的Getter方法</h3>
 	 *
-	 * @return 	<span class="en-US">Block generate time</span>
-	 * 			<span class="zh-CN">数据块生成时间</span>
+	 * @return <span class="en-US">Block generate time</span>
+	 * <span class="zh-CN">数据块生成时间</span>
 	 */
 	public Date getCurrentTime() {
-		return currentTime == null ? null : (Date)currentTime.clone();
+		return currentTime == null ? null : (Date) currentTime.clone();
 	}
 
 	/**
 	 * <h3 class="en-US">Verify current data block</h3>
 	 * <h3 class="zh-CN">验证当前数据块</h3>
 	 *
-	 * @return 	<span class="en-US"><code>true</code> for valid, <code>false</code> for invalid</span>
-	 * 			<span class="zh-CN"><code>true</code>验证通过，<code>false</code>验证失败</span>
+	 * @return <span class="en-US"><code>true</code> for valid, <code>false</code> for invalid</span>
+	 * <span class="zh-CN"><code>true</code>验证通过，<code>false</code>验证失败</span>
 	 */
 	public boolean securityCheck() {
 		byte[] dataContent = StringUtils.base64Decode(this.dataInfo);
