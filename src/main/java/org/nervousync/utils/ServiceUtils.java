@@ -409,13 +409,7 @@ public final class ServiceUtils {
 						Arrays.stream(annotations[i])
 								.filter(annotation -> annotation.annotationType().equals(DataTransfer.class))
 								.findFirst()
-								.map(annotation -> {
-									try {
-										return new TransferConfig((DataTransfer) annotation);
-									} catch (DataInvalidException e) {
-										return null;
-									}
-								})
+								.map(annotation -> new TransferConfig((DataTransfer) annotation))
 								.orElse(new TransferConfig(null));
 				if (Arrays.stream(annotations[i])
 						.anyMatch(annotation -> annotation.annotationType().equals(BeanParam.class))) {
