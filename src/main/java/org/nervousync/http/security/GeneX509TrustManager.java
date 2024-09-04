@@ -39,7 +39,7 @@ import java.util.List;
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
  * @version $Revision: 1.0.0 $ $Date: Dec 18, 2020 20:51：28 $
  */
-public class GeneX509TrustManager implements X509TrustManager {
+public final class GeneX509TrustManager implements X509TrustManager {
 	/**
 	 * <span class="en-US">Multilingual supported logger instance</span>
 	 * <span class="zh-CN">多语言支持的日志对象</span>

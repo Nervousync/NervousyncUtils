@@ -397,7 +397,7 @@ org.nervousync.annotations.launcher.Launcher 注解的 value 屬性值為啟動�
 
 ### 5. 打包時合併資源檔（可選操作）
 在多模組開發過程中，需要打包合併國際化資源檔時，需要使用到maven的shade外掛程式，
-添加transformer配置使用org.apache.maven.plugins.shade.resource.I18nResourceTransformer
+添加transformer配置使用org.nervousync.shade.resource.I18nResourceTransformer
 並傳入參數”groupId“和”bundle“，資源轉換器會自動合併國際化資源檔，並輸出到合併打包後的檔中
 
 ## 檔操作的擴展

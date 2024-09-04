@@ -32,10 +32,9 @@ import org.nervousync.beans.config.TransferConfig;
 import org.nervousync.commons.Globals;
 import org.nervousync.enumerations.web.HttpMethodOption;
 import org.nervousync.exceptions.beans.network.NetworkInfoException;
-import org.nervousync.exceptions.utils.DataInvalidException;
+import org.nervousync.exceptions.services.ServiceException;
 
 import javax.xml.namespace.QName;
-import javax.xml.rpc.ServiceException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -417,7 +416,7 @@ public final class ServiceUtils {
 					this.headerMap.putAll(beanParameter.getHeaders());
 					for (Map.Entry<String, String> entry : beanParameter.getPaths().entrySet()) {
 						if (StringUtils.isEmpty(entry.getKey()) || entry.getValue() == null) {
-							throw new ServiceException("Unknown parameter name or path parameter value is null! ");
+							throw new ServiceException(0x0000000F0001L);
 						}
 						String pathKey = "{" + entry.getKey() + "}";
 						if (servicePath.indexOf(pathKey) > 0) {
@@ -494,7 +493,7 @@ public final class ServiceUtils {
 										.orElse(Globals.DEFAULT_VALUE_STRING);
 						if (StringUtils.notBlank(paramName)) {
 							if (StringUtils.isEmpty(paramValue)) {
-								throw new ServiceException("Unknown parameter name or path parameter value is null! ");
+								throw new ServiceException(0x0000000F0001L);
 							}
 							String pathKey = "{" + paramName + "}";
 							if (servicePath.indexOf(pathKey) > 0) {
@@ -587,7 +586,7 @@ public final class ServiceUtils {
 				case HEAD:
 					return builder.head();
 				default:
-					throw new ServiceException("Method not supported! ");
+					throw new ServiceException(0x0000000F0002L, methodOption.toString());
 			}
 		}
 
@@ -702,13 +701,13 @@ public final class ServiceUtils {
 						}
 						LOGGER.debug("Response_Message_Debug", response.getStatus(), errorMsg);
 					}
-					throw new ServiceException(errorMsg);
+					throw new ServiceException(0x0000000F0003L, errorMsg);
 				}
 			} catch (Exception e) {
 				if (e instanceof ServiceException) {
 					throw e;
 				}
-				throw new ServiceException(e);
+				throw new ServiceException(0x0000000F0003L, e);
 			}
 		}
 	}

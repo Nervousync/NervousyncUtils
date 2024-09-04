@@ -397,7 +397,7 @@ org.nervousync.annotations.launcher.Launcher 注解的 value 属性值为启动�
 
 ### 5. 打包时合并资源文件（可选操作）
 在多模块开发过程中，需要打包合并国际化资源文件时，需要使用到maven的shade插件，
-添加transformer配置使用org.apache.maven.plugins.shade.resource.I18nResourceTransformer
+添加transformer配置使用org.nervousync.shade.resource.I18nResourceTransformer
 并传入参数”groupId“和”bundle“，资源转换器会自动合并国际化资源文件，并输出到合并打包后的文件中
 
 ## 文件操作的扩展

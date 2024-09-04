@@ -15,10 +15,11 @@
  * limitations under the License.
  */
 
-package org.apache.maven.plugins.shade.resource;
+package org.nervousync.shade.resource;
 
 import jakarta.annotation.Nonnull;
 import org.apache.maven.plugins.shade.relocation.Relocator;
+import org.apache.maven.plugins.shade.resource.ReproducibleResourceTransformer;
 import org.nervousync.beans.i18n.BundleError;
 import org.nervousync.beans.i18n.BundleLanguage;
 import org.nervousync.beans.i18n.BundleMessage;
@@ -39,7 +40,7 @@ import java.util.jar.JarOutputStream;
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
  * @version $Revision: 1.0.0 $ $Date: Oct 21, 2023 09:05:28 $
  */
-public final class I18nResourceTransformer extends AbstractCompatibilityTransformer {
+public final class I18nResourceTransformer implements ReproducibleResourceTransformer {
 	private final BundleResource bundleResource = new BundleResource();
 
 	private void mergeErrors(@Nonnull final List<BundleError> existsErrors, final List<BundleError> mergeErrors) {
@@ -121,27 +122,30 @@ public final class I18nResourceTransformer extends AbstractCompatibilityTransfor
 
 	@Override
 	public void processResource(final String resource, final InputStream inputStream,
-	                            final List<Relocator> relocatorList, final long time) {
+	                            final List<Relocator> relocatorList) throws IOException {
+		this.processResource(resource, inputStream, relocatorList, 0L);
+	}
+
+	@Override
+	public void processResource(final String resource, final InputStream inputStream,
+	                            final List<Relocator> relocatorList, final long time) throws IOException {
 		if (StringUtils.isEmpty(resource)) {
 			return;
 		}
 		if (ObjectUtils.nullSafeEquals(resource, MultilingualUtils.BUNDLE_RESOURCE_PATH)) {
-			try {
-				Optional.ofNullable(StringUtils.streamToObject(inputStream, StringUtils.StringType.JSON, BundleResource.class))
-						.filter(readResource ->
-								ObjectUtils.nullSafeEquals(readResource.getGroupId(), this.bundleResource.getGroupId())
-										&& ObjectUtils.nullSafeEquals(readResource.getBundle(), this.bundleResource.getBundle()))
-						.ifPresent(readResource -> {
-							List<BundleError> bundleErrors = this.bundleResource.getBundleErrors();
-							this.mergeErrors(bundleErrors, readResource.getBundleErrors());
-							this.bundleResource.setBundleErrors(bundleErrors);
+			Optional.ofNullable(StringUtils.streamToObject(inputStream, StringUtils.StringType.JSON, BundleResource.class))
+					.filter(readResource ->
+							ObjectUtils.nullSafeEquals(readResource.getGroupId(), this.bundleResource.getGroupId())
+									&& ObjectUtils.nullSafeEquals(readResource.getBundle(), this.bundleResource.getBundle()))
+					.ifPresent(readResource -> {
+						List<BundleError> bundleErrors = this.bundleResource.getBundleErrors();
+						this.mergeErrors(bundleErrors, readResource.getBundleErrors());
+						this.bundleResource.setBundleErrors(bundleErrors);
 
-							List<BundleLanguage> bundleLanguages = this.bundleResource.getBundleLanguages();
-							this.mergeLanguage(bundleLanguages, readResource.getBundleLanguages());
-							this.bundleResource.setBundleLanguages(bundleLanguages);
-						});
-			} catch (IOException ignore) {
-			}
+						List<BundleLanguage> bundleLanguages = this.bundleResource.getBundleLanguages();
+						this.mergeLanguage(bundleLanguages, readResource.getBundleLanguages());
+						this.bundleResource.setBundleLanguages(bundleLanguages);
+					});
 		}
 	}
 

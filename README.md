@@ -406,7 +406,7 @@ logger instance will replace the log content to multilingual automatically
 
 ### 5. Merge resource files when packaging: (optional operation)
 In the multi-module development process, when you need to package and merge international resource files, you need to use the maven shade plug-in.
-Add transformer configuration using org.apache.maven.plugins.shade.resource.I18nResourceTransformer
+Add transformer configuration using org.nervousync.shade.resource.I18nResourceTransformer
 And pass in the parameters "groupId" and "bundle", the resource converter will automatically merge the internationalized resource files and output them to the merged and packaged file.
 
 ## Extension the file operate

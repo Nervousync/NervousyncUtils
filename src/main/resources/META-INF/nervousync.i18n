@@ -63,6 +63,18 @@
       "key": "Unknown_Receive_Address_Mail_Error"
     },
     {
+      "code": "0x0000000F0001",
+      "key": "Service_Config_Error"
+    },
+    {
+      "code": "0x0000000F0002",
+      "key": "Service_Method_Error"
+    },
+    {
+      "code": "0x0000000F0003",
+      "key": "Service_Invoke_Error"
+    },
+    {
       "code": "0x000000150001",
       "key": "Length_Not_Enough_Crypto_Error"
     },
@@ -371,6 +383,18 @@
         {
           "key": "Unknown_Receive_Address_Mail_Error",
           "content": "Unknown recipient address information"
+        },
+        {
+          "key": "Service_Config_Error",
+          "content": "Unknown parameter name or path parameter value is null! "
+        },
+        {
+          "key": "Service_Method_Error",
+          "content": "Method not supported! Method type: {0}"
+        },
+        {
+          "key": "Service_Invoke_Error",
+          "content": "Invoke service error! Error message: {0}"
         },
         {
           "key": "Length_Not_Enough_Crypto_Error",
@@ -1201,6 +1225,18 @@
         {
           "key": "Unknown_Receive_Address_Mail_Error",
           "content": "未知的收件人地址信息"
+        },
+        {
+          "key": "Service_Config_Error",
+          "content": "参数名未找到或者请求地址为空！"
+        },
+        {
+          "key": "Service_Method_Error",
+          "content": "不支持的请求类型！请求类型：{0}"
+        },
+        {
+          "key": "Service_Invoke_Error",
+          "content": "调用服务时出错！错误信息：{0}"
         },
         {
           "key": "Length_Not_Enough_Crypto_Error",

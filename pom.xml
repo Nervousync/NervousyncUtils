@@ -149,7 +149,7 @@
             <groupId>org.eclipse.angus</groupId>
             <artifactId>angus-core</artifactId>
             <version>${angus.version}</version>
-            <scope>runtime</scope>
+            <scope>compile</scope>
             <exclusions>
                 <exclusion>
                     <groupId>jakarta.activation</groupId>
@@ -381,11 +381,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <dependency>
-            <groupId>jakarta.xml.rpc</groupId>
-            <artifactId>jakarta.xml.rpc-api</artifactId>
-            <version>1.1.4</version>
-        </dependency>
         <!-- Jersey Support -->
         <dependency>
             <groupId>org.glassfish.jersey.core</groupId>
@@ -518,6 +513,12 @@
             <artifactId>maven-shade-plugin</artifactId>
             <version>3.6.0</version>
             <scope>compile</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- Office Support-->
         <dependency>
@@ -539,7 +540,13 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-compress</artifactId>
-            <version>1.26.1</version>
+            <version>1.26.2</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-io</groupId>
+                    <artifactId>commons-io</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>
@@ -640,9 +647,9 @@
                                     </manifest>
                                     <manifestEntries>
                                         <Built-By>${project.organization.name}</Built-By>
-                                        <Build-Jdk>${java.vm.name} ${java.vendor.version} (${java.runtime.version})
-                                        </Build-Jdk>
+                                        <Build-Jdk>${java.vm.name} ${java.vendor.version} (${java.runtime.version})</Build-Jdk>
                                         <Implementation-Vendor-Id>${project.groupId}</Implementation-Vendor-Id>
+                                        <Automatic-Module-Name>org.nervousync.utils.jdk11on</Automatic-Module-Name>
                                     </manifestEntries>
                                 </archive>
                             </configuration>
