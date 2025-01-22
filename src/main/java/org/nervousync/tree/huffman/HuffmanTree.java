@@ -66,10 +66,10 @@ public final class HuffmanTree {
 	}
 
 	/**
-	 * <h3 class="en-US">Insert huffman node into current huffman tree</h3>
+	 * <h3 class="en-US">Insert huffman node into the current huffman tree</h3>
 	 * <h3 class="zh-CN">插入一个霍夫曼节点到当前的霍夫曼树</h3>
 	 *
-	 * @param huffmanNode <span class="en-US">Huffman node who will insert into current huffman tree</span>
+	 * @param huffmanNode <span class="en-US">Huffman node who will insert into the current huffman tree</span>
 	 *                    <span class="zh-CN">即将插入当前霍夫曼树的霍夫曼节点</span>
 	 */
 	public void insertNode(final Node huffmanNode) {
@@ -114,7 +114,7 @@ public final class HuffmanTree {
 	}
 
 	/**
-	 * <h3 class="en-US">Static method for encode given content string to huffman tree result string using given code mapping</h3>
+	 * <h3 class="en-US">Static method for encoding given content string to huffman tree result string using given code mapping</h3>
 	 * <h3 class="zh-CN">静态方法，使用给定的编码映射表将给定的内容字符串编码为霍夫曼结果字符串</h3>
 	 *
 	 * @param codeMapping <span class="en-US">Code mapping table</span>
@@ -414,7 +414,7 @@ public final class HuffmanTree {
 		}
 
 		/**
-		 * <h3 class="en-US">Convert coding map to JSON string</h3>
+		 * <h3 class="en-US">Convert the coding map to JSON string</h3>
 		 * <h3 class="zh-CN">转换编码映射表为JSON字符串</h3>
 		 *
 		 * @return <span class="en-US">Converted JSON string of current code mapping</span>

@@ -16,12 +16,11 @@
  */
 package org.nervousync.mail.config;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.nervousync.annotations.configs.Password;
 import org.nervousync.beans.core.BeanObject;
+import org.nervousync.beans.transfer.enumerations.MailProtocolAdapter;
 import org.nervousync.commons.Globals;
 import org.nervousync.enumerations.mail.MailProtocol;
 import org.nervousync.proxy.ProxyConfig;
@@ -94,6 +93,12 @@ public final class MailConfig extends BeanObject {
 	 */
 	@XmlElement(name = "private_key")
 	private String privateKey;
+	/**
+	 * <span class="en-US">Last modified timestamp</span>
+	 * <span class="zh-CN">最后修改时间戳</span>
+	 */
+	@XmlElement(name = "last_modified")
+	private long lastModified = Globals.DEFAULT_VALUE_LONG;
 
 	/**
 	 * <h3 class="en-US">Constructor method for MailConfig</h3>
@@ -171,7 +176,7 @@ public final class MailConfig extends BeanObject {
 	}
 
 	/**
-	 * <h3 class="en-US">Getter method for mail send server config</h3>
+	 * <h3 class="en-US">Getter method for mail sends server config</h3>
 	 * <h3 class="zh-CN">邮件发送服务器配置信息的Getter方法</h3>
 	 *
 	 * <span class="en-US">Mail send server config</span>
@@ -193,7 +198,7 @@ public final class MailConfig extends BeanObject {
 	}
 
 	/**
-	 * <h3 class="en-US">Getter method for mail receive server config</h3>
+	 * <h3 class="en-US">Getter method for mail receives server config</h3>
 	 * <h3 class="zh-CN">邮件接收服务器配置信息的Getter方法</h3>
 	 *
 	 * @return <span class="en-US">Mail receive server config</span>
@@ -204,7 +209,7 @@ public final class MailConfig extends BeanObject {
 	}
 
 	/**
-	 * <h3 class="en-US">Setter method for mail receive server config</h3>
+	 * <h3 class="en-US">Setter method for mail receives server config</h3>
 	 * <h3 class="zh-CN">邮件接收服务器配置信息的Setter方法</h3>
 	 *
 	 * @param receiveConfig <span class="en-US">Mail receive server config</span>
@@ -259,7 +264,7 @@ public final class MailConfig extends BeanObject {
 	}
 
 	/**
-	 * <h3 class="en-US">Getter method for base64 encoded binary data bytes of private key</h3>
+	 * <h3 class="en-US">Getter method for base64 encoded binary data bytes of the private key</h3>
 	 * <h3 class="zh-CN">Base64编码的私有密钥二进制数组的Getter方法</h3>
 	 *
 	 * @return <span class="en-US">Base64 encoded binary data bytes of private key</span>
@@ -270,7 +275,7 @@ public final class MailConfig extends BeanObject {
 	}
 
 	/**
-	 * <h3 class="en-US">Setter method for base64 encoded binary data bytes of private key</h3>
+	 * <h3 class="en-US">Setter method for base64 encoded binary data bytes of the private key</h3>
 	 * <h3 class="zh-CN">Base64编码的私有密钥二进制数组的Setter方法</h3>
 	 *
 	 * @param privateKey <span class="en-US">Base64 encoded binary data bytes of private key</span>
@@ -281,24 +286,25 @@ public final class MailConfig extends BeanObject {
 	}
 
 	/**
-	 * <h3 class="en-US">Copy configure information from given MailConfig instance</h3>
-	 * <h3 class="zh-CN">从给定的MailConfig实例对象复制配置信息</h3>
+	 * <h3 class="en-US">Getter method for the last modified timestamp</h3>
+	 * <h3 class="zh-CN">最后修改时间戳的Getter方法</h3>
 	 *
-	 * @param mailConfig <span class="en-US">MailConfig instance</span>
-	 *                   <span class="zh-CN">邮件配置信息实例对象</span>
+	 * @return <span class="en-US">Last modified timestamp</span>
+	 * <span class="zh-CN">最后修改时间戳</span>
 	 */
-	public void copyProperties(final MailConfig mailConfig) {
-		if (mailConfig == null) {
-			return;
-		}
-		this.userName = mailConfig.getUserName();
-		this.password = mailConfig.getPassword();
-		this.proxyConfig = mailConfig.getProxyConfig();
-		this.sendConfig = mailConfig.getSendConfig();
-		this.receiveConfig = mailConfig.getReceiveConfig();
-		this.storagePath = mailConfig.getStoragePath();
-		this.certificate = mailConfig.getCertificate();
-		this.privateKey = getPrivateKey();
+	public long getLastModified() {
+		return this.lastModified;
+	}
+
+	/**
+	 * <h3 class="en-US">Setter method for the last modified timestamp</h3>
+	 * <h3 class="zh-CN">最后修改时间戳的Setter方法</h3>
+	 *
+	 * @param lastModified <span class="en-US">Last modified timestamp</span>
+	 *                     <span class="zh-CN">最后修改时间戳</span>
+	 */
+	public void setLastModified(final long lastModified) {
+		this.lastModified = lastModified;
 	}
 
 	/**
@@ -308,7 +314,7 @@ public final class MailConfig extends BeanObject {
 	 * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
 	 * @version $Revision: 1.0.0 $ $Date: Jul 31, 2021 19:09:18 $
 	 */
-	@XmlRootElement(name = "server_config", namespace = "https://nervousync.org/schemas/mail")
+	@XmlType(name = "server_config", namespace = "https://nervousync.org/schemas/mail")
 	@XmlAccessorType(XmlAccessType.NONE)
 	public static final class ServerConfig extends BeanObject {
 		/**
@@ -316,6 +322,11 @@ public final class MailConfig extends BeanObject {
 		 * <span class="zh-CN">序列化UID</span>
 		 */
 		private static final long serialVersionUID = -1768113760096890529L;
+		/**
+		 * <span class="en-US">Is send server configure</span>
+		 * <span class="zh-CN">是发送服务器配置信息</span>
+		 */
+		private final boolean sendConfig;
 		/**
 		 * <span class="en-US">Mail server domain name</span>
 		 * <span class="zh-CN">邮件服务器域名</span>
@@ -335,7 +346,7 @@ public final class MailConfig extends BeanObject {
 		@XmlElement(name = "ssl")
 		private boolean ssl;
 		/**
-		 * <span class="en-US">Host server authenticate login</span>
+		 * <span class="en-US">Host server authenticates login</span>
 		 * <span class="zh-CN">邮件服务器需要身份验证</span>
 		 */
 		@XmlElement(name = "auth_login")
@@ -344,6 +355,7 @@ public final class MailConfig extends BeanObject {
 		 * <span class="en-US">Mail server protocol</span>
 		 * <span class="zh-CN">邮件服务器协议</span>
 		 */
+		@XmlJavaTypeAdapter(MailProtocolAdapter.class)
 		@XmlElement(name = "protocol")
 		private MailProtocol protocolOption;
 		/**
@@ -358,6 +370,12 @@ public final class MailConfig extends BeanObject {
 		 */
 		@XmlElement(name = "process_timeout")
 		private int processTimeout = 5;
+		/**
+		 * <span class="en-US">Last modified timestamp</span>
+		 * <span class="zh-CN">最后修改时间戳</span>
+		 */
+		@XmlElement(name = "last_modified")
+		private long lastModified = Globals.DEFAULT_VALUE_LONG;
 
 		/**
 		 * <h3 class="en-US">Constructor method for ServerConfig</h3>
@@ -365,6 +383,30 @@ public final class MailConfig extends BeanObject {
 		 */
 		public ServerConfig() {
 			this.hostName = Globals.DEFAULT_VALUE_STRING;
+			this.sendConfig = Boolean.FALSE;
+		}
+
+		/**
+		 * <h3 class="en-US">Constructor method for ServerConfig</h3>
+		 * <h3 class="zh-CN">ServerConfig构造方法</h3>
+		 *
+		 * @param sendConfig <span class="en-US">Is send server configure</span>
+		 *                   <span class="zh-CN">是发送服务器配置信息</span>
+		 */
+		public ServerConfig(final boolean sendConfig) {
+			this.hostName = Globals.DEFAULT_VALUE_STRING;
+			this.sendConfig = sendConfig;
+		}
+
+		/**
+		 * <h3 class="en-US">Getter method for is send server configure</h3>
+		 * <h3 class="zh-CN">是发送服务器配置信息的Getter方法</h3>
+		 *
+		 * @return <span class="en-US">Is send server configure</span>
+		 * <span class="zh-CN">是发送服务器配置信息</span>
+		 */
+		public boolean isSendConfig() {
+			return this.sendConfig;
 		}
 
 		/**
@@ -437,7 +479,7 @@ public final class MailConfig extends BeanObject {
 		 * <h3 class="en-US">Getter method for host server authenticate login</h3>
 		 * <h3 class="zh-CN">邮件服务器需要身份验证的Getter方法</h3>
 		 *
-		 * @return <span class="en-US">Host server authenticate login</span>
+		 * @return <span class="en-US">Host server authenticates login</span>
 		 * <span class="zh-CN">邮件服务器需要身份验证</span>
 		 */
 		public boolean isAuthLogin() {
@@ -448,7 +490,7 @@ public final class MailConfig extends BeanObject {
 		 * <h3 class="en-US">Setter method for host server authenticate login</h3>
 		 * <h3 class="zh-CN">邮件服务器需要身份验证的Setter方法</h3>
 		 *
-		 * @param authLogin <span class="en-US">Host server authenticate login</span>
+		 * @param authLogin <span class="en-US">Host server authenticates login</span>
 		 *                  <span class="zh-CN">邮件服务器需要身份验证</span>
 		 */
 		public void setAuthLogin(boolean authLogin) {
@@ -519,6 +561,28 @@ public final class MailConfig extends BeanObject {
 		 */
 		public void setProcessTimeout(int processTimeout) {
 			this.processTimeout = processTimeout;
+		}
+
+		/**
+		 * <h3 class="en-US">Getter method for the last modified timestamp</h3>
+		 * <h3 class="zh-CN">最后修改时间戳的Getter方法</h3>
+		 *
+		 * @return <span class="en-US">Last modified timestamp</span>
+		 * <span class="zh-CN">最后修改时间戳</span>
+		 */
+		public long getLastModified() {
+			return this.lastModified;
+		}
+
+		/**
+		 * <h3 class="en-US">Setter method for the last modified timestamp</h3>
+		 * <h3 class="zh-CN">最后修改时间戳的Setter方法</h3>
+		 *
+		 * @param lastModified <span class="en-US">Last modified timestamp</span>
+		 *                     <span class="zh-CN">最后修改时间戳</span>
+		 */
+		public void setLastModified(final long lastModified) {
+			this.lastModified = lastModified;
 		}
 	}
 }

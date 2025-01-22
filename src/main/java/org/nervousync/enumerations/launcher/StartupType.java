@@ -18,7 +18,7 @@
 package org.nervousync.enumerations.launcher;
 
 /**
- * <h2 class="en-US">Enumeration value of startup type</h2>
+ * <h2 class="en-US">Enumeration value of the startup type</h2>
  * <h2 class="zh-CN">启动类型枚举值</h2>
  *
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>

@@ -19,7 +19,7 @@ package org.nervousync.launcher;
 /**
  * <h2 class="en-US">Interface class for startup launcher</h2>
  * <span class="en-US">
- * Launcher class must implement current interface and add annotation
+ * Launcher class must implement the current interface and add annotation
  * org.nervousync.annotations.launcher.Launcher at launcher class.
  * StartupManager will load launcher instance by Java SPI, and invoke startup method at system start,
  * invoke destroy method at system shutdown.
@@ -50,7 +50,7 @@ public interface StartupLauncher {
 
 	/**
 	 * <h3 class="en-US">Stop method</h3>
-	 * <span class="en-US">StartupManager invoke this method to stop current launcher</span>
+	 * <span class="en-US">StartupManager invoke this method to stop the current launcher</span>
 	 * <h3 class="zh-CN">停止方法</h3>
 	 * <span class="zh-CN">启动管理器调用此方法来停止当前的启动器</span>
 	 */

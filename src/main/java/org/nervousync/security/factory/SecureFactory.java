@@ -17,11 +17,11 @@
 package org.nervousync.security.factory;
 
 import jakarta.annotation.Nonnull;
-import org.nervousync.annotations.configs.Configuration;
-import org.nervousync.configs.AutoConfig;
+import org.nervousync.commons.Globals;
 import org.nervousync.configs.ConfigureManager;
 import org.nervousync.exceptions.crypto.CryptoException;
 import org.nervousync.security.api.SecureAdapter;
+import org.nervousync.security.config.AbstractConfig;
 import org.nervousync.security.config.FactoryConfig;
 import org.nervousync.security.config.SecureConfig;
 import org.nervousync.security.config.SecureSettings;
@@ -33,11 +33,12 @@ import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.cert.Certificate;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * <h2 class="en-US">Secure factory instance</h2>
  * <p class="en-US">
- * Running in singleton mode. Using for protect password in any configure files.
+ * Running in singleton mode. Using for protect password in any configuring files.
  * Supported algorithm: RSA1024/RSA2048/SM2/AES128/AES192/AES256/DES/3DES/SM4
  * </p>
  * <h2 class="zh-CN">安全配置信息定义</h2>
@@ -46,12 +47,23 @@ import java.util.*;
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
  * @version $Revision: 1.0.0 $ $Date: Jan 13, 2012 12:33:56 $
  */
-public final class SecureFactory extends AutoConfig {
+public final class SecureFactory {
 	/**
 	 * <span class="en-US">Multilingual supported logger instance</span>
 	 * <span class="zh-CN">多语言支持的日志对象</span>
 	 */
 	private static final LoggerUtils.Logger LOGGER = LoggerUtils.getLogger(SecureFactory.class);
+	/**
+	 * <span class="en-US">Security configuration information storage directory</span>
+	 * <span class="zh-CN">安全配置信息存储目录</span>
+	 */
+	private static final String DEFAULT_SECURE_FOLDER_PATH = Globals.DEFAULT_PAGE_SEPARATOR + ".secure";
+	/**
+	 * <span class="en-US">Security factory configuration information storage path</span>
+	 * <span class="zh-CN">安全工厂配置信息存储地址</span>
+	 */
+	private static final String DEFAULT_SECURE_FACTORY_CONFIG =
+			DEFAULT_SECURE_FOLDER_PATH + Globals.DEFAULT_PAGE_SEPARATOR + "secure_factory.xml";
 	/**
 	 * <span class="en-US">System default security configuration name</span>
 	 * <span class="zh-CN">系统默认安全配置名称</span>
@@ -76,13 +88,7 @@ public final class SecureFactory extends AutoConfig {
 	 * <span class="en-US">Factory secure node</span>
 	 * <span class="zh-CN">工厂安全节点</span>
 	 */
-	private final SecureNode factoryNode;
-	/**
-	 * <span class="en-US">Secure configure information</span>
-	 * <span class="zh-CN">安全配置信息</span>
-	 */
-	@Configuration
-	private SecureSettings secureSettings;
+	private static final SecureNode FACTORY_NODE;
 	/**
 	 * <span class="en-US">Registered secure factory node mapping table</span>
 	 * <span class="zh-CN">已注册的安全节点映射表</span>
@@ -90,76 +96,48 @@ public final class SecureFactory extends AutoConfig {
 	private final Map<String, SecureNode> registeredNodes;
 
 	static {
-		initialize();
+		FileUtils.makeDir(SystemUtils.USER_HOME + DEFAULT_SECURE_FOLDER_PATH);
+		String factoryPath = SystemUtils.USER_HOME + DEFAULT_SECURE_FACTORY_CONFIG;
+		FactoryConfig factoryConfig = Optional.of(FileUtils.readFile(factoryPath))
+				.filter(StringUtils::notBlank)
+				.map(string -> StringUtils.stringToObject(string, FactoryConfig.class))
+				.orElse(null);
+		if (factoryConfig == null) {
+			factoryConfig = new FactoryConfig();
+			factoryConfig.setSecureAlgorithm(SecureAlgorithm.RSA1024);
+			factoryConfig.setSecureKey(StringUtils.base64Encode(generate(SecureAlgorithm.RSA1024)));
+			FileUtils.saveFile(SystemUtils.USER_HOME + DEFAULT_SECURE_FACTORY_CONFIG, factoryConfig.toXML(Boolean.TRUE));
+		}
+		FACTORY_NODE = new SecureNode(factoryConfig);
+		initialize(Boolean.FALSE);
 	}
 
 	/**
 	 * <h3 class="en-US">Private constructor method for SecureFactory</h3>
 	 * <h3 class="zh-CN">安全工厂的私有构造方法</h3>
 	 */
-	private SecureFactory(@Nonnull final FactoryConfig factoryConfig) {
-		this.factoryNode = new SecureNode(factoryConfig.getSecureAlgorithm(),
-				StringUtils.base64Decode(factoryConfig.getSecureKey()));
+	private SecureFactory() {
 		this.registeredNodes = new HashMap<>();
-		if (this.secureSettings != null) {
-			Optional.ofNullable(this.secureSettings.getSystemSecure())
-					.ifPresent(this::register);
-			Optional.ofNullable(this.secureSettings.getCustomSecures())
-					.ifPresent(customSecures -> customSecures.forEach(this::register));
-		}
-	}
-
-	/**
-	 * <h3 class="en-US">Register secure config by given secure name and configure information instance</h3>
-	 * <h3 class="zh-CN">将给定的安全名称和安全配置信息实例注册到安全工厂</h3>
-	 *
-	 * @param secureConfig <span class="en-US">Secure config information</span>
-	 *                     <span class="zh-CN">安全配置信息</span>
-	 */
-	private void register(@Nonnull final SecureConfig secureConfig) {
-		byte[] dataBytes = StringUtils.base64Decode(secureConfig.getSecureKey());
-		byte[] keyBytes = this.initKey(dataBytes, Boolean.FALSE);
-		if (this.registeredNodes.containsKey(secureConfig.getSecureName()) && LOGGER.isDebugEnabled()) {
-			LOGGER.debug("Security_Override_Config", secureConfig.getSecureName());
-		}
-		this.registeredNodes.put(secureConfig.getSecureName(),
-				new SecureNode(secureConfig.getSecureAlgorithm(), keyBytes.length == 0 ? dataBytes : keyBytes));
-	}
-
-	/**
-	 * <h3 class="en-US">Check root secure node was configured</h3>
-	 * <h3 class="zh-CN">检查根安全节点是否配置成功</h3>
-	 *
-	 * @return <span class="en-US">Check result</span>
-	 * <span class="zh-CN">检查结果</span>
-	 */
-	public static boolean initialized() {
-		return INSTANCE != null;
+		Optional.ofNullable(ConfigureManager.getInstance())
+				.map(configureManager -> configureManager.readConfigure(SecureSettings.class))
+				.ifPresent(secureSettings -> {
+					Optional.ofNullable(secureSettings.getSystemSecure()).ifPresent(this::register);
+					Optional.ofNullable(secureSettings.getCustomSecures())
+							.ifPresent(customSecures -> customSecures.forEach(this::register));
+				});
 	}
 
 	/**
 	 * <h3 class="en-US">Configure root secure node using given secure config</h3>
 	 * <h3 class="zh-CN">使用给定的安全配置信息设置安全工厂的根安全节点</h3>
 	 */
-	private static void initialize() {
-		final ConfigureManager configureManager = ConfigureManager.getInstance();
-		if (configureManager == null) {
-			return;
-		}
-		FactoryConfig factoryConfig = configureManager.readConfigure(FactoryConfig.class);
-		if (factoryConfig == null) {
-			factoryConfig = new FactoryConfig();
-			factoryConfig.setSecureAlgorithm(SecureAlgorithm.AES256);
-			factoryConfig.setSecureKey(StringUtils.base64Encode(generate(SecureAlgorithm.AES256)));
-			if (!configureManager.saveConfigure(factoryConfig)) {
-				return;
+	public static void initialize(final boolean reload) {
+		if (INSTANCE == null || reload) {
+			if (INSTANCE != null && LOGGER.isDebugEnabled()) {
+				LOGGER.debug("Override_Factory_Config_Debug");
 			}
-			configureManager.saveConfigure(new SecureSettings());
+			INSTANCE = new SecureFactory();
 		}
-		if (INSTANCE != null && LOGGER.isDebugEnabled()) {
-			LOGGER.debug("Override_Factory_Config_Debug");
-		}
-		INSTANCE = new SecureFactory(factoryConfig);
 	}
 
 	/**
@@ -172,11 +150,12 @@ public final class SecureFactory extends AutoConfig {
 	 * <span class="zh-CN">执行结果</span>
 	 */
 	public static boolean removeConfig(final String secureName) {
-		if (INSTANCE == null || StringUtils.isEmpty(secureName)
+		if (StringUtils.isEmpty(secureName)
 				|| ObjectUtils.nullSafeEquals(SYSTEM_SECURE_NAME, secureName)) {
 			return Boolean.FALSE;
 		}
-		final ConfigureManager configureManager = ConfigureManager.getInstance();
+
+		ConfigureManager configureManager = ConfigureManager.getInstance();
 		if (configureManager == null) {
 			return Boolean.FALSE;
 		}
@@ -187,14 +166,11 @@ public final class SecureFactory extends AutoConfig {
 					if (customSecures.removeIf(existConfig ->
 							ObjectUtils.nullSafeEquals(existConfig.getSecureName(), secureName))) {
 						secureSettings.setCustomSecures(customSecures);
-						if (configureManager.saveConfigure(secureSettings)) {
-							INSTANCE.registeredNodes.remove(secureName);
-							return Boolean.TRUE;
-						}
+						return configureManager.saveConfigure(secureSettings);
 					}
-					return Boolean.FALSE;
+					return Boolean.TRUE;
 				})
-				.orElse(Boolean.FALSE);
+				.orElse(Boolean.TRUE);
 	}
 
 	/**
@@ -210,7 +186,13 @@ public final class SecureFactory extends AutoConfig {
 		if (INSTANCE == null) {
 			return Boolean.FALSE;
 		}
-		return INSTANCE.initConfig(SYSTEM_SECURE_NAME, secureAlgorithm);
+		return Optional.ofNullable(newConfig(SYSTEM_SECURE_NAME, secureAlgorithm))
+				.filter(SecureFactory::saveSetting)
+				.map(secureConfig -> {
+					INSTANCE.register(secureConfig);
+					return Boolean.TRUE;
+				})
+				.orElse(Boolean.FALSE);
 	}
 
 	/**
@@ -224,33 +206,18 @@ public final class SecureFactory extends AutoConfig {
 	 * @return <span class="en-US">Operate result</span>
 	 * <span class="zh-CN">执行结果</span>
 	 */
-	public static boolean registerConfig(final String secureName, final SecureAlgorithm secureAlgorithm) {
+	public static boolean initConfig(final String secureName, final SecureAlgorithm secureAlgorithm) {
 		if (INSTANCE == null || StringUtils.isEmpty(secureName)
 				|| ObjectUtils.nullSafeEquals(SYSTEM_SECURE_NAME, secureName)) {
 			return Boolean.FALSE;
 		}
-		return INSTANCE.initConfig(secureName, secureAlgorithm);
-	}
-
-	/**
-	 * <h3 class="en-US">Generate and register secure configure information using given secure algorithm</h3>
-	 * <h3 class="zh-CN">使用给定的安全算法生成并注册安全配置信息</h3>
-	 *
-	 * @param secureName      <span class="en-US">Secure name</span>
-	 *                        <span class="zh-CN">安全名称</span>
-	 * @param secureAlgorithm <span class="en-US">Secure algorithm</span>
-	 *                        <span class="zh-CN">安全算法</span>
-	 * @return <span class="en-US">Operate result</span>
-	 * <span class="zh-CN">执行结果</span>
-	 */
-	private boolean initConfig(final String secureName, final SecureAlgorithm secureAlgorithm) {
-		final byte[] keyBytes = generate(secureAlgorithm);
-		if (keyBytes.length == 0) {
-			LOGGER.error("Key_Bytes_Empty_Error");
-			return Boolean.FALSE;
-		}
-		byte[] encBytes = this.initKey(keyBytes, Boolean.TRUE);
-		return this.initConfig(secureName, secureAlgorithm, encBytes.length == 0 ? keyBytes : encBytes);
+		return Optional.ofNullable(newConfig(secureName, secureAlgorithm))
+				.filter(SecureFactory::saveSetting)
+				.map(secureConfig -> {
+					INSTANCE.register(secureConfig);
+					return Boolean.TRUE;
+				})
+				.orElse(Boolean.FALSE);
 	}
 
 	/**
@@ -303,6 +270,61 @@ public final class SecureFactory extends AutoConfig {
 	}
 
 	/**
+	 * <h3 class="en-US">Register secure config by given secure name and configure information instance</h3>
+	 * <h3 class="zh-CN">将给定的安全名称和安全配置信息实例注册到安全工厂</h3>
+	 *
+	 * @param secureConfig <span class="en-US">Secure config information</span>
+	 *                     <span class="zh-CN">安全配置信息</span>
+	 */
+	private void register(@Nonnull final SecureConfig secureConfig) {
+		if (this.registeredNodes.containsKey(secureConfig.getSecureName()) && LOGGER.isDebugEnabled()) {
+			LOGGER.debug("Security_Override_Config", secureConfig.getSecureName());
+		}
+		this.registeredNodes.put(secureConfig.getSecureName(), new SecureNode(secureConfig));
+	}
+
+	/**
+	 * <h3 class="en-US">Save the given security configuration information in a configuration file</h3>
+	 * <h3 class="zh-CN">将给定的安全配置信息保存在配置文件中</h3>
+	 *
+	 * @param secureConfig <span class="en-US">Secure config information</span>
+	 *                     <span class="zh-CN">安全配置信息</span>
+	 * @return <span class="en-US">Save result</span>
+	 * <span class="zh-CN">保存结果</span>
+	 */
+	private static synchronized boolean saveSetting(@Nonnull final SecureConfig secureConfig) {
+		if (StringUtils.isEmpty(secureConfig.getSecureName())) {
+			return Boolean.FALSE;
+		}
+		ConfigureManager configureManager = ConfigureManager.getInstance();
+		if (configureManager == null) {
+			return Boolean.FALSE;
+		}
+		SecureSettings secureSettings = configureManager.readConfigure(SecureSettings.class);
+		if (secureSettings == null) {
+			secureSettings = new SecureSettings();
+		}
+		if (ObjectUtils.nullSafeEquals(SYSTEM_SECURE_NAME, secureConfig.getSecureName())) {
+			secureSettings.setSystemSecure(secureConfig);
+		} else {
+			List<SecureConfig> customSecures = secureSettings.getCustomSecures();
+			final AtomicBoolean needProcess = new AtomicBoolean(Boolean.TRUE);
+			customSecures.replaceAll(existConfig -> {
+				if (ObjectUtils.nullSafeEquals(existConfig.getSecureName(), secureConfig.getSecureName())) {
+					needProcess.set(Boolean.FALSE);
+					return secureConfig;
+				}
+				return existConfig;
+			});
+			if (needProcess.get()) {
+				customSecures.add(secureConfig);
+			}
+			secureSettings.setCustomSecures(customSecures);
+		}
+		return configureManager.saveConfigure(secureSettings);
+	}
+
+	/**
 	 * <h3 class="en-US">Process data content using given secure name</h3>
 	 * <h3 class="zh-CN">使用给定的安全名称处理信息</h3>
 	 *
@@ -316,7 +338,7 @@ public final class SecureFactory extends AutoConfig {
 	 * <span class="zh-CN">解密后的密码信息</span>
 	 */
 	private String processData(final String secureName, final String dataContent, final boolean encrypt) {
-		if (StringUtils.isEmpty(secureName)) {
+		if (StringUtils.isEmpty(secureName) || StringUtils.isEmpty(dataContent)) {
 			return dataContent;
 		}
 		String secName = StringUtils.isEmpty(secureName) ? SYSTEM_SECURE_NAME : secureName;
@@ -346,51 +368,28 @@ public final class SecureFactory extends AutoConfig {
 	 * <h3 class="en-US">Generate and register secure configure information using given secure algorithm and secure key data bytes</h3>
 	 * <h3 class="zh-CN">使用给定的安全算法、安全密钥字节数组生成并注册安全配置信息</h3>
 	 *
-	 * @param secureName      <span class="en-US">Secure name</span>
-	 *                        <span class="zh-CN">安全名称</span>
-	 * @param secureAlgorithm <span class="en-US">Secure algorithm</span>
-	 *                        <span class="zh-CN">安全算法</span>
-	 * @param secureKey       <span class="en-US">Secure key data bytes</span>
-	 *                        <span class="zh-CN">安全密钥字节数组</span>
+	 * @param secureName <span class="en-US">Secure name</span>
+	 *                   <span class="zh-CN">安全名称</span>
+	 * @param algorithm  <span class="en-US">Secure algorithm</span>
+	 *                   <span class="zh-CN">安全算法</span>
 	 * @return <span class="en-US">Operate result</span>
 	 * <span class="zh-CN">执行结果</span>
 	 */
-	private boolean initConfig(final String secureName, final SecureAlgorithm secureAlgorithm, final byte[] secureKey) {
-		final ConfigureManager configureManager = ConfigureManager.getInstance();
-		if (configureManager == null) {
-			return Boolean.FALSE;
+	private static SecureConfig newConfig(@Nonnull final String secureName, @Nonnull final SecureAlgorithm algorithm) {
+		if (StringUtils.isEmpty(secureName)) {
+			LOGGER.error("Secure_Name_Empty_Error");
+			return null;
+		}
+		final byte[] secureKey = generate(algorithm);
+		if (secureKey.length == 0) {
+			LOGGER.error("Key_Bytes_Empty_Error");
+			return null;
 		}
 		SecureConfig secureConfig = new SecureConfig();
 		secureConfig.setSecureName(secureName);
-		secureConfig.setSecureAlgorithm(secureAlgorithm);
-		secureConfig.setSecureKey(StringUtils.base64Encode(secureKey));
-
-		return Optional.ofNullable(configureManager.readConfigure(SecureSettings.class))
-				.map(secureSettings -> {
-					if (ObjectUtils.nullSafeEquals(SYSTEM_SECURE_NAME, secureName)) {
-						secureSettings.setSystemSecure(secureConfig);
-					} else {
-						List<SecureConfig> customSecures = secureSettings.getCustomSecures();
-						if (customSecures.stream().anyMatch(existConfig ->
-								ObjectUtils.nullSafeEquals(existConfig.getSecureName(), secureName))) {
-							customSecures.replaceAll(existConfig -> {
-								if (ObjectUtils.nullSafeEquals(existConfig.getSecureName(), secureName)) {
-									return secureConfig;
-								}
-								return existConfig;
-							});
-						} else {
-							customSecures.add(secureConfig);
-						}
-						secureSettings.setCustomSecures(customSecures);
-					}
-					if (configureManager.saveConfigure(secureSettings)) {
-						this.register(secureConfig);
-						return Boolean.TRUE;
-					}
-					return Boolean.FALSE;
-				})
-				.orElse(Boolean.FALSE);
+		secureConfig.setSecureAlgorithm(algorithm);
+		secureConfig.setSecureKey(StringUtils.base64Encode(initKey(secureKey, Boolean.TRUE)));
+		return secureConfig;
 	}
 
 	/**
@@ -404,20 +403,19 @@ public final class SecureFactory extends AutoConfig {
 	 * @return <span class="en-US">Initialized data bytes</span>
 	 * <span class="zh-CN">初始化的数据</span>
 	 */
-	private byte[] initKey(final byte[] dataBytes, final boolean encrypt) {
-		if (this.factoryNode == null || !this.factoryNode.isInitialized()) {
-			return new byte[0];
-		}
-		SecureAdapter secureAdapter = this.factoryNode.initCryptor(encrypt);
-		if (secureAdapter == null) {
-			LOGGER.error("Security_Factory_Not_Initialized_Error");
-			return new byte[0];
-		}
-		try {
-			return secureAdapter.finish(dataBytes);
-		} catch (Exception e) {
-			return new byte[0];
-		}
+	private static byte[] initKey(@Nonnull final byte[] dataBytes, final boolean encrypt) {
+		return Optional.ofNullable(FACTORY_NODE)
+				.filter(SecureNode::isInitialized)
+				.map(factoryNode -> factoryNode.initCryptor(encrypt))
+				.map(secureAdapter -> {
+					try {
+						return secureAdapter.finish(dataBytes);
+					} catch (Exception e) {
+						return dataBytes;
+					}
+				})
+				.filter(keyBytes -> keyBytes.length > 0)
+				.orElse(dataBytes);
 	}
 
 	/**
@@ -510,19 +508,19 @@ public final class SecureFactory extends AutoConfig {
 		 * <h3 class="en-US">Constructor for SecureNode</h3>
 		 * <h3 class="zh-CN">安全节点构造方法</h3>
 		 *
-		 * @param secureAlgorithm <span class="en-US">Secure algorithm</span>
-		 *                        <span class="zh-CN">安全算法</span>
-		 * @param dataBytes       <span class="en-US">Secure key data bytes</span>
-		 *                        <span class="zh-CN">安全密钥数据</span>
+		 * @param secureConfig <span class="en-US">Secure config information</span>
+		 *                     <span class="zh-CN">安全配置信息</span>
 		 */
-		private SecureNode(final SecureAlgorithm secureAlgorithm, final byte[] dataBytes) {
-			this.secureAlgorithm = secureAlgorithm;
+		private SecureNode(@Nonnull final AbstractConfig secureConfig) {
+			final byte[] keyBytes =
+					SecureFactory.initKey(StringUtils.base64Decode(secureConfig.getSecureKey()), Boolean.FALSE);
+			this.secureAlgorithm = secureConfig.getSecureAlgorithm();
 			switch (this.secureAlgorithm) {
 				case RSA1024:
 				case RSA2048:
 				case SM2:
-					this.keyBytes = dataBytes;
-					KeyStore keyStore = CertificateUtils.loadKeyStore(dataBytes, SECURE_CERTIFICATE_PASSWORD);
+					this.keyBytes = keyBytes;
+					KeyStore keyStore = CertificateUtils.loadKeyStore(keyBytes, SECURE_CERTIFICATE_PASSWORD);
 					if (keyStore == null) {
 						this.initialized = Boolean.FALSE;
 						this.privateKey = null;
@@ -544,7 +542,7 @@ public final class SecureFactory extends AutoConfig {
 				case TRIPLE_DES:
 				case SM4:
 					this.initialized = Boolean.TRUE;
-					this.keyBytes = dataBytes;
+					this.keyBytes = keyBytes;
 					this.privateKey = null;
 					this.publicKey = null;
 					break;

@@ -71,13 +71,13 @@
                         <xsd:documentation>System default secure configure information</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
-                <xsd:element name="custom_secure_list" minOccurs="0">
+                <xsd:element name="secure_list" minOccurs="0">
                     <xsd:annotation>
                         <xsd:documentation>Custom secure configure information list</xsd:documentation>
                     </xsd:annotation>
                     <xsd:complexType>
                         <xsd:sequence>
-                            <xsd:element name="secure_config" type="secure_config" minOccurs="0" maxOccurs="unbounded">
+                            <xsd:element ref="secure_config" minOccurs="0" maxOccurs="unbounded">
                                 <xsd:annotation>
                                     <xsd:documentation>Custom secure configure information</xsd:documentation>
                                 </xsd:annotation>

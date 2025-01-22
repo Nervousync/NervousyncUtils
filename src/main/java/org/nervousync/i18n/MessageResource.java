@@ -29,7 +29,7 @@ import java.text.MessageFormat;
 import java.util.*;
 
 /**
- * <h2 class="en-US">Internationalization Message Resource Define</h2>
+ * <h2 class="en-US">Internationalization Message Resources Define</h2>
  * <h2 class="zh-CN">国际化信息资源定义</h2>
  * .0
  *
@@ -77,12 +77,12 @@ public final class MessageResource {
 	 *
 	 * @param errors    <span class="en-US">Definition list of error codes and message identification codes</span>
 	 *                  <span class="zh-CN">错误代码与信息识别代码的定义列表</span>
-	 * @param languages <span class="en-US">List of definitions of message language, identification codes and message content</span>
+	 * @param languages <span class="en-US">Definitions of message language list, identification codes and message content</span>
 	 *                  <span class="zh-CN">信息语言、识别代码与信息内容的定义列表</span>
 	 */
 	public void updateResource(@Nonnull final List<BundleError> errors, @Nonnull final List<BundleLanguage> languages) {
 		errors.stream()
-				.filter(bundleError -> StringUtils.notBlank(bundleError.getErrorCode()))
+				.filter(bundleError -> MultilingualUtils.notBlank(bundleError.getErrorCode()))
 				.forEach(bundleError -> {
 					int radix;
 					if (bundleError.getErrorCode().length() > 2) {
@@ -113,13 +113,13 @@ public final class MessageResource {
 					this.codeKeysMap.put(errorCode, bundleError.getMessageKey());
 				});
 		languages.stream()
-				.filter(bundleLanguage -> StringUtils.notBlank(bundleLanguage.getLanguageCode()))
+				.filter(bundleLanguage -> MultilingualUtils.notBlank(bundleLanguage.getLanguageCode()))
 				.forEach(bundleLanguage -> {
 					String languageCode = bundleLanguage.getLanguageCode();
 					bundleLanguage.getBundleMessages()
 							.stream()
-							.filter(bundleMessage -> StringUtils.notBlank(bundleMessage.getMessageKey())
-									&& StringUtils.notBlank(bundleMessage.getMessageContent()))
+							.filter(bundleMessage -> MultilingualUtils.notBlank(bundleMessage.getMessageKey())
+									&& MultilingualUtils.notBlank(bundleMessage.getMessageContent()))
 							.forEach(bundleMessage -> {
 								String messageKey = bundleMessage.getMessageKey();
 								String identifyKey = MultilingualUtils.identifyKey(messageKey, languageCode);

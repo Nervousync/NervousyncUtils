@@ -178,11 +178,11 @@ public final class ZipFile implements Cloneable {
 	}
 
 	/**
-	 * Create zip file using default character encoding
+	 * Create the zip file using default character encoding
 	 *
 	 * @param filePath   Zip file path
 	 * @param zipOptions Zip options
-	 * @param addFiles   List of files in zip file
+	 * @param addFiles   List of files in the zip file
 	 * @return ZipFile instance
 	 * @throws ZipException If the target file exists or add files is null or empty
 	 * @see ZipOptions
@@ -197,8 +197,8 @@ public final class ZipFile implements Cloneable {
 	 * @param filePath     Zip file path
 	 * @param zipOptions   Zip options
 	 * @param splitArchive Status of split archive
-	 * @param splitLength  Maximum size of split file
-	 * @param addFiles     List of files in zip file
+	 * @param splitLength  Maximum size of the split file
+	 * @param addFiles     List of files in the zip file
 	 * @return ZipFile instance
 	 * @throws ZipException If the target file was existed or add files is null or empty
 	 * @see ZipOptions
@@ -226,11 +226,11 @@ public final class ZipFile implements Cloneable {
 	}
 
 	/**
-	 * Create zip file and add folder to zip file
+	 * Create the zip file and add folder to the zip file
 	 *
 	 * @param filePath   Zip file path
 	 * @param zipOptions Zip options
-	 * @param folderPath Folder will add to zip file
+	 * @param folderPath Folder will add to the zip file
 	 * @return ZipFile instance
 	 * @throws ZipException If the target file was existed or the folder is empty
 	 * @see ZipOptions
@@ -242,15 +242,15 @@ public final class ZipFile implements Cloneable {
 	}
 
 	/**
-	 * Create zip file and add folder to zip file
+	 * Create the zip file and add folder to the zip file
 	 *
 	 * @param filePath     Zip file path
 	 * @param zipOptions   Zip options
 	 * @param splitArchive Status of split archive
-	 * @param splitLength  Maximum size of split file
-	 * @param folderPath   Folder will add to zip file
+	 * @param splitLength  Maximum size of the split file
+	 * @param folderPath   Folder will add to the zip file
 	 * @return ZipFile instance
-	 * @throws ZipException If target file was existed or folder is empty
+	 * @throws ZipException If the target file was existed or the folder is empty
 	 * @see ZipOptions
 	 */
 	public static ZipFile createZipFileFromFolder(String filePath, ZipOptions zipOptions,
@@ -272,8 +272,8 @@ public final class ZipFile implements Cloneable {
 	/**
 	 * Generate the entity path
 	 *
-	 * @param file            Which file path will add to zip file
-	 * @param rootFolderInZip prefix path of zip file
+	 * @param file            Which file path will add to the zip file.
+	 * @param rootFolderInZip prefix path of the zip file
 	 * @param rootFolderPath  root path of folder
 	 * @return Generated entry path
 	 * @throws ZipException given file is null

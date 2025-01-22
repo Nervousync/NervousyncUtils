@@ -41,9 +41,9 @@ import java.util.Map;
  * <h2 class="en-US">Office Utilities</h2>
  * <span class="en-US">
  * <span>Current utilities implements features:</span>
- *     <ul>Read the total number of records from Excel file</ul>
- *     <ul>Read details of Excel file</ul>
- *     <ul>Write data to Excel file</ul>
+ *     <ul>Read the total number of records from the Excel file</ul>
+ *     <ul>Read details of the Excel file</ul>
+ *     <ul>Write data to the Excel file</ul>
  * </span>
  * <h2 class="zh-CN">Office工具集</h2>
  * <span class="zh-CN">
@@ -108,7 +108,7 @@ public final class OfficeUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Checks whether the given data sheet names exists in the given data file path</h3>
+	 * <h3 class="en-US">Checks whether the given data sheet name exists in the given data file path</h3>
 	 * <h3 class="zh-CN">检查给定的文件地址中数据表名是否存在</h3>
 	 *
 	 * @param filePath   <span class="en-US">File storage path</span>

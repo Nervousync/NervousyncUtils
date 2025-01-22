@@ -32,7 +32,7 @@ import java.util.Optional;
 /**
  * <h2 class="en-US">Abstract class of JavaBean</h2>
  * <span class="en-US">
- * If JavaBean class extends current abstract class, it's can easier convert object to JSON/XML/YAML string.
+ * If JavaBean class extends the current abstract class, it's can easier convert object to JSON/XML/YAML string.
  * Default encoding is UTF-8
  * Convert object to XML must add annotation to class and fields, using JAXB annotation
  * Convert custom fields in object to JSON/YAML must add annotation to fields, using jackson annotation
@@ -50,20 +50,15 @@ import java.util.Optional;
 @XmlTransient
 @XmlAccessorType(XmlAccessType.NONE)
 @OutputConfig(type = StringUtils.StringType.XML, formatted = true)
-public abstract class BeanObject implements Serializable {
+public abstract class BeanObject implements Serializable, Cloneable {
 	/**
 	 * <span class="en-US">Serial version UID</span>
 	 * <span class="zh-CN">序列化UID</span>
 	 */
 	private static final long serialVersionUID = 6900853002518080456L;
-	/**
-	 * <span class="en-US">Multilingual supported logger instance</span>
-	 * <span class="zh-CN">多语言支持的日志对象</span>
-	 */
-	protected transient final LoggerUtils.Logger logger = LoggerUtils.getLogger(this.getClass());
 
 	/**
-	 * <h3 class="en-US">Convert current object to not formatted JSON string</h3>
+	 * <h3 class="en-US">Convert the current object to not formatted JSON string</h3>
 	 * <h3 class="zh-CN">转换当前实例对象为未经格式化的JSON字符串</h3>
 	 *
 	 * @return <span class="en-US">Converted JSON string</span>
@@ -74,7 +69,7 @@ public abstract class BeanObject implements Serializable {
 	}
 
 	/**
-	 * <h3 class="en-US">Convert current object to formatted JSON string</h3>
+	 * <h3 class="en-US">Convert the current object to formatted JSON string</h3>
 	 * <h3 class="zh-CN">转换当前实例对象为格式化的JSON字符串</h3>
 	 *
 	 * @return <span class="en-US">Converted JSON string</span>
@@ -85,7 +80,7 @@ public abstract class BeanObject implements Serializable {
 	}
 
 	/**
-	 * <h3 class="en-US">Convert current object to not formatted YAML string</h3>
+	 * <h3 class="en-US">Convert the current object to not formatted YAML string</h3>
 	 * <h3 class="zh-CN">转换当前实例对象为未经格式化的YAML字符串</h3>
 	 *
 	 * @return <span class="en-US">Converted YAML string</span>
@@ -96,7 +91,7 @@ public abstract class BeanObject implements Serializable {
 	}
 
 	/**
-	 * <h3 class="en-US">Convert current object to formatted YAML string</h3>
+	 * <h3 class="en-US">Convert the current object to formatted YAML string</h3>
 	 * <h3 class="zh-CN">转换当前实例对象为格式化的YAML字符串</h3>
 	 *
 	 * @return <span class="en-US">Converted JSON string</span>
@@ -107,7 +102,7 @@ public abstract class BeanObject implements Serializable {
 	}
 
 	/**
-	 * <h3 class="en-US">Convert current object to not formatted XML string</h3>
+	 * <h3 class="en-US">Convert the current object to not formatted XML string</h3>
 	 * <h3 class="zh-CN">转换当前实例对象为未经格式化的XML字符串</h3>
 	 *
 	 * @return <span class="en-US">Converted XML string, or empty string "" if an error occurs</span>
@@ -118,7 +113,7 @@ public abstract class BeanObject implements Serializable {
 	}
 
 	/**
-	 * <h3 class="en-US">Convert current object to XML string</h3>
+	 * <h3 class="en-US">Convert the current object to XML string</h3>
 	 * <h3 class="zh-CN">转换当前实例对象为XML字符串</h3>
 	 *
 	 * @param formattedOutput <span class="en-US">Output formatted XML string status. <code>TRUE</code> or <code>FALSE</code></span>
@@ -131,7 +126,7 @@ public abstract class BeanObject implements Serializable {
 	}
 
 	/**
-	 * <h3 class="en-US">Convert current object to XML string</h3>
+	 * <h3 class="en-US">Convert the current object to XML string</h3>
 	 * <h3 class="zh-CN">转换当前实例对象为XML字符串</h3>
 	 *
 	 * @param formattedOutput <span class="en-US">Output formatted XML string status. <code>TRUE</code> or <code>FALSE</code></span>
@@ -146,7 +141,7 @@ public abstract class BeanObject implements Serializable {
 	}
 
 	/**
-	 * <h3 class="en-US">Convert current object to XML string</h3>
+	 * <h3 class="en-US">Convert the current object to XML string</h3>
 	 * <h3 class="zh-CN">转换当前实例对象为XML字符串</h3>
 	 *
 	 * @param outputFragment  <span class="en-US">Output XML fragment status. <code>TRUE</code> or <code>FALSE</code></span>
@@ -161,7 +156,7 @@ public abstract class BeanObject implements Serializable {
 	}
 
 	/**
-	 * <h3 class="en-US">Convert current object to XML string</h3>
+	 * <h3 class="en-US">Convert the current object to XML string</h3>
 	 * <h3 class="zh-CN">转换当前实例对象为XML字符串</h3>
 	 *
 	 * @param outputFragment  <span class="en-US">Output XML fragment status. <code>TRUE</code> or <code>FALSE</code></span>
@@ -240,6 +235,27 @@ public abstract class BeanObject implements Serializable {
 				return StringUtils.objectToString(this, StringUtils.StringType.SERIALIZABLE, formatOutput);
 			default:
 				return super.toString();
+		}
+	}
+
+	/**
+	 * <h3 class="en-US">Clone current object</h3>
+	 * <h3 class="zh-CN">复制当前对象</h3>
+	 *
+	 * @param deepClone <span class="en-US">Deep clone flag</span>
+	 *                  <span class="zh-CN">深克隆标记</span>
+	 * @return <span class="en-US">Clone object</span>
+	 * <span class="zh-CN">克隆的对象</span>
+	 */
+	public final Object clone(final boolean deepClone) {
+		if (deepClone) {
+			return ConvertUtils.toObject(ConvertUtils.toByteArray(this));
+		} else {
+			try {
+				return super.clone();
+			} catch (CloneNotSupportedException e) {
+				throw new AssertionError("Clone object failed! ", e);
+			}
 		}
 	}
 }

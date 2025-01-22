@@ -68,7 +68,7 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Create a object instance by invoke non-args constructor method</h3>
+	 * <h3 class="en-US">Create an object instance by invoke non-args constructor method</h3>
 	 * <h3 class="zh-CN">通过调用无参构造函数方法创建对象实例</h3>
 	 *
 	 * @param <T>   <span class="en-US">define class</span>
@@ -83,7 +83,7 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Create a object instance by invoke constructor method as given parameter values</h3>
+	 * <h3 class="en-US">Create an object instance by invoke constructor method as given parameter values</h3>
 	 * <h3 class="zh-CN">通过给定参数值作为参数来调用构造方法创建对象实例</h3>
 	 *
 	 * @param <T>         <span class="en-US">define class</span>
@@ -685,7 +685,7 @@ public final class ObjectUtils {
 	 * <span class="en-US">
 	 * The String representation consists of a list of the array's elements.
 	 * Adjacent elements are separated by the characters <code>", "</code> (a comma followed by a space).
-	 * Enclosed in brackets (<code>"[]"</code>) if argument processCompletion is <code>Boolean.TRUE</code>.
+	 * Enclosed in brackets (<code>"[]"</code>) in argument processCompletion is <code>Boolean.TRUE</code>.
 	 * Returns empty string if argument array is <code>null</code>.
 	 * </span>
 	 * <h3 class="zh-CN">返回指定数组内容的字符串表示形式。</h3>
@@ -737,7 +737,7 @@ public final class ObjectUtils {
 	 * <span class="en-US">
 	 * The String representation consists of a list of the array's elements,
 	 * Adjacent elements are separated by the argument separator characters.
-	 * Enclosed in brackets (<code>"[]"</code>) if argument processCompletion is <code>Boolean.TRUE</code>.
+	 * Enclosed in brackets (<code>"[]"</code>) in argument processCompletion is <code>Boolean.TRUE</code>.
 	 * Returns empty string if argument array is <code>null</code>.
 	 * </span>
 	 * <h3 class="zh-CN">返回指定数组内容的字符串表示形式。</h3>
@@ -778,7 +778,7 @@ public final class ObjectUtils {
 	 * @param array <span class="en-US">the array to build a String representation for</span>
 	 *              <span class="zh-CN">为其构建字符串表示的数组</span>
 	 * @return <span class="en-US">a String representation of argument array</span>
-	 * <span class="zh-CN">参数 array  的字符串表示形式</span>
+	 * <span class="zh-CN">参数 array 的字符串表示形式</span>
 	 */
 	public static String nullSafeToString(final boolean[] array) {
 		return nullSafeToString(array, ARRAY_ELEMENT_SEPARATOR, Boolean.TRUE);
@@ -789,7 +789,7 @@ public final class ObjectUtils {
 	 * <span class="en-US">
 	 * The String representation consists of a list of the array's elements.
 	 * Adjacent elements are separated by the characters <code>", "</code> (a comma followed by a space).
-	 * Enclosed in brackets (<code>"[]"</code>) if argument processCompletion is <code>Boolean.TRUE</code>.
+	 * Enclosed in brackets (<code>"[]"</code>) in argument processCompletion is <code>Boolean.TRUE</code>.
 	 * Returns empty string if argument array  is <code>null</code>.
 	 * </span>
 	 * <h3 class="zh-CN">返回指定数组内容的字符串表示形式。</h3>
@@ -804,7 +804,7 @@ public final class ObjectUtils {
 	 * @param processCompletion <span class="en-US">Enclosed result in brackets (<code>"[]"</code>)</span>
 	 *                          <span class="zh-CN">将结果括在中括号 (<code>"[]"</code>) 中</span>
 	 * @return <span class="en-US">a String representation of argument array</span>
-	 * <span class="zh-CN">参数 array  的字符串表示形式</span>
+	 * <span class="zh-CN">参数 array 的字符串表示形式</span>
 	 */
 	public static String nullSafeToString(final boolean[] array, final boolean processCompletion) {
 		return nullSafeToString(array, ARRAY_ELEMENT_SEPARATOR, processCompletion);
@@ -830,7 +830,7 @@ public final class ObjectUtils {
 	 * @param separator <span class="en-US">array separator character</span>
 	 *                  <span class="zh-CN">数组元素分割字符</span>
 	 * @return <span class="en-US">a String representation of argument array</span>
-	 * <span class="zh-CN">参数 array  的字符串表示形式</span>
+	 * <span class="zh-CN">参数 array 的字符串表示形式</span>
 	 */
 	public static String nullSafeToString(final boolean[] array, final String separator) {
 		return nullSafeToString(array, separator, Boolean.TRUE);
@@ -841,7 +841,7 @@ public final class ObjectUtils {
 	 * <span class="en-US">
 	 * The String representation consists of a list of the array's elements,
 	 * Adjacent elements are separated by the argument separator characters.
-	 * Enclosed in brackets (<code>"[]"</code>) if argument processCompletion is <code>Boolean.TRUE</code>.
+	 * Enclosed in brackets (<code>"[]"</code>) in argument processCompletion is <code>Boolean.TRUE</code>.
 	 * Returns empty string if argument array  is <code>null</code>.
 	 * </span>
 	 * <h3 class="zh-CN">返回指定数组内容的字符串表示形式。</h3>
@@ -858,7 +858,7 @@ public final class ObjectUtils {
 	 * @param processCompletion <span class="en-US">Enclosed result in brackets (<code>"[]"</code>)</span>
 	 *                          <span class="zh-CN">将结果括在中括号 (<code>"[]"</code>) 中</span>
 	 * @return <span class="en-US">a String representation of argument array</span>
-	 * <span class="zh-CN">参数 array  的字符串表示形式</span>
+	 * <span class="zh-CN">参数 array 的字符串表示形式</span>
 	 */
 	public static String nullSafeToString(final boolean[] array, final String separator,
 	                                      final boolean processCompletion) {
@@ -893,7 +893,7 @@ public final class ObjectUtils {
 	 * <span class="en-US">
 	 * The String representation consists of a list of the array's elements.
 	 * Adjacent elements are separated by the characters <code>", "</code> (a comma followed by a space).
-	 * Enclosed in brackets (<code>"[]"</code>) if argument processCompletion is <code>Boolean.TRUE</code>.
+	 * Enclosed in brackets (<code>"[]"</code>) in argument processCompletion is <code>Boolean.TRUE</code>.
 	 * Returns empty string if argument array is <code>null</code>.
 	 * </span>
 	 * <h3 class="zh-CN">返回指定数组内容的字符串表示形式。</h3>
@@ -945,7 +945,7 @@ public final class ObjectUtils {
 	 * <span class="en-US">
 	 * The String representation consists of a list of the array's elements,
 	 * Adjacent elements are separated by the argument separator characters.
-	 * Enclosed in brackets (<code>"[]"</code>) if argument processCompletion is <code>Boolean.TRUE</code>.
+	 * Enclosed in brackets (<code>"[]"</code>) in argument processCompletion is <code>Boolean.TRUE</code>.
 	 * Returns empty string if argument array is <code>null</code>.
 	 * </span>
 	 * <h3 class="zh-CN">返回指定数组内容的字符串表示形式。</h3>
@@ -997,7 +997,7 @@ public final class ObjectUtils {
 	 * <span class="en-US">
 	 * The String representation consists of a list of the array's elements.
 	 * Adjacent elements are separated by the characters <code>", "</code> (a comma followed by a space).
-	 * Enclosed in brackets (<code>"[]"</code>) if argument processCompletion is <code>Boolean.TRUE</code>.
+	 * Enclosed in brackets (<code>"[]"</code>) in argument processCompletion is <code>Boolean.TRUE</code>.
 	 * Returns empty string if argument array is <code>null</code>.
 	 * </span>
 	 * <h3 class="zh-CN">返回指定数组内容的字符串表示形式。</h3>
@@ -1049,7 +1049,7 @@ public final class ObjectUtils {
 	 * <span class="en-US">
 	 * The String representation consists of a list of the array's elements,
 	 * Adjacent elements are separated by the argument separator characters.
-	 * Enclosed in brackets (<code>"[]"</code>) if argument processCompletion is <code>Boolean.TRUE</code>.
+	 * Enclosed in brackets (<code>"[]"</code>) in argument processCompletion is <code>Boolean.TRUE</code>.
 	 * Returns empty string if argument array is <code>null</code>.
 	 * </span>
 	 * <h3 class="zh-CN">返回指定数组内容的字符串表示形式。</h3>
@@ -1101,7 +1101,7 @@ public final class ObjectUtils {
 	 * <span class="en-US">
 	 * The String representation consists of a list of the array's elements.
 	 * Adjacent elements are separated by the characters <code>", "</code> (a comma followed by a space).
-	 * Enclosed in brackets (<code>"[]"</code>) if argument processCompletion is <code>Boolean.TRUE</code>.
+	 * Enclosed in brackets (<code>"[]"</code>) in argument processCompletion is <code>Boolean.TRUE</code>.
 	 * Returns empty string if argument array is <code>null</code>.
 	 * </span>
 	 * <h3 class="zh-CN">返回指定数组内容的字符串表示形式。</h3>
@@ -1153,7 +1153,7 @@ public final class ObjectUtils {
 	 * <span class="en-US">
 	 * The String representation consists of a list of the array's elements,
 	 * Adjacent elements are separated by the argument separator characters.
-	 * Enclosed in brackets (<code>"[]"</code>) if argument processCompletion is <code>Boolean.TRUE</code>.
+	 * Enclosed in brackets (<code>"[]"</code>) in argument processCompletion is <code>Boolean.TRUE</code>.
 	 * Returns empty string if argument array is <code>null</code>.
 	 * </span>
 	 * <h3 class="zh-CN">返回指定数组内容的字符串表示形式。</h3>
@@ -1205,7 +1205,7 @@ public final class ObjectUtils {
 	 * <span class="en-US">
 	 * The String representation consists of a list of the array's elements.
 	 * Adjacent elements are separated by the characters <code>", "</code> (a comma followed by a space).
-	 * Enclosed in brackets (<code>"[]"</code>) if argument processCompletion is <code>Boolean.TRUE</code>.
+	 * Enclosed in brackets (<code>"[]"</code>) in argument processCompletion is <code>Boolean.TRUE</code>.
 	 * Returns empty string if argument array is <code>null</code>.
 	 * </span>
 	 * <h3 class="zh-CN">返回指定数组内容的字符串表示形式。</h3>
@@ -1257,7 +1257,7 @@ public final class ObjectUtils {
 	 * <span class="en-US">
 	 * The String representation consists of a list of the array's elements,
 	 * Adjacent elements are separated by the argument separator characters.
-	 * Enclosed in brackets (<code>"[]"</code>) if argument processCompletion is <code>Boolean.TRUE</code>.
+	 * Enclosed in brackets (<code>"[]"</code>) in argument processCompletion is <code>Boolean.TRUE</code>.
 	 * Returns empty string if argument array is <code>null</code>.
 	 * </span>
 	 * <h3 class="zh-CN">返回指定数组内容的字符串表示形式。</h3>
@@ -1309,7 +1309,7 @@ public final class ObjectUtils {
 	 * <span class="en-US">
 	 * The String representation consists of a list of the array's elements.
 	 * Adjacent elements are separated by the characters <code>", "</code> (a comma followed by a space).
-	 * Enclosed in brackets (<code>"[]"</code>) if argument processCompletion is <code>Boolean.TRUE</code>.
+	 * Enclosed in brackets (<code>"[]"</code>) in argument processCompletion is <code>Boolean.TRUE</code>.
 	 * Returns empty string if argument array is <code>null</code>.
 	 * </span>
 	 * <h3 class="zh-CN">返回指定数组内容的字符串表示形式。</h3>
@@ -1361,7 +1361,7 @@ public final class ObjectUtils {
 	 * <span class="en-US">
 	 * The String representation consists of a list of the array's elements,
 	 * Adjacent elements are separated by the argument separator characters.
-	 * Enclosed in brackets (<code>"[]"</code>) if argument processCompletion is <code>Boolean.TRUE</code>.
+	 * Enclosed in brackets (<code>"[]"</code>) in argument processCompletion is <code>Boolean.TRUE</code>.
 	 * Returns empty string if argument array is <code>null</code>.
 	 * </span>
 	 * <h3 class="zh-CN">返回指定数组内容的字符串表示形式。</h3>
@@ -1413,7 +1413,7 @@ public final class ObjectUtils {
 	 * <span class="en-US">
 	 * The String representation consists of a list of the array's elements.
 	 * Adjacent elements are separated by the characters <code>", "</code> (a comma followed by a space).
-	 * Enclosed in brackets (<code>"[]"</code>) if argument processCompletion is <code>Boolean.TRUE</code>.
+	 * Enclosed in brackets (<code>"[]"</code>) in argument processCompletion is <code>Boolean.TRUE</code>.
 	 * Returns empty string if argument array is <code>null</code>.
 	 * </span>
 	 * <h3 class="zh-CN">返回指定数组内容的字符串表示形式。</h3>
@@ -1465,7 +1465,7 @@ public final class ObjectUtils {
 	 * <span class="en-US">
 	 * The String representation consists of a list of the array's elements,
 	 * Adjacent elements are separated by the argument separator characters.
-	 * Enclosed in brackets (<code>"[]"</code>) if argument processCompletion is <code>Boolean.TRUE</code>.
+	 * Enclosed in brackets (<code>"[]"</code>) in argument processCompletion is <code>Boolean.TRUE</code>.
 	 * Returns empty string if argument array is <code>null</code>.
 	 * </span>
 	 * <h3 class="zh-CN">返回指定数组内容的字符串表示形式。</h3>
@@ -1517,7 +1517,7 @@ public final class ObjectUtils {
 	 * <span class="en-US">
 	 * The String representation consists of a list of the array's elements.
 	 * Adjacent elements are separated by the characters <code>", "</code> (a comma followed by a space).
-	 * Enclosed in brackets (<code>"[]"</code>) if argument processCompletion is <code>Boolean.TRUE</code>.
+	 * Enclosed in brackets (<code>"[]"</code>) in argument processCompletion is <code>Boolean.TRUE</code>.
 	 * Returns empty string if argument array is <code>null</code>.
 	 * </span>
 	 * <h3 class="zh-CN">返回指定数组内容的字符串表示形式。</h3>
@@ -1569,7 +1569,7 @@ public final class ObjectUtils {
 	 * <span class="en-US">
 	 * The String representation consists of a list of the array's elements,
 	 * Adjacent elements are separated by the argument separator characters.
-	 * Enclosed in brackets (<code>"[]"</code>) if argument processCompletion is <code>Boolean.TRUE</code>.
+	 * Enclosed in brackets (<code>"[]"</code>) in argument processCompletion is <code>Boolean.TRUE</code>.
 	 * Returns empty string if argument array is <code>null</code>.
 	 * </span>
 	 * <h3 class="zh-CN">返回指定数组内容的字符串表示形式。</h3>
@@ -1621,7 +1621,7 @@ public final class ObjectUtils {
 	 * <span class="en-US">
 	 * The String representation consists of a list of the array's elements.
 	 * Adjacent elements are separated by the characters <code>", "</code> (a comma followed by a space).
-	 * Enclosed in brackets (<code>"[]"</code>) if argument processCompletion is <code>Boolean.TRUE</code>.
+	 * Enclosed in brackets (<code>"[]"</code>) in argument processCompletion is <code>Boolean.TRUE</code>.
 	 * Returns empty string if argument array is <code>null</code>.
 	 * </span>
 	 * <h3 class="zh-CN">返回指定数组内容的字符串表示形式。</h3>
@@ -1673,7 +1673,7 @@ public final class ObjectUtils {
 	 * <span class="en-US">
 	 * The String representation consists of a list of the array's elements,
 	 * Adjacent elements are separated by the argument separator characters.
-	 * Enclosed in brackets (<code>"[]"</code>) if argument processCompletion is <code>Boolean.TRUE</code>.
+	 * Enclosed in brackets (<code>"[]"</code>) in argument processCompletion is <code>Boolean.TRUE</code>.
 	 * Returns empty string if argument array is <code>null</code>.
 	 * </span>
 	 * <h3 class="zh-CN">返回指定数组内容的字符串表示形式。</h3>
@@ -1726,7 +1726,7 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Register standard MBean object to JMX manager</h3>
+	 * <h3 class="en-US">Register the standard MBean object to JMX manager</h3>
 	 * <h3 class="zh-CN">注册标准MBean对象到JMX管理器</h3>
 	 *
 	 * @param mbeanObject <span class="en-US">Standard MBean object</span>
@@ -1739,7 +1739,7 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Register standard MBean object to JMX manager</h3>
+	 * <h3 class="en-US">Register the standard MBean object to JMX manager</h3>
 	 * <h3 class="zh-CN">注册标准MBean对象到JMX管理器</h3>
 	 *
 	 * @param beanName    <span class="en-US">The object name of the MBean</span>
@@ -1804,7 +1804,7 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Insert array start character at index 0 and append array end character at end of the argument stringBuilder, and return the final result string.</h3>
+	 * <h3 class="en-US">Insert array start character at index 0 and append array end character at the end of the argument stringBuilder, and return the final result string.</h3>
 	 * <h3 class="zh-CN">在索引 0 处插入数组起始字符，并在参数 stringBuilder 末尾附加数组结束字符，并返回最终结果字符串。</h3>
 	 *
 	 * @param stringBuilder <span class="en-US">the string builder will process for</span>

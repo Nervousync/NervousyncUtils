@@ -535,7 +535,7 @@ public final class OTPUtils {
 	}
 
 	/**
-	 * <h2 class="en-US">Enumeration of Calculate type</h2>
+	 * <h2 class="en-US">Enumeration of the Calculate type</h2>
 	 * <h2 class="zh-CN">密码算法类型枚举</h2>
 	 */
 	public enum CalcType {

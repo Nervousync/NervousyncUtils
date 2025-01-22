@@ -75,7 +75,7 @@ public final class StartupManager {
 
 	/**
 	 * <h3 class="en-US">Private constructor method for StartupManager</h3>
-	 * <span class="en-US">StartupManager will automatic add a hook to schedule execute destroy method when system will shutdown.</span>
+	 * <span class="en-US">StartupManager will automatically add a hook to schedule execute destroy method when system will shutdown.</span>
 	 * <h3 class="zh-CN">启动管理器的私有构造方法</h3>
 	 * <span class="zh-CN">启动管理器会自动添加一个钩子程序用于在系统退出时调用destroy方法。</span>
 	 */
@@ -126,7 +126,7 @@ public final class StartupManager {
 	}
 
 	/**
-	 * <h3 class="en-US">Obtain registered launcher configure information list</h3>
+	 * <h3 class="en-US">Obtain the registered launcher configure information list</h3>
 	 * <h3 class="zh-CN">获取已注册的启动器配置信息列表</h3>
 	 *
 	 * @return <span class="en-US">Launcher configure information list</span>

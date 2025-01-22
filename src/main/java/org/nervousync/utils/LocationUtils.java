@@ -24,7 +24,7 @@ import org.nervousync.exceptions.location.LocationConvertException;
  * <span class="en-US">
  * <span>Current utilities implements features:</span>
  *     <ul>Convert GeoPoint at WGS84(GPS)/GCJ02/BD09</ul>
- *     <ul>Calculate distance of two given geography point. (Unit: Kilometers)</ul>
+ *     <ul>Calculate the distance of two given geography point. (Unit: Kilometers)</ul>
  * </span>
  * <h2 class="zh-CN">地理位置信息工具集</h2>
  * <span class="zh-CN">
@@ -56,7 +56,7 @@ public final class LocationUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Calculate distance of two given geography location. (Unit: Kilometers)</h3>
+	 * <h3 class="en-US">Calculate the distance of two given geography location. (Unit: Kilometers)</h3>
 	 * <h3 class="zh-CN">计算两个物理坐标之间的距离，单位：公里</h3>
 	 *
 	 * @param beginPoint <span class="en-US">GroPoint instance of beginning geography location</span>

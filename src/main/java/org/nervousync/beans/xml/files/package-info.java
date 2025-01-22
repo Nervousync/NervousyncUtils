@@ -15,8 +15,12 @@
  * limitations under the License.
  */
 @XmlSchema(namespace = "https://nervousync.org/schemas/segment", elementFormDefault = XmlNsForm.QUALIFIED,
-		location = "https://nervousync.org/schemas/segment_1_0.xsd",
-		xmlns = @XmlNs(prefix = "segment", namespaceURI = "https://nervousync.org/schemas/segment")
+		location = "https://nervousync.org/schemas/file_segment_1_0.xsd",
+		xmlns = {
+				@XmlNs(prefix = "", namespaceURI = "https://nervousync.org/schemas/segment"),
+				@XmlNs(prefix = "xs", namespaceURI = "http://www.w3.org/2001/XMLSchema"),
+				@XmlNs(prefix = "xsi", namespaceURI = "http://www.w3.org/2001/XMLSchema-instance")
+		}
 )
 package org.nervousync.beans.xml.files;
 

@@ -361,6 +361,14 @@
         {
           "key": "Office_Excel_Rows_Count",
           "content": "Data sheet: {0}, rows count: {1}"
+        },
+        {
+          "key": "Collection_Is_Empty",
+          "content": "Check collection type: {0}, is empty : {1}"
+        },
+        {
+          "key": "Collection_Length",
+          "content": "Check collection type: {0}, length : {1}"
         }
       ]
     },
@@ -723,6 +731,14 @@
         {
           "key": "Office_Excel_Rows_Count",
           "content": "数据表：{0}，记录数：{1}"
+        },
+        {
+          "key": "Collection_Is_Empty",
+          "content": "检查集合类型：{0}，集合为空：{1}"
+        },
+        {
+          "key": "Collection_Length",
+          "content": "检查集合类型：{0}，集合长度：{1}"
         }
       ]
     }

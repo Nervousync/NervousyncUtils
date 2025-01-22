@@ -8,10 +8,12 @@ import org.nervousync.beans.barcode.CodeOptions;
 import org.nervousync.commons.Globals;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.Hashtable;
 import java.util.Optional;
+import java.util.Random;
 
 /**
  * <h2 class="en-US">Barcode Utilities</h2>
@@ -35,13 +37,17 @@ import java.util.Optional;
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
  * @version $Revision: 1.0.0 $ $Date: Nov 13, 2023 18:51:21 $
  */
-public final class BarCodeUtils {
+public final class CodeUtils {
 
 	/**
 	 * <span class="en-US">Multilingual supported logger instance</span>
 	 * <span class="zh-CN">多语言支持的日志对象</span>
 	 */
-	private static final LoggerUtils.Logger LOGGER = LoggerUtils.getLogger(BarCodeUtils.class);
+	private static final LoggerUtils.Logger LOGGER = LoggerUtils.getLogger(CodeUtils.class);
+
+	private static final int DEFAULT_CODE_BORDER_WIDTH = 5;
+	private static final int DEFAULT_CODE_HEIGHT = 18;
+	private static final int DEFAULT_CODE_CHARACTER_WIDTH = 12;
 
 	/**
 	 * <h3 class="en-US">Generate barcode images based on given information</h3>
@@ -65,7 +71,7 @@ public final class BarCodeUtils {
 			int index = savePath.lastIndexOf(Globals.DEFAULT_PAGE_SEPARATOR);
 			String homePath = savePath.substring(0, index);
 			FileUtils.makeDir(homePath);
-			return BarCodeUtils.generate(contents, codeOptions, new FileOutputStream(savePath));
+			return CodeUtils.generate(contents, codeOptions, new FileOutputStream(savePath));
 		} catch (FileNotFoundException e) {
 			if (LOGGER.isDebugEnabled()) {
 				LOGGER.debug("Stack_Message_Error", e);
@@ -90,14 +96,12 @@ public final class BarCodeUtils {
 	 */
 	public static boolean generate(final String contents, final CodeOptions codeOptions,
 	                               final OutputStream outputStream) {
-		if (codeOptions == null || codeOptions.getCodeHeight() <= 0 || codeOptions.getCodeWidth() <= 0) {
-			return Boolean.FALSE;
-		}
-
-		return Optional.ofNullable(BarCodeUtils.generate(contents, codeOptions))
+		return Optional.ofNullable(CodeUtils.generate(contents, codeOptions))
 				.map(bufferedImage -> {
 					try {
-						ImageIO.write(bufferedImage, codeOptions.getFileFormat(), outputStream);
+						ImageIO.write(bufferedImage,
+								codeOptions == null ? "JPEG" : codeOptions.getFileFormat(),
+								outputStream);
 						return Boolean.TRUE;
 					} catch (IOException e) {
 						return Boolean.FALSE;
@@ -118,7 +122,39 @@ public final class BarCodeUtils {
 	 * <span class="zh-CN">生成的BufferedImage实例对象</span>
 	 */
 	public static BufferedImage generate(final String contents, final CodeOptions codeOptions) {
-		if (codeOptions == null || codeOptions.getCodeHeight() <= 0 || codeOptions.getCodeWidth() <= 0) {
+		if (contents.isEmpty()) {
+			return null;
+		}
+
+		if (codeOptions == null) {
+			int width = contents.length() * DEFAULT_CODE_CHARACTER_WIDTH + DEFAULT_CODE_BORDER_WIDTH;
+			BufferedImage bufferedImage = new BufferedImage(width, DEFAULT_CODE_HEIGHT, BufferedImage.TYPE_INT_RGB);
+			Graphics graphics = bufferedImage.getGraphics();
+			Random random = new Random();
+			graphics.setColor(new Color(random.nextInt(50) + 200, random.nextInt(50) + 200, random.nextInt(50) + 200));
+			graphics.fillRect(0, 0, width, DEFAULT_CODE_HEIGHT);
+			graphics.setFont(new Font("Monospaced", Font.BOLD, 20));
+			graphics.setColor(new Color(random.nextInt(80), random.nextInt(80), random.nextInt(80)));
+			int length = contents.length();
+			for (int i = 0; i < length; i++) {
+				String code = contents.substring(i, i + 1);
+				graphics.setColor(new Color(random.nextInt(80), random.nextInt(80), random.nextInt(80)));
+				graphics.drawString(code, 12 * i + 1 + random.nextInt(2), 15);
+				graphics.drawString(" ", 0, length * (i + 2));
+			}
+
+			int noisePoint = 5 * length;
+			for (int i = 0; i < noisePoint; i++) {
+				graphics.setColor(new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255)));
+				graphics.drawOval(random.nextInt(width), random.nextInt(DEFAULT_CODE_HEIGHT), 1, 1);
+			}
+			graphics.dispose();
+
+			return bufferedImage;
+		}
+
+		if (codeOptions.getCodeHeight() <= Globals.INITIALIZE_INT_VALUE
+				|| codeOptions.getCodeWidth() <= Globals.INITIALIZE_INT_VALUE) {
 			return null;
 		}
 
@@ -163,7 +199,7 @@ public final class BarCodeUtils {
 	 */
 	public static String parse(final byte[] imageBytes, final String encoding) {
 		if (imageBytes != null && imageBytes.length > 0) {
-			return BarCodeUtils.parse(new ByteArrayInputStream(imageBytes), encoding);
+			return CodeUtils.parse(new ByteArrayInputStream(imageBytes), encoding);
 		}
 		return null;
 	}
@@ -182,7 +218,7 @@ public final class BarCodeUtils {
 	public static String parse(final InputStream inputStream, final String encoding) {
 		if (inputStream != null) {
 			try {
-				return BarCodeUtils.parse(ImageIO.read(inputStream), encoding);
+				return CodeUtils.parse(ImageIO.read(inputStream), encoding);
 			} catch (IOException e) {
 				if (LOGGER.isDebugEnabled()) {
 					LOGGER.debug("Stack_Message_Error", e);

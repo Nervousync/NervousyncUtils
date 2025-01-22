@@ -168,7 +168,7 @@ public final class ImageUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Resize original image file and save to target path by given ratio value</h3>
+	 * <h3 class="en-US">Resize the original image file and save to the target path by given ratio value</h3>
 	 * <h3 class="zh-CN">根据给定的缩放比例对原始图片进行放大/缩小并存储到目标地址</h3>
 	 *
 	 * @param origPath   <span class="en-US">original image file path</span>
@@ -185,7 +185,7 @@ public final class ImageUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Resize original image file and save to target path by given ratio value, and add mark to target image if configured</h3>
+	 * <h3 class="en-US">Resize the original image file and save to the target path by given ratio value, and add mark to target image if configured</h3>
 	 * <h3 class="zh-CN">根据给定的缩放比例对原始图片进行放大/缩小并存储到目标地址，并添加水印到目标图片（如果设置了水印选项）</h3>
 	 *
 	 * @param origPath    <span class="en-US">original image file path</span>
@@ -225,7 +225,7 @@ public final class ImageUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Resize original image file to the given width and height, save to target path</h3>
+	 * <h3 class="en-US">Resize the original image file to the given width and height, save to target path</h3>
 	 * <h3 class="zh-CN">将原始图片调整到指定的宽度、高度，并存储到目标地址</h3>
 	 *
 	 * @param origPath     <span class="en-US">original image file path</span>
@@ -245,7 +245,7 @@ public final class ImageUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Resize original image file to the given width and height, save to target path, and add mark to target image if configured</h3>
+	 * <h3 class="en-US">Resize the original image file to the given width and height, save to target path, and add mark to target image if configured</h3>
 	 * <h3 class="zh-CN">将原始图片调整到指定的宽度、高度，并存储到目标地址，并添加水印到目标图片（如果设置了水印选项）</h3>
 	 *
 	 * @param origPath     <span class="en-US">original image file path</span>
@@ -300,7 +300,7 @@ public final class ImageUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Add mark to original image and save result image to target path</h3>
+	 * <h3 class="en-US">Add mark to original image and save result image to the target path</h3>
 	 * <h3 class="zh-CN">添加水印到原始图片，并将添加好水印的图片保存到目标地址</h3>
 	 *
 	 * @param origPath    <span class="en-US">original image file path</span>
@@ -387,7 +387,7 @@ public final class ImageUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Calculate dHash of given image file</h3>
+	 * <h3 class="en-US">Calculate dHash of the given image file</h3>
 	 * <h3 class="en-US">计算给定图片的差异值哈希</h3>
 	 *
 	 * @param filePath <span class="en-US">Image file path</span>
@@ -408,7 +408,7 @@ public final class ImageUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Calculate dHash of given image file</h3>
+	 * <h3 class="en-US">Calculate dHash of the given image file</h3>
 	 * <h3 class="en-US">计算给定图片的差异值哈希</h3>
 	 *
 	 * @param file <span class="en-US">Image file instance</span>
@@ -429,7 +429,7 @@ public final class ImageUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Calculate dHash of given image file</h3>
+	 * <h3 class="en-US">Calculate dHash of the given image file</h3>
 	 * <h3 class="en-US">计算给定图片的差异值哈希</h3>
 	 *
 	 * @param bufferedImage <span class="en-US">Buffered image</span>
@@ -456,7 +456,7 @@ public final class ImageUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Calculate pHash of given image file</h3>
+	 * <h3 class="en-US">Calculate pHash of the given image file</h3>
 	 * <h3 class="en-US">计算给定图片的感知哈希</h3>
 	 *
 	 * @param filePath <span class="en-US">Image file path</span>
@@ -477,7 +477,7 @@ public final class ImageUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Calculate pHash of given image file</h3>
+	 * <h3 class="en-US">Calculate pHash of the given image file</h3>
 	 * <h3 class="en-US">计算给定图片的感知哈希</h3>
 	 *
 	 * @param file <span class="en-US">Image file instance</span>
@@ -498,7 +498,7 @@ public final class ImageUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Calculate pHash of given image file</h3>
+	 * <h3 class="en-US">Calculate pHash of the given image file</h3>
 	 * <h3 class="en-US">计算给定图片的感知哈希</h3>
 	 *
 	 * @param bufferedImage <span class="en-US">Buffered image</span>

@@ -87,4 +87,19 @@ public final class RegexGlobals {
 	 * <span class="zh-CN">正则表达式，用于匹配电话号码字符串</span>
 	 */
 	public static final String PHONE_NUMBER = "^(00|\\+){0,1}(\\d){1,}$";
+	/**
+	 * <span class="en-US">Regular expression to match US social security number (SSN).</span>
+	 * <span class="zh-CN">正则表达式，用于匹配美国社会安全号</span>
+	 */
+	public static final String US_Social_Security_Number = "^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$";
+	/**
+	 * <span class="en-US">Regular expression to match US individual taxpayer identification number (ITIN).</span>
+	 * <span class="zh-CN">正则表达式，用于匹配美国个人报税识别码</span>
+	 */
+	public static final String US_Individual_Taxpayer_Identification_Number = "^(9\\d{2})([*\\-]?)(5\\d|6[0-5]|7\\d|8[0-8]|9[0-2,4-9])([*\\-]?)(\\d{4})$";
+	/**
+	 * <span class="en-US">Regular expression to match US employer identification number (EIN).</span>
+	 * <span class="zh-CN">正则表达式，用于匹配美国雇主身份识别码</span>
+	 */
+	public static final String US_Employer_Identification_Number = "^([0][1-6]|1[0-6]|(?!70)[27][0-7]|(?!31)[35][0-9]|[468][0-8]|9[0-589])?\\d{7}$";
 }

@@ -113,7 +113,7 @@ public final class SNMPData implements Serializable {
 	}
 
 	/**
-	 * <h3 class="en-US">Read data from data map by given oid string</h3>
+	 * <h3 class="en-US">Read data from the data map by given oid string</h3>
 	 * <h3 class="zh-CN">根据给定的oid字符串读取数据值</h3>
 	 *
 	 * @param oid <span class="en-US">oid string</span>

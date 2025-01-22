@@ -54,7 +54,7 @@ public final class ClassUtils {
 	private static final char INNER_CLASS_SEPARATOR = '$';
 	/**
 	 * <span class="en-US">The CGLIB class separator character "$$"</span>
-	 * <span class="zh-CN">CGLIB 类分隔符“$$”</span>
+	 * <span class="zh-CN">CGLIB 类分隔符 “$$”</span>
 	 */
 	private static final String CGLIB_CLASS_SEPARATOR = "$$";
 	/**
@@ -76,7 +76,7 @@ public final class ClassUtils {
 	/**
 	 * <span class="en-US">
 	 * Map with the primitive wrapper type as a key and corresponding primitive type as value,
-	 * for example: Integer.class -> int.class.
+	 * for example, Integer.class -> int.class.
 	 * </span>
 	 * <span class="zh-CN">以原始包装类型作为键并以相应的原始类型作为值进行映射，例如：Integer.class -> int.class。</span>
 	 */
@@ -84,7 +84,7 @@ public final class ClassUtils {
 	/**
 	 * <span class="en-US">
 	 * Map with primitive type name as a key and corresponding primitive type as value,
-	 * for example: "int" -> "int.class".
+	 * for example, "int" -> "int.class".
 	 * </span>
 	 * <span class="zh-CN">以原始类型名称作为键，以相应的原始类型作为值的映射，例如：“int”->“int.class”。</span>
 	 */
@@ -122,7 +122,7 @@ public final class ClassUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Check type class is simple data class, e.g. Number(include int, Integer, long, Long...), String, boolean and Date</h3>
+	 * <h3 class="en-US">Check type class is simple data class, e.g., Number (include int, Integer, long, Long...), String, boolean and Date</h3>
 	 * <h3 class="zh-CN">检查类型类是简单的数据类，例如Number（包括 int、Integer、long、Long...）、String、布尔值和日期时间</h3>
 	 *
 	 * @param typeClass <span class="en-US">Will check for type class</span>
@@ -249,7 +249,7 @@ public final class ClassUtils {
 	/**
 	 * <h3 class="en-US">Return the default ClassLoader to use</h3>
 	 * <span class="en-US">
-	 * typically the thread context ClassLoader, if available;
+	 * Typically the thread context ClassLoader, if available;
 	 * the ClassLoader that loaded the ClassUtils class will be used as fallback.
 	 * Call this method if you intend to use the thread context ClassLoader
 	 * in a scenario where you absolutely need a non-null ClassLoader reference:
@@ -399,7 +399,7 @@ public final class ClassUtils {
 	 * <span class="en-US">
 	 * Replacement for <code>Class.forName()</code> that also returns Class instances
 	 * for primitives (like "int") and array class names (like "String[]").
-	 * Always uses the default class loader: that is, preferably the thread context
+	 * Always use the default class loader: that is, preferably the thread context
 	 * ClassLoader, or the ClassLoader that loaded the ClassUtils class as fallback.
 	 * </span>
 	 * <h3 class="zh-CN">替换 <code>Class.forName()</code></h3>
@@ -651,7 +651,7 @@ public final class ClassUtils {
 
 	/**
 	 * <h3 class="en-US">Check if the given class represents a primitive wrapper.</h3>
-	 * <span class="en-US">i.e. Boolean, Byte, Character, Short, Integer, Long, Float, or Double.</span>
+	 * <span class="en-US">i.e., Boolean, Byte, Character, Short, Integer, Long, Float, or Double.</span>
 	 * <h3 class="zh-CN">检查给定的类是否表示基础类型包装类。</h3>
 	 * <span class="zh-CN">即 Boolean, Byte, Character, Short, Integer, Long, Float, or Double.</span>
 	 *
@@ -670,8 +670,8 @@ public final class ClassUtils {
 	/**
 	 * <h3 class="en-US">Check if the given class is a primitive or primitive wrapper class.</h3>
 	 * <span class="en-US">
-	 * a primitive (i.e. boolean, byte, char, short, int, long, float, or double)
-	 * or a primitive wrapper (i.e. Boolean, Byte, Character, Short, Integer, Long, Float, or Double)
+	 * a primitive (i.e., boolean, byte, char, short, int, long, float, or double)
+	 * or a primitive wrapper (i.e., Boolean, Byte, Character, Short, Integer, Long, Float, or Double)
 	 * </span>
 	 * <h3 class="zh-CN">检查给定的类是否是基础类型或基础类型包装类。</h3>
 	 * <span class="zh-CN">
@@ -693,7 +693,7 @@ public final class ClassUtils {
 
 	/**
 	 * <h3 class="en-US">Check if the given class represents an array of primitives.</h3>
-	 * <span class="en-US">i.e. Boolean, Byte, Character, Short, Integer, Long, Float, or Double.</span>
+	 * <span class="en-US">i.e., Boolean, Byte, Character, Short, Integer, Long, Float, or Double.</span>
 	 * <h3 class="zh-CN">检查给定的类是否表示基础类型数组。</h3>
 	 * <span class="zh-CN">即 Boolean, Byte, Character, Short, Integer, Long, Float, Double.</span>
 	 *
@@ -711,7 +711,7 @@ public final class ClassUtils {
 
 	/**
 	 * <h3 class="en-US">Check if the given class represents an array of primitive wrappers.</h3>
-	 * <span class="en-US">i.e. Boolean, Byte, Character, Short, Integer, Long, Float, or Double.</span>
+	 * <span class="en-US">i.e., Boolean, Byte, Character, Short, Integer, Long, Float, or Double.</span>
 	 * <h3 class="zh-CN">检查给定的类是否表示基础类型包装类数组。</h3>
 	 * <span class="zh-CN">即 Boolean, Byte, Character, Short, Integer, Long, Float, Double.</span>
 	 *
@@ -776,7 +776,20 @@ public final class ClassUtils {
 	 * <span class="zh-CN">相应的完全限定类名</span>
 	 */
 	public static String resourcePathToClassName(final String resourcePath) {
-		return resourcePath.replace(Globals.DEFAULT_RESOURCE_SEPARATOR, Globals.DEFAULT_PACKAGE_SEPARATOR);
+		String separator = resourcePath.contains(Globals.DEFAULT_PAGE_SEPARATOR)
+				? Globals.DEFAULT_PAGE_SEPARATOR
+				: Character.toString(Globals.DEFAULT_RESOURCE_SEPARATOR);
+		StringBuilder className = new StringBuilder();
+		int position = resourcePath.startsWith(separator) ? 1 : Globals.INITIALIZE_INT_VALUE;
+		int index = resourcePath.indexOf(separator, position);
+		while (index != Globals.DEFAULT_VALUE_INT) {
+			className.append(Globals.DEFAULT_PACKAGE_SEPARATOR).append(resourcePath, position, index);
+			position = index + 1;
+			index = resourcePath.indexOf(separator, position);
+		}
+		className.append(Globals.DEFAULT_PACKAGE_SEPARATOR).append(resourcePath, position,
+				resourcePath.length() - ClassUtils.CLASS_FILE_SUFFIX.length());
+		return className.substring(1);
 	}
 
 	/**
@@ -833,7 +846,7 @@ public final class ClassUtils {
 	/**
 	 * <h3 class="en-US">Given an input class object, return a string which consists of the class's package name as a pathname.</h3>
 	 * <span class="en-US">
-	 * i.e., all dots ('.') are replaced by slashes ('/'). Neither a leading nor trailing slash is added.
+	 * For example, all dots ('.') are replaced by slashes ('/'). Neither a leading nor trailing slash is added.
 	 * The result could be concatenated with a slash and the name of a resource, and fed directly
 	 * to <code>ClassLoader.getResource()</code>. For it to be fed to <code>Class.getResource</code> instead,
 	 * a leading slash would also have to be prepended to the returned value.
@@ -1009,7 +1022,7 @@ public final class ClassUtils {
 
 	/**
 	 * <h3 class="en-US">Build a nice qualified name for an array: component type class name + "[]".</h3>
-	 * <h3 class="zh-CN">为数组建立一个好的限定名称：组件类型类名+“[]”。</h3>
+	 * <h3 class="zh-CN">为数组建立一个高质量的限定名称：组件类型类名+“[]”。</h3>
 	 *
 	 * @param clazz <span class="en-US">the array class</span>
 	 *              <span class="zh-CN">数组类</span>

@@ -82,7 +82,7 @@ public abstract class SecureAdapter {
 	}
 
 	/**
-	 * <h3 class="en-US">Append given string to current adapter and calculate final result</h3>
+	 * <h3 class="en-US">Append given string to current adapter and calculate the final result</h3>
 	 * <h3 class="zh-CN">追加给定的字符串到当前适配器并计算最终结果</h3>
 	 *
 	 * @param strIn <span class="en-US">Input string</span>
@@ -97,7 +97,7 @@ public abstract class SecureAdapter {
 	}
 
 	/**
-	 * <h3 class="en-US">Append given binary data array to current adapter and calculate final result</h3>
+	 * <h3 class="en-US">Append given binary data array to the current adapter and calculate final result</h3>
 	 * <h3 class="zh-CN">追加给定的二进制字节数组到当前适配器并计算最终结果</h3>
 	 *
 	 * @param dataBytes <span class="en-US">binary data array</span>
@@ -112,7 +112,7 @@ public abstract class SecureAdapter {
 	}
 
 	/**
-	 * <h3 class="en-US">Append given byte buffer data to current adapter and calculate final result</h3>
+	 * <h3 class="en-US">Append given byte buffer data to the current adapter and calculate final result</h3>
 	 * <h3 class="zh-CN">追加给定的二进制缓冲器中的数据到当前适配器并计算最终结果</h3>
 	 *
 	 * @param inBuffer <span class="en-US">byte buffer instance</span>
@@ -127,7 +127,7 @@ public abstract class SecureAdapter {
 	}
 
 	/**
-	 * <h3 class="en-US">Append parts of given binary data array to current adapter</h3>
+	 * <h3 class="en-US">Append parts of the given binary data array to current adapter</h3>
 	 * <h3 class="zh-CN">追加给定的二进制字节数组到当前适配器</h3>
 	 *
 	 * @param dataBytes <span class="en-US">binary data array</span>
@@ -142,7 +142,7 @@ public abstract class SecureAdapter {
 	public abstract void append(byte[] dataBytes, int position, int length) throws CryptoException;
 
 	/**
-	 * <h3 class="en-US">Append parts of given binary data array to current adapter and calculate final result</h3>
+	 * <h3 class="en-US">Append parts of the given binary data array to current adapter and calculate final result</h3>
 	 * <h3 class="zh-CN">追加给定的二进制字节数组到当前适配器并计算最终结果</h3>
 	 *
 	 * @param dataBytes <span class="en-US">binary data array</span>

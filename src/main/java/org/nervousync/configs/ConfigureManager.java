@@ -25,6 +25,8 @@ import org.nervousync.security.factory.SecureFactory;
 import org.nervousync.utils.*;
 
 import java.io.FileNotFoundException;
+import java.lang.reflect.Array;
+import java.lang.reflect.ParameterizedType;
 import java.util.*;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -134,7 +136,7 @@ public final class ConfigureManager {
 				LOGGER.error("Configure_Manager_Path_Null");
 				return;
 			}
-			storagePath += (Globals.DEFAULT_PAGE_SEPARATOR + "configs");
+			storagePath += (Globals.DEFAULT_PAGE_SEPARATOR + ".configs");
 		} else {
 			storagePath = customPath;
 		}
@@ -168,7 +170,38 @@ public final class ConfigureManager {
 	}
 
 	/**
-	 * <h3 class="en-US">Read configuration information and convert it into instance object</h3>
+	 * <h3 class="en-US">Checks whether the given profile information exists</h3>
+	 * <h3 class="zh-CN">检查给定的配置文件信息是否存在</h3>
+	 *
+	 * @param targetClass <span class="en-US">Configuration information JavaBean class</span>
+	 *                    <span class="zh-CN">配置信息JavaBean类</span>
+	 * @return <span class="en-US">Check result</span>
+	 * <span class="zh-CN">检查结果</span>
+	 */
+	public boolean checkExists(final Class<?> targetClass) {
+		return this.checkExists(targetClass, Globals.DEFAULT_VALUE_STRING);
+	}
+
+	/**
+	 * <h3 class="en-US">Checks whether the given profile information exists</h3>
+	 * <h3 class="zh-CN">检查给定的配置文件信息是否存在</h3>
+	 *
+	 * @param targetClass <span class="en-US">Configuration information JavaBean class</span>
+	 *                    <span class="zh-CN">配置信息JavaBean类</span>
+	 * @param suffix      <span class="en-US">Configuration file custom suffix</span>
+	 *                    <span class="zh-CN">配置文件自定义后缀</span>
+	 * @return <span class="en-US">Check result</span>
+	 * <span class="zh-CN">检查结果</span>
+	 */
+	public boolean checkExists(final Class<?> targetClass, final String suffix) {
+		if (targetClass == null) {
+			return Boolean.FALSE;
+		}
+		return this.existsFiles.containsKey(this.parseName(targetClass, suffix));
+	}
+
+	/**
+	 * <h3 class="en-US">Read configuration information and convert it into the instance object</h3>
 	 * <h3 class="zh-CN">读取配置信息并转换为实例对象</h3>
 	 *
 	 * @param targetClass <span class="en-US">Configuration information JavaBean class</span>
@@ -183,7 +216,7 @@ public final class ConfigureManager {
 	}
 
 	/**
-	 * <h3 class="en-US">Read configuration information and convert it into instance object</h3>
+	 * <h3 class="en-US">Read configuration information and convert it into the instance object</h3>
 	 * <h3 class="zh-CN">读取配置信息并转换为实例对象</h3>
 	 *
 	 * @param targetClass <span class="en-US">Configuration information JavaBean class</span>
@@ -206,14 +239,14 @@ public final class ConfigureManager {
 								!Globals.DEFAULT_XML_ANNOTATION_NAME.equalsIgnoreCase(xmlRootElement.namespace()))
 						.map(XmlRootElement::namespace)
 						.orElse(Globals.DEFAULT_VALUE_STRING);
-		if (!this.existsFiles.containsKey(fileName)) {
-			return null;
-		}
-		T readConfig = StringUtils.fileToObject(this.existsFiles.get(fileName), targetClass, schemaPath);
-		if (readConfig instanceof BeanObject) {
-			this.securityFields((BeanObject) readConfig, Boolean.FALSE);
-		}
-		return readConfig;
+		return Optional.ofNullable(this.existsFiles.get(fileName))
+				.map(filePath -> StringUtils.fileToObject(filePath, targetClass, schemaPath))
+				.map(readConfig -> {
+					if (readConfig instanceof BeanObject) {
+						this.decryptFields((BeanObject) readConfig);
+					}
+					return readConfig;
+				}).orElse(null);
 	}
 
 	/**
@@ -227,27 +260,6 @@ public final class ConfigureManager {
 	 */
 	public boolean saveConfigure(final BeanObject beanObject) {
 		return this.saveConfigure(beanObject, Globals.DEFAULT_VALUE_STRING);
-	}
-
-	private void securityFields(final BeanObject beanObject, final boolean encrypt) {
-		this.scanFields(beanObject.getClass());
-		String className = ClassUtils.originalClassName(beanObject.getClass());
-		Optional.ofNullable(this.securityFieldsMap.get(className))
-				.ifPresent(fieldMap ->
-						fieldMap.forEach((fieldName, secureName) -> {
-							if (!SecureFactory.registeredConfig(secureName)) {
-								return;
-							}
-							Object fieldValue = ReflectionUtils.getFieldValue(fieldName, beanObject);
-							if (fieldValue instanceof BeanObject) {
-								this.securityFields((BeanObject) fieldValue, encrypt);
-								ReflectionUtils.setField(fieldName, beanObject, fieldValue);
-							} else if (StringUtils.notBlank(secureName) && fieldValue instanceof String) {
-								ReflectionUtils.setField(fieldName, beanObject, encrypt
-										? SecureFactory.encrypt(secureName, (String) fieldValue)
-										: SecureFactory.decrypt(secureName, (String) fieldValue));
-							}
-						}));
 	}
 
 	/**
@@ -265,7 +277,7 @@ public final class ConfigureManager {
 		if (beanObject == null) {
 			return Boolean.FALSE;
 		}
-		this.securityFields(beanObject, Boolean.TRUE);
+		this.encryptFields(beanObject);
 		String fileName = this.parseName(beanObject.getClass(), suffix);
 		String filePath = this.existsFiles.getOrDefault(fileName, Globals.DEFAULT_VALUE_STRING);
 		StringUtils.StringType stringType;
@@ -394,6 +406,103 @@ public final class ConfigureManager {
 		this.running = Boolean.FALSE;
 	}
 
+	/**
+	 * <h3 class="en-US">Encrypt the key field</h3>
+	 * <h3 class="zh-CN">对密钥字段进行加密操作</h3>
+	 *
+	 * @param beanObject <span class="en-US">Configuration information instance object</span>
+	 *                   <span class="zh-CN">配置信息实例对象</span>
+	 */
+	private void encryptFields(final BeanObject beanObject) {
+		this.scanFields(beanObject.getClass());
+		String className = ClassUtils.originalClassName(beanObject.getClass());
+		Optional.ofNullable(this.securityFieldsMap.get(className))
+				.ifPresent(fieldMap ->
+						fieldMap.forEach((fieldName, secureName) -> {
+							Object fieldValue = ReflectionUtils.getFieldValue(fieldName, beanObject);
+							if (fieldValue == null) {
+								return;
+							}
+							if (fieldValue instanceof List) {
+								((List<?>) fieldValue).replaceAll(item -> {
+									if (item instanceof BeanObject) {
+										this.encryptFields((BeanObject) item);
+									}
+									return item;
+								});
+								ReflectionUtils.setField(fieldName, beanObject, fieldValue);
+							} else if (fieldValue.getClass().isArray()) {
+								for (int i = 0; i < Array.getLength(fieldValue); i++) {
+									Object item = Array.get(fieldValue, i);
+									if (item instanceof BeanObject) {
+										this.encryptFields((BeanObject) item);
+									}
+									Array.set(fieldValue, i, item);
+								}
+								ReflectionUtils.setField(fieldName, beanObject, fieldValue);
+							} else if (fieldValue instanceof BeanObject) {
+								this.encryptFields((BeanObject) fieldValue);
+								ReflectionUtils.setField(fieldName, beanObject, fieldValue);
+							} else if (StringUtils.notBlank(secureName) && SecureFactory.registeredConfig(secureName)
+									&& fieldValue instanceof String) {
+								ReflectionUtils.setField(fieldName, beanObject,
+										SecureFactory.encrypt(secureName, (String) fieldValue));
+							}
+						}));
+	}
+
+	/**
+	 * <h3 class="en-US">Decrypt the key field</h3>
+	 * <h3 class="zh-CN">对密钥字段进行解密操作</h3>
+	 *
+	 * @param beanObject <span class="en-US">Configuration information instance object</span>
+	 *                   <span class="zh-CN">配置信息实例对象</span>
+	 */
+	private void decryptFields(final BeanObject beanObject) {
+		this.scanFields(beanObject.getClass());
+		String className = ClassUtils.originalClassName(beanObject.getClass());
+		Optional.ofNullable(this.securityFieldsMap.get(className))
+				.ifPresent(fieldMap ->
+						fieldMap.forEach((fieldName, secureName) -> {
+							Object fieldValue = ReflectionUtils.getFieldValue(fieldName, beanObject);
+							if (fieldValue == null) {
+								return;
+							}
+							if (fieldValue instanceof List) {
+								((List<?>) fieldValue).replaceAll(item -> {
+									if (item instanceof BeanObject) {
+										this.decryptFields((BeanObject) item);
+									}
+									return item;
+								});
+								ReflectionUtils.setField(fieldName, beanObject, fieldValue);
+							} else if (fieldValue.getClass().isArray()) {
+								for (int i = 0; i < Array.getLength(fieldValue); i++) {
+									Object item = Array.get(fieldValue, i);
+									if (item instanceof BeanObject) {
+										this.decryptFields((BeanObject) item);
+									}
+									Array.set(fieldValue, i, item);
+								}
+								ReflectionUtils.setField(fieldName, beanObject, fieldValue);
+							} else if (fieldValue instanceof BeanObject) {
+								this.decryptFields((BeanObject) fieldValue);
+								ReflectionUtils.setField(fieldName, beanObject, fieldValue);
+							} else if (StringUtils.notBlank(secureName) && SecureFactory.registeredConfig(secureName)
+									&& fieldValue instanceof String) {
+								ReflectionUtils.setField(fieldName, beanObject,
+										SecureFactory.decrypt(secureName, (String) fieldValue));
+							}
+						}));
+	}
+
+	/**
+	 * <h3 class="en-US">Scan name registration key field</h3>
+	 * <h3 class="zh-CN">扫描名注册密钥字段</h3>
+	 *
+	 * @param beanClass <span class="en-US">Data class</span>
+	 *                  <span class="zh-CN">数据类</span>
+	 */
 	private void scanFields(final Class<?> beanClass) {
 		if (!ClassUtils.isAssignable(BeanObject.class, beanClass)) {
 			return;
@@ -403,13 +512,36 @@ public final class ConfigureManager {
 			return;
 		}
 		Map<String, String> fieldMap = new HashMap<>();
-		ReflectionUtils.getAllDeclaredFields(beanClass)
-				.forEach(field ->
+		ReflectionUtils.getAllDeclaredFields(beanClass, Boolean.TRUE)
+				.forEach(field -> {
+					Class<?> fieldType = field.getType();
+					if (fieldType.isArray()) {
+						Class<?> checkType = ClassUtils.componentType(fieldType);
+						if (ClassUtils.isAssignable(BeanObject.class, checkType)) {
+							this.scanFields(checkType);
+							fieldMap.put(field.getName(), Globals.DEFAULT_VALUE_STRING);
+						}
+					} else if (ClassUtils.isAssignable(Collection.class, fieldType)) {
+						Class<?> checkType = Optional.of((ParameterizedType) field.getGenericType())
+								.map(ParameterizedType::getActualTypeArguments)
+								.filter(actualTypeArguments -> actualTypeArguments.length > 0)
+								.map(actualTypeArguments -> (Class<?>) actualTypeArguments[0])
+								.orElse(null);
+						if (ClassUtils.isAssignable(BeanObject.class, checkType)) {
+							this.scanFields(checkType);
+							fieldMap.put(field.getName(), Globals.DEFAULT_VALUE_STRING);
+						}
+					} else if (ClassUtils.isAssignable(BeanObject.class, fieldType)) {
+						this.scanFields(fieldType);
+						fieldMap.put(field.getName(), Globals.DEFAULT_VALUE_STRING);
+					} else if (field.isAnnotationPresent(Password.class)) {
 						fieldMap.put(field.getName(),
 								Optional.ofNullable(field.getAnnotation(Password.class))
 										.map(Password::value)
 										.filter(StringUtils::notBlank)
-										.orElse(Globals.DEFAULT_VALUE_STRING)));
+										.orElse(Globals.DEFAULT_VALUE_STRING));
+					}
+				});
 		this.securityFieldsMap.put(className, fieldMap);
 	}
 }

@@ -128,7 +128,7 @@ public class AESCrypto {
 	}
 
 	/**
-	 * Prepare initialize
+	 * Prepare initializer
 	 *
 	 * @param aesStrength AES key strength
 	 */

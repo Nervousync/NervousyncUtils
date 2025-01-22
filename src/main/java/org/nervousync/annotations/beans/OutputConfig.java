@@ -7,7 +7,7 @@ import java.lang.annotation.*;
 
 /**
  * <h2 class="en-US">Annotation for data output config</h2>
- * <span class="en-US">Configure output data type, formatted output string and string encoding</span>
+ * <span class="en-US">Configure output data type, formatted output string, and string encoding</span>
  * <h2 class="zh-CN">标注用于数据输出的配置</h2>
  * <span class="en-US">定义输出的数据类型，是否格式化输出的字符串以及输出字符串的编码集</span>
  *
@@ -34,7 +34,7 @@ public @interface OutputConfig {
 
 	/**
 	 * <h3 class="en-US">Format output string status</h3>
-	 * <span class="en-US"><code>true</code> for format output string, eg: add break line, add indent etc., <code>false</code> for output string in one line</span>
+	 * <span class="en-US"><code>true</code> for format output string, e.g.: add break line, add indent etc., <code>false</code> for output string in one line</span>
 	 * <h3 class="en-US">格式化输出字符串状态</h3>
 	 * <span class="en-US"><code>true</code>格式化输出的字符串，添加换行及缩进等。<code>false</code>在同一行输出所有数据</span>
 	 *

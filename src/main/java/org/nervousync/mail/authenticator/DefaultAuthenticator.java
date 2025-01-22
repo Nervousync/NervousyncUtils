@@ -30,7 +30,7 @@ import org.nervousync.utils.StringUtils;
  */
 public final class DefaultAuthenticator extends Authenticator {
 	/**
-	 * <span class="en-US">A repository for a user name and a password.</span>
+	 * <span class="en-US">A repository for a username and a password.</span>
 	 * <span class="zh-CN">存储用户名密码的仓库</span>
 	 */
 	private final PasswordAuthentication passwordAuthentication;
@@ -51,10 +51,10 @@ public final class DefaultAuthenticator extends Authenticator {
 	}
 
 	/**
-	 * <h3 class="en-US">Getter method for repository for a user name and a password.</h3>
+	 * <h3 class="en-US">Getter method for repository for a username and a password.</h3>
 	 * <h3 class="zh-CN">存储用户名密码的仓库的Getter方法</h3>
 	 *
-	 * @return <span class="en-US">A repository for a user name and a password.</span>
+	 * @return <span class="en-US">A repository for a username and a password.</span>
 	 * <span class="zh-CN">存储用户名密码的仓库</span>
 	 */
 	@Override

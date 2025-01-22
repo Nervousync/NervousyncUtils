@@ -420,7 +420,7 @@ public final class LoggerUtils {
 		}
 
 		/**
-		 * <h3 class="en-US">Output warn message</h3>
+		 * <h3 class="en-US">Output warns message</h3>
 		 * <h3 class="zh-CN">输出Warn信息</h3>
 		 *
 		 * @param messageKey  <span class="en-US">Message identify key</span>
@@ -433,7 +433,7 @@ public final class LoggerUtils {
 		}
 
 		/**
-		 * <h3 class="en-US">Output warn message</h3>
+		 * <h3 class="en-US">Output warns message</h3>
 		 * <h3 class="zh-CN">输出Warn信息</h3>
 		 *
 		 * @param messageKey <span class="en-US">Message identify key</span>
@@ -446,7 +446,7 @@ public final class LoggerUtils {
 		}
 
 		/**
-		 * <h3 class="en-US">Output warn message</h3>
+		 * <h3 class="en-US">Output warns message</h3>
 		 * <h3 class="zh-CN">输出Warn信息</h3>
 		 *
 		 * @param messageKey  <span class="en-US">Message identify key</span>
@@ -700,7 +700,7 @@ public final class LoggerUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Generate LayoutComponentBuilder by given pattern layout configure</h3>
+	 * <h3 class="en-US">Generate LayoutComponentBuilder by given pattern layout configured</h3>
 	 * <h3 class="zh-CN">根据给定的输出格式配置信息生成输出格式组件构建器</h3>
 	 *
 	 * @param patternLayoutConfigure <span class="en-US">Pattern layout configure</span>

@@ -44,63 +44,63 @@ public class RawTest extends BaseTest {
     @Order(110)
     public void testShort() throws DataInvalidException {
         RawUtils.writeShort(this.dataBytes, Short.MAX_VALUE);
-        Assertions.assertEquals(RawUtils.readShort(this.dataBytes), Short.MAX_VALUE);
+        Assertions.assertEquals(Short.MAX_VALUE, RawUtils.readShort(this.dataBytes));
     }
 
     @Test
     @Order(111)
     public void testShortPosition() throws DataInvalidException {
         RawUtils.writeShort(this.dataBytes, POSITION, Short.MAX_VALUE);
-        Assertions.assertEquals(RawUtils.readShort(this.dataBytes,  POSITION), Short.MAX_VALUE);
+        Assertions.assertEquals(Short.MAX_VALUE, RawUtils.readShort(this.dataBytes,  POSITION));
     }
 
     @Test
     @Order(112)
     public void testShortLittle() throws DataInvalidException {
         RawUtils.writeShort(this.dataBytes, ByteOrder.LITTLE_ENDIAN, Short.MAX_VALUE);
-        Assertions.assertEquals(RawUtils.readShort(this.dataBytes, ByteOrder.LITTLE_ENDIAN), Short.MAX_VALUE);
+        Assertions.assertEquals(Short.MAX_VALUE, RawUtils.readShort(this.dataBytes, ByteOrder.LITTLE_ENDIAN));
     }
 
     @Test
     @Order(120)
     public void testInt() throws DataInvalidException {
         RawUtils.writeInt(this.dataBytes, Integer.MAX_VALUE);
-        Assertions.assertEquals(RawUtils.readInt(this.dataBytes), Integer.MAX_VALUE);
+        Assertions.assertEquals(Integer.MAX_VALUE, RawUtils.readInt(this.dataBytes));
     }
 
     @Test
     @Order(121)
     public void testIntPosition() throws DataInvalidException {
         RawUtils.writeInt(this.dataBytes, POSITION, Integer.MAX_VALUE);
-        Assertions.assertEquals(RawUtils.readInt(this.dataBytes, POSITION), Integer.MAX_VALUE);
+        Assertions.assertEquals(Integer.MAX_VALUE, RawUtils.readInt(this.dataBytes, POSITION));
     }
 
     @Test
     @Order(122)
     public void testIntLittle() throws DataInvalidException {
         RawUtils.writeInt(this.dataBytes, ByteOrder.LITTLE_ENDIAN, Integer.MAX_VALUE);
-        Assertions.assertEquals(RawUtils.readInt(this.dataBytes, ByteOrder.LITTLE_ENDIAN), Integer.MAX_VALUE);
+        Assertions.assertEquals(Integer.MAX_VALUE, RawUtils.readInt(this.dataBytes, ByteOrder.LITTLE_ENDIAN));
     }
 
     @Test
     @Order(130)
     public void testLong() throws DataInvalidException {
         RawUtils.writeLong(this.dataBytes, Long.MAX_VALUE);
-        Assertions.assertEquals(RawUtils.readLong(this.dataBytes), Long.MAX_VALUE);
+        Assertions.assertEquals(Long.MAX_VALUE, RawUtils.readLong(this.dataBytes));
     }
 
     @Test
     @Order(131)
     public void testLongPosition() throws DataInvalidException {
         RawUtils.writeLong(this.dataBytes, POSITION, Long.MAX_VALUE);
-        Assertions.assertEquals(RawUtils.readLong(this.dataBytes, POSITION), Long.MAX_VALUE);
+        Assertions.assertEquals(Long.MAX_VALUE, RawUtils.readLong(this.dataBytes, POSITION));
     }
 
     @Test
     @Order(132)
     public void testLongLittle() throws DataInvalidException {
         RawUtils.writeLong(this.dataBytes, ByteOrder.LITTLE_ENDIAN, Long.MAX_VALUE);
-        Assertions.assertEquals(RawUtils.readLong(this.dataBytes, ByteOrder.LITTLE_ENDIAN), Long.MAX_VALUE);
+        Assertions.assertEquals(Long.MAX_VALUE, RawUtils.readLong(this.dataBytes, ByteOrder.LITTLE_ENDIAN));
     }
 
     @Test
@@ -132,7 +132,7 @@ public class RawTest extends BaseTest {
     public void testStringEncoding() throws DataInvalidException {
         String randomString = "中文测试中文测试";
         RawUtils.writeString(this.dataBytes, randomString, "GB2312");
-        Assertions.assertEquals(RawUtils.readString(this.dataBytes, 16, "GB2312"), randomString);
+        Assertions.assertEquals(randomString, RawUtils.readString(this.dataBytes, 16, "GB2312"));
     }
 
     @Test
@@ -140,8 +140,8 @@ public class RawTest extends BaseTest {
     public void testStringEncodingPosition() throws DataInvalidException {
         String randomString = "中文测试中文测试";
         RawUtils.writeString(this.dataBytes, POSITION, randomString, "GB2312");
-        Assertions.assertEquals(RawUtils.readString(this.dataBytes, POSITION, 16, "GB2312"), randomString);
-        Assertions.assertNotEquals(RawUtils.readString(this.dataBytes, POSITION, 16), randomString);
+        Assertions.assertEquals(randomString, RawUtils.readString(this.dataBytes, POSITION, 16, "GB2312"));
+        Assertions.assertNotEquals(randomString, RawUtils.readString(this.dataBytes, POSITION, 16));
     }
 
     @Test

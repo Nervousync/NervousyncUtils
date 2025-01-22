@@ -206,12 +206,12 @@ public final class CodeOptions {
 	}
 
 	/**
-	 * <h3 class="en-US">Static method for initialize Barcode/QR code generate options builder</h3>
+	 * <h3 class="en-US">Static method for initialize Barcode/QR code generate option builder</h3>
 	 * <h3 class="zh-CN">初始化条码/二维码生成选项的构造器的静态方法</h3>
 	 *
 	 * @param codeFormat <span class="en-US">Generate format type</span>
 	 *                   <span class="zh-CN">生成格式类型</span>
-	 * @return <span class="en-US">Initialized Barcode/QR code generate options builder instance object</span>
+	 * @return <span class="en-US">Initialized Barcode/QR code generate option builder instance object</span>
 	 * <span class="zh-CN">初始化的条码/二维码生成选项的构造器实例对象</span>
 	 */
 	public static OptionsBuilder newBuilder(@Nonnull final BarcodeFormat codeFormat) {

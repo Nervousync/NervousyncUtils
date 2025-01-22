@@ -6,11 +6,11 @@
     <version>1.2.2</version>
     <packaging>jar</packaging>
     <name>Nervousync Java Utility Collections</name>
-    <url>https://gene.nervousync.org/index.shtml</url>
+    <url>https://nervousync.org/projects/gene/jdk11/index.shtml</url>
     <inceptionYear>2016</inceptionYear>
     <description>Java utility collections, development by Nervousync Studio (NSYC)</description>
     <issueManagement>
-        <url>https://github.com/wmkm0113/Gene/issues</url>
+        <url>https://github.com/wmkm0113/utils-jdk11/issues</url>
         <system>Github Issues</system>
     </issueManagement>
     <licenses>
@@ -21,7 +21,7 @@
         </license>
     </licenses>
     <scm>
-        <tag>v1.2.2-SNAPSHOT</tag>
+        <tag>v1.2.2</tag>
         <url>https://github.com/wmkm0113/utils-jdk11</url>
         <connection>scm:git:https://github.com/wmkm0113/utils-jdk11.git</connection>
         <developerConnection>scm:git:https://github.com/wmkm0113/utils-jdk11.git</developerConnection>
@@ -43,9 +43,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <argLine>-Dfile.encoding=UTF-8</argLine>
-        <junit.jupiter.version>5.10.2</junit.jupiter.version>
-        <junit.platform.version>1.10.2</junit.platform.version>
+        <junit.jupiter.version>5.11.4</junit.jupiter.version>
+        <junit.platform.version>1.11.4</junit.platform.version>
         <jakarta.activation.version>2.1.3</jakarta.activation.version>
         <jakarta.mail.version>2.1.3</jakarta.mail.version>
         <angus.version>2.0.3</angus.version>
@@ -54,16 +53,16 @@
         <jakarta.xml.binding.version>4.0.2</jakarta.xml.binding.version>
         <jaxb.version>4.0.5</jaxb.version>
         <jakarta.xml.soap.version>3.0.2</jakarta.xml.soap.version>
-        <bcprov.version>1.78</bcprov.version>
-        <log4j.version>2.23.1</log4j.version>
-        <slf4j.version>2.0.13</slf4j.version>
-        <jackson.version>2.17.2</jackson.version>
-        <yaml.version>2.2</yaml.version>
-        <jersey.version>3.1.7</jersey.version>
-        <hk2.version>3.1.0</hk2.version>
+        <bcprov.version>1.80</bcprov.version>
+        <log4j.version>2.24.3</log4j.version>
+        <slf4j.version>2.0.16</slf4j.version>
+        <jackson.version>2.18.2</jackson.version>
+        <yaml.version>2.3</yaml.version>
+        <jersey.version>3.1.10</jersey.version>
+        <hk2.version>3.1.1</hk2.version>
         <snmp4j.version>3.8.2</snmp4j.version>
-        <jcifs.version>2.1.37</jcifs.version>
-        <poi.version>5.3.0</poi.version>
+        <jcifs.version>2.1.39</jcifs.version>
+        <poi.version>5.4.0</poi.version>
         <zxing.version>3.5.3</zxing.version>
     </properties>
     <dependencies>
@@ -85,25 +84,6 @@
             <version>6.0.0</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>jakarta.servlet.jsp</groupId>
-            <artifactId>jakarta.servlet.jsp-api</artifactId>
-            <version>3.1.1</version>
-            <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>jakarta.xml.bind</groupId>
-                    <artifactId>jakarta.xml.bind-api</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.el</groupId>
-            <artifactId>jakarta.el-api</artifactId>
-            <version>5.0.1</version>
-            <scope>provided</scope>
-        </dependency>
-        <!-- Java WebService -->
         <dependency>
             <groupId>jakarta.ws.rs</groupId>
             <artifactId>jakarta.ws.rs-api</artifactId>
@@ -524,7 +504,7 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.16.1</version>
+            <version>2.18.0</version>
         </dependency>
         <dependency>
             <groupId>com.openhtmltopdf</groupId>
@@ -540,7 +520,7 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-compress</artifactId>
-            <version>1.26.2</version>
+            <version>1.27.1</version>
             <exclusions>
                 <exclusion>
                     <groupId>commons-io</groupId>
@@ -589,7 +569,7 @@
         <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
-            <version>1.18.1</version>
+            <version>1.18.3</version>
         </dependency>
         <dependency>
             <groupId>com.vladsch.flexmark</groupId>
@@ -598,12 +578,12 @@
             <exclusions>
                 <exclusion>
                     <!-- Replace with JCL-over-slf4j -->
-                    <artifactId>commons-logging</artifactId>
                     <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
                 </exclusion>
                 <exclusion>
-                    <artifactId>jsoup</artifactId>
                     <groupId>org.jsoup</groupId>
+                    <artifactId>jsoup</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>

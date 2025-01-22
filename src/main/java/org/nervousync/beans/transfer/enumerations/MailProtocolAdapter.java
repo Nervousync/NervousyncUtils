@@ -15,24 +15,19 @@
  * limitations under the License.
  */
 
-package org.nervousync.taglib.logic;
+package org.nervousync.beans.transfer.enumerations;
 
-import org.nervousync.commons.Globals;
+import jakarta.xml.bind.annotation.adapters.XmlAdapter;
+import org.nervousync.enumerations.mail.MailProtocol;
 
-public final class IteratorTag extends CollectionTag {
-
+public final class MailProtocolAdapter extends XmlAdapter<String, MailProtocol> {
 	@Override
-	protected int startIndex() {
-		return Globals.INITIALIZE_INT_VALUE;
+	public MailProtocol unmarshal(final String v) {
+		return MailProtocol.valueOf(v);
 	}
 
 	@Override
-	protected int endIndex() {
-		return Globals.DEFAULT_VALUE_INT;
-	}
-
-	@Override
-	protected int step() {
-		return Globals.DEFAULT_STEP_VALUE;
+	public String marshal(final MailProtocol v) {
+		return v.toString();
 	}
 }

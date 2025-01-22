@@ -147,7 +147,7 @@ public final class SystemUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Check current operating system is Windows</h3>
+	 * <h3 class="en-US">Check the current operating system is Windows</h3>
 	 * <h3 class="zh-CN">判断当前操作系统为Windows</h3>
 	 *
 	 * @return <span class="en-US">Check result</span>
@@ -158,7 +158,7 @@ public final class SystemUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Check current operating system is Unix</h3>
+	 * <h3 class="en-US">Check the current operating system is Unix</h3>
 	 * <h3 class="zh-CN">判断当前操作系统为Unix</h3>
 	 *
 	 * @return <span class="en-US">Check result</span>
@@ -169,7 +169,7 @@ public final class SystemUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Check current operating system is Linux</h3>
+	 * <h3 class="en-US">Check the current operating system is Linux</h3>
 	 * <h3 class="zh-CN">判断当前操作系统为Linux</h3>
 	 *
 	 * @return <span class="en-US">Check result</span>
@@ -180,7 +180,7 @@ public final class SystemUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Check current operating system is Apple MacOS</h3>
+	 * <h3 class="en-US">Check the current operating system is Apple MacOS</h3>
 	 * <h3 class="zh-CN">判断当前操作系统为苹果MacOS</h3>
 	 *
 	 * @return <span class="en-US">Check result</span>
@@ -191,7 +191,7 @@ public final class SystemUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Check current operating system is Apple MacOS X</h3>
+	 * <h3 class="en-US">Check the current operating system is Apple MacOS X</h3>
 	 * <h3 class="zh-CN">判断当前操作系统为苹果MacOS X</h3>
 	 *
 	 * @return <span class="en-US">Check result</span>
@@ -202,7 +202,7 @@ public final class SystemUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Check current operating system is OS2</h3>
+	 * <h3 class="en-US">Check the current operating system is OS2</h3>
 	 * <h3 class="zh-CN">判断当前操作系统为OS2</h3>
 	 *
 	 * @return <span class="en-US">Check result</span>
@@ -213,7 +213,7 @@ public final class SystemUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Check current operating system is Solaris</h3>
+	 * <h3 class="en-US">Check the current operating system is Solaris</h3>
 	 * <h3 class="zh-CN">判断当前操作系统为Solaris</h3>
 	 *
 	 * @return <span class="en-US">Check result</span>
@@ -224,7 +224,7 @@ public final class SystemUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Check current operating system is SunOS</h3>
+	 * <h3 class="en-US">Check the current operating system is SunOS</h3>
 	 * <h3 class="zh-CN">判断当前操作系统为SunOS</h3>
 	 *
 	 * @return <span class="en-US">Check result</span>
@@ -246,7 +246,7 @@ public final class SystemUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Check current operating system is HP Unix</h3>
+	 * <h3 class="en-US">Check the current operating system is HP Unix</h3>
 	 * <h3 class="zh-CN">判断当前操作系统为HP Unix</h3>
 	 *
 	 * @return <span class="en-US">Check result</span>
@@ -257,7 +257,7 @@ public final class SystemUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Check current operating system is AIX</h3>
+	 * <h3 class="en-US">Check the current operating system is AIX</h3>
 	 * <h3 class="zh-CN">判断当前操作系统为AIX</h3>
 	 *
 	 * @return <span class="en-US">Check result</span>
@@ -268,7 +268,7 @@ public final class SystemUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Check current operating system is OS390</h3>
+	 * <h3 class="en-US">Check the current operating system is OS390</h3>
 	 * <h3 class="zh-CN">判断当前操作系统为OS390</h3>
 	 *
 	 * @return <span class="en-US">Check result</span>
@@ -279,7 +279,7 @@ public final class SystemUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Check current operating system is FreeBSD</h3>
+	 * <h3 class="en-US">Check the current operating system is FreeBSD</h3>
 	 * <h3 class="zh-CN">判断当前操作系统为FreeBSD</h3>
 	 *
 	 * @return <span class="en-US">Check result</span>
@@ -290,7 +290,7 @@ public final class SystemUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Check current operating system is Irix</h3>
+	 * <h3 class="en-US">Check the current operating system is Irix</h3>
 	 * <h3 class="zh-CN">判断当前操作系统为Irix</h3>
 	 *
 	 * @return <span class="en-US">Check result</span>
@@ -301,7 +301,7 @@ public final class SystemUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Check current operating system is Digital Unix</h3>
+	 * <h3 class="en-US">Check the current operating system is Digital Unix</h3>
 	 * <h3 class="zh-CN">判断当前操作系统为Digital Unix</h3>
 	 *
 	 * @return <span class="en-US">Check result</span>
@@ -312,7 +312,7 @@ public final class SystemUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Check current operating system is Netware</h3>
+	 * <h3 class="en-US">Check the current operating system is Netware</h3>
 	 * <h3 class="zh-CN">判断当前操作系统为Netware</h3>
 	 *
 	 * @return <span class="en-US">Check result</span>
@@ -334,7 +334,7 @@ public final class SystemUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Check current operating system is OpenVMS</h3>
+	 * <h3 class="en-US">Check the current operating system is OpenVMS</h3>
 	 * <h3 class="zh-CN">判断当前操作系统为OpenVMS</h3>
 	 *
 	 * @return <span class="en-US">Check result</span>

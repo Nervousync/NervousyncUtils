@@ -115,7 +115,7 @@ public final class LauncherConfig extends BeanObject {
 	}
 
 	/**
-	 * <h3 class="en-US">Getter method for enumeration value of startup type</h3>
+	 * <h3 class="en-US">Getter method for enumeration value of the startup type</h3>
 	 * <h3 class="zh-CN">启动类型枚举值的Getter方法</h3>
 	 *
 	 * @return <span class="en-US">Enumeration value of startup type</span>
@@ -126,7 +126,7 @@ public final class LauncherConfig extends BeanObject {
 	}
 
 	/**
-	 * <h3 class="en-US">Setter method for enumeration value of startup type</h3>
+	 * <h3 class="en-US">Setter method for enumeration value of the startup type</h3>
 	 * <h3 class="zh-CN">启动类型枚举值的Setter方法</h3>
 	 *
 	 * @param startupType <span class="en-US">Enumeration value of startup type</span>

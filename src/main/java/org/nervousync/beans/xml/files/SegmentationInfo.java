@@ -78,7 +78,7 @@ public final class SegmentationInfo extends BeanObject {
 
 	/**
 	 * <h3 class="en-US">Constructor for SegmentationInfo</h3>
-	 * <span class="en-US">Using given extension name, total size, block size, identified value and block list</span>
+	 * <span class="en-US">Using given extension name, total size, block size, identified value and blocklist</span>
 	 * <h3 class="zh-CN">SegmentationInfo的构造函数</h3>
 	 * <span class="zh-CN">使用给定的文件扩展名，数据大小，文件验证码以及数据块列表</span>
 	 *

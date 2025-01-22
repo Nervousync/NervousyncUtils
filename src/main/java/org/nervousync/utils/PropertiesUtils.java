@@ -33,7 +33,7 @@ import java.util.Properties;
  * <span>Current utilities implements features:</span>
  *     <ul>Read properties from string/file path/URL instance/input stream</ul>
  *     <ul>Modify properties file</ul>
- *     <ul>Storage properties instance to target file path</ul>
+ *     <ul>Storage properties instance to the target file path</ul>
  * </span>
  * <h2 class="zh-CN">属性文件工具集</h2>
  * <span class="zh-CN">
@@ -64,7 +64,7 @@ public final class PropertiesUtils {
 	 * <h3 class="en-US">Read properties from string</h3>
 	 * <h3 class="zh-CN">从字符串读取属性文件</h3>
 	 *
-	 * @param content <span class="en-US">Properties information string</span>
+	 * @param content <span class="en-US">Property information string</span>
 	 *                <span class="zh-CN">属性信息字符串</span>
 	 * @return <span class="en-US">Properties instance</span>
 	 * <span class="zh-CN">属性信息实例对象</span>
@@ -87,7 +87,7 @@ public final class PropertiesUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Read properties from file path</h3>
+	 * <h3 class="en-US">Read properties from the file path</h3>
 	 * <h3 class="zh-CN">从指定路径读取属性文件</h3>
 	 *
 	 * @param propertiesFilePath <span class="en-US">Properties file path</span>
@@ -206,7 +206,7 @@ public final class PropertiesUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Storage properties instance to target file path</h3>
+	 * <h3 class="en-US">Storage properties instance to the target file path</h3>
 	 * <h3 class="zh-CN">将属性文件保存到目标地址</h3>
 	 *
 	 * @param properties         <span class="en-US">Properties instance</span>

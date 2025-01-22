@@ -29,7 +29,7 @@ import java.util.Arrays;
 import java.util.Objects;
 
 /**
- * <h2 class="en-US">Trust Certificate Library Define</h2>
+ * <h2 class="en-US">Trust Certificate Library Defines</h2>
  * <h2 class="zh-CN">允许的证书库定义</h2>
  *
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
@@ -83,7 +83,7 @@ public final class TrustCert {
 	}
 
 	/**
-	 * <h3 class="en-US">Read certificate library and generate key manager array</h3>
+	 * <h3 class="en-US">Read the certificate library and generate key manager array</h3>
 	 * <h3 class="zh-CN">读取证书库中的证书并生成密钥管理器数组</h3>
 	 *
 	 * @return the key manager [ ]
@@ -148,8 +148,8 @@ public final class TrustCert {
 	/**
 	 * <h3 class="en-US">Getter method for SHA256 value</h3>
 	 * <h3 class="zh-CN">SHA256验证值的Getter方法</h3>
-	 * <p>
-	 * return 	<span class="en-US">SHA256 value of certificate library data bytes</span>
+	 *
+	 * @return 	<span class="en-US">SHA256 value of certificate library data bytes</span>
 	 * <span class="zh-CN">证书库二进制字节数组的SHA256值</span>
 	 */
 	public String getSha256() {

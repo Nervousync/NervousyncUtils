@@ -20,9 +20,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-import jakarta.annotation.Nonnull;
+import org.nervousync.builder.ParentBuilder;
 import org.nervousync.commons.Globals;
-import org.nervousync.proxy.AbstractProxyConfigBuilder;
+import org.nervousync.proxy.ProxyConfigBuilder;
 import org.nervousync.enumerations.web.HttpMethodOption;
 import org.nervousync.http.cert.TrustCert;
 import org.nervousync.http.cookie.CookieEntity;
@@ -192,7 +192,7 @@ public final class RequestInfo {
 	}
 
 	/**
-	 * <h3 class="en-US">Getter method for cookies list</h3>
+	 * <h3 class="en-US">Getter method for the cookies list</h3>
 	 * <h3 class="zh-CN">请求发送的Cookie信息列表的Getter方法</h3>
 	 */
 	public List<CookieEntity> getCookieList() {
@@ -216,7 +216,7 @@ public final class RequestInfo {
 	}
 
 	/**
-	 * <h3 class="en-US">Getter method for pass phrase of system certificate list</h3>
+	 * <h3 class="en-US">Getter method for pass phrase of the system certificate list</h3>
 	 * <h3 class="zh-CN">系统信任证书库读取密钥的Getter方法</h3>
 	 */
 	public String getPassPhrase() {
@@ -264,7 +264,7 @@ public final class RequestInfo {
 	}
 
 	/**
-	 * <h3 class="en-US">Getter method for post binary data array</h3>
+	 * <h3 class="en-US">Getter method for the post binary data array</h3>
 	 * <h3 class="zh-CN">POST发送二进制数据的Getter方法</h3>
 	 */
 	public byte[] getPostData() {
@@ -296,39 +296,10 @@ public final class RequestInfo {
 	}
 
 	/**
-	 * <h2 class="en-US">Request proxy configure builder</h2>
-	 * <h2 class="zh-CN">网络请求代理服务器构建器</h2>
-	 *
-	 * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
-	 * @version $Revision: 1.0.0 $ $Date: Aug 25, 2017 11:08:22 $
-	 */
-	public static final class RequestProxyBuilder extends AbstractProxyConfigBuilder<RequestBuilder> {
-		/**
-		 * <h3 class="en-US">Private constructor for RequestProxyBuilder</h3>
-		 * <h3 class="zh-CN">RequestProxyBuilder的私有构造方法</h3>
-		 *
-		 * @param requestBuilder <span class="en-US">RequestBuilder instance</span>
-		 *                       <span class="zh-CN">RequestBuilder实例对象</span>
-		 */
-		private RequestProxyBuilder(@Nonnull final RequestBuilder requestBuilder) {
-			super(requestBuilder, requestBuilder.proxyConfig);
-		}
-
-		/**
-		 * <h3 class="en-US">Confirm proxy configure</h3>
-		 * <h3 class="zh-CN">确认代理服务器配置</h3>
-		 */
-		@Override
-		protected void build() {
-			this.parentBuilder.proxyConfig(this.proxyConfig);
-		}
-	}
-
-	/**
 	 * <h2 class="en-US">Request builder</h2>
 	 * <h2 class="zh-CN">网络请求构建器</h2>
 	 */
-	public static final class RequestBuilder {
+	public static final class RequestBuilder implements ParentBuilder {
 		/**
 		 * <span class="en-US">Enumeration value of HttpMethodOption</span>
 		 * <span class="zh-CN">HttpMethodOption的枚举值</span>
@@ -434,12 +405,12 @@ public final class RequestInfo {
 		 * @return <span class="en-US">RequestProxyBuilder instance</span>
 		 * <span class="zh-CN">RequestProxyBuilder实例对象</span>
 		 */
-		public RequestProxyBuilder proxyConfig() {
-			return new RequestProxyBuilder(this);
+		public ProxyConfigBuilder proxyConfig() {
+			return new ProxyConfigBuilder(this, this.proxyConfig);
 		}
 
 		/**
-		 * <h3 class="en-US">Add trusted certificate library</h3>
+		 * <h3 class="en-US">Add the trusted certificate library</h3>
 		 * <h3 class="zh-CN">添加信任证书库</h3>
 		 *
 		 * @param certPath     <span class="en-US">Trust certificate path</span>
@@ -458,7 +429,7 @@ public final class RequestInfo {
 		}
 
 		/**
-		 * <h3 class="en-US">Add trusted certificate library</h3>
+		 * <h3 class="en-US">Add the trusted certificate library</h3>
 		 * <h3 class="zh-CN">添加信任证书库</h3>
 		 *
 		 * @param certContent  <span class="en-US">Trust certificate data bytes</span>
@@ -478,7 +449,7 @@ public final class RequestInfo {
 		}
 
 		/**
-		 * <h3 class="en-US">Configure pass phrase of system certificate library</h3>
+		 * <h3 class="en-US">Configure pass phrase of the system certificate library</h3>
 		 * <h3 class="zh-CN">设置系统证书库的读取密码</h3>
 		 *
 		 * @param passPhrase <span class="en-US">Pass phrase of system certificate library</span>
@@ -492,7 +463,7 @@ public final class RequestInfo {
 		}
 
 		/**
-		 * <h3 class="en-US">Configure user agent string will used</h3>
+		 * <h3 class="en-US">Configure user agent string will be used</h3>
 		 * <h3 class="zh-CN">设置即将使用的用户代理字符串</h3>
 		 *
 		 * @param userAgent <span class="en-US">User agent string</span>
@@ -660,8 +631,11 @@ public final class RequestInfo {
 		 *                    <span class="zh-CN">ProxyConfig实例对象</span>
 		 * @see org.nervousync.proxy.ProxyConfig
 		 */
-		void proxyConfig(final ProxyConfig proxyConfig) {
-			this.proxyConfig = proxyConfig;
+		@Override
+		public void confirm(final Object proxyConfig) {
+			if (proxyConfig instanceof ProxyConfig) {
+				this.proxyConfig = (ProxyConfig) proxyConfig;
+			}
 		}
 	}
 }

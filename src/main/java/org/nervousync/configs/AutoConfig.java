@@ -17,13 +17,15 @@
 
 package org.nervousync.configs;
 
+import jakarta.annotation.Nonnull;
 import org.nervousync.annotations.configs.Configuration;
 import org.nervousync.utils.ReflectionUtils;
 
+import java.lang.reflect.Field;
 import java.util.Optional;
 
 /**
- * <h2 class="en-US">Abstract class of configure file automatically loading</h2>
+ * <h2 class="en-US">Abstract class of configured file automatically loading</h2>
  * <h2 class="zh-CN">配置文件自动加载的抽象类</h2>
  *
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
@@ -32,17 +34,20 @@ import java.util.Optional;
 public abstract class AutoConfig {
 
 	protected AutoConfig() {
-		ConfigureManager configureManager = ConfigureManager.getInstance();
-		if (configureManager == null) {
-			return;
-		}
 		ReflectionUtils.getAllDeclaredFields(this.getClass(), Boolean.TRUE)
 				.stream()
 				.filter(field -> field.isAnnotationPresent(Configuration.class))
-				.forEach(field ->
-						Optional.ofNullable(field.getAnnotation(Configuration.class))
-								.map(configuration ->
-										configureManager.readConfigure(field.getType(), configuration.value()))
-								.ifPresent(configure -> ReflectionUtils.setField(field, this, configure)));
+				.forEach(this::configure);
+	}
+
+	private void configure(@Nonnull final Field field) {
+		Configuration configuration = field.getAnnotation(Configuration.class);
+		if (configuration == null) {
+			return;
+		}
+		Optional.ofNullable(ConfigureManager.getInstance())
+				.map(configureManager ->
+						configureManager.readConfigure(field.getType(), configuration.value()))
+				.ifPresent(configure -> ReflectionUtils.setField(field, this, configure));
 	}
 }

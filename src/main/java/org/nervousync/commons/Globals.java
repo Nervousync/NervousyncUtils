@@ -134,6 +134,11 @@ public final class Globals {
 	 */
 	public static final String SECURE_HTTP_PROTOCOL = "https://";
 	/**
+	 * <span class="en-US">Multilingual information key-value separation characters</span>
+	 * <span class="zh-CN">多语言信息键值分割字符</span>
+	 */
+	public static final String DEFAULT_MULTILINGUAL_KEY_SPLIT_CHARACTER = "_";
+	/**
 	 * <span class="en-US">The constant value of extension separator</span>
 	 * <span class="zh-CN">扩展名分割字符</span>
 	 */

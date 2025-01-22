@@ -180,7 +180,7 @@ public final class GeoPoint implements Serializable {
 	}
 
 	/**
-	 * <h2 class="en-US">Enumeration define for LocationType</h2>
+	 * <h2 class="en-US">Enumeration defines for LocationType</h2>
 	 * <h2 class="zh-CN">LocationType枚举类定义</h2>
 	 */
 	public enum LocationType {

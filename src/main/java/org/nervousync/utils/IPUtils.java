@@ -246,7 +246,7 @@ public final class IPUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Convert given IP address string to byte array</h3>
+	 * <h3 class="en-US">Convert given IP address string to the byte array</h3>
 	 * <h3 class="zh-CN">转换给定的IP地址为字节数组</h3>
 	 *
 	 * @param ipAddress <span class="en-US">IP address string</span>
@@ -266,7 +266,7 @@ public final class IPUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Convert given IPv4 address string to byte array</h3>
+	 * <h3 class="en-US">Convert given IPv4 address string to the byte array</h3>
 	 * <h3 class="zh-CN">转换给定的IPv4地址为字节数组</h3>
 	 *
 	 * @param ipAddress <span class="en-US">IPv4 address string</span>
@@ -290,7 +290,7 @@ public final class IPUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Convert given IPv6 address string to byte array</h3>
+	 * <h3 class="en-US">Convert given IPv6 address string to the byte array</h3>
 	 * <h3 class="zh-CN">转换给定的IPv6地址为字节数组</h3>
 	 *
 	 * @param ipAddress <span class="en-US">IPv6 address string</span>
@@ -502,7 +502,7 @@ public final class IPUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Calculate the begin IP address by given IP address and netmask string</h3>
+	 * <h3 class="en-US">Calculate the beginning IP address by given IP address and netmask string</h3>
 	 * <h3 class="zh-CN">根据给定的IP地址和子网掩码字符串计算起始IP地址</h3>
 	 *
 	 * @param ipAddress <span class="en-US">IP address string</span>
@@ -551,7 +551,7 @@ public final class IPUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Calculate the begin IPv6 address by given IP address and netmask string</h3>
+	 * <h3 class="en-US">Calculate the beginning IPv6 address by given IP address and netmask string</h3>
 	 * <h3 class="zh-CN">根据给定的IP地址和子网掩码字符串计算起始IP地址</h3>
 	 *
 	 * @param ipAddress <span class="en-US">IP address string</span>

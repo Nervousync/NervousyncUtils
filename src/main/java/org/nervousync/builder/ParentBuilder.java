@@ -14,48 +14,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package org.nervousync.builder;
 
 import org.nervousync.exceptions.builder.BuilderException;
 
 /**
- * <h2 class="en-US">Abstract builder for Generics Type</h2>
- * <h2 class="zh-CN">拥有父构造器的抽象构造器</h2>
+ * <h2 class="en-US">Builder interface</h2>
+ * <h2 class="zh-CN">构造器接口</h2>
  *
- * @param <T> <span class="en-US">Generics Type Class</span>
- *            <span class="zh-CN">泛型类</span>
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
- * @version $Revision: 1.0.0 $ $Date: Jan 4, 2018 16:09:54 $
+ * @version $Revision: 1.0.0 $ $Date: Jan 4, 2018 16:28:42 $
  */
-public abstract class AbstractBuilder<T> implements Builder<T> {
-	/**
-	 * <span class="en-US">Generics Type Class</span>
-	 * <span class="zh-CN">泛型类</span>
-	 */
-	protected final ParentBuilder parentBuilder;
-
-	/**
-	 * <h3 class="en-US">Protected constructor for AbstractBuilder</h3>
-	 * <h3 class="zh-CN">AbstractBuilder的构造函数</h3>
-	 *
-	 * @param parentBuilder <span class="en-US">Parent builder instance object</span>
-	 *                      <span class="zh-CN">父构建器实例对象</span>
-	 */
-	protected AbstractBuilder(final ParentBuilder parentBuilder) {
-		this.parentBuilder = parentBuilder;
-	}
+public interface ParentBuilder {
 
 	/**
 	 * <h3 class="en-US">Confirm current configure and return Generics Type instance</h3>
 	 * <h3 class="zh-CN">确认当前设置，并返回泛型类实例对象</h3>
 	 *
-	 * @return <span class="en-US">Generics Type Class</span>
-	 * <span class="zh-CN">泛型类</span>
+	 * @param object <span class="en-US">Information that needs to be configured</span>
+	 *               <span class="zh-CN">需要配置的信息</span>
 	 * @throws BuilderException <span class="en-US">If an occurring when confirm current configure</span>
 	 *                          <span class="zh-CN">当确认当前配置时时捕获异常</span>
 	 */
-	public final <P> P confirmParent(final Class<P> clazz) throws BuilderException {
-		this.parentBuilder.confirm(this.confirm());
-		return clazz.cast(this.parentBuilder);
-	}
+	void confirm(final Object object) throws BuilderException;
+
 }

@@ -189,7 +189,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Match the original path is same as the destination path</h3>
+	 * <h3 class="en-US">Match the original path is the same as the destination path</h3>
 	 * <h3 class="zh-CN">比较原始路径是否与目标路径一致</h3>
 	 *
 	 * @param origPath   <span class="en-US">original path</span>
@@ -267,7 +267,7 @@ public final class FileUtils {
 	 * <span class="zh-CN">不检查URL是否真实存在；只是返回给定位置对应的 URL。</span>
 	 *
 	 * @param resourceLocation <span class="en-US">the resource location to resolve: either a "classpath:" pseudo URL, a "file:" URL, or a plain file path</span>
-	 *                         <span class="zh-CN">要解析的资源位置：“classpath:”伪 URL、“file:”URL 或纯文件路</span>
+	 *                         <span class="zh-CN">要解析的资源位置：“classpath:”伪 URL、 “file:”URL 或纯文件路</span>
 	 * @return <span class="en-US">a corresponding URL object</span>
 	 * <span class="zh-CN">对应的URL对象</span>
 	 * @throws FileNotFoundException <span class="en-US">if the resource cannot be resolved to a URL</span>
@@ -302,7 +302,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Read file last modified time</h3>
+	 * <h3 class="en-US">Read the file last modified time</h3>
 	 * <h3 class="zh-CN">读取文件最后修改时间</h3>
 	 *
 	 * @param resourceLocation <span class="en-US">the location String</span>
@@ -315,7 +315,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Read file last modified time</h3>
+	 * <h3 class="en-US">Read the file last modified time</h3>
 	 * <h3 class="zh-CN">读取文件最后修改时间</h3>
 	 *
 	 * @param resourceLocation <span class="en-US">the location String</span>
@@ -355,7 +355,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Read file last modified time</h3>
+	 * <h3 class="en-US">Read the file last modified time</h3>
 	 * <h3 class="zh-CN">读取文件最后修改时间</h3>
 	 *
 	 * @param resourceLocation <span class="en-US">the location String</span>
@@ -563,7 +563,7 @@ public final class FileUtils {
 	/**
 	 * <h3 class="en-US">Resolve the given resource location to a <code>java.io.File</code></h3>
 	 * <span class="en-US">
-	 * i.e., to a file in the file system.
+	 * For example, to a file in the file system.
 	 * Does not check whether the fil actually exists;
 	 * simply returns the File that the given location would correspond to.
 	 * </span>
@@ -571,7 +571,7 @@ public final class FileUtils {
 	 * <span class="zh-CN">即文件系统中的文件。不检查fil是否确实存在；只是返回给定位置对应的文件。</span>
 	 *
 	 * @param resourceLocation <span class="en-US">the resource location to resolve: either a "classpath:" pseudo URL, a "file:" URL, or a plain file path</span>
-	 *                         <span class="zh-CN">要解析的资源位置：“classpath:”伪 URL、“file:”URL 或纯文件路</span>
+	 *                         <span class="zh-CN">要解析的资源位置：“classpath:”伪 URL、 “file:”URL 或纯文件路</span>
 	 * @return <span class="en-US">a corresponding <code>java.io.File</code> object</span>
 	 * <span class="zh-CN">对应的<code>java.io.File</code>对象</span>
 	 * @throws FileNotFoundException <span class="en-US">if the resource cannot be resolved to a file in the file system</span>
@@ -683,7 +683,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Retrieve entry path list of given file path</h3>
+	 * <h3 class="en-US">Retrieve the entry path list of the given file path</h3>
 	 * <h3 class="zh-CN">检索给定文件路径的条目路径列表</h3>
 	 *
 	 * @param filePath <span class="en-US">the file path</span>
@@ -798,7 +798,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Read content of given file path as byte arrays</h3>
+	 * <h3 class="en-US">Read the content of given file path as byte arrays</h3>
 	 * <h3 class="zh-CN">读取给定文件地址的文件内容为字节数组</h3>
 	 *
 	 * @param resourceLocation <span class="en-US">the location String</span>
@@ -827,7 +827,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Read part content of given file path as byte arrays</h3>
+	 * <h3 class="en-US">Read part content of the given file path as byte arrays</h3>
 	 * <h3 class="zh-CN">读取给定文件地址的部分文件内容为字节数组</h3>
 	 *
 	 * @param resourceLocation <span class="en-US">the location String</span>
@@ -853,7 +853,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Retrieve content size of given file path</h3>
+	 * <h3 class="en-US">Retrieve content size of the given file path</h3>
 	 * <h3 class="zh-CN">读取给定文件地址的文件大小</h3>
 	 *
 	 * @param resourceLocation <span class="en-US">the location String</span>
@@ -866,7 +866,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Retrieve content size of given file path</h3>
+	 * <h3 class="en-US">Retrieve content size of the given file path</h3>
 	 * <h3 class="zh-CN">读取给定文件地址的文件大小</h3>
 	 *
 	 * @param resourceLocation <span class="en-US">the location String</span>
@@ -946,7 +946,7 @@ public final class FileUtils {
 	/**
 	 * <h3 class="en-US">Determine whether the given URL points to a resource in a jar file, that is, has protocol "jar", "zip", "wsjar" or "code-source".</h3>
 	 * <span class="en-US">
-	 * "zip" and "wsjar" are used by BEA WebLogic Server and IBM WebSphere, respectively,
+	 * ".zip" and ".wsjar" are used by BEA WebLogic Server and IBM WebSphere, respectively,
 	 * but can be treated like jar files.
 	 * The same applies to "code-source" URLs on Oracle OC4J, except that the path contains a jar separator.
 	 * </span>
@@ -1003,7 +1003,7 @@ public final class FileUtils {
 	/**
 	 * <h3 class="en-US">Create a URI instance for the given URL</h3>
 	 * <span class="en-US">
-	 * replacing spaces with "%20" quotes first.
+	 * Replacing spaces with "%20" quotes first.
 	 * Furthermore, this method works on JDK 1.4 as well,
 	 * in contrast to the <code>URL.toURI()</code> method.
 	 * </span>
@@ -1040,7 +1040,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Retrieve entry path list of given URI instance</h3>
+	 * <h3 class="en-US">Retrieve the entry path list of given URI instance</h3>
 	 * <h3 class="zh-CN">检索给定URI实例对象的条目路径列表</h3>
 	 *
 	 * @param uri <span class="en-US">Jar file URI instance</span>
@@ -1095,7 +1095,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">List files of given folder path</h3>
+	 * <h3 class="en-US">List files of the given folder path</h3>
 	 * <h3 class="zh-CN">读取给定文件夹内的文件列表</h3>
 	 *
 	 * @param filePath <span class="en-US">the folder path</span>
@@ -1110,7 +1110,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">List files of given folder path</h3>
+	 * <h3 class="en-US">List files of the given folder path</h3>
 	 * <h3 class="zh-CN">读取给定文件夹内的文件列表</h3>
 	 *
 	 * @param filePath        <span class="en-US">the folder path</span>
@@ -1128,7 +1128,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">List files of given folder path</h3>
+	 * <h3 class="en-US">List files of the given folder path</h3>
 	 * <h3 class="zh-CN">读取给定文件夹内的文件列表</h3>
 	 *
 	 * @param filePath           <span class="en-US">the folder path</span>
@@ -1148,7 +1148,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">List files of given folder path</h3>
+	 * <h3 class="en-US">List files of the given folder path</h3>
 	 * <h3 class="zh-CN">读取给定文件夹内的文件列表</h3>
 	 *
 	 * @param filePath           <span class="en-US">the folder path</span>
@@ -1237,7 +1237,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">List files of given folder path by given file name filter instance</h3>
+	 * <h3 class="en-US">List files of the given folder path by given file name filter instance</h3>
 	 * <h3 class="zh-CN">读取给定文件夹内的文件列表，使用给定的文件名过滤器实例</h3>
 	 *
 	 * @param filePath <span class="en-US">the folder path</span>
@@ -1255,7 +1255,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">List files of given folder path by given file name filter instance</h3>
+	 * <h3 class="en-US">List files of the given folder path by given file name filter instance</h3>
 	 * <h3 class="zh-CN">读取给定文件夹内的文件列表，使用给定的文件名过滤器实例</h3>
 	 *
 	 * @param filePath        <span class="en-US">the folder path</span>
@@ -1275,7 +1275,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">List files of given folder path by given file name filter instance</h3>
+	 * <h3 class="en-US">List files of the given folder path by given file name filter instance</h3>
 	 * <h3 class="zh-CN">读取给定文件夹内的文件列表，使用给定的文件名过滤器实例</h3>
 	 *
 	 * @param filePath           <span class="en-US">the folder path</span>
@@ -1381,7 +1381,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">List files of given folder path and add to given name list</h3>
+	 * <h3 class="en-US">List files of the given folder path and add to the given name list</h3>
 	 * <h3 class="zh-CN">读取给定文件夹内的文件列表并添加到给定的名称列表中</h3>
 	 *
 	 * @param filePath <span class="en-US">the folder path</span>
@@ -1396,7 +1396,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">List files of given folder path and add to given name list</h3>
+	 * <h3 class="en-US">List files of the given folder path and add to the given name list</h3>
 	 * <h3 class="zh-CN">读取给定文件夹内的文件列表并添加到给定的名称列表中</h3>
 	 *
 	 * @param filePath        <span class="en-US">the folder path</span>
@@ -1415,7 +1415,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">List files of given folder path and add to given name list</h3>
+	 * <h3 class="en-US">List files of the given folder path and add to the given name list</h3>
 	 * <h3 class="zh-CN">读取给定文件夹内的文件列表并添加到给定的名称列表中</h3>
 	 *
 	 * @param filePath           <span class="en-US">the folder path</span>
@@ -1436,7 +1436,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">List files of given folder path and add to given name list</h3>
+	 * <h3 class="en-US">List files of the given folder path and add to the given name list</h3>
 	 * <h3 class="zh-CN">读取给定文件夹内的文件列表并添加到给定的名称列表中</h3>
 	 *
 	 * @param filePath           <span class="en-US">the folder path</span>
@@ -1460,7 +1460,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">List files of given folder path and add to given name list by given file name filter instance</h3>
+	 * <h3 class="en-US">List files of the given folder path and add to the given name list by given file name filter instance</h3>
 	 * <h3 class="zh-CN">读取给定文件夹内的文件列表并添加到给定的名称列表中，使用给定的文件名过滤器实例</h3>
 	 *
 	 * @param filePath <span class="en-US">the folder path</span>
@@ -1479,7 +1479,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">List files of given folder path and add to given name list by given file name filter instance</h3>
+	 * <h3 class="en-US">List files of the given folder path and add to the given name list by given file name filter instance</h3>
 	 * <h3 class="zh-CN">读取给定文件夹内的文件列表并添加到给定的名称列表中，使用给定的文件名过滤器实例</h3>
 	 *
 	 * @param filePath          <span class="en-US">the folder path</span>
@@ -1500,7 +1500,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">List files of given folder path and add to given name list by given file name filter instance</h3>
+	 * <h3 class="en-US">List files of the given folder path and add to the given name list by given file name filter instance</h3>
 	 * <h3 class="zh-CN">读取给定文件夹内的文件列表并添加到给定的名称列表中，使用给定的文件名过滤器实例</h3>
 	 *
 	 * @param filePath           <span class="en-US">the folder path</span>
@@ -1524,7 +1524,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">List files of given folder <code>java.io.File</code> instance and add to given name list by given file name filter instance</h3>
+	 * <h3 class="en-US">List files of given folder <code>java.io.File</code> instance and add to the given name list by given file name filter instance</h3>
 	 * <h3 class="zh-CN">读取给定文件夹<code>java.io.File</code>实例对象内的文件列表并添加到给定的名称列表中，使用给定的文件名过滤器实例</h3>
 	 *
 	 * @param file               <span class="en-US">the folder <code>java.io.File</code> instance</span>
@@ -1576,7 +1576,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">List child folder of given folder path and add to given name list</h3>
+	 * <h3 class="en-US">List child folder of the given folder path and add to the given name list</h3>
 	 * <h3 class="zh-CN">读取给定文件夹内的子文件夹列表并添加到给定的名称列表中</h3>
 	 *
 	 * @param filePath <span class="en-US">the folder path</span>
@@ -1608,7 +1608,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">List child folder of given folder <code>java.io.File</code> instance and add to given name list</h3>
+	 * <h3 class="en-US">List child folder of given folder <code>java.io.File</code> instance and add to the given name list</h3>
 	 * <h3 class="zh-CN">读取给定文件夹<code>java.io.File</code>实例对象内的子文件夹列表并添加到给定的名称列表中</h3>
 	 *
 	 * @param file          <span class="en-US">the folder <code>java.io.File</code> instance</span>
@@ -1692,7 +1692,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">List files of given folder path and filter file extension name is "class"</h3>
+	 * <h3 class="en-US">List files of the given folder path and filter file extension name is "class"</h3>
 	 * <h3 class="zh-CN">读取给定文件夹中的".class"文件列表</h3>
 	 *
 	 * @param filePath <span class="en-US">the folder path</span>
@@ -1720,7 +1720,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">List files of given folder path and filter file extension name is "jar"</h3>
+	 * <h3 class="en-US">List files of the given folder path and filter file extension name is "jar"</h3>
 	 * <h3 class="zh-CN">读取给定文件夹中的".jar"文件列表</h3>
 	 *
 	 * @param filePath <span class="en-US">the folder path</span>
@@ -1748,7 +1748,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">List files of given folder path and filter file extension name is "zip"</h3>
+	 * <h3 class="en-US">List files of the given folder path and filter file extension name is "zip"</h3>
 	 * <h3 class="zh-CN">读取给定文件夹中的".zip"文件列表</h3>
 	 *
 	 * @param filePath <span class="en-US">the folder path</span>
@@ -1776,7 +1776,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">List files of given folder path and filter file extension name is "wsjar"</h3>
+	 * <h3 class="en-US">List files of the given folder path and filter file extension name is "wsjar"</h3>
 	 * <h3 class="zh-CN">读取给定文件夹中的".wsjar"文件列表</h3>
 	 *
 	 * @param filePath <span class="en-US">the folder path</span>
@@ -1804,7 +1804,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">List files of given folder path, file path filter by given regex string</h3>
+	 * <h3 class="en-US">List files of the given folder path, file path filter by given regex string</h3>
 	 * <h3 class="zh-CN">读取给定文件夹内的文件列表，使用给定的文件名过滤器实例</h3>
 	 *
 	 * @param filePath      <span class="en-US">the folder path</span>
@@ -1823,7 +1823,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">List files of given folder path, file path filter by given regex string</h3>
+	 * <h3 class="en-US">List files of the given folder path, file path filter by given regex string</h3>
 	 * <h3 class="zh-CN">读取给定文件夹内的文件列表，使用给定的文件名过滤器实例</h3>
 	 *
 	 * @param filePath           <span class="en-US">the folder path</span>
@@ -1844,7 +1844,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">List files of given folder path, file path filter by given regex string</h3>
+	 * <h3 class="en-US">List files of the given folder path, file path filter by given regex string</h3>
 	 * <h3 class="zh-CN">读取给定文件夹内的文件列表，使用给定的文件名过滤器实例</h3>
 	 *
 	 * @param filePath           <span class="en-US">the folder path</span>
@@ -1872,7 +1872,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Write data bytes to target file path</h3>
+	 * <h3 class="en-US">Write data bytes to the target file path</h3>
 	 * <h3 class="zh-CN">写入字节数组到目标文件路径</h3>
 	 *
 	 * @param fileData <span class="en-US">file content data bytes</span>
@@ -1887,7 +1887,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Write data bytes to target file path</h3>
+	 * <h3 class="en-US">Write data bytes to the target file path</h3>
 	 * <h3 class="zh-CN">写入字节数组到目标文件路径</h3>
 	 *
 	 * @param fileData   <span class="en-US">file content data bytes</span>
@@ -1938,7 +1938,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Write data from input stream to target file path</h3>
+	 * <h3 class="en-US">Write data from input stream to the target file path</h3>
 	 * <h3 class="zh-CN">从输入流中读取数据并写入到目标文件路径</h3>
 	 *
 	 * @param inputStream <span class="en-US">input stream instance</span>
@@ -1953,7 +1953,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Write data from input stream to target file path</h3>
+	 * <h3 class="en-US">Write data from input stream to the target file path</h3>
 	 * <h3 class="zh-CN">从输入流中读取数据并写入到目标文件路径</h3>
 	 *
 	 * @param inputStream <span class="en-US">input stream instance</span>
@@ -2006,7 +2006,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Write content to target file path, use default charset: UTF-8</h3>
+	 * <h3 class="en-US">Write content to the target file path, use default charset: UTF-8</h3>
 	 * <h3 class="zh-CN">写入文件内容到目标文件路径，使用UTF-8编码</h3>
 	 *
 	 * @param content  <span class="en-US">file content string</span>
@@ -2021,7 +2021,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Write content to target file path, use default charset: UTF-8</h3>
+	 * <h3 class="en-US">Write content to the target file path, use default charset: UTF-8</h3>
 	 * <h3 class="zh-CN">写入文件内容到目标文件路径，使用UTF-8编码</h3>
 	 *
 	 * @param content    <span class="en-US">file content string</span>
@@ -2038,7 +2038,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Write content to target file path</h3>
+	 * <h3 class="en-US">Write content to the target file path</h3>
 	 * <h3 class="zh-CN">写入文件内容到目标文件路径</h3>
 	 *
 	 * @param content    <span class="en-US">file content string</span>
@@ -2088,7 +2088,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Read content from target file path, use default charset: UTF-8</h3>
+	 * <h3 class="en-US">Read content from the target file path, use default charset: UTF-8</h3>
 	 * <h3 class="zh-CN">从目标文件路径读取文件内容，使用UTF-8编码</h3>
 	 *
 	 * @param filePath <span class="en-US">target file path</span>
@@ -2101,7 +2101,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Read content from target file path</h3>
+	 * <h3 class="en-US">Read content from the target file path</h3>
 	 * <h3 class="zh-CN">从目标文件路径读取文件内容</h3>
 	 *
 	 * @param filePath <span class="en-US">target file path</span>
@@ -2120,7 +2120,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Remove target file</h3>
+	 * <h3 class="en-US">Remove the target file</h3>
 	 * <h3 class="zh-CN">删除目标文件</h3>
 	 *
 	 * @param filePath <span class="en-US">target file path</span>
@@ -2137,7 +2137,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Remove target file</h3>
+	 * <h3 class="en-US">Remove the target file</h3>
 	 * <h3 class="zh-CN">删除目标文件</h3>
 	 *
 	 * @param filePath <span class="en-US">target file path</span>
@@ -2157,7 +2157,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Remove target file</h3>
+	 * <h3 class="en-US">Remove the target file</h3>
 	 * <h3 class="zh-CN">删除目标文件</h3>
 	 *
 	 * @param file <span class="en-US">the <code>java.io.File</code> instance</span>
@@ -2181,7 +2181,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Remove target file</h3>
+	 * <h3 class="en-US">Remove the target file</h3>
 	 * <h3 class="zh-CN">删除目标文件</h3>
 	 *
 	 * @param smbFile <span class="en-US">the samba file instance</span>
@@ -2213,7 +2213,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Move file from base path to target path</h3>
+	 * <h3 class="en-US">Move a file from base path to the target path</h3>
 	 * <h3 class="zh-CN">从原文件地址移动到目标文件地址</h3>
 	 *
 	 * @param originalPath <span class="en-US">Original path</span>
@@ -2228,7 +2228,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Move file from base path to target path</h3>
+	 * <h3 class="en-US">Move a file from base path to the target path</h3>
 	 * <h3 class="zh-CN">从原文件地址移动到目标文件地址</h3>
 	 *
 	 * @param originalPath <span class="en-US">Original path</span>
@@ -2245,7 +2245,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Move file from samba path to target path</h3>
+	 * <h3 class="en-US">Move a file from samba path to target path</h3>
 	 * <h3 class="zh-CN">从原samba文件地址移动到目标文件地址</h3>
 	 *
 	 * @param originalPath    <span class="en-US">Original path</span>
@@ -2262,7 +2262,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Move file from samba path to target path</h3>
+	 * <h3 class="en-US">Move a file from samba path to target path</h3>
 	 * <h3 class="zh-CN">从原samba文件地址移动到目标文件地址</h3>
 	 *
 	 * @param originalPath    <span class="en-US">Original path</span>
@@ -2282,7 +2282,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Move file from base path to target samba path</h3>
+	 * <h3 class="en-US">Move a file from base path to target samba path</h3>
 	 * <h3 class="zh-CN">从原文件地址移动到目标samba文件地址</h3>
 	 *
 	 * @param originalPath  <span class="en-US">Original path</span>
@@ -2299,7 +2299,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Move file from base path to target samba path</h3>
+	 * <h3 class="en-US">Move a file from base path to target samba path</h3>
 	 * <h3 class="zh-CN">从原文件地址移动到目标samba文件地址</h3>
 	 *
 	 * @param originalPath  <span class="en-US">Original path</span>
@@ -2319,7 +2319,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Move file from base samba path to target samba path</h3>
+	 * <h3 class="en-US">Move a file from base samba path to the target samba path</h3>
 	 * <h3 class="zh-CN">从原samba文件地址移动到目标samba文件地址</h3>
 	 *
 	 * @param originalPath    <span class="en-US">Original path</span>
@@ -2339,7 +2339,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Move file from base samba path to target samba path</h3>
+	 * <h3 class="en-US">Move a file from base samba path to the target samba path</h3>
 	 * <h3 class="zh-CN">从原samba文件地址移动到目标samba文件地址</h3>
 	 *
 	 * @param originalPath    <span class="en-US">Original path</span>
@@ -2687,7 +2687,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Copy file from base path to target path</h3>
+	 * <h3 class="en-US">Copy a file from base path to the target path</h3>
 	 * <h3 class="zh-CN">从原文件地址复制到目标文件地址</h3>
 	 *
 	 * @param originalPath <span class="en-US">Original path</span>
@@ -2702,7 +2702,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Copy file from base path to target path</h3>
+	 * <h3 class="en-US">Copy a file from base path to the target path</h3>
 	 * <h3 class="zh-CN">从原文件地址复制到目标文件地址</h3>
 	 *
 	 * @param originalPath <span class="en-US">Original path</span>
@@ -2756,7 +2756,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Copy file from samba path to target path</h3>
+	 * <h3 class="en-US">Copy file from samba path to the target path</h3>
 	 * <h3 class="zh-CN">从原samba文件地址复制到目标文件地址</h3>
 	 *
 	 * @param originalPath    <span class="en-US">Original path</span>
@@ -2773,7 +2773,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Copy file from samba path to target path</h3>
+	 * <h3 class="en-US">Copy file from samba path to the target path</h3>
 	 * <h3 class="zh-CN">从原samba文件地址复制到目标文件地址</h3>
 	 *
 	 * @param originalPath    <span class="en-US">Original path</span>
@@ -2793,7 +2793,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Copy file from base samba path to target samba path</h3>
+	 * <h3 class="en-US">Copy file from the base samba path to the target samba path</h3>
 	 * <h3 class="zh-CN">从原samba文件地址复制到目标samba文件地址</h3>
 	 *
 	 * @param originalPath    <span class="en-US">Original path</span>
@@ -2813,7 +2813,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Copy file from base samba path to target samba path</h3>
+	 * <h3 class="en-US">Copy file from the base samba path to the target samba path</h3>
 	 * <h3 class="zh-CN">从原samba文件地址复制到目标samba文件地址</h3>
 	 *
 	 * @param originalPath    <span class="en-US">Original path</span>
@@ -2918,7 +2918,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Calculate CRC value of given file path</h3>
+	 * <h3 class="en-US">Calculate CRC value of the given file path</h3>
 	 * <h3 class="zh-CN">计算目标文件的CRC值</h3>
 	 *
 	 * @param filePath <span class="en-US">file path</span>
@@ -3062,7 +3062,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Read data length of given entry path in given file path</h3>
+	 * <h3 class="en-US">Read data length of the given entry path in the given file path</h3>
 	 * <h3 class="zh-CN">读取给定压缩文件中资源路径的数据长度</h3>
 	 *
 	 * @param filePath  <span class="en-US">the file path</span>
@@ -3101,7 +3101,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Check existed of given entry path in given file path</h3>
+	 * <h3 class="en-US">Check existed of the given entry path in the given file path</h3>
 	 * <h3 class="zh-CN">检查给定压缩文件中资源路径是否存在</h3>
 	 *
 	 * @param filePath  <span class="en-US">the file path</span>
@@ -3146,7 +3146,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Open input stream of given entry path in given file object instance</h3>
+	 * <h3 class="en-US">Open input stream of the given entry path in given file object instance</h3>
 	 * <h3 class="zh-CN">打开给定压缩文件实例对象中资源路径的输入流</h3>
 	 *
 	 * @param fileObject <span class="en-US">the file object</span>
@@ -3296,7 +3296,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Merge segment file data and save to target path</h3>
+	 * <h3 class="en-US">Merge segment file data and save to the target path</h3>
 	 * <h3 class="zh-CN">合并分割的文件并保存到目标路径</h3>
 	 *
 	 * @param savePath         <span class="en-US">target file path</span>
@@ -3732,7 +3732,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Move file from base samba path to target samba path</h3>
+	 * <h3 class="en-US">Move a file from base samba path to the target samba path</h3>
 	 * <h3 class="zh-CN">从原samba文件地址移动到目标samba文件地址</h3>
 	 *
 	 * @param originalFile <span class="en-US">Original file instance</span>
@@ -3803,7 +3803,7 @@ public final class FileUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Move file from base path to target path</h3>
+	 * <h3 class="en-US">Move a file from base path to the target path</h3>
 	 * <h3 class="zh-CN">从原文件地址移动到目标文件地址</h3>
 	 *
 	 * @param originalDirectory <span class="en-US">Original folder instance</span>

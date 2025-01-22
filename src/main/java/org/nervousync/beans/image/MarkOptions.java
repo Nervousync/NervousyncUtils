@@ -50,7 +50,7 @@ public final class MarkOptions {
 	 */
 	private final String markPath;
 	/**
-	 * <h3 class="en-US">Transparent value of mark image. default is 1, valid value is between 0 and 1</h3>
+	 * <h3 class="en-US">Transparent value of mark image, default is 1, valid value is between 0 and 1</h3>
 	 * <h3 class="zh-CN">水印图片的透明度，默认值为1，有效值在0到1之间</h3>
 	 */
 	private final float transparency;
@@ -175,7 +175,7 @@ public final class MarkOptions {
 	}
 
 	/**
-	 * <h3 class="en-US">Getter method for mark image path</h3>
+	 * <h3 class="en-US">Getter method for the mark image path</h3>
 	 * <h3 class="zh-CN">水印图片地址的Getter方法</h3>
 	 *
 	 * @return <span class="en-US">Value of mark image path</span>
@@ -397,7 +397,7 @@ public final class MarkOptions {
 		 * <h3 class="en-US">Getter method for position Y</h3>
 		 * <h3 class="zh-CN">起始Y坐标的Getter方法</h3>
 		 *
-		 * @return <span class="en-US">Value of begin position Y</span>
+		 * @return <span class="en-US">Value of the begin position Y</span>
 		 * <span class="zh-CN">起始Y坐标值</span>
 		 */
 		public int getPositionY() {
@@ -423,7 +423,7 @@ public final class MarkOptions {
 	}
 
 	/**
-	 * <h2 class="en-US">Enumeration define for MarkLocation</h2>
+	 * <h2 class="en-US">Enumeration defines for MarkLocation</h2>
 	 * <h2 class="zh-CN">MarkLocation枚举类定义</h2>
 	 */
 	public enum MarkLocation {

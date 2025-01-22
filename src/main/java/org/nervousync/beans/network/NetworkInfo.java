@@ -30,7 +30,7 @@ import org.nervousync.exceptions.beans.network.NetworkInfoException;
 import org.nervousync.utils.IPUtils;
 
 /**
- * <h2 class="en-US">System NetworkInterface information define</h2>
+ * <h2 class="en-US">System NetworkInterface information defines</h2>
  * <h2 class="zh-CN">系统网卡信息定义</h2>
  *
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
@@ -186,7 +186,7 @@ public final class NetworkInfo implements Serializable {
 	}
 
 	/**
-	 * <h3 class="en-US">IP address information define</h3>
+	 * <h3 class="en-US">IP address information defines</h3>
 	 * <h3 class="zh-CN">IP地址信息定义</h3>
 	 *
 	 * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>

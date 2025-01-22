@@ -35,7 +35,12 @@
                     <xsd:documentation>Proxy password</xsd:documentation>
                 </xsd:annotation>
             </xsd:element>
+            <xsd:element name="last_modified" type="xsd:long">
+                <xsd:annotation>
+                    <xsd:documentation>Last modified timestamp</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
         </xsd:all>
     </xsd:complexType>
-    <xsd:element name="proxy_config" type="proxy_config" />
+    <xsd:element name="proxy_config" type="proxy_config"/>
 </xsd:schema>

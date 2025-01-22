@@ -133,7 +133,7 @@ public final class CookieEntity {
 	}
 
 	/**
-	 * <h3 class="en-US">Getter method for cookie path</h3>
+	 * <h3 class="en-US">Getter method for the cookie path</h3>
 	 * <h3 class="zh-CN">Cookie目录的Getter方法</h3>
 	 *
 	 * @return <span class="en-US">Cookie path</span>

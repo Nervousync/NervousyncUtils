@@ -184,7 +184,7 @@ public final class EventModelReaderImpl extends AbstractExcelReader {
 	}
 
 	/**
-	 * <h2 class="en-US">Data processor to read maximum number of rows</h2>
+	 * <h2 class="en-US">Data processor to read the maximum number of rows</h2>
 	 * <h2 class="zh-CN">读取最大行数的数据处理器</h2>
 	 *
 	 * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>

@@ -160,7 +160,7 @@ public class StandardFile implements DataInput, DataOutput, Closeable {
 	}
 
 	/**
-	 * <h3 class="en-US">Getter method for current file path</h3>
+	 * <h3 class="en-US">Getter method for the current file path</h3>
 	 * <h3 class="zh-CN">当前文件地址的Getter方法</h3>
 	 *
 	 * @return <span class="en-US">Current file path</span>
@@ -171,7 +171,7 @@ public class StandardFile implements DataInput, DataOutput, Closeable {
 	}
 
 	/**
-	 * <h3 class="en-US">Getter method for current file read pointer</h3>
+	 * <h3 class="en-US">Getter method for the current file read pointer</h3>
 	 * <h3 class="zh-CN">当前文件读取指针位置的Getter方法</h3>
 	 *
 	 * @return <span class="en-US">Current file read pointer</span>
@@ -413,7 +413,7 @@ public class StandardFile implements DataInput, DataOutput, Closeable {
 	 *
 	 * @param b read buffer
 	 * @return read length
-	 * @throws IOException If the first byte cannot be read for any reason other than ends of current file, or if the random access file has been closed, or if some other I/O error occurs.
+	 * @throws IOException If the first byte cannot be read for any reason other than the ends of the current file, or if the random access file has been closed, or if some other I/O error occurs.
 	 */
 	public int read(byte[] b) throws IOException {
 		if (this.originObject instanceof SmbRandomAccessFile) {
@@ -430,7 +430,7 @@ public class StandardFile implements DataInput, DataOutput, Closeable {
 	 * @param off buffer offset
 	 * @param len read length
 	 * @return read length
-	 * @throws IOException If the first byte cannot be read for any reason other than ends of current file, or if the random access file has been closed, or if some other I/O error occurs.
+	 * @throws IOException If the first byte cannot be read for any reason other than the ends of the current file, or if the random access file has been closed, or if some other I/O error occurs.
 	 */
 	public int read(byte[] b, int off, int len) throws IOException {
 		if (this.originObject instanceof SmbRandomAccessFile) {
@@ -640,7 +640,7 @@ public class StandardFile implements DataInput, DataOutput, Closeable {
 	 * Open target file
 	 *
 	 * @param mode Open type(Read-Only/Read-Write)
-	 * @throws FileNotFoundException if target file was not found
+	 * @throws FileNotFoundException if the target file was not found
 	 */
 	private void openFile(String mode) throws FileNotFoundException {
 		if (this.filePath.startsWith(Globals.SAMBA_PROTOCOL)) {

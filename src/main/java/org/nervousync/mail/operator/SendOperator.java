@@ -30,7 +30,7 @@ import java.util.Properties;
 public interface SendOperator {
 	/**
 	 * <h3 class="en-US">Convert given e-mail server configure instance to Properties instance</h3>
-	 * <p class="en-US">Generated Properties instance is using for connect to E-mail server </p>
+	 * <p class="en-US">Generated Properties instance is using for connecting to E-mail server </p>
 	 * <h3 class="zh-CN">转换给定的电子邮件配置实例对象为Properties实例对象</h3>
 	 * <p class="zh-CN">生成的Properties实例对象用于连接到电子邮件服务器</p>
 	 *

@@ -20,7 +20,7 @@ package org.nervousync.beans.path;
 import org.nervousync.utils.StringUtils;
 
 /**
- * <h2 class="en-US">Jar path define</h2>
+ * <h2 class="en-US">Jar path defines</h2>
  * <h2 class="zh-CN">Jar路径定义</h2>
  *
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>

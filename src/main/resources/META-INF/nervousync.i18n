@@ -737,8 +737,12 @@
           "content": "Override factory configuration information"
         },
         {
+          "key": "Secure_Name_Empty_Error",
+          "content": "Secure name is empty"
+        },
+        {
           "key": "Key_Bytes_Empty_Error",
-          "content": "key data is empty"
+          "content": "Secure key data is empty"
         },
         {
           "key": "Security_Current_Config",
@@ -827,6 +831,10 @@
         {
           "key": "Convert_Object_To_Array_Error",
           "content": "An error occurs when converting instance to byte array"
+        },
+        {
+          "key": "Convert_Array_To_Object_Error",
+          "content": "An error occurs when converting byte array to instance"
         },
         {
           "key": "Last_Modify_Read_File_Error",
@@ -1159,6 +1167,10 @@
         {
           "key": "MBean_Object_Register_Error",
           "content": "Register MBean object to JMX manager failed!"
+        },
+        {
+          "key": "Data_Is_Null_Ignore",
+          "content": "Binary data is null, ignore and return null"
         }
       ]
     },
@@ -1579,8 +1591,12 @@
           "content": "覆写工厂配置信息"
         },
         {
+          "key": "Secure_Name_Empty_Error",
+          "content": "安全名称为空"
+        },
+        {
           "key": "Key_Bytes_Empty_Error",
-          "content": "密钥数据为空"
+          "content": "安全密钥数据为空"
         },
         {
           "key": "Security_Current_Config",
@@ -1669,6 +1685,10 @@
         {
           "key": "Convert_Object_To_Array_Error",
           "content": "转换实例对象为字节数组出错"
+        },
+        {
+          "key": "Convert_Array_To_Object_Error",
+          "content": "转换字节数组为实例对象出错"
         },
         {
           "key": "Last_Modify_Read_File_Error",
@@ -2001,6 +2021,10 @@
         {
           "key": "MBean_Object_Register_Error",
           "content": "注册MBean对象到JMX管理器出错！"
+        },
+        {
+          "key": "Data_Is_Null_Ignore",
+          "content": "二进制数据为null，忽略操作返回null"
         }
       ]
     }

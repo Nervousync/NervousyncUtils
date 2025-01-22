@@ -50,7 +50,7 @@ public final class SecureSettings extends BeanObject {
 	 * <span class="zh-CN">自定义安全配置信息列表</span>
 	 */
 	@XmlElement(name = "secure_config")
-	@XmlElementWrapper(name = "custom_secure_list")
+	@XmlElementWrapper(name = "secure_list")
 	private List<SecureConfig> customSecures = new ArrayList<>();
 
 	/**

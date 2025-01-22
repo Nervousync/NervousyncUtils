@@ -12,7 +12,7 @@ public final class FactoryTest extends BaseTest {
     public void config() {
         this.logger.info("Secure_Init_System_Result", SecureFactory.systemConfig(SecureFactory.SecureAlgorithm.SM4));
         this.logger.info("Secure_Init_Config_Result",
-                SecureFactory.registerConfig("TestConfig", SecureFactory.SecureAlgorithm.AES128));
+                SecureFactory.initConfig("TestConfig", SecureFactory.SecureAlgorithm.AES128));
     }
 
     @Test
@@ -21,6 +21,13 @@ public final class FactoryTest extends BaseTest {
         String encResult = SecureFactory.encrypt("TestConfig", "TestString中文测试");
         this.logger.info("Secure_Encrypt_Result", encResult);
         this.logger.info("Secure_Decrypt_Result", SecureFactory.decrypt("TestConfig", encResult));
+    }
+
+    @Test
+    @Order(35)
+    public void override() {
+        this.logger.info("Secure_Init_System_Result", SecureFactory.systemConfig(SecureFactory.SecureAlgorithm.AES256));
+        SecureFactory.initialize(Boolean.TRUE);
     }
 
     @Test

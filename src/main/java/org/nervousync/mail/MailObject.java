@@ -212,7 +212,7 @@ public final class MailObject implements Serializable {
 	}
 
 	/**
-	 * <h3 class="en-US">Getter method for mail send address</h3>
+	 * <h3 class="en-US">Getter method for the mail send address</h3>
 	 * <h3 class="zh-CN">邮件发送地址的Getter方法</h3>
 	 *
 	 * @return <span class="en-US">Mail send address</span>
@@ -223,7 +223,7 @@ public final class MailObject implements Serializable {
 	}
 
 	/**
-	 * <h3 class="en-US">Setter method for mail send address</h3>
+	 * <h3 class="en-US">Setter method for the mail send address</h3>
 	 * <h3 class="zh-CN">邮件发送地址的Setter方法</h3>
 	 *
 	 * @param sendAddress <span class="en-US">Mail send address</span>

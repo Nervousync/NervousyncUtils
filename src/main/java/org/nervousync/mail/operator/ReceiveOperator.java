@@ -48,7 +48,7 @@ public interface ReceiveOperator {
 	String readUID(final Folder folder, final Message message) throws MessagingException;
 
 	/**
-	 * <h3 class="en-US">Read E-mail message by given folder and message UID string</h3>
+	 * <h3 class="en-US">Read the E-mail message by given folder and message UID string</h3>
 	 * <h3 class="zh-CN">从给定的电子邮件目录中读取唯一识别ID字符串标识的电子邮件信息</h3>
 	 *
 	 * @param folder <span class="en-US">E-mail folder instance</span>
@@ -63,7 +63,7 @@ public interface ReceiveOperator {
 	Message readMessage(final Folder folder, final String uid) throws MessagingException;
 
 	/**
-	 * <h3 class="en-US">Read E-mail message list by given folder and message UID string array</h3>
+	 * <h3 class="en-US">Read the E-mail message list by given folder and message UID string array</h3>
 	 * <h3 class="zh-CN">从给定的电子邮件目录中读取唯一识别ID字符串数组标识的电子邮件信息列表</h3>
 	 *
 	 * @param folder    <span class="en-US">E-mail folder instance</span>
@@ -79,7 +79,7 @@ public interface ReceiveOperator {
 
 	/**
 	 * <h3 class="en-US">Convert given e-mail server configure instance to Properties instance</h3>
-	 * <p class="en-US">Generated Properties instance is using for connect to E-mail server </p>
+	 * <p class="en-US">Generated Properties instance is using for connecting to E-mail server </p>
 	 * <h3 class="zh-CN">转换给定的电子邮件配置实例对象为Properties实例对象</h3>
 	 * <p class="zh-CN">生成的Properties实例对象用于连接到电子邮件服务器</p>
 	 *

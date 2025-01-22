@@ -40,17 +40,17 @@ public abstract class BaseProtocol implements Serializable {
 	 */
 	private static final long serialVersionUID = 6441571927997267674L;
 	/**
-	 * <span class="en-US">Default SSL socket factory class, using for connect to ssl mail server</span>
+	 * <span class="en-US">Default SSL socket factory class, using for connecting to ssl mail server</span>
 	 * <span class="zh-CN">默认的安全套接字工厂类，用于连接到电子邮件服务器时使用安全连接</span>
 	 */
 	private static final String SSL_FACTORY_CLASS = "javax.net.ssl.SSLSocketFactory";
 	/**
-	 * <span class="en-US">Protocol key name of connect to mail server store</span>
+	 * <span class="en-US">Protocol key name of connecting to mail server store</span>
 	 * <span class="zh-CN">连接到电子邮件服务器的通讯协议类型键值名</span>
 	 */
 	private static final String MAIL_STORE_PROTOCOL = "mail.store.protocol";
 	/**
-	 * <span class="en-US">Protocol key name of connect to mail server transport</span>
+	 * <span class="en-US">Protocol key name of connecting to mail server transport</span>
 	 * <span class="zh-CN">连接到电子邮件服务器的传输协议类型键值名</span>
 	 */
 	private static final String MAIL_TRANSPORT_PROTOCOL = "mail.transport.protocol";
@@ -93,7 +93,7 @@ public abstract class BaseProtocol implements Serializable {
 
 	/**
 	 * <h3 class="en-US">Convert given e-mail server configure instance to Properties instance</h3>
-	 * <p class="en-US">Generated Properties instance is using for connect to E-mail server </p>
+	 * <p class="en-US">Generated Properties instance is using for connecting to E-mail server </p>
 	 * <h3 class="zh-CN">转换给定的电子邮件配置实例对象为Properties实例对象</h3>
 	 * <p class="zh-CN">生成的Properties实例对象用于连接到电子邮件服务器</p>
 	 *

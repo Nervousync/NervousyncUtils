@@ -117,7 +117,7 @@ public final class CutOptions {
 	 * <h3 class="en-US">Getter method for position Y</h3>
 	 * <h3 class="zh-CN">起始Y坐标的Getter方法</h3>
 	 *
-	 * @return <span class="en-US">Value of begin position Y</span>
+	 * @return <span class="en-US">Value of beginning position Y</span>
 	 * <span class="zh-CN">起始Y坐标值</span>
 	 */
 	public int getPositionY() {

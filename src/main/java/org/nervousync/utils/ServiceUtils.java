@@ -110,7 +110,7 @@ public final class ServiceUtils {
 	 *                               <span class="zh-CN">如果没有指定协议，或者发现未知协议，或者spec为空。</span>
 	 */
 	public static <T> T SOAPClient(final String serviceLocation, final Class<T> serviceInterface,
-	                               final Map<String, Object> configMap) throws MalformedURLException {
+	                               final Map<String, String> configMap) throws MalformedURLException {
 		return SOAPClient(serviceLocation, serviceInterface, null, configMap);
 	}
 
@@ -157,7 +157,7 @@ public final class ServiceUtils {
 	 *                               <span class="zh-CN">如果没有指定服务地址、协议，或者发现未知协议，或者spec为空。</span>
 	 */
 	public static <T> T SOAPClient(final String serviceLocation, final Class<T> serviceInterface,
-	                               final HandlerResolver handlerResolver, final Map<String, Object> configMap)
+	                               final HandlerResolver handlerResolver, final Map<String, String> configMap)
 			throws MalformedURLException {
 		if (StringUtils.isEmpty(serviceLocation)
 				|| !serviceInterface.isAnnotationPresent(WebServiceClient.class)) {
@@ -296,7 +296,7 @@ public final class ServiceUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Append parameter value to current array</h3>
+	 * <h3 class="en-US">Append parameter value to the current array</h3>
 	 * <h3 class="zh-CN">追加参数值到当前数组</h3>
 	 *
 	 * @param paramValues <span class="en-US">Current array</span>

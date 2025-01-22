@@ -59,7 +59,7 @@ public abstract class SymmetricCryptoAdapter extends BaseCryptoAdapter {
 	}
 
 	/**
-	 * <h3 class="en-US">Append parts of given binary data array to current adapter</h3>
+	 * <h3 class="en-US">Append parts of the given binary data array to current adapter</h3>
 	 * <h3 class="zh-CN">追加给定的二进制字节数组到当前适配器</h3>
 	 *
 	 * @param dataBytes <span class="en-US">binary data array</span>
@@ -87,7 +87,7 @@ public abstract class SymmetricCryptoAdapter extends BaseCryptoAdapter {
 	}
 
 	/**
-	 * <h3 class="en-US">Append parts of given binary data array to current adapter and calculate final result</h3>
+	 * <h3 class="en-US">Append parts of the given binary data array to current adapter and calculate final result</h3>
 	 * <h3 class="zh-CN">追加给定的二进制字节数组到当前适配器并计算最终结果</h3>
 	 *
 	 * @param dataBytes <span class="en-US">binary data array</span>

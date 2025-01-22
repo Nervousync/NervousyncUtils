@@ -30,6 +30,7 @@ import org.nervousync.commons.Globals;
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
  * @version $Revision: 1.0.0 $ $Date: Jan 4, 2018 16:05:54 $
  */
+@XmlType(name = "proxy_config", namespace = "https://nervousync.org/schemas/proxy")
 @XmlRootElement(name = "proxy_config", namespace = "https://nervousync.org/schemas/proxy")
 @XmlAccessorType(XmlAccessType.NONE)
 public final class ProxyConfig extends BeanObject {
@@ -69,6 +70,12 @@ public final class ProxyConfig extends BeanObject {
 	@Password
 	@XmlElement(name = "password")
 	private String password = Globals.DEFAULT_VALUE_STRING;
+	/**
+	 * <span class="en-US">Last modified timestamp</span>
+	 * <span class="zh-CN">最后修改时间戳</span>
+	 */
+	@XmlElement(name = "last_modified")
+	private long lastModified = Globals.DEFAULT_VALUE_LONG;
 
 	/**
 	 * <h3 class="en-US">Constructor method for ProxyConfig</h3>
@@ -196,5 +203,27 @@ public final class ProxyConfig extends BeanObject {
 	 */
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	/**
+	 * <h3 class="en-US">Getter method for the last modified timestamp</h3>
+	 * <h3 class="zh-CN">最后修改时间戳的Getter方法</h3>
+	 *
+	 * @return <span class="en-US">Last modified timestamp</span>
+	 * <span class="zh-CN">最后修改时间戳</span>
+	 */
+	public long getLastModified() {
+		return this.lastModified;
+	}
+
+	/**
+	 * <h3 class="en-US">Setter method for the last modified timestamp</h3>
+	 * <h3 class="zh-CN">最后修改时间戳的Setter方法</h3>
+	 *
+	 * @param lastModified <span class="en-US">Last modified timestamp</span>
+	 *                     <span class="zh-CN">最后修改时间戳</span>
+	 */
+	public void setLastModified(final long lastModified) {
+		this.lastModified = lastModified;
 	}
 }

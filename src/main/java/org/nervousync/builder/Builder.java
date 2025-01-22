@@ -23,8 +23,8 @@ import org.nervousync.exceptions.builder.BuilderException;
  * <h2 class="en-US">Builder interface</h2>
  * <h2 class="zh-CN">构造器接口</h2>
  *
- * @param <T> <span class="en-US">Generics Type Class</span>
- *            <span class="zh-CN">泛型类</span>
+ * @param <T> <span class="en-US">The builder generates a generic class for the object</span>
+ *            <span class="zh-CN">构建器生成对象的泛型类</span>
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
  * @version $Revision: 1.0.0 $ $Date: Jan 4, 2018 16:28:42 $
  */
@@ -36,7 +36,7 @@ public interface Builder<T> {
 	 *
 	 * @return <span class="en-US">Generics Type Class</span>
 	 * <span class="zh-CN">泛型类</span>
-	 * @throws BuilderException <span class="en-US">If an occurs when confirm current configure</span>
+	 * @throws BuilderException <span class="en-US">If an occurring when confirm current configure</span>
 	 *                          <span class="zh-CN">当确认当前配置时时捕获异常</span>
 	 */
 	T confirm() throws BuilderException;

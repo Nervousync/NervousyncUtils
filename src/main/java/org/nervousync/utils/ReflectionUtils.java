@@ -16,6 +16,7 @@
  */
 package org.nervousync.utils;
 
+import jakarta.annotation.Nonnull;
 import org.nervousync.commons.Globals;
 
 import java.lang.annotation.Annotation;
@@ -23,7 +24,7 @@ import java.lang.reflect.*;
 import java.util.*;
 
 /**
- * <h2 class="en-US">Reflection Operate Utilities</h2>
+ * <h2 class="en-US">Reflection Operates Utilities</h2>
  * <h2 class="zh-CN">反射操作工具集</h2>
  *
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
@@ -41,6 +42,27 @@ public final class ReflectionUtils {
 	 * <h3 class="zh-CN">反射操作工具集的私有构造方法</h3>
 	 */
 	private ReflectionUtils() {
+	}
+
+	/**
+	 * <h3 class="en-US">Get the true type of collection generic</h3>
+	 * <h3 class="zh-CN">获取集合泛型的真实类型</h3>
+	 *
+	 * @param collection <span class="en-US">Collection instance object</span>
+	 *                   <span class="zh-CN">集合实例对象</span>
+	 * @param <T>        <span class="en-US">Generic type class</span>
+	 *                   <span class="zh-CN">泛型类</span>
+	 * @return <span class="en-US">True type of collection generic</span>
+	 * <span class="zh-CN">泛型的真实类型</span>
+	 */
+	@SuppressWarnings("unchecked")
+	public static <T> Class<T> actualType(@Nonnull final Collection<T> collection) {
+		ParameterizedType parameterizedType = (ParameterizedType) collection.getClass().getGenericSuperclass();
+		Type[] actualTypeArguments = parameterizedType.getActualTypeArguments();
+		if (actualTypeArguments.length > 0) {
+			return (Class<T>) actualTypeArguments[0];
+		}
+		return null;
 	}
 
 	/**
@@ -351,17 +373,45 @@ public final class ReflectionUtils {
 	 * @see ReflectionUtils#handleReflectionException(Exception)
 	 */
 	public static Object getFieldValue(final String fieldName, final Object target) {
+		return getFieldValue(fieldName, target, Boolean.TRUE);
+	}
+
+	/**
+	 * <h3 class="en-US">Get the field represented by the supplied argument fieldName on the specified argument target.</h3>
+	 * <span class="en-US">
+	 * In accordance with <code>Field#get(Object)</code> semantics, the returned value is
+	 * automatically wrapped if the underlying field has a primitive type.
+	 * Thrown exceptions are handled via a call to <code>ReflectionUtils#handleReflectionException(Exception)</code>.
+	 * </span>
+	 * <h3 class="zh-CN">获取指定参数 target 上提供的参数 fieldName 表示的字段。</h3>
+	 * <span class="zh-CN">
+	 * 根据 <code>Field#get(Object)</code> 语义，如果底层字段具有原始类型，则返回的值会自动包装。
+	 * 抛出的异常通过调用 <code>ReflectionUtils#handleReflectionException(Exception)</code> 进行处理。
+	 * </span>
+	 *
+	 * @param fieldName <span class="en-US">the name of field to get</span>
+	 *                  <span class="zh-CN">要获取的字段名称</span>
+	 * @param target    <span class="en-US">the target object on which to get the field</span>
+	 *                  <span class="zh-CN">要获取字段的目标对象</span>
+	 * @param tryMethod <span class="en-US">Prioritize trying to use the Getter method to get the field value</span>
+	 *                  <span class="zh-CN">优先尝试使用Getter方法获取字段值</span>
+	 * @return <span class="en-US">the field's current value</span>
+	 * <span class="zh-CN">该字段的当前值</span>
+	 * @see ReflectionUtils#handleReflectionException(Exception)
+	 */
+	public static Object getFieldValue(final String fieldName, final Object target, final boolean tryMethod) {
 		if (fieldName == null || target == null) {
 			return null;
 		}
 		try {
-			Method getMethod = getterMethod(fieldName, target.getClass());
-			if (getMethod != null) {
-				return getMethod.invoke(target);
-			} else {
-				Field field = getFieldIfAvailable(target.getClass(), fieldName);
-				return ReflectionUtils.getFieldValue(field, target);
+			if (tryMethod) {
+				Method getMethod = getterMethod(fieldName, target.getClass());
+				if (getMethod != null) {
+					return getMethod.invoke(target);
+				}
 			}
+			Field field = getFieldIfAvailable(target.getClass(), fieldName);
+			return ReflectionUtils.getFieldValue(field, target);
 		} catch (Exception ex) {
 			handleReflectionException(ex);
 			throw new IllegalStateException(
@@ -580,7 +630,7 @@ public final class ReflectionUtils {
 	/**
 	 * <h3 class="en-US">Rethrow the given argument ex</h3>
 	 * <span class="en-US">
-	 * which is presumably the <em>target exception</em> of an <code>InvocationTargetException</code>.
+	 * Which is presumably the <em>target exception</em> of an <code>InvocationTargetException</code>.
 	 * Should only be called if no checked exception is expected to be thrown by the target method.
 	 * Rethrows the underlying exception cast to an <code>RuntimeException</code> or <code>Error</code> if appropriate;
 	 * otherwise, throws an <code>IllegalStateException</code>.
@@ -611,7 +661,7 @@ public final class ReflectionUtils {
 	/**
 	 * <h3 class="en-US">Rethrow the given argument ex</h3>
 	 * <span class="en-US">
-	 * which is presumably the <em>target exception</em> of an <code>InvocationTargetException</code>.
+	 * Which is presumably the <em>target exception</em> of an <code>InvocationTargetException</code>.
 	 * Should only be called if no checked exception is expected to be thrown by the target method.
 	 * Rethrows the underlying exception cast to an <code>Exception</code> or <code>Error</code> if appropriate;
 	 * otherwise, throws an <code>IllegalStateException</code>.
@@ -674,7 +724,7 @@ public final class ReflectionUtils {
 	 * @param member <span class="en-US">the field/method to check</span>
 	 *               <span class="zh-CN">要检查的字段/方法</span>
 	 * @return <span class="en-US">is a "public" member.</span>
-	 * <span class="zh-CN">是一个“公共”成员。</span>
+	 * <span class="zh-CN">是一个 “公共” 成员。</span>
 	 */
 	public static boolean publicMember(final Member member) {
 		return Optional.ofNullable(member)
@@ -689,7 +739,7 @@ public final class ReflectionUtils {
 	 * @param member <span class="en-US">the field/method to check</span>
 	 *               <span class="zh-CN">要检查的字段/方法</span>
 	 * @return <span class="en-US">is a "protected" member.</span>
-	 * <span class="zh-CN">是一个“保护”成员。</span>
+	 * <span class="zh-CN">是一个 “保护” 成员。</span>
 	 */
 	public static boolean protectedMember(final Member member) {
 		return Optional.ofNullable(member)
@@ -704,7 +754,7 @@ public final class ReflectionUtils {
 	 * @param member <span class="en-US">the field/method to check</span>
 	 *               <span class="zh-CN">要检查的字段/方法</span>
 	 * @return <span class="en-US">is a "private" member.</span>
-	 * <span class="zh-CN">是一个“私有”成员。</span>
+	 * <span class="zh-CN">是一个 “私有” 成员。</span>
 	 */
 	public static boolean privateMember(final Member member) {
 		return Optional.ofNullable(member)
@@ -719,7 +769,7 @@ public final class ReflectionUtils {
 	 * @param member <span class="en-US">the field/method to check</span>
 	 *               <span class="zh-CN">要检查的字段/方法</span>
 	 * @return <span class="en-US">is a "static" member.</span>
-	 * <span class="zh-CN">是一个“静态”成员。</span>
+	 * <span class="zh-CN">是一个 “静态” 成员。</span>
 	 */
 	public static boolean staticMember(final Member member) {
 		return Optional.ofNullable(member)
@@ -734,7 +784,7 @@ public final class ReflectionUtils {
 	 * @param member <span class="en-US">the field/method to check</span>
 	 *               <span class="zh-CN">要检查的字段/方法</span>
 	 * @return <span class="en-US">is a "final" member.</span>
-	 * <span class="zh-CN">是一个“最终”成员。</span>
+	 * <span class="zh-CN">是一个 “最终” 成员。</span>
 	 */
 	public static boolean finalMember(final Member member) {
 		return Optional.ofNullable(member)
@@ -749,7 +799,7 @@ public final class ReflectionUtils {
 	 * @param member <span class="en-US">the field/method to check</span>
 	 *               <span class="zh-CN">要检查的字段/方法</span>
 	 * @return <span class="en-US">is a "public static final" member.</span>
-	 * <span class="zh-CN">是一个“公开静态最终”成员。</span>
+	 * <span class="zh-CN">是一个 “公开静态最终” 成员。</span>
 	 */
 	public static boolean isPublicStaticFinal(final Member member) {
 		return publicMember(member) && staticMember(member) && finalMember(member);
@@ -827,7 +877,7 @@ public final class ReflectionUtils {
 	 *
 	 * @param clazz <span class="en-US">given class</span>
 	 *              <span class="zh-CN">给定的类</span>
-	 * @return <span class="en-US">all non-static declared fields list, or empty list if given class is <code>null</code></span>
+	 * @return <span class="en-US">all non-static declared fields lists, or empty list if given class is <code>null</code></span>
 	 * <span class="zh-CN">所有声明的非静态属性列表，如果给定的类为 <code>null</code>则返回空列表</span>
 	 */
 	public static List<Field> getAllDeclaredFields(Class<?> clazz) {
@@ -842,7 +892,7 @@ public final class ReflectionUtils {
 	 *                     <span class="zh-CN">给定的类</span>
 	 * @param memberFilter <span class="en-US">Field filter (maybe <code>null</code> for process callback at all fields)</span>
 	 *                     <span class="zh-CN">属性过滤器（当为<code>null</code>时为所有的属性执行回调）</span>
-	 * @return <span class="en-US">all non-static declared fields list, or empty list if given class is <code>null</code></span>
+	 * @return <span class="en-US">all non-static declared fields lists, or empty list if given class is <code>null</code></span>
 	 * <span class="zh-CN">所有声明的非静态属性列表，如果给定的类为 <code>null</code>则返回空列表</span>
 	 */
 	public static List<Field> getAllDeclaredFields(Class<?> clazz, final MemberFilter memberFilter) {
@@ -860,14 +910,14 @@ public final class ReflectionUtils {
 	 * @param classAnnotations <span class="en-US">
 	 *                         Parent class annotation arrays, only using for parameter parseParent
 	 *                         is <code>Boolean.TRUE</code>.
-	 *                         Parent class will parsed which class was annotation with anyone of annotation arrays
+	 *                         Parent class will be parsed which class was annotation with anyone of annotation arrays
 	 *                         or annotation arrays is <code>null</code> or empty.
 	 *                         </span>
 	 *                         <span class="zh-CN">
 	 *                         父类的注解数组，仅用于参数parseParent为<code>Boolean.TRUE</code>时。
 	 *                         父类必须使用注解数组中的任一注解进行标注，或注解数组为<code>null</code>或空数组时，才会解析
 	 *                         </span>
-	 * @return <span class="en-US">all non-static declared fields list, or empty list if given class is <code>null</code></span>
+	 * @return <span class="en-US">all non-static declared fields lists, or empty list if given class is <code>null</code></span>
 	 * <span class="zh-CN">所有声明的非静态属性列表，如果给定的类为 <code>null</code>则返回空列表</span>
 	 */
 	@SafeVarargs
@@ -904,7 +954,7 @@ public final class ReflectionUtils {
 	 *                     <span class="zh-CN">获取父类的非静态属性</span>
 	 * @param memberFilter <span class="en-US">Field filter (maybe <code>null</code> for process callback at all fields)</span>
 	 *                     <span class="zh-CN">属性过滤器（当为<code>null</code>时为所有的属性执行回调）</span>
-	 * @return <span class="en-US">all non-static declared fields list, or empty list if given class is <code>null</code></span>
+	 * @return <span class="en-US">all non-static declared fields lists, or empty list if given class is <code>null</code></span>
 	 * <span class="zh-CN">所有声明的非静态属性列表，如果给定的类为 <code>null</code>则返回空列表</span>
 	 */
 	public static List<Field> getAllDeclaredFields(Class<?> clazz, final boolean parseParent,
@@ -996,7 +1046,7 @@ public final class ReflectionUtils {
 	 * @param classAnnotations <span class="en-US">
 	 *                         Parent class annotation arrays, only using for parameter parseParent
 	 *                         is <code>Boolean.TRUE</code>.
-	 *                         Parent class will parsed which class was annotation with anyone of annotation arrays
+	 *                         Parent class will be parsed which class was annotation with anyone of annotation arrays
 	 *                         or annotation arrays is <code>null</code> or empty.
 	 *                         </span>
 	 *                         <span class="zh-CN">
@@ -1269,7 +1319,7 @@ public final class ReflectionUtils {
 	}
 
 	/**
-	 * <h2 class="en-US">Pre-build ClassFilter that matches classes was annotation by anyone of given Annotation class array.</h2>
+	 * <h2 class="en-US">Pre-build ClassFilter that matches classes was annotation by anyone of the given Annotation class array.</h2>
 	 * <h2 class="zh-CN">匹配类的预构建 ClassFilter 是由给定 Annotation 类数组的任何一个进行注释的。</h2>
 	 *
 	 * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
@@ -1477,7 +1527,7 @@ public final class ReflectionUtils {
 	}
 
 	/**
-	 * <h2 class="en-US">Enumeration of method type</h2>
+	 * <h2 class="en-US">Enumeration of the method type</h2>
 	 * <h2 class="en-US">方法类型的枚举</h2>
 	 */
 	private enum MethodType {

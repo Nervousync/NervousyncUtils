@@ -81,7 +81,7 @@ public final class IMAPProtocol extends BaseProtocol implements SendOperator, Re
 	}
 
 	/**
-	 * <h3 class="en-US">Read E-mail message by given folder and message UID string</h3>
+	 * <h3 class="en-US">Read the E-mail message by given folder and message UID string</h3>
 	 * <h3 class="zh-CN">从给定的电子邮件目录中读取唯一识别ID字符串标识的电子邮件信息</h3>
 	 *
 	 * @param folder <span class="en-US">E-mail folder instance</span>
@@ -102,7 +102,7 @@ public final class IMAPProtocol extends BaseProtocol implements SendOperator, Re
 	}
 
 	/**
-	 * <h3 class="en-US">Read E-mail message list by given folder and message UID string array</h3>
+	 * <h3 class="en-US">Read the E-mail message list by given folder and message UID string array</h3>
 	 * <h3 class="zh-CN">从给定的电子邮件目录中读取唯一识别ID字符串数组标识的电子邮件信息列表</h3>
 	 *
 	 * @param folder    <span class="en-US">E-mail folder instance</span>

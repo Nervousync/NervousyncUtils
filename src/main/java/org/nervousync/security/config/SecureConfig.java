@@ -20,13 +20,14 @@ import jakarta.xml.bind.annotation.*;
 
 /**
  * <h2 class="en-US">Secure configure information define</h2>
- * <p class="en-US">Using for protect password in any configure files</p>
+ * <p class="en-US">Using for protect password in any configuring files</p>
  * <h2 class="zh-CN">安全配置信息定义</h2>
  * <p class="zh-CN">用于在任何配置文件中保护密码</p>
  *
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
  * @version $Revision: 1.0.0 $ $Date: Dec 12, 2020 23:05:27 $
  */
+@XmlType(name = "secure_config", namespace = "https://nervousync.org/schemas/secure")
 @XmlRootElement(name = "secure_config", namespace = "https://nervousync.org/schemas/secure")
 @XmlAccessorType(XmlAccessType.NONE)
 public final class SecureConfig extends AbstractConfig {

@@ -432,7 +432,7 @@ public final class TargetHost implements Serializable {
 	}
 
 	/**
-	 * <h3 class="en-US">Configure authentication information using authentication type: SNMPAuthType.AUTH_NOPRIV</h3>
+	 * <h3 class="en-US">Configure authentication information using the authentication type: SNMPAuthType.AUTH_NOPRIV</h3>
 	 * <h3 class="zh-CN">设置身份验证信息，使用身份验证类型为：SNMPAuthType.AUTH_NOPRIV</h3>
 	 *
 	 * @param authProtocol <span class="en-US">SNMP Authentication Type</span>

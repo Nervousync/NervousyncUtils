@@ -16,7 +16,11 @@
  */
 @XmlSchema(namespace = "https://nervousync.org/schemas/proxy", elementFormDefault = XmlNsForm.QUALIFIED,
 		location = "https://nervousync.org/schemas/proxy_config_1_0.xsd",
-		xmlns = @XmlNs(prefix = "proxy", namespaceURI = "https://nervousync.org/schemas/proxy")
+		xmlns = {
+				@XmlNs(prefix = "xs", namespaceURI = "http://www.w3.org/2001/XMLSchema"),
+				@XmlNs(prefix = "xsi", namespaceURI = "http://www.w3.org/2001/XMLSchema-instance"),
+				@XmlNs(prefix = "proxy", namespaceURI = "https://nervousync.org/schemas/proxy")
+		}
 )
 package org.nervousync.proxy;
 

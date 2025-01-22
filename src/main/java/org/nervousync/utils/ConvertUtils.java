@@ -64,7 +64,7 @@ public final class ConvertUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Convert data byte array to hex string</h3>
+	 * <h3 class="en-US">Convert the data byte array to hex string</h3>
 	 * <h3 class="zh-CN">转换二进制数组为十六进制字符串</h3>
 	 *
 	 * @param dataBytes <span class="en-US">the original data byte array</span>
@@ -88,7 +88,7 @@ public final class ConvertUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Convert data byte array to string using default encoding: UTF-8</h3>
+	 * <h3 class="en-US">Convert the data byte array to string using default encoding: UTF-8</h3>
 	 * <h3 class="zh-CN">转换二进制数组为字符串，使用默认编码集：UTF-8</h3>
 	 *
 	 * @param dataBytes <span class="en-US">the original data byte array</span>
@@ -120,7 +120,7 @@ public final class ConvertUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Convert given string to data byte array using default encoding: UTF-8</h3>
+	 * <h3 class="en-US">Convert given string to a data byte array using default encoding: UTF-8</h3>
 	 * <h3 class="zh-CN">转换字符串为二进制数组，使用默认编码集：UTF-8</h3>
 	 *
 	 * @param content <span class="en-US">the original string</span>
@@ -133,7 +133,7 @@ public final class ConvertUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Convert string to data byte array using given encoding</h3>
+	 * <h3 class="en-US">Convert string to a data byte array using given encoding</h3>
 	 * <h3 class="zh-CN">转换字符串为二进制数组，使用给定的编码集</h3>
 	 *
 	 * @param content  <span class="en-US">the original string</span>
@@ -152,7 +152,7 @@ public final class ConvertUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Convert given object instance to data byte array</h3>
+	 * <h3 class="en-US">Convert given object instance to a data byte array</h3>
 	 * <h3 class="zh-CN">转换实例对象为二进制数组</h3>
 	 *
 	 * @param object <span class="en-US">the object instance</span>
@@ -173,18 +173,16 @@ public final class ConvertUtils {
 			return (byte[]) object;
 		}
 
-		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-		try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream)) {
-			outputStream = new ByteArrayOutputStream();
+		try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+		     ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream)) {
 			objectOutputStream.writeObject(object);
+			objectOutputStream.flush();
 			return outputStream.toByteArray();
 		} catch (Exception e) {
 			LOGGER.error("Convert_Object_To_Array_Error");
 			if (LOGGER.isDebugEnabled()) {
 				LOGGER.debug("Stack_Message_Error", e);
 			}
-		} finally {
-			IOUtils.closeStream(outputStream);
 		}
 
 		return new byte[0];
@@ -226,23 +224,20 @@ public final class ConvertUtils {
 			return null;
 		}
 
-		ByteArrayInputStream byteInputStream = null;
-		ObjectInputStream objectInputStream = null;
-		try {
-			byteInputStream = new ByteArrayInputStream(dataBytes);
-			objectInputStream = new ObjectInputStream(byteInputStream);
-
+		try (ByteArrayInputStream byteInputStream = new ByteArrayInputStream(dataBytes);
+		     ObjectInputStream objectInputStream = new ObjectInputStream(byteInputStream)) {
 			return objectInputStream.readObject();
 		} catch (Exception e) {
-			return dataBytes;
-		} finally {
-			IOUtils.closeStream(objectInputStream);
-			IOUtils.closeStream(byteInputStream);
+			LOGGER.error("Convert_Array_To_Object_Error");
+			if (LOGGER.isDebugEnabled()) {
+				LOGGER.debug("Stack_Message_Error", e);
+			}
+			return null;
 		}
 	}
 
 	/**
-	 * <h3 class="en-US">Read properties file and convert data to hash map</h3>
+	 * <h3 class="en-US">Read a properties file and convert data to hash map</h3>
 	 * <h3 class="zh-CN">读取属性文件并转换数据为哈希表</h3>
 	 *
 	 * @param propertiesFilePath <span class="en-US">The properties file path</span>
@@ -255,7 +250,7 @@ public final class ConvertUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Read properties file and merge data with given hash map</h3>
+	 * <h3 class="en-US">Read properties file and merge data with the given hash map</h3>
 	 * <h3 class="zh-CN">读取属性文件并将数据与给定的哈希表合并</h3>
 	 *
 	 * @param propertiesFilePath <span class="en-US">The properties file path</span>
@@ -270,7 +265,7 @@ public final class ConvertUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Read properties file from URL instance and convert data to hash map</h3>
+	 * <h3 class="en-US">Read a properties file from URL instance and convert data to hash map</h3>
 	 * <h3 class="zh-CN">从URL实例对象读取属性文件并转换数据为哈希表</h3>
 	 *
 	 * @param url <span class="en-US">The url instance of properties file</span>
@@ -283,7 +278,7 @@ public final class ConvertUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Read properties file from URL instance and merge data with given hash map</h3>
+	 * <h3 class="en-US">Read a properties file from URL instance and merge data with the given hash map</h3>
 	 * <h3 class="zh-CN">从URL实例对象读取属性文件并将数据与给定的哈希表合并</h3>
 	 *
 	 * @param url        <span class="en-US">The url instance of properties file</span>
@@ -298,7 +293,7 @@ public final class ConvertUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Convert properties instance to hash map and merge data with given hash map</h3>
+	 * <h3 class="en-US">Convert property instance to hash map and merge data with given hash map</h3>
 	 * <h3 class="zh-CN">转换属性实例对象为哈希表并将数据与给定的哈希表合并</h3>
 	 *
 	 * @param properties <span class="en-US">The properties instance</span>
@@ -311,7 +306,7 @@ public final class ConvertUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Convert properties instance to hash map and merge data with given hash map</h3>
+	 * <h3 class="en-US">Convert property instance to hash map and merge data with given hash map</h3>
 	 * <h3 class="zh-CN">转换属性实例对象为哈希表并将数据与给定的哈希表合并</h3>
 	 *
 	 * @param properties <span class="en-US">The properties instance</span>

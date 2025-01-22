@@ -136,7 +136,7 @@ public final class GeneX509TrustManager implements X509TrustManager {
 	}
 
 	/**
-	 * <h3 class="en-US">Retrieve accepted issuers certificate array</h3>
+	 * <h3 class="en-US">Retrieve the accepted issuers certificate array</h3>
 	 * <h3 class="zh-CN">读取信任签发者的证书数组</h3>
 	 *
 	 * @return    <span class="en-US">Return an array of certificate authority certificates which are trusted for authenticating peers.</span>

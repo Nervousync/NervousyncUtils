@@ -33,7 +33,7 @@ import java.util.Map;
 public interface ExcelReader extends Closeable {
 
 	/**
-	 * <h3 class="en-US">Checks whether the given data sheet names exists</h3>
+	 * <h3 class="en-US">Checks whether the given data sheet name exists</h3>
 	 * <h3 class="zh-CN">检查给定的数据表名是否存在</h3>
 	 *
 	 * @param sheetNames <span class="en-US">Data sheet names to check</span>

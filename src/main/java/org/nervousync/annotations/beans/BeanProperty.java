@@ -16,6 +16,7 @@
  */
 package org.nervousync.annotations.beans;
 
+import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 import org.nervousync.beans.transfer.AbstractAdapter;
 import org.nervousync.commons.Globals;
 
@@ -71,8 +72,14 @@ public @interface BeanProperty {
 	String targetField() default Globals.DEFAULT_VALUE_STRING;
 
 	/**
+	 * @return <span class="en-US">Data converter class</span>
+	 * <span class="zh-CN">数据转换类</span>
+	 */
+	Class<? extends XmlAdapter> adapter() default XmlAdapter.class;
+
+	/**
 	 * <h3 class="en-US">Data converter class</h3>
-	 * <p class="en-US">Class must implements org.nervousync.beans.converter.IConverter, T is current field type class, U is target bean field type class</p>
+	 * <p class="en-US">Class must implement org.nervousync.beans.converter.IConverter, T is current field type class, U is target bean field type class</p>
 	 * <h3 class="zh-CN">数据转换类</h3>
 	 * <p class="zh-CN">类必须实现接口org.nervousync.beans.converter.IConverter，T是注解属性的数据类型，U是目标属性的数据类型</p>
 	 *

@@ -32,6 +32,7 @@ import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import org.nervousync.annotations.beans.OutputConfig;
 import org.nervousync.beans.transfer.cdata.CDataAdapter;
 import org.nervousync.commons.Globals;
@@ -76,7 +77,7 @@ import java.util.regex.Pattern;
  * <span>Current utilities implements features:</span>
  *     <ul>Encode byte arrays using Base32/Base64</ul>
  *     <ul>Decode Base32/Base64 string to byte arrays</ul>
- *     <ul>Encode string to Huffman tree</ul>
+ *     <ul>Encode string to a Huffman tree</ul>
  *     <ul>Trim given string</ul>
  *     <ul>Match given string is MD5 value/UUID/phone number/e-mail address etc.</ul>
  *     <ul>Check given string is empty/notNull/notEmpty/contains string etc.</ul>
@@ -206,7 +207,7 @@ public final class StringUtils {
 	/**
 	 * <h3 class="en-US">Encode byte arrays using Base32</h3>
 	 * <span class="en-US">
-	 * Will append padding character at end if parameter padding is <code>true</code>
+	 * Will append padding character at the end if parameter padding is <code>true</code>
 	 * and result string length % 5 != 0.
 	 * Will return zero length string for given byte arrays is <code>null</code> or arrays length is 0.
 	 * </span>
@@ -572,6 +573,48 @@ public final class StringUtils {
 	}
 
 	/**
+	 * <h3 class="en-US">Check that the given string is SSN string</h3>
+	 * <h3 class="zh-CN">检查给定的字符串是否符合美国社会安全码字符串格式</h3>
+	 *
+	 * @param string <span class="en-US">The given string will check</span>
+	 *               <span class="zh-CN">将要检查的字符串</span>
+	 * @return <span class="en-US"><code>true</code> if matched or <code>false</code> not match</span>
+	 * <span class="zh-CN">检查匹配返回<code>true</code>，不匹配返回<code>false</code></span>
+	 */
+	public static boolean isSSN(final String string) {
+		return StringUtils.notBlank(string)
+				&& StringUtils.matches(string, RegexGlobals.US_Social_Security_Number);
+	}
+
+	/**
+	 * <h3 class="en-US">Check that the given string is ITIN string</h3>
+	 * <h3 class="zh-CN">检查给定的字符串是否符合美国个人纳税识别码字符串格式</h3>
+	 *
+	 * @param string <span class="en-US">The given string will check</span>
+	 *               <span class="zh-CN">将要检查的字符串</span>
+	 * @return <span class="en-US"><code>true</code> if matched or <code>false</code> not match</span>
+	 * <span class="zh-CN">检查匹配返回<code>true</code>，不匹配返回<code>false</code></span>
+	 */
+	public static boolean isITIN(final String string) {
+		return StringUtils.notBlank(string)
+				&& StringUtils.matches(string, RegexGlobals.US_Individual_Taxpayer_Identification_Number);
+	}
+
+	/**
+	 * <h3 class="en-US">Check that the given string is EIN string</h3>
+	 * <h3 class="zh-CN">检查给定的字符串是否符合美国雇主身份识别码字符串格式</h3>
+	 *
+	 * @param string <span class="en-US">The given string will check</span>
+	 *               <span class="zh-CN">将要检查的字符串</span>
+	 * @return <span class="en-US"><code>true</code> if matched or <code>false</code> not match</span>
+	 * <span class="zh-CN">检查匹配返回<code>true</code>，不匹配返回<code>false</code></span>
+	 */
+	public static boolean isEIN(final String string) {
+		return StringUtils.notBlank(string)
+				&& StringUtils.matches(string, RegexGlobals.US_Employer_Identification_Number);
+	}
+
+	/**
 	 * <h3 class="en-US">Check that the given string is E-Mail string</h3>
 	 * <h3 class="zh-CN">检查给定的字符串是否符合电子邮件字符串格式</h3>
 	 *
@@ -822,7 +865,7 @@ public final class StringUtils {
 	 *
 	 * @param str <span class="en-US">the String to check (maybe <code>null</code>)</span>
 	 *            <span class="zh-CN">要检查的字符串（可能 <code>null</code>）</span>
-	 * @return <span class="en-US"><code>true</code> if the String is not empty and contains at least 1 blank character.</span>
+	 * @return <span class="en-US"><code>true</code> if the String is not empty and contains at least one blank character.</span>
 	 * <span class="zh-CN">如果字符串不为空且至少包含 1 个空白字符，则为 <code>true</code></span>
 	 * @see #containsWhitespace(CharSequence) #containsWhitespace(CharSequence)
 	 */
@@ -1384,7 +1427,6 @@ public final class StringUtils {
 		String[] pathArray = delimitedListToStringArray(pathToUse, Globals.DEFAULT_PAGE_SEPARATOR);
 		List<String> pathElements = new LinkedList<>();
 		int tops = 0;
-
 		for (int i = pathArray.length - 1; i >= 0; i--) {
 			if (!CURRENT_PATH.equals(pathArray[i])) {
 				if (TOP_PATH.equals(pathArray[i])) {
@@ -1429,11 +1471,11 @@ public final class StringUtils {
 	 *
 	 * @param localeString <span class="en-US">
 	 *                     the locale string, following <code>Locale's</code> <code>toString()</code>
-	 *                     format ("en", "en_UK", etc);
+	 *                     format ("en", "en_UK", etc.);
 	 *                     also accepts spaces as separators, as an alternative to underscore
 	 *                     </span>
 	 *                     <span class="zh-CN">
-	 *                     语言环境字符串，遵循 <code>Locale's</code> <code>toString()</code> 格式（“en”、“en_UK”等）；
+	 *                     语言环境字符串，遵循 <code>Locale's</code> <code>toString()</code> 格式（“en”、“en_UK” 等）；
 	 *                     还接受空格作为分隔符替换下划线分隔符
 	 *                     </span>
 	 * @return <span class="en-US">a corresponding <code>Locale</code> instance</span>
@@ -1493,7 +1535,7 @@ public final class StringUtils {
 
 	/**
 	 * <h3 class="en-US">Concatenate the given String arrays into one</h3>
-	 * <span class="en-US">with overlapping array elements included twice. The order of elements in the original arrays is preserved.</span>
+	 * <span class="en-US">With overlapping array elements included twice. The order of elements in the original arrays is preserved.</span>
 	 * <h3 class="zh-CN">将给定的字符串数组连接成一个字符串</h3>
 	 * <span class="zh-CN">重叠的数组元素包含两次。原始数组中元素的顺序被保留。</span>
 	 *
@@ -1523,7 +1565,7 @@ public final class StringUtils {
 	/**
 	 * <h3 class="en-US">Merge the given String arrays into one</h3>
 	 * <span class="en-US">
-	 * with overlapping array elements only included once.
+	 * With overlapping array elements only included once.
 	 * The order of elements in the original arrays is preserved
 	 * (except for overlapping elements, which are only included on their first occurrence).
 	 * </span>
@@ -1893,7 +1935,7 @@ public final class StringUtils {
 	 *                      e.g. "\r\n\f" will delete all new lines, line feeds in a String.
 	 *                      </span>
 	 *                      <span class="zh-CN">
-	 *                      要删除的一组字符。对于删除不需要的换行符很有用：例如“\r\n\f”将删除字符串中的所有新行、换行符。
+	 *                      要删除的一组字符。对于删除不需要的换行符很有用：例如“\r\n\f” 将删除字符串中的所有新行、换行符。
 	 *                      </span>
 	 * @return <span class="en-US">an array of the tokens in the list</span>
 	 * <span class="zh-CN">列表中标记的数组</span>
@@ -1956,7 +1998,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Convenience method to return a Collection as a delimited (e.g. CSV) String. E.g. useful for <code>toString()</code> implementations.</h3>
+	 * <h3 class="en-US">Convenience method to return a Collection as a delimited (e.g. CSV) String. E.g., useful for <code>toString()</code> implementations.</h3>
 	 * <h3 class="zh-CN">将集合用分隔连接（例如 CSV）字符串返回的便捷方法。例如。常用于 <code>toString()</code> 实现。</h3>
 	 *
 	 * @param coll <span class="en-US">the Collection to display</span>
@@ -1969,13 +2011,13 @@ public final class StringUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Convenience method to return a Collection as a delimited (e.g. CSV) String. E.g. useful for <code>toString()</code> implementations.</h3>
+	 * <h3 class="en-US">Convenience method to return a Collection as a delimited (e.g. CSV) String. E.g., useful for <code>toString()</code> implementations.</h3>
 	 * <h3 class="zh-CN">将集合用分隔连接（例如 CSV）字符串返回的便捷方法。例如。常用于 <code>toString()</code> 实现。</h3>
 	 *
 	 * @param coll      <span class="en-US">the Collection to display</span>
 	 *                  <span class="zh-CN">要显示的集合</span>
 	 * @param delimiter <span class="en-US">the delimiter to use (probably a ",")</span>
-	 *                  <span class="zh-CN">要使用的分隔符（常见为“,”）</span>
+	 *                  <span class="zh-CN">要使用的分隔符（常见为 “,”）</span>
 	 * @return <span class="en-US">the delimited String</span>
 	 * <span class="zh-CN">拼接后的字符串</span>
 	 */
@@ -1984,13 +2026,13 @@ public final class StringUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Convenience method to return a Collection as a delimited (e.g. CSV) String. E.g. useful for <code>toString()</code> implementations.</h3>
+	 * <h3 class="en-US">Convenience method to return a Collection as a delimited (e.g. CSV) String. E.g., useful for <code>toString()</code> implementations.</h3>
 	 * <h3 class="zh-CN">将集合用分隔连接（例如 CSV）字符串返回的便捷方法。例如。常用于 <code>toString()</code> 实现。</h3>
 	 *
 	 * @param coll      <span class="en-US">the Collection to display</span>
 	 *                  <span class="zh-CN">要显示的集合</span>
 	 * @param delimiter <span class="en-US">the delimiter to use (probably a ",")</span>
-	 *                  <span class="zh-CN">要使用的分隔符（常见为“,”）</span>
+	 *                  <span class="zh-CN">要使用的分隔符（常见为 “,”）</span>
 	 * @param prefix    <span class="en-US">the String to start each element with</span>
 	 *                  <span class="zh-CN">每个元素的开头字符串</span>
 	 * @param suffix    <span class="en-US">the String to end each element with</span>
@@ -2040,7 +2082,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Convenience method to return a Object array as a delimited (e.g. CSV) String. E.g. useful for <code>toString()</code> implementations.</h3>
+	 * <h3 class="en-US">Convenience method to return an Object array as a delimited (e.g. CSV) String. E.g., useful for <code>toString()</code> implementations.</h3>
 	 * <h3 class="zh-CN">将对象数组用分隔连接（例如 CSV）字符串返回的便捷方法。例如。常用于 <code>toString()</code> 实现。</h3>
 	 *
 	 * @param arr <span class="en-US">the String array to display</span>
@@ -2053,13 +2095,13 @@ public final class StringUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Convenience method to return a Object array as a delimited (e.g. CSV) String. E.g. useful for <code>toString()</code> implementations.</h3>
+	 * <h3 class="en-US">Convenience method to return an Object array as a delimited (e.g. CSV) String. E.g., useful for <code>toString()</code> implementations.</h3>
 	 * <h3 class="zh-CN">将对象数组用分隔连接（例如 CSV）字符串返回的便捷方法。例如。常用于 <code>toString()</code> 实现。</h3>
 	 *
 	 * @param arr       <span class="en-US">the String array to display</span>
 	 *                  <span class="zh-CN">要显示的对象数组</span>
 	 * @param delimiter <span class="en-US">the delimiter to use (probably a ",")</span>
-	 *                  <span class="zh-CN">要使用的分隔符（常见为“,”）</span>
+	 *                  <span class="zh-CN">要使用的分隔符（常见为 “,”）</span>
 	 * @return <span class="en-US">the delimited String</span>
 	 * <span class="zh-CN">拼接后的字符串</span>
 	 */
@@ -2112,6 +2154,9 @@ public final class StringUtils {
 		ObjectMapper objectMapper;
 		switch (stringType) {
 			case XML:
+				if (!object.getClass().isAnnotationPresent(XmlRootElement.class)) {
+					return Globals.DEFAULT_VALUE_STRING;
+				}
 				StringWriter stringWriter = null;
 				try {
 					String characterEncoding = StringUtils.isEmpty(encoding) ? Globals.DEFAULT_ENCODING : encoding;
@@ -2186,7 +2231,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Parse string to target JavaBean instance. </h3>
+	 * <h3 class="en-US">Parse strings to target JavaBean instance. </h3>
 	 * <h3 class="zh-CN">解析字符串为目标JavaBean实例对象</h3>
 	 *
 	 * @param <T>         <span class="en-US">target JavaBean class</span>
@@ -2205,7 +2250,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Parse string to target JavaBean instance. </h3>
+	 * <h3 class="en-US">Parse strings to target JavaBean instance. </h3>
 	 * <h3 class="zh-CN">解析字符串为目标JavaBean实例对象</h3>
 	 *
 	 * @param <T>         <span class="en-US">target JavaBean class</span>
@@ -2227,7 +2272,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Parse string to target JavaBean instance. </h3>
+	 * <h3 class="en-US">Parse strings to target JavaBean instance. </h3>
 	 * <h3 class="zh-CN">解析字符串为目标JavaBean实例对象</h3>
 	 *
 	 * @param <T>         <span class="en-US">target JavaBean class</span>
@@ -2265,7 +2310,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Parse string to target JavaBean instance list. </h3>
+	 * <h3 class="en-US">Parse strings to target JavaBean instance list. </h3>
 	 * <h3 class="zh-CN">解析字符串为目标JavaBean实例对象列表</h3>
 	 *
 	 * @param <T>       <span class="en-US">target JavaBean class</span>
@@ -2344,7 +2389,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Parse content of input stream to target JavaBean instance list. </h3>
+	 * <h3 class="en-US">Parse the content of input stream to target JavaBean instance list. </h3>
 	 * <h3 class="zh-CN">解析输入流中的内容为目标JavaBean实例对象列表</h3>
 	 *
 	 * @param <T>         <span class="en-US">target JavaBean class</span>
@@ -2394,7 +2439,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Parse content of input stream to target JavaBean instance list. </h3>
+	 * <h3 class="en-US">Parse the content of input stream to target JavaBean instance list. </h3>
 	 * <h3 class="zh-CN">解析输入流中的内容为目标JavaBean实例对象列表</h3>
 	 *
 	 * @param <T>         <span class="en-US">target JavaBean class</span>
@@ -2421,7 +2466,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Parse content of input stream to target JavaBean instance list. </h3>
+	 * <h3 class="en-US">Parse the content of input stream to target JavaBean instance list. </h3>
 	 * <h3 class="zh-CN">解析输入流中的内容为目标JavaBean实例对象列表</h3>
 	 *
 	 * @param <T>         <span class="en-US">target JavaBean class</span>
@@ -2515,7 +2560,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Replace converted character with special XMl character in string.</h3>
+	 * <h3 class="en-US">Replace converted character with special XML character in string.</h3>
 	 * <h3 class="zh-CN">替换转义字符串为XML特殊字符</h3>
 	 *
 	 * @param sourceString <span class="en-US">The string will process</span>
@@ -2801,7 +2846,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Check given code string is valid of given code type</h3>
+	 * <h3 class="en-US">Check given code string is valid of the given code type</h3>
 	 * <h3 class="zh-CN">检查给定代码字符穿是否符合指定代码类型的算法</h3>
 	 *
 	 * @param code     <span class="en-US">will check for code</span>
@@ -2881,7 +2926,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Parse string to target JavaBean instance. </h3>
+	 * <h3 class="en-US">Parse strings to target JavaBean instance. </h3>
 	 * <h3 class="zh-CN">解析字符串为目标JavaBean实例对象</h3>
 	 *
 	 * @param <T>         <span class="en-US">target JavaBean class</span>
@@ -2946,7 +2991,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Register URL instance of schema mapping file</h3>
+	 * <h3 class="en-US">Register URL instance of the schema mapping file</h3>
 	 * <h3 class="zh-CN">从URL实例对象中读取XML约束文档的资源映射文件内容并注册</h3>
 	 *
 	 * @param url <span class="en-US">URL instance</span>
@@ -3249,7 +3294,7 @@ public final class StringUtils {
 		/**
 		 * Instantiates a new C data stream writer.
 		 *
-		 * @param xmlStreamWriter the xml stream writer
+		 * @param xmlStreamWriter the XML stream writer
 		 */
 		CDataStreamWriter(final XMLStreamWriter xmlStreamWriter) {
 			this.xmlStreamWriter = xmlStreamWriter;
@@ -3452,7 +3497,7 @@ public final class StringUtils {
 		}
 
 		/**
-		 * Writes a xml comment with the data enclosed
+		 * Writes a XML comment with the data enclosed
 		 *
 		 * @param data the data contained in the comment, may be null
 		 * @throws XMLStreamException XMLStreamException
@@ -3532,7 +3577,7 @@ public final class StringUtils {
 		/**
 		 * Write the XML Declaration. Defaults the XML version to 1.0
 		 *
-		 * @param version version of the xml document
+		 * @param version version of the XML document
 		 * @throws XMLStreamException If given encoding does not match encoding
 		 *                            of the underlying stream
 		 */
@@ -3547,8 +3592,8 @@ public final class StringUtils {
 		 * That must be set when the instance of the XMLStreamWriter is created using the
 		 * XMLOutputFactory
 		 *
-		 * @param encoding encoding of the xml declaration
-		 * @param version  version of the xml document
+		 * @param encoding encoding of the XML declaration
+		 * @param version  version of the XML document
 		 * @throws XMLStreamException If given encoding does not match encoding
 		 *                            of the underlying stream
 		 */

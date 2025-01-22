@@ -282,14 +282,14 @@ public final class ResponseInfo {
 	}
 
 	/**
-	 * <h3 class="en-US">Parse response data to the instance list of given class type</h3>
+	 * <h3 class="en-US">Parse response data to the instance list of the given class type</h3>
 	 * <h3 class="zh-CN">转换响应数据为指定类型的对象列表</h3>
 	 *
 	 * @param clazz <span class="en-US">Class type</span>
 	 *              <span class="zh-CN">数据对象类</span>
 	 * @param <T>   <span class="en-US">Template type of list</span>
 	 *              <span class="zh-CN">列表的参数化类型</span>
-	 * @return <span class="en-US">instance list of given class type, or empty list if has error</span>
+	 * @return <span class="en-US">instance list of given class type, or empty list if it has error</span>
 	 * <span class="zh-CN">数据对象列表，当有异常时返回空列表</span>
 	 */
 	public <T> List<T> parseList(final Class<T> clazz) {
@@ -304,7 +304,7 @@ public final class ResponseInfo {
 	 *              <span class="zh-CN">数据对象类</span>
 	 * @param <T>   <span class="en-US">Template type of list</span>
 	 *              <span class="zh-CN">列表的参数化类型</span>
-	 * @return <span class="en-US">instance of given class type, or null if has error</span>
+	 * @return <span class="en-US">instance of given class type, or null if it has error</span>
 	 * <span class="zh-CN">转换后的数据实例对象，当有异常时返回null</span>
 	 */
 	public <T> T parseObject(final Class<T> clazz) {
@@ -358,7 +358,7 @@ public final class ResponseInfo {
 	}
 
 	/**
-	 * <h3 class="en-US">Parse response data to local file and save to target path</h3>
+	 * <h3 class="en-US">Parse response data to the local file and save to target path</h3>
 	 * <h3 class="zh-CN">转换响应数据为文件，并写入数据到目标地址</h3>
 	 *
 	 * @param savePath <span class="en-US">Target save path</span>

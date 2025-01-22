@@ -131,7 +131,7 @@ public final class DateTimeUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Formats current GMT datetime according to string with vCard format</h3>
+	 * <h3 class="en-US">Formats current GMT datetime, according to string, with vCard format</h3>
 	 * <h3 class="zh-CN">使用vCard标准格式化当前的GMT时间</h3>
 	 *
 	 * @return <span class="en-US">formatted date time string and ending character is 'Z'</span>
@@ -248,7 +248,7 @@ public final class DateTimeUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Formats current date according to int with "yyyyMMdd" format</h3>
+	 * <h3 class="en-US">Formats current date, according to int with "yyyyMMdd" format</h3>
 	 * <h3 class="zh-CN">使用"yyyyMMdd"格式化当前日期时间为数字</h3>
 	 *
 	 * @return <span class="en-US">formatted date time int value</span>
@@ -324,7 +324,7 @@ public final class DateTimeUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Formats current date according to int with "yyyyMMddHHmm" format</h3>
+	 * <h3 class="en-US">Formats current date, according to int with "yyyyMMddHHmm" format</h3>
 	 * <h3 class="zh-CN">使用"yyyyMMddHHmm"格式化当前日期时间为数字</h3>
 	 *
 	 * @return <span class="en-US">formatted date time int value</span>
@@ -368,7 +368,7 @@ public final class DateTimeUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Read current day number</h3>
+	 * <h3 class="en-US">Read current-day number</h3>
 	 * <h3 class="zh-CN">读取当前日期</h3>
 	 *
 	 * @return <span class="en-US">Current day</span>
@@ -401,7 +401,7 @@ public final class DateTimeUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Calculate days count of given year and month</h3>
+	 * <h3 class="en-US">Calculate day count of given year and month</h3>
 	 * <h3 class="zh-CN">计算给定的年份和月份有多少天</h3>
 	 *
 	 * @param year  <span class="en-US">Given year</span>
@@ -911,7 +911,7 @@ public final class DateTimeUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Retrieve first day of current month and format to string using given pattern</h3>
+	 * <h3 class="en-US">Retrieve first day of current month and format to string the using given pattern</h3>
 	 * <h3 class="zh-CN">读取当前月份的第一天并使用给定的格式字符串将日期转换为格式化的字符串</h3>
 	 *
 	 * @param pattern <span class="en-US">Pattern string</span>
@@ -925,7 +925,7 @@ public final class DateTimeUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Retrieve last day of current month and format to string using given pattern</h3>
+	 * <h3 class="en-US">Retrieve last day of current month and format to string the using given pattern</h3>
 	 * <h3 class="zh-CN">读取当前月份的最后一天并使用给定的格式字符串将日期转换为格式化的字符串</h3>
 	 *
 	 * @param pattern <span class="en-US">Pattern string</span>

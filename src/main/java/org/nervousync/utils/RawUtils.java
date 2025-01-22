@@ -31,8 +31,8 @@ import java.util.Arrays;
  * <span>Current utilities implements features:</span>
  *     <ul>Read boolean/short/int/long/String from binary data bytes</ul>
  *     <ul>Write boolean/short/int/long/String into binary data bytes</ul>
- *     <ul>Convert char array to binary data bytes</ul>
- *     <ul>Convert bit array to byte</ul>
+ *     <ul>Convert a char array to binary data bytes</ul>
+ *     <ul>Convert the bit array to byte</ul>
  * </span>
  * <h2 class="zh-CN">二进制数据处理工具集</h2>
  * <span class="zh-CN">
@@ -725,7 +725,7 @@ public final class RawUtils {
 	 *                  <span class="zh-CN">大端/小端</span>
 	 * @return <span class="en-US">Read string</span>
 	 * <span class="zh-CN">读取的字符串</span>
-	 * @throws DataInvalidException <span class="en-US">If array index out of bounds or charset encoding not supported</span>
+	 * @throws DataInvalidException <span class="en-US">If array index out of bounds or charset encoding wasn't supported</span>
 	 *                              <span class="zh-CN">如果数组下标越界或字符集编码不支持</span>
 	 */
 	public static String readString(final byte[] dataBytes, final int position, final int length,
@@ -825,7 +825,7 @@ public final class RawUtils {
 	 *                  <span class="zh-CN">二进制字节数组</span>
 	 * @param value     <span class="en-US">Write value</span>
 	 *                  <span class="zh-CN">写入的数据</span>
-	 * @throws DataInvalidException <span class="en-US">If array index out of bounds or charset encoding not supported</span>
+	 * @throws DataInvalidException <span class="en-US">If array index out of bounds or charset encoding wasn't supported</span>
 	 *                              <span class="zh-CN">如果数组下标越界或字符集编码不支持</span>
 	 */
 	public static void writeString(final byte[] dataBytes, final String value, final String encoding)
@@ -843,7 +843,7 @@ public final class RawUtils {
 	 *                  <span class="zh-CN">字节数组的起始下标</span>
 	 * @param value     <span class="en-US">Write value</span>
 	 *                  <span class="zh-CN">写入的数据</span>
-	 * @throws DataInvalidException <span class="en-US">If array index out of bounds or charset encoding not supported</span>
+	 * @throws DataInvalidException <span class="en-US">If array index out of bounds or charset encoding wasn't supported</span>
 	 *                              <span class="zh-CN">如果数组下标越界或字符集编码不支持</span>
 	 */
 	public static void writeString(final byte[] dataBytes, final int position,
@@ -861,7 +861,7 @@ public final class RawUtils {
 	 *                  <span class="zh-CN">大端/小端</span>
 	 * @param value     <span class="en-US">Write value</span>
 	 *                  <span class="zh-CN">写入的数据</span>
-	 * @throws DataInvalidException <span class="en-US">If array index out of bounds or charset encoding not supported</span>
+	 * @throws DataInvalidException <span class="en-US">If array index out of bounds or charset encoding wasn't supported</span>
 	 *                              <span class="zh-CN">如果数组下标越界或字符集编码不支持</span>
 	 */
 	public static void writeString(final byte[] dataBytes, final ByteOrder byteOrder,
@@ -883,7 +883,7 @@ public final class RawUtils {
 	 *                  <span class="zh-CN">大端/小端</span>
 	 * @param value     <span class="en-US">Write value</span>
 	 *                  <span class="zh-CN">写入的数据</span>
-	 * @throws DataInvalidException <span class="en-US">If array index out of bounds or charset encoding not supported</span>
+	 * @throws DataInvalidException <span class="en-US">If array index out of bounds or charset encoding wasn't supported</span>
 	 *                              <span class="zh-CN">如果数组下标越界或字符集编码不支持</span>
 	 */
 	public static void writeString(final byte[] dataBytes, final int position, final String encoding,
@@ -905,7 +905,7 @@ public final class RawUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Convert char array to binary data bytes</h3>
+	 * <h3 class="en-US">Convert a char array to binary data bytes</h3>
 	 * <h3 class="zh-CN">转换字节数组为二进制数组</h3>
 	 *
 	 * @param charArray <span class="en-US">char array</span>
@@ -928,7 +928,7 @@ public final class RawUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Convert bit array to byte</h3>
+	 * <h3 class="en-US">Convert the bit array to byte</h3>
 	 * <h3 class="zh-CN">转换位数组为字节</h3>
 	 *
 	 * @param bitArray <span class="en-US">bit array</span>

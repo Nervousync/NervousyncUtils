@@ -17,7 +17,11 @@
 
 @XmlSchema(namespace = "https://nervousync.org/schemas/secure", elementFormDefault = XmlNsForm.QUALIFIED,
 		location = "https://nervousync.org/schemas/secure_config_1_0.xsd",
-		xmlns = @XmlNs(prefix = "secure", namespaceURI = "https://nervousync.org/schemas/secure")
+		xmlns = {
+				@XmlNs(prefix = "xs", namespaceURI = "http://www.w3.org/2001/XMLSchema"),
+				@XmlNs(prefix = "xsi", namespaceURI = "http://www.w3.org/2001/XMLSchema-instance"),
+				@XmlNs(prefix = "secure", namespaceURI = "https://nervousync.org/schemas/secure")
+		}
 )
 package org.nervousync.security.config;
 

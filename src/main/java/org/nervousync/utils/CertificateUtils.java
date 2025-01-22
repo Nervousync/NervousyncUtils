@@ -16,6 +16,7 @@
  */
 package org.nervousync.utils;
 
+import jakarta.annotation.Nonnull;
 import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
 import org.bouncycastle.asn1.x500.X500Name;
 import org.bouncycastle.asn1.x509.BasicConstraints;
@@ -161,10 +162,10 @@ public final class CertificateUtils {
 	 * @return <span class="en-US">Generated X.509 certificate</span>
 	 * <span class="zh-CN">生成的X.509格式证书</span>
 	 */
-	public static X509Certificate x509(final PublicKey publicKey, final long serialNumber,
+	public static X509Certificate x509(@Nonnull final PublicKey publicKey, final long serialNumber,
 	                                   final Date beginDate, final Date endDate, final String commonName,
-	                                   final PrivateKey signKey, final String signAlgorithm) {
-		if (publicKey == null || signKey == null || StringUtils.isEmpty(signAlgorithm)) {
+	                                   @Nonnull final PrivateKey signKey, final String signAlgorithm) {
+		if (StringUtils.isEmpty(signAlgorithm)) {
 			return null;
 		}
 		X500Name subjectDN = new X500Name("CN=" + commonName);
@@ -216,7 +217,7 @@ public final class CertificateUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Read X.509 Certificate and check certificate validity period</h3>
+	 * <h3 class="en-US">Read X.509 Certificate and check the certificate validity period</h3>
 	 * <h3 class="zh-CN">读取X.509格式的证书并检查证书是否在有效期内</h3>
 	 *
 	 * @param certBytes     <span class="en-US">Certificate Data Bytes</span>
@@ -244,6 +245,12 @@ public final class CertificateUtils {
 	 * <span class="zh-CN">读取的X.509证书， 如果数据非法、证书签名验证失败或证书未在有效期内，则返回null</span>
 	 */
 	public static X509Certificate x509(final byte[] certBytes, final PublicKey verifyKey, final boolean checkValidity) {
+		if (certBytes == null || certBytes.length == 0) {
+			if (LOGGER.isDebugEnabled()) {
+				LOGGER.debug("Data_Is_Null_Ignore");
+			}
+			return null;
+		}
 		X509Certificate x509Certificate;
 		try {
 			CertificateFactory certificateFactory = CertificateFactory.getInstance("X.509", "BC");
@@ -347,7 +354,7 @@ public final class CertificateUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Read X.509 certificate from file. File format: Keystore/PKCS12</h3>
+	 * <h3 class="en-US">Read X.509 certificate from a file. File format: Keystore/PKCS12</h3>
 	 * <h3 class="zh-CN">从指定路径的Keystore/PKCS12文件中读取X.509证书， 文件格式为：Keystore/PKCS12</h3>
 	 *
 	 * @param storePath <span class="en-US">Keystore/PKCS12 file path</span>
@@ -386,6 +393,12 @@ public final class CertificateUtils {
 	 */
 	public static X509Certificate x509(final byte[] storeBytes, final String certAlias, final String password,
 	                                   final PublicKey verifyKey, final boolean checkValidity) {
+		if (storeBytes == null || storeBytes.length == 0) {
+			if (LOGGER.isDebugEnabled()) {
+				LOGGER.debug("Data_Is_Null_Ignore");
+			}
+			return null;
+		}
 		return Optional.ofNullable(loadKeyStore(storeBytes, password))
 				.filter(keyStore -> checkKey(keyStore, certAlias))
 				.map(keyStore -> {
@@ -524,7 +537,7 @@ public final class CertificateUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Read PrivateKey from pem file and given algorithm</h3>
+	 * <h3 class="en-US">Read PrivateKey from the pem file and given algorithm</h3>
 	 * <h3 class="zh-CN">根据给定的算法和pem文件路径读取私钥</h3>
 	 *
 	 * @param pemPath <span class="en-US">pem file path</span>
@@ -562,6 +575,12 @@ public final class CertificateUtils {
 	 * <span class="zh-CN">生成的私钥，如果二进制数据非法则返回null</span>
 	 */
 	public static PrivateKey privateKey(final String algorithm, final byte[] keyBytes) {
+		if (keyBytes == null || keyBytes.length == 0) {
+			if (LOGGER.isDebugEnabled()) {
+				LOGGER.debug("Data_Is_Null_Ignore");
+			}
+			return null;
+		}
 		try {
 			return KeyFactory.getInstance(algorithm).generatePrivate(new PKCS8EncodedKeySpec(keyBytes));
 		} catch (InvalidKeySpecException | NoSuchAlgorithmException e) {
@@ -586,6 +605,12 @@ public final class CertificateUtils {
 	 * <span class="zh-CN">读取的私钥， 如果数据非法、未找到别名指定的证书，则返回null</span>
 	 */
 	public static PrivateKey privateKey(final byte[] storeBytes, final String certAlias, final String password) {
+		if (storeBytes == null || storeBytes.length == 0) {
+			if (LOGGER.isDebugEnabled()) {
+				LOGGER.debug("Data_Is_Null_Ignore");
+			}
+			return null;
+		}
 		KeyStore keyStore = loadKeyStore(storeBytes, password);
 		if (keyStore != null && CertificateUtils.checkKey(keyStore, certAlias)) {
 			return CertificateUtils.privateKey(keyStore, certAlias, password);
@@ -594,7 +619,7 @@ public final class CertificateUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Read PrivateKey from file. File format: Keystore/PKCS12</h3>
+	 * <h3 class="en-US">Read PrivateKey from a file. File format: Keystore/PKCS12</h3>
 	 * <h3 class="zh-CN">从指定路径的Keystore/PKCS12文件中读取私钥， 文件格式为：Keystore/PKCS12</h3>
 	 *
 	 * @param storePath <span class="en-US">Keystore/PKCS12 file path</span>
@@ -636,7 +661,7 @@ public final class CertificateUtils {
 	 *                      <span class="zh-CN">证书签发者的私钥</span>
 	 * @param signAlgorithm <span class="en-US">Signature Algorithm</span>
 	 *                      <span class="zh-CN">签名算法</span>
-	 * @return <span class="en-US">Generated PKCS12 data bytes or 0 length byte array if has error</span>
+	 * @return <span class="en-US">Generated PKCS12 data bytes or zero length byte array if it has error</span>
 	 * <span class="zh-CN">生成的PKCS12格式二进制数据，如果出错则返回长度为0的二进制数据</span>
 	 */
 	public static byte[] PKCS12(final KeyPair keyPair, final long serialNumber,
@@ -694,11 +719,17 @@ public final class CertificateUtils {
 	 * <span class="zh-CN">读取的PKCS12格式密钥库， 如果数据非法则返回null</span>
 	 */
 	public static KeyStore loadKeyStore(final byte[] storeBytes, final String password) {
+		if (storeBytes == null || storeBytes.length == 0) {
+			if (LOGGER.isDebugEnabled()) {
+				LOGGER.debug("Data_Is_Null_Ignore");
+			}
+			return null;
+		}
 		return loadKeyStore(new ByteArrayInputStream(storeBytes), password);
 	}
 
 	/**
-	 * <h3 class="en-US">Read PKCS12 KeyStore from given file path</h3>
+	 * <h3 class="en-US">Read PKCS12 KeyStore from the given file path</h3>
 	 * <h3 class="zh-CN">从指定的文件位置读取PKCS12格式的密钥库</h3>
 	 *
 	 * @param storePath <span class="en-US">Keystore/PKCS12 file path</span>

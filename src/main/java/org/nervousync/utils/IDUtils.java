@@ -111,7 +111,7 @@ public final class IDUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Static method for configure NanoID generator</h3>
+	 * <h3 class="en-US">Static method for configuring NanoID generator</h3>
 	 * <h3 class="zh-CN">静态方法用于设置NanoID生成器</h3>
 	 *
 	 * @param alphabetConfig <span class="en-US">Alphabet configure string</span>
@@ -151,7 +151,7 @@ public final class IDUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Static method for configure time synchronizer of UUIDv2 generator</h3>
+	 * <h3 class="en-US">Static method for configuring time synchronizer of UUIDv2 generator</h3>
 	 * <h3 class="zh-CN">静态方法用于设置UUIDv2生成器的时间同步器</h3>
 	 *
 	 * @param synchronizer <span class="en-US">Time synchronizer instance</span>
@@ -263,7 +263,7 @@ public final class IDUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Static method for generate value by the given generator name</h3>
+	 * <h3 class="en-US">Static method for generating value by the given generator name</h3>
 	 * <h3 class="zh-CN">静态方法用于生成指定生成器的值</h3>
 	 *
 	 * @param generatorName <span class="en-US">Given generator name</span>
@@ -294,7 +294,7 @@ public final class IDUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Destroy all registered generator instance and clear map</h3>
+	 * <h3 class="en-US">Destroy all registered generator instances and clear map</h3>
 	 * <h3 class="zh-CN">销毁所有已注册的生成器实例对象并清空映射表</h3>
 	 */
 	public static void destroy() {

@@ -42,7 +42,7 @@ public final class ExcelWriterImpl extends AbstractExcelWriter {
 	private final String filePath;
 
 	/**
-	 * <h3 class="en-US">Constructor method for excel writer</h3>
+	 * <h3 class="en-US">Constructor method for Excel writer</h3>
 	 * <h3 class="zh-CN">写入器构造方法</h3>
 	 *
 	 * @param filePath <span class="en-US">File storage path</span>

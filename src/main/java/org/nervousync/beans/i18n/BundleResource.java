@@ -58,7 +58,7 @@ public final class BundleResource extends BeanObject {
 	@JsonProperty("errors")
 	private List<BundleError> bundleErrors;
 	/**
-	 * <span class="en-US">List of definitions of message language, identification codes and message content</span>
+	 * <span class="en-US">Definitions of message language list, identification codes and message content</span>
 	 * <span class="zh-CN">信息语言、识别代码与信息内容的定义列表</span>
 	 */
 	@JsonProperty("languages")
@@ -142,10 +142,10 @@ public final class BundleResource extends BeanObject {
 	}
 
 	/**
-	 * <h3 class="en-US">Getter method for list of definitions of message language, identification codes and message content</h3>
+	 * <h3 class="en-US">Getter method for definitions of message language list, identification codes and message content</h3>
 	 * <h3 class="zh-CN">信息语言、识别代码与信息内容的定义列表的Getter方法</h3>
 	 *
-	 * @return <span class="en-US">List of definitions of message language, identification codes and message content</span>
+	 * @return <span class="en-US">Definitions of message language list, identification codes and message content</span>
 	 * <span class="zh-CN">信息语言、识别代码与信息内容的定义列表</span>
 	 */
 	public List<BundleLanguage> getBundleLanguages() {
@@ -153,10 +153,10 @@ public final class BundleResource extends BeanObject {
 	}
 
 	/**
-	 * <h3 class="en-US">Setter method for list of definitions of message language, identification codes and message content</h3>
+	 * <h3 class="en-US">Setter method for definitions of message language list, identification codes and message content</h3>
 	 * <h3 class="zh-CN">信息语言、识别代码与信息内容的定义列表的Setter方法</h3>
 	 *
-	 * @param bundleLanguages <span class="en-US">List of definitions of message language, identification codes and message content</span>
+	 * @param bundleLanguages <span class="en-US">Definitions of message language list, identification codes and message content</span>
 	 *                        <span class="zh-CN">信息语言、识别代码与信息内容的定义列表</span>
 	 */
 	public void setBundleLanguages(List<BundleLanguage> bundleLanguages) {

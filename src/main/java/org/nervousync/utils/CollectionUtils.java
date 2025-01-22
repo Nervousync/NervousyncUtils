@@ -16,6 +16,8 @@
  */
 package org.nervousync.utils;
 
+import jakarta.annotation.Nonnull;
+
 import java.lang.reflect.Array;
 import java.util.*;
 
@@ -25,12 +27,12 @@ import java.util.*;
  * <span>Current utilities implements features:</span>
  *     <ul>Check collection is empty</ul>
  *     <ul>Check collection contains target element</ul>
- *     <ul>Check two collection contains the same element</ul>
+ *     <ul>Check two collections contain the same element</ul>
  *     <ul>Check collection contains unique element</ul>
- *     <ul>Convert object to array list</ul>
+ *     <ul>Convert an object to an array list</ul>
  *     <ul>Merge array to list</ul>
  *     <ul>Merge properties to map</ul>
- *     <ul>Find the first match element of collection</ul>
+ *     <ul>Find the first match element of the collection</ul>
  * </span>
  * <h2 class="zh-CN">数据集合工具集</h2>
  * <span class="zh-CN">
@@ -111,6 +113,27 @@ public final class CollectionUtils {
 	}
 
 	/**
+	 * <h3 class="en-US">Convert the collection to array</h3>
+	 * <h3 class="zh-CN">转换集合为数组</h3>
+	 *
+	 * @param collection <span class="en-US">Collection instance object</span>
+	 *                   <span class="zh-CN">集合实例对象</span>
+	 * @param <T>        <span class="en-US">Generic type class</span>
+	 *                   <span class="zh-CN">泛型类</span>
+	 * @return <span class="en-US">Converted object array</span>
+	 * <span class="zh-CN">转换后的数组</span>
+	 */
+	public static <T> T[] toArray(@Nonnull final Collection<T> collection) {
+		T[] array = ObjectUtils.newArray(ReflectionUtils.actualType(collection), collection.size());
+		int index = 0;
+		for (T element : collection) {
+			array[index] = element;
+			index++;
+		}
+		return array;
+	}
+
+	/**
 	 * <h3 class="en-US">Append the given Object to the given array, returning a new array consisting of the input array contents plus the given Object.</h3>
 	 * <h3 class="zh-CN">将给定的对象附加到给定的数组，返回一个由输入数组内容加上给定的对象组成的新数组。</h3>
 	 *
@@ -135,6 +158,32 @@ public final class CollectionUtils {
 		}
 		newArr[newArr.length - 1] = obj;
 		return newArr;
+	}
+
+	/**
+	 * <h3 class="en-US">Get the length of the given array or list</h3>
+	 * <h3 class="zh-CN">获取给定数组或列表的长度</h3>
+	 *
+	 * @param source <span class="en-US">Instance object of array or list</span>
+	 *               <span class="zh-CN">数组或列表的实例对象</span>
+	 * @return <span class="en-US">Length of the given array or list</span>
+	 * <span class="zh-CN">数组或列表的长度</span>
+	 */
+	public static int getLength(final Object source) {
+		if (source == null) {
+			return 0;
+		}
+
+		if (source.getClass().isArray()) {
+			return Array.getLength(source);
+		}
+		if (source instanceof Collection) {
+			return ((Collection<?>) source).size();
+		}
+		if (source instanceof Map) {
+			return ((Map<?, ?>) source).size();
+		}
+		return 0;
 	}
 
 	/**
@@ -323,7 +372,7 @@ public final class CollectionUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Check whether the given Collections contains the same element instance.</h3>
+	 * <h3 class="en-US">Check whether the given Collections contain the same element instance.</h3>
 	 * <h3 class="zh-CN">检查给定的集合是否包含相同的元素实例。</h3>
 	 *
 	 * @param source     <span class="en-US">the source Collection</span>

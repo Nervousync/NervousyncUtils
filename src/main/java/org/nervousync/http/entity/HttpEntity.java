@@ -264,7 +264,7 @@ public final class HttpEntity {
 	}
 
 	/**
-	 * <h2 class="en-US">Http Entity Information Define</h2>
+	 * <h2 class="en-US">Http Entity Information Defines</h2>
 	 * <h2 class="zh-CN">HTTP请求参数信息定义</h2>
 	 *
 	 * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>

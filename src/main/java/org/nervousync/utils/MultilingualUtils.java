@@ -16,6 +16,8 @@
  */
 package org.nervousync.utils;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import jakarta.annotation.Nonnull;
 import org.nervousync.annotations.provider.Provider;
 import org.nervousync.beans.i18n.BundleResource;
@@ -44,7 +46,8 @@ public final class MultilingualUtils {
 	 * <span class="zh-CN">日志实例</span>
 	 */
 	private final static Logger LOGGER = LoggerFactory.getLogger(MultilingualUtils.class);
-	private static final String DEFAULT_SPLIT_CHARACTER = "_";
+
+	private static final String DEFAULT_IDENTIFY_KEY = "org.nervousync:utils";
 
 	/**
 	 * <span class="en-US">Registered resources map</span>
@@ -93,7 +96,7 @@ public final class MultilingualUtils {
 	 */
 	public static String toLanguageCode(@Nonnull final Locale locale) {
 		return Optional.of(locale.getCountry())
-				.filter(StringUtils::notBlank)
+				.filter(MultilingualUtils::notBlank)
 				.map(countryCode -> locale.getLanguage() + "-" + countryCode)
 				.orElse(locale.getLanguage());
 	}
@@ -176,7 +179,7 @@ public final class MultilingualUtils {
 	 */
 	public static String providerName(@Nonnull final Class<?> clazz, final String languageCode) {
 		return Optional.ofNullable(clazz.getAnnotation(Provider.class))
-				.filter(provider -> StringUtils.notBlank(provider.titleKey()))
+				.filter(provider -> notBlank(provider.titleKey()))
 				.map(provider -> newAgent(clazz).findMessage(provider.titleKey(), languageCode))
 				.orElse(Globals.DEFAULT_VALUE_STRING);
 	}
@@ -207,7 +210,7 @@ public final class MultilingualUtils {
 	 */
 	public static String providerDescription(@Nonnull final Class<?> clazz, final String languageCode) {
 		return Optional.ofNullable(clazz.getAnnotation(Provider.class))
-				.filter(provider -> StringUtils.notBlank(provider.descriptionKey()))
+				.filter(provider -> notBlank(provider.descriptionKey()))
 				.map(provider -> newAgent(clazz).findMessage(provider.descriptionKey(), languageCode))
 				.orElse(Globals.DEFAULT_VALUE_STRING);
 	}
@@ -241,7 +244,8 @@ public final class MultilingualUtils {
 	 *                     <span class="zh-CN">资源语言代码</span>
 	 */
 	public static void disableLanguage(@Nonnull final String languageCode) {
-		if (StringUtils.notBlank(languageCode) && CollectionUtils.contains(ENABLED_LANGUAGES, languageCode)) {
+		if (notBlank(languageCode)
+				&& ENABLED_LANGUAGES.stream().anyMatch(candidate -> candidate.equalsIgnoreCase(languageCode))) {
 			ENABLED_LANGUAGES.remove(languageCode);
 		}
 	}
@@ -256,7 +260,7 @@ public final class MultilingualUtils {
 	 *                <span class="zh-CN">资源的标识</span>
 	 */
 	public static void removeBundle(@Nonnull final String groupId, @Nonnull final String bundle) {
-		if (StringUtils.notBlank(groupId) && StringUtils.notBlank(bundle)) {
+		if (notBlank(groupId) && notBlank(bundle)) {
 			REGISTERED_RESOURCES.remove(groupId + ":" + bundle);
 		}
 	}
@@ -274,7 +278,7 @@ public final class MultilingualUtils {
 	 * @param collections  <span class="en-US">given parameters of information formatter</span>
 	 *                     <span class="zh-CN">用于资源信息格式化的参数</span>
 	 * @return <span class="en-US">Formatted resource information or joined string by character '/' if not found</span>
-	 * <span class="zh-CN">格式化的资源信息，如果未找到则返回使用'/'拼接的字符串</span>
+	 * <span class="zh-CN">格式化的资源信息，如果未找到则返回使用 '/' 拼接的字符串</span>
 	 */
 	private static String findMessage(final String identifyKey, final long errorCode, final String languageCode,
 	                                  final Object... collections) {
@@ -282,7 +286,7 @@ public final class MultilingualUtils {
 				&& !CollectionUtils.contains(ENABLED_LANGUAGES, DEFAULT_LANGUAGE_CODE)) {
 			return identifyKey(Long.toString(errorCode), languageCode);
 		}
-		if (StringUtils.notBlank(identifyKey) && StringUtils.notBlank(languageCode)) {
+		if (notBlank(identifyKey) && notBlank(languageCode)) {
 			return Optional.ofNullable(REGISTERED_RESOURCES.get(identifyKey))
 					.map(messageResource ->
 							messageResource.findMessage(errorCode, languageCode, DEFAULT_LANGUAGE_CODE, collections))
@@ -304,22 +308,29 @@ public final class MultilingualUtils {
 	 * @param collections  <span class="en-US">given parameters of information formatter</span>
 	 *                     <span class="zh-CN">用于资源信息格式化的参数</span>
 	 * @return <span class="en-US">Formatted resource information or joined string by character '/' if not found</span>
-	 * <span class="zh-CN">格式化的资源信息，如果未找到则返回使用'/'拼接的字符串</span>
+	 * <span class="zh-CN">格式化的资源信息，如果未找到则返回使用 '/' 拼接的字符串</span>
 	 */
 	private static String findMessage(final String identifyKey, final String messageKey, final String languageCode,
 	                                  final Object... collections) {
-		if (!CollectionUtils.contains(ENABLED_LANGUAGES, languageCode)
-				&& !CollectionUtils.contains(ENABLED_LANGUAGES, DEFAULT_LANGUAGE_CODE)) {
-			return identifyKey(messageKey, languageCode);
-		}
-		if (StringUtils.notBlank(identifyKey) && StringUtils.notBlank(languageCode)) {
-			return Optional.ofNullable(REGISTERED_RESOURCES.get(identifyKey))
+		String message = Globals.DEFAULT_VALUE_STRING;
+		if (CollectionUtils.contains(ENABLED_LANGUAGES, languageCode)
+				|| CollectionUtils.contains(ENABLED_LANGUAGES, DEFAULT_LANGUAGE_CODE)) {
+			message = Optional.ofNullable(REGISTERED_RESOURCES.get(identifyKey))
 					.map(messageResource ->
 							messageResource.findMessage(messageKey, languageCode, DEFAULT_LANGUAGE_CODE, collections))
-					.filter(StringUtils::notBlank)
-					.orElse(identifyKey(messageKey, languageCode));
+					.orElseGet(() -> {
+						LOGGER.warn("Can't found multilingual key: {} at {}", messageKey, identifyKey);
+						return Optional.ofNullable(REGISTERED_RESOURCES.get(DEFAULT_IDENTIFY_KEY))
+								.map(messageResource ->
+										messageResource.findMessage(messageKey, languageCode,
+												DEFAULT_LANGUAGE_CODE, collections))
+								.orElse(Globals.DEFAULT_VALUE_STRING);
+					});
 		}
-		return messageKey;
+		if (isEmpty(message)) {
+			message = identifyKey + Globals.DEFAULT_MULTILINGUAL_KEY_SPLIT_CHARACTER + identifyKey(messageKey, languageCode);
+		}
+		return message;
 	}
 
 	/**
@@ -332,7 +343,7 @@ public final class MultilingualUtils {
 	 *                     <span class="zh-CN">语言代码</span>
 	 */
 	public static String identifyKey(final String messageKey, final String languageCode) {
-		return messageKey + DEFAULT_SPLIT_CHARACTER + languageCode;
+		return messageKey + Globals.DEFAULT_MULTILINGUAL_KEY_SPLIT_CHARACTER + languageCode;
 	}
 
 	/**
@@ -357,7 +368,9 @@ public final class MultilingualUtils {
 	 */
 	private static void registerBundle(final URL url) {
 		try {
-			BundleResource bundleResource = StringUtils.streamToObject(url.openStream(), BundleResource.class);
+			BundleResource bundleResource =
+					new ObjectMapper().disable(SerializationFeature.FAIL_ON_EMPTY_BEANS)
+							.readValue(url, BundleResource.class);
 			if (bundleResource == null) {
 				throw new IOException("Load bundle resource error! ");
 			}
@@ -390,6 +403,42 @@ public final class MultilingualUtils {
 				LOGGER.debug(Globals.DEFAULT_VALUE_STRING, e);
 			}
 		}
+	}
+
+	/**
+	 * <h3 class="en-US">Check that the given CharSequence is <code>null</code> or length 0.</h3>
+	 * <span class="en-US">Will return <code>true</code> for a CharSequence that purely consists of blank.</span>
+	 * <h3 class="zh-CN">检查给定的 CharSequence 是否为 <code>null</code> 或长度为 0。</h3>
+	 * <span class="zh-CN">对于完全由空白组成的 CharSequence 将返回 <code>true</code>。</span>
+	 * <pre>
+	 * StringUtils.isEmpty(null) = true
+	 * StringUtils.isEmpty(Globals.DEFAULT_VALUE_STRING) = true
+	 * StringUtils.isEmpty(" ") = false
+	 * StringUtils.isEmpty("Hello") = false
+	 * </pre>
+	 *
+	 * @param str <span class="en-US">The CharSequence to check (maybe <code>null</code>)</span>
+	 *            <span class="zh-CN">要检查的 CharSequence （可能 <code>null</code>）</span>
+	 * @return <span class="en-US"><code>true</code> if the CharSequence is null or length 0.</span>
+	 * <span class="zh-CN">如果 CharSequence 为 null 或长度为 0，则 <code>true</code></span>
+	 */
+	public static boolean isEmpty(final CharSequence str) {
+		return (str == null || str.length() == 0);
+	}
+
+	/**
+	 * <h3 class="en-US">Check that the given CharSequence is neither <code>null</code> nor only blank character.</h3>
+	 * <span class="en-US">Will return <code>true</code> for a CharSequence that purely consists of blank.</span>
+	 * <h3 class="zh-CN">检查给定的 CharSequence 既不是 <code>null</code> 也不是空白字符。</h3>
+	 * <span class="zh-CN">对于完全由空白组成的 CharSequence 将返回 <code>true</code>。</span>
+	 *
+	 * @param str <span class="en-US">the String to check (maybe <code>null</code>)</span>
+	 *            <span class="zh-CN">要检查的字符串（可能 <code>null</code>）</span>
+	 * @return <span class="en-US"><code>true</code> if the CharSequence is not <code>null</code> or blank character and has length.</span>
+	 * <span class="zh-CN">如果 CharSequence 不是<code>null</code>或空白字符并且有长度，则<code>true</code></span>
+	 */
+	public static boolean notBlank(final String str) {
+		return (str != null && !str.trim().isEmpty());
 	}
 
 	/**
@@ -436,7 +485,7 @@ public final class MultilingualUtils {
 		 * @param collections <span class="en-US">given parameters of information formatter</span>
 		 *                    <span class="zh-CN">用于资源信息格式化的参数</span>
 		 * @return <span class="en-US">Formatted resource information or joined string by character '/' if not found</span>
-		 * <span class="zh-CN">格式化的资源信息，如果未找到则返回使用'/'拼接的字符串</span>
+		 * <span class="zh-CN">格式化的资源信息，如果未找到则返回使用 '/' 拼接的字符串</span>
 		 */
 		public String errorMessage(final long errorCode, final Object... collections) {
 			return this.errorMessage(errorCode, DEFAULT_LANGUAGE_CODE, collections);
@@ -453,7 +502,7 @@ public final class MultilingualUtils {
 		 * @param collections  <span class="en-US">given parameters of information formatter</span>
 		 *                     <span class="zh-CN">用于资源信息格式化的参数</span>
 		 * @return <span class="en-US">Formatted resource information or joined string by character '/' if not found</span>
-		 * <span class="zh-CN">格式化的资源信息，如果未找到则返回使用'/'拼接的字符串</span>
+		 * <span class="zh-CN">格式化的资源信息，如果未找到则返回使用 '/' 拼接的字符串</span>
 		 */
 		public String errorMessage(final long errorCode, final String languageCode, final Object... collections) {
 			return MultilingualUtils.findMessage(this.identifyKey, errorCode, languageCode, collections);
@@ -468,7 +517,7 @@ public final class MultilingualUtils {
 		 * @param collections <span class="en-US">given parameters of information formatter</span>
 		 *                    <span class="zh-CN">用于资源信息格式化的参数</span>
 		 * @return <span class="en-US">Formatted resource information or joined string by character '/' if not found</span>
-		 * <span class="zh-CN">格式化的资源信息，如果未找到则返回使用'/'拼接的字符串</span>
+		 * <span class="zh-CN">格式化的资源信息，如果未找到则返回使用 '/' 拼接的字符串</span>
 		 */
 		public String findMessage(final String messageKey, final Object... collections) {
 			return MultilingualUtils.findMessage(this.identifyKey, messageKey, DEFAULT_LANGUAGE_CODE, collections);
@@ -485,7 +534,7 @@ public final class MultilingualUtils {
 		 * @param collections  <span class="en-US">given parameters of information formatter</span>
 		 *                     <span class="zh-CN">用于资源信息格式化的参数</span>
 		 * @return <span class="en-US">Formatted resource information or joined string by character '/' if not found</span>
-		 * <span class="zh-CN">格式化的资源信息，如果未找到则返回使用'/'拼接的字符串</span>
+		 * <span class="zh-CN">格式化的资源信息，如果未找到则返回使用 '/' 拼接的字符串</span>
 		 */
 		public String findMessage(final String messageKey, final String languageCode, final Object... collections) {
 			return MultilingualUtils.findMessage(this.identifyKey, messageKey, languageCode, collections);
@@ -502,7 +551,7 @@ public final class MultilingualUtils {
 		 * @param collections <span class="en-US">given parameters of information formatter</span>
 		 *                    <span class="zh-CN">用于资源信息格式化的参数</span>
 		 * @return <span class="en-US">Formatted resource information or joined string by character '/' if not found</span>
-		 * <span class="zh-CN">格式化的资源信息，如果未找到则返回使用'/'拼接的字符串</span>
+		 * <span class="zh-CN">格式化的资源信息，如果未找到则返回使用 '/' 拼接的字符串</span>
 		 */
 		public String findMessage(final String messageKey, final Locale locale, final Object... collections) {
 			return MultilingualUtils.findMessage(this.identifyKey, messageKey, toLanguageCode(locale), collections);

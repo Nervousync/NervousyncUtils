@@ -27,8 +27,8 @@ import java.util.*;
  * <h2 class="en-US">JavaBean Utilities</h2>
  * <span class="en-US">
  * <span>Current utilities implements features:</span>
- *     <ul>Copy object fields value from source object to target object based field name</ul>
- *     <ul>Copy object fields value from source object array to target object based annotation: BeanProperty</ul>
+ *     <ul>Copy object fields value from source object to target object-based field name</ul>
+ *     <ul>Copy object fields value from the source object array to target object based annotation: BeanProperty</ul>
  *     <ul>Copy object fields value from source object to target object arrays based annotation: BeanProperty</ul>
  * </span>
  * <h2 class="zh-CN">JavaBean工具集</h2>
@@ -155,7 +155,10 @@ public final class BeanUtils {
 
 	/**
 	 * <h3 class="en-US">Check and register JavaBean mapping configs</h3>
-	 * <p class="en-US">If given JavaBean class instance not registered, generate BeanMapping instance and register the given JavaBean class mapping configure</p>
+	 * <p class="en-US">
+	 *     If given JavaBean class instance not registered,
+	 *     generate BeanMapping instance and register the given JavaBean class mapping configured
+	 * </p>
 	 * <h3 class="zh-CN">检查并注册JavaBean映射配置</h3>
 	 * <p class="en-US">如果给定的JavaBean类没有注册映射配置，则生成映射配置对象，并执行注册</p>
 	 *
@@ -196,7 +199,7 @@ public final class BeanUtils {
 		}
 
 		/**
-		 * <h3 class="en-US">Copy property value from data map</h3>
+		 * <h3 class="en-US">Copy property value from the data map</h3>
 		 * <h3 class="zh-CN">从数据Map复制属性数据</h3>
 		 *
 		 * @param targetObject <span class="en-US">Target JavaBean instance</span>
@@ -277,7 +280,7 @@ public final class BeanUtils {
 		}
 
 		/**
-		 * <h3 class="en-US">Copy property value from data map</h3>
+		 * <h3 class="en-US">Copy property value from the data map</h3>
 		 * <h3 class="zh-CN">从数据Map复制属性数据</h3>
 		 *
 		 * @param targetObject <span class="en-US">Target JavaBean instance</span>

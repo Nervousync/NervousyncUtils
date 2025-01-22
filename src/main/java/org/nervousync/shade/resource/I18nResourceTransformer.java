@@ -34,7 +34,7 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarOutputStream;
 
 /**
- * <h2 class="en-US">Transformer implement class which using for merge internationalization resource file</h2>
+ * <h2 class="en-US">Transformer implement class which using for the merge internationalization resource file</h2>
  * <h2 class="zh-CN">用于合并国际化资源文件的传送器实现</h2>
  *
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
@@ -121,6 +121,7 @@ public final class I18nResourceTransformer implements ReproducibleResourceTransf
 	}
 
 	@Override
+	@Deprecated
 	public void processResource(final String resource, final InputStream inputStream,
 	                            final List<Relocator> relocatorList) throws IOException {
 		this.processResource(resource, inputStream, relocatorList, 0L);

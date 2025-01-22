@@ -210,6 +210,10 @@ public final class MailUtils {
 				}
 			}
 			this.storagePath = mailConfig.getStoragePath();
+			//  Initialize the storage path
+			if (StringUtils.notBlank(this.storagePath)) {
+				FileUtils.makeDir(this.storagePath);
+			}
 			this.x509Certificate = StringUtils.notBlank(mailConfig.getCertificate())
 					? CertificateUtils.x509(StringUtils.base64Decode(mailConfig.getCertificate()))
 					: null;
@@ -229,7 +233,7 @@ public final class MailUtils {
 		 */
 		public boolean sendMail(final MailObject mailObject) {
 			if (this.sendOperator == null) {
-				//	Not config send server
+				//	Not configs send server
 				return Boolean.FALSE;
 			}
 			try {
@@ -255,7 +259,7 @@ public final class MailUtils {
 		}
 
 		/**
-		 * <h3 class="en-US">Read folder name list from default folder</h3>
+		 * <h3 class="en-US">Read the folder name list from the default folder</h3>
 		 * <h3 class="zh-CN">从默认文件夹中读取包含的文件夹名称列表</h3>
 		 *
 		 * @return <span class="en-US">folder name list</span>
@@ -318,7 +322,7 @@ public final class MailUtils {
 		}
 
 		/**
-		 * <h3 class="en-US">Read mail UID list from inbox</h3>
+		 * <h3 class="en-US">Read the mail UID list from inbox</h3>
 		 * <h3 class="zh-CN">读取收件箱中的邮件唯一标识列表</h3>
 		 *
 		 * @return <span class="en-US">Mail UID list</span>
@@ -329,7 +333,7 @@ public final class MailUtils {
 		}
 
 		/**
-		 * <h3 class="en-US">Read mail UID list from given folder name</h3>
+		 * <h3 class="en-US">Read the mail UID list from given folder name</h3>
 		 * <h3 class="zh-CN">读取给定文件夹中的邮件唯一标识列表</h3>
 		 *
 		 * @param folderName <span class="en-US">folder name</span>
@@ -342,7 +346,7 @@ public final class MailUtils {
 		}
 
 		/**
-		 * <h3 class="en-US">Read mail UID list from given folder name limit index from begin to end</h3>
+		 * <h3 class="en-US">Read the mail UID list from given folder name limit index from the begin to end</h3>
 		 * <h3 class="zh-CN">读取给定文件夹中的部分邮件唯一标识列表，从给定的起始索引号到终止索引号</h3>
 		 *
 		 * @param folderName <span class="en-US">folder name</span>
@@ -433,7 +437,7 @@ public final class MailUtils {
 		}
 
 		/**
-		 * <h3 class="en-US">Read mail content information list from given folder name and UID array</h3>
+		 * <h3 class="en-US">Read the mail content information list from given folder name and UID array</h3>
 		 * <h3 class="zh-CN">根据给定的文件夹名和邮件唯一标识数组读取邮件详细信息</h3>
 		 *
 		 * @param folderName <span class="en-US">folder name</span>
@@ -563,7 +567,7 @@ public final class MailUtils {
 		}
 
 		/**
-		 * <h3 class="en-US">Set mails status as flag with given folder name and UID array</h3>
+		 * <h3 class="en-US">Set mails status as the flag with given folder name and UID array</h3>
 		 * <h3 class="zh-CN">根据给定的文件夹名和邮件唯一标识数组，将对应的邮件置为标记状态</h3>
 		 *
 		 * @param folderName <span class="en-US">folder name</span>
@@ -768,7 +772,7 @@ public final class MailUtils {
 								mailObject.setBccAddress(bccList);
 							});
 
-					//	Read mail content message
+					//	Read the mail content message
 					StringBuilder contentBuffer = new StringBuilder();
 					readMailContent(mimeMessage, contentBuffer);
 					mailObject.setContent(contentBuffer.toString());
@@ -1004,7 +1008,7 @@ public final class MailUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Open folder from Store instance by given folder name in read only mode</h3>
+	 * <h3 class="en-US">Open folder from Store instance by given folder name in read-only mode</h3>
 	 * <h3 class="zh-CN">在只读模式中打开给定的Store实例对象中的文件夹</h3>
 	 *
 	 * @param store      <span class="en-US">Store instance</span>
@@ -1027,7 +1031,7 @@ public final class MailUtils {
 	 *
 	 * @param store      <span class="en-US">Store instance</span>
 	 *                   <span class="zh-CN">Store实例对象</span>
-	 * @param readOnly   <span class="en-US">Read only status</span>
+	 * @param readOnly   <span class="en-US">Read-only status</span>
 	 *                   <span class="zh-CN">只读模式状态</span>
 	 * @param folderName <span class="en-US">folder name</span>
 	 *                   <span class="zh-CN">文件夹名称</span>

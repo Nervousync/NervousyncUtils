@@ -52,7 +52,7 @@ public final class ZipOptions implements Cloneable {
 	 */
 	private int encryptionMethod;
 	/**
-	 * Status of read hidden file
+	 * Status of the read hidden file
 	 */
 	private boolean readHiddenFiles = Boolean.TRUE;
 	/**
@@ -403,7 +403,7 @@ public final class ZipOptions implements Cloneable {
 	}
 
 	/**
-	 * Gets default folder path.
+	 * Gets the default folder path.
 	 *
 	 * @return the defaultFolderPath
 	 */

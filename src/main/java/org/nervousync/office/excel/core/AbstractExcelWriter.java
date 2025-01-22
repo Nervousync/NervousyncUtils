@@ -46,7 +46,7 @@ public abstract class AbstractExcelWriter implements ExcelWriter {
 	protected final Workbook workbook;
 
 	/**
-	 * <h3 class="en-US">Constructor method for excel writer</h3>
+	 * <h3 class="en-US">Constructor method for the Excel writer</h3>
 	 * <h3 class="zh-CN">写入器构造方法</h3>
 	 *
 	 * @param workbook <span class="en-US">Excel workbook instance object</span>

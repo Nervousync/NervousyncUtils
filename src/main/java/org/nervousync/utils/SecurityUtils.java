@@ -1448,7 +1448,7 @@ public final class SecurityUtils {
 	 * <h3 class="en-US">Generate Blowfish key bytes</h3>
 	 * <h3 class="zh-CN">生成Blowfish密钥字节数组</h3>
 	 *
-	 * @return <span class="en-US">Generated key bytes or 0 length byte array if process error</span>
+	 * @return <span class="en-US">Generated key bytes or zero length byte array if process error</span>
 	 * <span class="zh-CN">生成的密钥字节数组，如果出现异常则返回长度为0的字节数组</span>
 	 */
 	public static byte[] BlowfishKey() {
@@ -1541,7 +1541,7 @@ public final class SecurityUtils {
 	 * <h3 class="en-US">Generate DES key bytes</h3>
 	 * <h3 class="zh-CN">生成DES密钥字节数组</h3>
 	 *
-	 * @return <span class="en-US">Generated key bytes or 0 length byte array if process error</span>
+	 * @return <span class="en-US">Generated key bytes or zero length byte array if process error</span>
 	 * <span class="zh-CN">生成的密钥字节数组，如果出现异常则返回长度为0的字节数组</span>
 	 */
 	public static byte[] DESKey() {
@@ -1636,7 +1636,7 @@ public final class SecurityUtils {
 	 * <h3 class="en-US">Generate TripleDES key bytes</h3>
 	 * <h3 class="zh-CN">生成3DES密钥字节数组</h3>
 	 *
-	 * @return <span class="en-US">Generated key bytes or 0 length byte array if process error</span>
+	 * @return <span class="en-US">Generated key bytes or zero length byte array if process error</span>
 	 * <span class="zh-CN">生成的密钥字节数组，如果出现异常则返回长度为0的字节数组</span>
 	 */
 	public static byte[] TripleDESKey() {
@@ -1783,7 +1783,7 @@ public final class SecurityUtils {
 	 * <h3 class="en-US">Generate SM4 key bytes</h3>
 	 * <h3 class="zh-CN">生成SM4密钥字节数组</h3>
 	 *
-	 * @return <span class="en-US">Generated key bytes or 0 length byte array if process error</span>
+	 * @return <span class="en-US">Generated key bytes or zero length byte array if process error</span>
 	 * <span class="zh-CN">生成的密钥字节数组，如果出现异常则返回长度为0的字节数组</span>
 	 */
 	public static byte[] SM4Key() {
@@ -1876,7 +1876,7 @@ public final class SecurityUtils {
 	 * <h3 class="en-US">Generate RC2 key bytes</h3>
 	 * <h3 class="zh-CN">生成RC2密钥字节数组</h3>
 	 *
-	 * @return <span class="en-US">Generated key bytes or 0 length byte array if process error</span>
+	 * @return <span class="en-US">Generated key bytes or zero length byte array if process error</span>
 	 * <span class="zh-CN">生成的密钥字节数组，如果出现异常则返回长度为0的字节数组</span>
 	 */
 	public static byte[] RC2Key() {
@@ -1959,7 +1959,7 @@ public final class SecurityUtils {
 	 * <h3 class="en-US">Generate RC4 key bytes</h3>
 	 * <h3 class="zh-CN">生成RC4密钥字节数组</h3>
 	 *
-	 * @return <span class="en-US">Generated key bytes or 0 length byte array if process error</span>
+	 * @return <span class="en-US">Generated key bytes or zero length byte array if process error</span>
 	 * <span class="zh-CN">生成的密钥字节数组，如果出现异常则返回长度为0的字节数组</span>
 	 */
 	public static byte[] RC4Key() {
@@ -2052,7 +2052,7 @@ public final class SecurityUtils {
 	 * <h3 class="en-US">Generate RC5 key bytes</h3>
 	 * <h3 class="zh-CN">生成RC5密钥字节数组</h3>
 	 *
-	 * @return <span class="en-US">Generated key bytes or 0 length byte array if process error</span>
+	 * @return <span class="en-US">Generated key bytes or zero length byte array if process error</span>
 	 * <span class="zh-CN">生成的密钥字节数组，如果出现异常则返回长度为0的字节数组</span>
 	 */
 	public static byte[] RC5Key() {
@@ -2145,7 +2145,7 @@ public final class SecurityUtils {
 	 * <h3 class="en-US">Generate RC6 key bytes</h3>
 	 * <h3 class="zh-CN">生成RC6密钥字节数组</h3>
 	 *
-	 * @return <span class="en-US">Generated key bytes or 0 length byte array if process error</span>
+	 * @return <span class="en-US">Generated key bytes or zero length byte array if process error</span>
 	 * <span class="zh-CN">生成的密钥字节数组，如果出现异常则返回长度为0的字节数组</span>
 	 */
 	public static byte[] RC6Key() {
@@ -2558,7 +2558,7 @@ public final class SecurityUtils {
 	 * <h3 class="en-US">Generate AES128 key bytes</h3>
 	 * <h3 class="zh-CN">生成AES128密钥字节数组</h3>
 	 *
-	 * @return <span class="en-US">Generated key bytes or 0 length byte array if process error</span>
+	 * @return <span class="en-US">Generated key bytes or zero length byte array if process error</span>
 	 * <span class="zh-CN">生成的密钥字节数组，如果出现异常则返回长度为0的字节数组</span>
 	 */
 	public static byte[] AES128Key() {
@@ -2571,7 +2571,7 @@ public final class SecurityUtils {
 	 *
 	 * @param randomAlgorithm <span class="en-US">Random algorithm</span>
 	 *                        <span class="zh-CN">随机数算法</span>
-	 * @return <span class="en-US">Generated key bytes or 0 length byte array if process error</span>
+	 * @return <span class="en-US">Generated key bytes or zero length byte array if process error</span>
 	 * <span class="zh-CN">生成的密钥字节数组，如果出现异常则返回长度为0的字节数组</span>
 	 */
 	public static byte[] AES128Key(final String randomAlgorithm) {
@@ -2586,7 +2586,7 @@ public final class SecurityUtils {
 	 * <h3 class="en-US">Generate AES192 key bytes</h3>
 	 * <h3 class="zh-CN">生成AES192密钥字节数组</h3>
 	 *
-	 * @return <span class="en-US">Generated key bytes or 0 length byte array if process error</span>
+	 * @return <span class="en-US">Generated key bytes or zero length byte array if process error</span>
 	 * <span class="zh-CN">生成的密钥字节数组，如果出现异常则返回长度为0的字节数组</span>
 	 */
 	public static byte[] AES192Key() {
@@ -2599,7 +2599,7 @@ public final class SecurityUtils {
 	 *
 	 * @param randomAlgorithm <span class="en-US">Random algorithm</span>
 	 *                        <span class="zh-CN">随机数算法</span>
-	 * @return <span class="en-US">Generated key bytes or 0 length byte array if process error</span>
+	 * @return <span class="en-US">Generated key bytes or zero length byte array if process error</span>
 	 * <span class="zh-CN">生成的密钥字节数组，如果出现异常则返回长度为0的字节数组</span>
 	 */
 	public static byte[] AES192Key(final String randomAlgorithm) {
@@ -2614,7 +2614,7 @@ public final class SecurityUtils {
 	 * <h3 class="en-US">Generate AES256 key bytes</h3>
 	 * <h3 class="zh-CN">生成AES256密钥字节数组</h3>
 	 *
-	 * @return <span class="en-US">Generated key bytes or 0 length byte array if process error</span>
+	 * @return <span class="en-US">Generated key bytes or zero length byte array if process error</span>
 	 * <span class="zh-CN">生成的密钥字节数组，如果出现异常则返回长度为0的字节数组</span>
 	 */
 	public static byte[] AES256Key() {
@@ -2627,7 +2627,7 @@ public final class SecurityUtils {
 	 *
 	 * @param randomAlgorithm <span class="en-US">Random algorithm</span>
 	 *                        <span class="zh-CN">随机数算法</span>
-	 * @return <span class="en-US">Generated key bytes or 0 length byte array if process error</span>
+	 * @return <span class="en-US">Generated key bytes or zero length byte array if process error</span>
 	 * <span class="zh-CN">生成的密钥字节数组，如果出现异常则返回长度为0的字节数组</span>
 	 */
 	public static byte[] AES256Key(final String randomAlgorithm) {
@@ -2673,7 +2673,7 @@ public final class SecurityUtils {
 	 *                        <span class="zh-CN">密钥长度</span>
 	 * @param randomAlgorithm <span class="en-US">Random algorithm</span>
 	 *                        <span class="zh-CN">随机数算法</span>
-	 * @return <span class="en-US">Generated key bytes or 0 length byte array if process error</span>
+	 * @return <span class="en-US">Generated key bytes or zero length byte array if process error</span>
 	 * <span class="zh-CN">生成的密钥字节数组，如果出现异常则返回长度为0的字节数组</span>
 	 * @throws CryptoException <span class="en-US">If algorithm didn't find</span>
 	 *                         <span class="zh-CN">如果算法未找到</span>

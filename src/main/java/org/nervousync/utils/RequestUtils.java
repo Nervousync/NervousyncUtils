@@ -55,7 +55,7 @@ import java.util.function.Supplier;
  *     <ul>Parse http method string to HttpMethodOption</ul>
  *     <ul>Resolve domain name to IP address</ul>
  *     <ul>Retrieve and verify SSL certificate from server</ul>
- *     <ul>Send request and parse response content to target JavaBean or string</ul>
+ *     <ul>Send request and parse response content to the target JavaBean or string</ul>
  *     <ul>Convert data between query string and parameter map</ul>
  *     <ul>Check user role code using <code>request.isUserInRole</code></ul>
  * </span>
@@ -467,7 +467,7 @@ public final class RequestUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Generate parameter map from query string</h3>
+	 * <h3 class="en-US">Generate a parameter map from query string</h3>
 	 * <h3 class="zh-CN">从给定的查询字符串生成参数映射表</h3>
 	 *
 	 * @param queryString <span class="en-US">query string</span>
@@ -480,7 +480,7 @@ public final class RequestUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Generate parameter map from query string</h3>
+	 * <h3 class="en-US">Generate a parameter map from query string</h3>
 	 * <h3 class="zh-CN">从给定的查询字符串生成参数映射表</h3>
 	 *
 	 * @param queryString <span class="en-US">query string</span>
@@ -495,7 +495,7 @@ public final class RequestUtils {
 	}
 
 	/**
-	 * <h3 class="en-US">Generate parameter map from query string</h3>
+	 * <h3 class="en-US">Generate a parameter map from query string</h3>
 	 * <h3 class="zh-CN">从给定的查询字符串生成参数映射表</h3>
 	 *
 	 * @param queryString  <span class="en-US">query string</span>
